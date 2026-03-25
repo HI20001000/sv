@@ -1,0 +1,28 @@
+{
+  "target_episode_count": 20,
+  "planned_episode_count": 20,
+  "allocation_strategy": "由於輸入僅包含一個 unit，為滿足總集數嚴格等於目標集數的硬性約束，將全部 20 集分配給該唯一的 unit。",
+  "unit_allocations": [
+    {
+      "unit_id": "u_0001",
+      "episode_count": 20,
+      "char_count": 16747,
+      "reason": "輸入僅有單一 unit，必須承擔全部目標集數以滿足總和為 20 的約束條件。"
+    }
+  ],
+  "notes": "輸入數據僅提供了一個 unit 框架，因此無法進行多 unit 間的節奏分配，只能將所有集數分配給 u_0001。",
+  "validation": {
+    "sum_matches_target": true,
+    "unit_count": 1,
+    "target_episode_count": 20,
+    "planned_episode_count": 20,
+    "all_units_covered": true,
+    "no_unknown_unit_ids": true,
+    "no_duplicate_unit_ids": true,
+    "missing_unit_ids": [],
+    "unknown_unit_ids": [],
+    "duplicate_unit_ids": [],
+    "errors": [],
+    "is_valid": true
+  }
+}

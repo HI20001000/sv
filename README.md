@@ -44,6 +44,8 @@ UNIT_WINDOW_MIN=1500
 UNIT_WINDOW_MAX=2200
 DEFAULT_EPISODE_COUNT=60
 EPISODE_SPLIT_REPAIR_ROUNDS=2
+EPISODE_CONTENT_MAX_WORKERS=4
+STORYBOARD_MAX_WORKERS=4
 ```
 
 说明：
@@ -51,6 +53,8 @@ EPISODE_SPLIT_REPAIR_ROUNDS=2
 - `UNIT_WINDOW_MIN` 必须小于 `UNIT_WINDOW_MAX`
 - `DEFAULT_EPISODE_COUNT` 为 `/docs` 默认目标集数
 - `EPISODE_SPLIT_REPAIR_ROUNDS` 是拆集计划修复轮次
+- `EPISODE_CONTENT_MAX_WORKERS` 控制第 7 步逐集内容生成的并发数
+- `STORYBOARD_MAX_WORKERS` 控制第 8 步逐集分镜生成的并发数
 
 ---
 
@@ -102,7 +106,6 @@ output/
     episode_split_plan.json
     episode_generation_plan.json
     episodes/
-    episodes_plan/
     storyboards/
     episodes_overview.json
     project_meta.json

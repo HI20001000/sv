@@ -1,19 +1,25 @@
 {
   "target_episode_count": 20,
   "planned_episode_count": 20,
-  "allocation_strategy": "由於輸入僅包含一個 unit，為滿足總集數嚴格等於目標集數的硬性約束，將全部 20 集分配給該唯一的 unit。",
+  "allocation_strategy": "根據文本字數比例與劇情推進節奏進行分配。Unit 1 負責交代離婚背景與黑手黨家族設定，字數較少，分配 8 集；Unit 2 包含大量新生活過渡以及前夫突然出現的重大轉折，字數較多且衝突感強，分配 12 集。",
   "unit_allocations": [
     {
       "unit_id": "u_0001",
-      "episode_count": 20,
-      "char_count": 16747,
-      "reason": "輸入僅有單一 unit，必須承擔全部目標集數以滿足總和為 20 的約束條件。"
+      "episode_count": 8,
+      "char_count": 4976,
+      "reason": "字數約5000字，主要負責開篇設定、離婚協議的簽署與情緒鋪墊，適合拆分為前期的背景交代與懸念引入。"
+    },
+    {
+      "unit_id": "u_0002",
+      "episode_count": 12,
+      "char_count": 8363,
+      "reason": "字數超過8000字，涵蓋了女主回歸學術生活以及前夫突然找上門的重大劇情轉折，信息量與後續衝突爆發點較多，需要更多集數來展開。"
     }
   ],
-  "notes": "輸入數據僅提供了一個 unit 框架，因此無法進行多 unit 間的節奏分配，只能將所有集數分配給 u_0001。",
+  "notes": "總集數嚴格等於20集，分配比例大致符合兩者的字數與劇情比重（約 4:6）。",
   "validation": {
     "sum_matches_target": true,
-    "unit_count": 1,
+    "unit_count": 2,
     "target_episode_count": 20,
     "planned_episode_count": 20,
     "all_units_covered": true,

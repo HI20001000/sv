@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import threading
 import json
 import os
 import re
 import shutil
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -17,6 +19,7 @@ from code_components.langChain import (
     extract_unit_framework_with_prompt,
     generate_episode_content_with_prompt,
     generate_storyboard_with_prompt,
+    make_llm,
     plan_episode_generation_with_prompt,
     plan_unit_episode_split_with_prompt,
 )
@@ -36,6 +39,8 @@ DEFAULT_UNIT_WINDOW_MIN = 1500
 DEFAULT_UNIT_WINDOW_MAX = 2200
 DEFAULT_EPISODE_COUNT = 60
 DEFAULT_EPISODE_SPLIT_REPAIR_ROUNDS = 2
+DEFAULT_EPISODE_CONTENT_MAX_WORKERS = 4
+DEFAULT_STORYBOARD_MAX_WORKERS = 4
 EPISODE_PLAN_ROOT_PATH = Path("episode_split_plan.json")
 EPISODE_GENERATION_PLAN_ROOT_PATH = Path("episode_generation_plan.json")
 ProgressCallback = Callable[[str, dict[str, Any]], None]
@@ -53,7 +58,6 @@ class ScriptOutputResult:
     project_episode_generation_plan_path: Path
     root_episode_generation_plan_path: Path
     episodes_dir: Path
-    episodes_plan_dir: Path
     storyboards_dir: Path
     unit_count: int
     target_episode_count: int
@@ -301,13 +305,11 @@ def process_script_to_output(
         message=f"7/8 逐集生成内容中（目标: {target_episode_count} 集）",
     )
     episodes_dir = project_dir / "episodes"
-    episodes_plan_dir = project_dir / "episodes_plan"
     episode_content_started_at = time.perf_counter()
     generated_episode_count = _generate_episode_contents(
         llm=llm,
         project_dir=project_dir,
         episodes_dir=episodes_dir,
-        episodes_plan_dir=episodes_plan_dir,
         story_bible=story_bible,
         story_units=story_units,
         episode_generation_plan=episode_generation_plan,
@@ -378,11 +380,11 @@ def process_script_to_output(
         "episode_generation_plan_file": project_episode_generation_plan_path.name,
         "episode_generation_plan_root_file": str(EPISODE_GENERATION_PLAN_ROOT_PATH),
         "episodes_dir": episodes_dir.name,
-        "episodes_plan_dir": episodes_plan_dir.name,
-        "episodes_plan_index_file": "index.json",
         "episodes_overview_file": "episodes_overview.json",
         "storyboards_dir": storyboards_dir.name,
         "storyboards_index_file": "index.json",
+        "episode_content_max_workers": _read_episode_content_max_workers_config(),
+        "storyboard_max_workers": _read_storyboard_max_workers_config(),
         "unit_window_min": unit_window_min,
         "unit_window_max": unit_window_max,
         "unit_count": len(story_units),
@@ -415,7 +417,6 @@ def process_script_to_output(
         project_episode_generation_plan_path=project_episode_generation_plan_path,
         root_episode_generation_plan_path=EPISODE_GENERATION_PLAN_ROOT_PATH,
         episodes_dir=episodes_dir,
-        episodes_plan_dir=episodes_plan_dir,
         storyboards_dir=storyboards_dir,
         unit_count=len(story_units),
         target_episode_count=target_episode_count,
@@ -1214,7 +1215,6 @@ def _generate_episode_contents(
     llm,
     project_dir: Path,
     episodes_dir: Path,
-    episodes_plan_dir: Path,
     story_bible: dict[str, Any],
     story_units: list[dict[str, Any]],
     episode_generation_plan: dict[str, Any],
@@ -1222,7 +1222,6 @@ def _generate_episode_contents(
     progress_callback: ProgressCallback | None = None,
 ) -> int:
     episodes_dir.mkdir(parents=True, exist_ok=True)
-    episodes_plan_dir.mkdir(parents=True, exist_ok=True)
 
     planned_episodes = episode_generation_plan.get("episodes", [])
     if not isinstance(planned_episodes, list):
@@ -1230,95 +1229,84 @@ def _generate_episode_contents(
 
     story_unit_map = _build_story_unit_map_with_text(story_units)
     generated_index: list[dict[str, Any]] = []
-    generated_plan_index: list[dict[str, Any]] = []
     story_bible_json = json.dumps(story_bible, ensure_ascii=False, indent=2)
 
-    for episode_no in range(1, target_episode_count + 1):
-        _emit_progress(
-            progress_callback,
-            stage="episode_content_generation_internal",
-            message=f"逐集生成进度：第 {episode_no}/{target_episode_count} 集",
-            episode_no=episode_no,
-            target_episode_count=target_episode_count,
-        )
-        plan_item = planned_episodes[episode_no - 1] if episode_no - 1 < len(planned_episodes) and isinstance(planned_episodes[episode_no - 1], dict) else {}
-        source_unit_ids = _coerce_source_units(plan_item.get("source_units"), list(story_unit_map.keys()))
-        if not source_unit_ids and story_unit_map:
-            source_unit_ids = [list(story_unit_map.keys())[min(episode_no - 1, len(story_unit_map) - 1)]]
+    max_workers = min(_read_episode_content_max_workers_config(), max(target_episode_count, 1))
+    llm_thread_local = threading.local() if max_workers > 1 else None
 
-        source_units_payload = [
-            story_unit_map[unit_id]
-            for unit_id in source_unit_ids
-            if unit_id in story_unit_map
-        ]
+    _emit_progress(
+        progress_callback,
+        stage="episode_content_generation_internal",
+        message=f"逐集生成任务已提交（共 {target_episode_count} 集，并发: {max_workers}）",
+        target_episode_count=target_episode_count,
+        max_workers=max_workers,
+        completed_episode_count=0,
+    )
 
-        episode_plan_json = json.dumps(plan_item, ensure_ascii=False, indent=2)
-        source_units_json = json.dumps(source_units_payload, ensure_ascii=False, indent=2)
-
-        try:
-            raw_response = generate_episode_content_with_prompt(
-                llm=llm,
-                story_bible_json=story_bible_json,
-                episode_plan_json=episode_plan_json,
-                source_units_json=source_units_json,
-                prompt_path=EPISODE_CONTENT_PROMPT_PATH,
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = []
+        for episode_no in range(1, target_episode_count + 1):
+            plan_item = (
+                planned_episodes[episode_no - 1]
+                if episode_no - 1 < len(planned_episodes) and isinstance(planned_episodes[episode_no - 1], dict)
+                else {}
             )
-            episode_content = _normalize_generated_episode_content(
-                raw_response=raw_response,
+            source_unit_ids = _coerce_source_units(plan_item.get("source_units"), list(story_unit_map.keys()))
+            if not source_unit_ids and story_unit_map:
+                source_unit_ids = [list(story_unit_map.keys())[min(episode_no - 1, len(story_unit_map) - 1)]]
+
+            source_units_payload = [
+                story_unit_map[unit_id]
+                for unit_id in source_unit_ids
+                if unit_id in story_unit_map
+            ]
+            futures.append(
+                executor.submit(
+                    _generate_single_episode_content,
+                    llm=llm,
+                    llm_thread_local=llm_thread_local,
+                    episode_no=episode_no,
+                    plan_item=plan_item,
+                    source_unit_ids=source_unit_ids,
+                    source_units_payload=source_units_payload,
+                    story_bible_json=story_bible_json,
+                )
+            )
+
+        completed_count = 0
+        for future in as_completed(futures):
+            result = future.result()
+            episode_no = int(result["episode_no"])
+            episode_file_name = f"episode_{episode_no:04d}.json"
+            episode_path = episodes_dir / episode_file_name
+            episode_path.write_text(
+                json.dumps(result["output_payload"], ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
+            generated_index.append(
+                {
+                    "episode_no": episode_no,
+                    "file": episode_file_name,
+                    "generation_status": str(result["generation_status"]),
+                    "source_units": result["source_unit_ids"],
+                }
+            )
+            completed_count += 1
+            _emit_progress(
+                progress_callback,
+                stage="episode_content_generation_internal",
+                message=(
+                    f"逐集生成已完成 {completed_count}/{target_episode_count} 集"
+                    f"（刚完成第 {episode_no} 集，状态: {result['generation_status']}）"
+                ),
                 episode_no=episode_no,
-                plan_item=plan_item,
-                source_unit_ids=source_unit_ids,
+                target_episode_count=target_episode_count,
+                completed_episode_count=completed_count,
+                max_workers=max_workers,
+                generation_status=result["generation_status"],
             )
-            generation_status = "llm"
-        except Exception:
-            episode_content = _fallback_episode_content(
-                episode_no=episode_no,
-                plan_item=plan_item,
-                source_units_payload=source_units_payload,
-            )
-            generation_status = "fallback"
 
-        episode_file_name = f"episode_{episode_no:04d}.json"
-        output_payload = {
-            "episode_no": episode_no,
-            "generation_status": generation_status,
-            "source_units": source_unit_ids,
-            "source_units_payload": source_units_payload,
-            "episode_plan": plan_item,
-            "generated_content": episode_content,
-        }
-
-        episode_path = episodes_dir / episode_file_name
-        episode_path.write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
-        generated_index.append(
-            {
-                "episode_no": episode_no,
-                "file": episode_file_name,
-                "generation_status": generation_status,
-                "source_units": source_unit_ids,
-            }
-        )
-
-        episode_plan_file_name = f"episode_plan_{episode_no:04d}.json"
-        episode_plan_payload = {
-            "episode_no": episode_no,
-            "title": _coerce_text(plan_item.get("title")) or f"第{episode_no}集",
-            "source_units": source_unit_ids,
-            "episode_file": episode_file_name,
-            "episode_plan": plan_item,
-        }
-        (episodes_plan_dir / episode_plan_file_name).write_text(
-            json.dumps(episode_plan_payload, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
-        generated_plan_index.append(
-            {
-                "episode_no": episode_no,
-                "file": episode_plan_file_name,
-                "episode_file": episode_file_name,
-                "source_units": source_unit_ids,
-            }
-        )
+    generated_index.sort(key=lambda item: _coerce_int(item.get("episode_no"), default=0, minimum=0))
 
     index_payload = {
         "target_episode_count": target_episode_count,
@@ -1329,16 +1317,6 @@ def _generate_episode_contents(
         json.dumps(index_payload, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
-    plan_index_payload = {
-        "target_episode_count": target_episode_count,
-        "generated_episode_plan_count": len(generated_plan_index),
-        "episodes": generated_plan_index,
-    }
-    (episodes_plan_dir / "index.json").write_text(
-        json.dumps(plan_index_payload, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
-
     (project_dir / "episodes_overview.json").write_text(
         json.dumps(index_payload, ensure_ascii=False, indent=2),
         encoding="utf-8",
@@ -1359,71 +1337,70 @@ def _generate_episode_storyboards(
     story_bible_json = json.dumps(story_bible, ensure_ascii=False, indent=2)
     generated_index: list[dict[str, Any]] = []
 
-    for episode_no in range(1, target_episode_count + 1):
-        _emit_progress(
-            progress_callback,
-            stage="storyboard_generation_internal",
-            message=f"分镜生成进度：第 {episode_no}/{target_episode_count} 集",
-            episode_no=episode_no,
-            target_episode_count=target_episode_count,
-        )
+    max_workers = min(_read_storyboard_max_workers_config(), max(target_episode_count, 1))
+    llm_thread_local = threading.local() if max_workers > 1 else None
 
-        episode_file_name = f"episode_{episode_no:04d}.json"
-        episode_path = episodes_dir / episode_file_name
-        if episode_path.exists():
-            episode_payload = _safe_load_json_file(episode_path, default={})
-            if not isinstance(episode_payload, dict):
-                episode_payload = {}
-        else:
-            episode_payload = {}
+    _emit_progress(
+        progress_callback,
+        stage="storyboard_generation_internal",
+        message=f"分镜生成任务已提交（共 {target_episode_count} 集，并发: {max_workers}）",
+        target_episode_count=target_episode_count,
+        max_workers=max_workers,
+        completed_storyboard_count=0,
+    )
 
-        episode_json = json.dumps(episode_payload, ensure_ascii=False, indent=2)
-        try:
-            raw_response = generate_storyboard_with_prompt(
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = [
+            executor.submit(
+                _generate_single_storyboard,
                 llm=llm,
+                llm_thread_local=llm_thread_local,
+                episode_no=episode_no,
+                episode_file_name=f"episode_{episode_no:04d}.json",
+                episode_path=episodes_dir / f"episode_{episode_no:04d}.json",
+                story_bible=story_bible,
                 story_bible_json=story_bible_json,
-                episode_json=episode_json,
-                prompt_path=STORYBOARD_PROMPT_PATH,
             )
-            storyboard = _normalize_generated_storyboard(
-                raw_response=raw_response,
-                episode_payload=episode_payload,
+            for episode_no in range(1, target_episode_count + 1)
+        ]
+
+        completed_count = 0
+        for future in as_completed(futures):
+            result = future.result()
+            episode_no = int(result["episode_no"])
+            storyboard_file_name = f"episode_{episode_no:04d}_storyboard.json"
+            (storyboards_dir / storyboard_file_name).write_text(
+                json.dumps(result["output_payload"], ensure_ascii=False, indent=2),
+                encoding="utf-8",
             )
-            generation_status = "llm"
-        except Exception:
-            storyboard = _fallback_storyboard_from_episode(episode_payload=episode_payload)
-            generation_status = "fallback"
+            validation = result["validation"]
+            generated_index.append(
+                {
+                    "episode_no": episode_no,
+                    "file": storyboard_file_name,
+                    "source_episode_file": str(result["source_episode_file"]),
+                    "generation_status": str(result["generation_status"]),
+                    "dialogue_coverage_rate": validation.get("dialogue_coverage_rate", 0.0),
+                    "unknown_character_count": len(validation.get("unknown_characters", [])),
+                    "unknown_prop_count": len(validation.get("unknown_props", [])),
+                }
+            )
+            completed_count += 1
+            _emit_progress(
+                progress_callback,
+                stage="storyboard_generation_internal",
+                message=(
+                    f"分镜生成已完成 {completed_count}/{target_episode_count} 集"
+                    f"（刚完成第 {episode_no} 集，状态: {result['generation_status']}）"
+                ),
+                episode_no=episode_no,
+                target_episode_count=target_episode_count,
+                completed_storyboard_count=completed_count,
+                max_workers=max_workers,
+                generation_status=result["generation_status"],
+            )
 
-        validation = _validate_storyboard(
-            storyboard=storyboard,
-            episode_payload=episode_payload,
-            story_bible=story_bible,
-        )
-
-        storyboard_file_name = f"episode_{episode_no:04d}_storyboard.json"
-        output_payload = {
-            "episode_no": episode_no,
-            "generation_status": generation_status,
-            "source_episode_file": episode_file_name,
-            "storyboard": storyboard,
-            "validation": validation,
-        }
-        (storyboards_dir / storyboard_file_name).write_text(
-            json.dumps(output_payload, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
-
-        generated_index.append(
-            {
-                "episode_no": episode_no,
-                "file": storyboard_file_name,
-                "source_episode_file": episode_file_name,
-                "generation_status": generation_status,
-                "dialogue_coverage_rate": validation.get("dialogue_coverage_rate", 0.0),
-                "unknown_character_count": len(validation.get("unknown_characters", [])),
-                "unknown_prop_count": len(validation.get("unknown_props", [])),
-            }
-        )
+    generated_index.sort(key=lambda item: _coerce_int(item.get("episode_no"), default=0, minimum=0))
 
     index_payload = {
         "target_episode_count": target_episode_count,
@@ -1436,6 +1413,124 @@ def _generate_episode_storyboards(
     )
 
     return len(generated_index)
+
+
+def _generate_single_episode_content(
+    llm,
+    llm_thread_local: threading.local | None,
+    episode_no: int,
+    plan_item: dict[str, Any],
+    source_unit_ids: list[str],
+    source_units_payload: list[dict[str, Any]],
+    story_bible_json: str,
+) -> dict[str, Any]:
+    episode_plan_json = json.dumps(plan_item, ensure_ascii=False, indent=2)
+    source_units_json = json.dumps(source_units_payload, ensure_ascii=False, indent=2)
+    worker_llm = _get_parallel_worker_llm(llm=llm, llm_thread_local=llm_thread_local)
+
+    try:
+        raw_response = generate_episode_content_with_prompt(
+            llm=worker_llm,
+            story_bible_json=story_bible_json,
+            episode_plan_json=episode_plan_json,
+            source_units_json=source_units_json,
+            prompt_path=EPISODE_CONTENT_PROMPT_PATH,
+        )
+        episode_content = _normalize_generated_episode_content(
+            raw_response=raw_response,
+            episode_no=episode_no,
+            plan_item=plan_item,
+            source_unit_ids=source_unit_ids,
+        )
+        generation_status = "llm"
+    except Exception:
+        episode_content = _fallback_episode_content(
+            episode_no=episode_no,
+            plan_item=plan_item,
+            source_units_payload=source_units_payload,
+        )
+        generation_status = "fallback"
+
+    return {
+        "episode_no": episode_no,
+        "generation_status": generation_status,
+        "source_unit_ids": source_unit_ids,
+        "output_payload": {
+            "episode_no": episode_no,
+            "generation_status": generation_status,
+            "source_units": source_unit_ids,
+            "source_units_payload": source_units_payload,
+            "episode_plan": plan_item,
+            "generated_content": episode_content,
+        },
+    }
+
+
+def _generate_single_storyboard(
+    llm,
+    llm_thread_local: threading.local | None,
+    episode_no: int,
+    episode_file_name: str,
+    episode_path: Path,
+    story_bible: dict[str, Any],
+    story_bible_json: str,
+) -> dict[str, Any]:
+    if episode_path.exists():
+        episode_payload = _safe_load_json_file(episode_path, default={})
+        if not isinstance(episode_payload, dict):
+            episode_payload = {}
+    else:
+        episode_payload = {}
+
+    episode_json = json.dumps(episode_payload, ensure_ascii=False, indent=2)
+    worker_llm = _get_parallel_worker_llm(llm=llm, llm_thread_local=llm_thread_local)
+
+    try:
+        raw_response = generate_storyboard_with_prompt(
+            llm=worker_llm,
+            story_bible_json=story_bible_json,
+            episode_json=episode_json,
+            prompt_path=STORYBOARD_PROMPT_PATH,
+        )
+        storyboard = _normalize_generated_storyboard(
+            raw_response=raw_response,
+            episode_payload=episode_payload,
+        )
+        generation_status = "llm"
+    except Exception:
+        storyboard = _fallback_storyboard_from_episode(episode_payload=episode_payload)
+        generation_status = "fallback"
+
+    validation = _validate_storyboard(
+        storyboard=storyboard,
+        episode_payload=episode_payload,
+        story_bible=story_bible,
+    )
+
+    return {
+        "episode_no": episode_no,
+        "source_episode_file": episode_file_name,
+        "generation_status": generation_status,
+        "validation": validation,
+        "output_payload": {
+            "episode_no": episode_no,
+            "generation_status": generation_status,
+            "source_episode_file": episode_file_name,
+            "storyboard": storyboard,
+            "validation": validation,
+        },
+    }
+
+
+def _get_parallel_worker_llm(llm, llm_thread_local: threading.local | None):
+    if llm_thread_local is None:
+        return llm
+
+    worker_llm = getattr(llm_thread_local, "llm", None)
+    if worker_llm is None:
+        worker_llm = make_llm()
+        llm_thread_local.llm = worker_llm
+    return worker_llm
 
 
 def _normalize_generated_storyboard(
@@ -2574,6 +2669,30 @@ def _read_episode_split_repair_rounds_config() -> int:
     if rounds < 0:
         raise ValueError("EPISODE_SPLIT_REPAIR_ROUNDS must be >= 0")
     return rounds
+
+
+def _read_episode_content_max_workers_config() -> int:
+    raw_workers = os.getenv("EPISODE_CONTENT_MAX_WORKERS", str(DEFAULT_EPISODE_CONTENT_MAX_WORKERS))
+    try:
+        workers = int(raw_workers)
+    except ValueError as exc:
+        raise ValueError("EPISODE_CONTENT_MAX_WORKERS must be an integer") from exc
+
+    if workers <= 0:
+        raise ValueError("EPISODE_CONTENT_MAX_WORKERS must be positive")
+    return workers
+
+
+def _read_storyboard_max_workers_config() -> int:
+    raw_workers = os.getenv("STORYBOARD_MAX_WORKERS", str(DEFAULT_STORYBOARD_MAX_WORKERS))
+    try:
+        workers = int(raw_workers)
+    except ValueError as exc:
+        raise ValueError("STORYBOARD_MAX_WORKERS must be an integer") from exc
+
+    if workers <= 0:
+        raise ValueError("STORYBOARD_MAX_WORKERS must be positive")
+    return workers
 
 
 def _split_into_units(text: str, window_min: int, window_max: int) -> list[dict[str, Any]]:

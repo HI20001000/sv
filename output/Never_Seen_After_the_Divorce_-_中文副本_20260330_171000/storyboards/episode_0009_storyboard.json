@@ -1,0 +1,117 @@
+{
+  "episode_no": 9,
+  "generation_status": "fallback",
+  "source_episode_file": "episode_0009.json",
+  "storyboard": {
+    "episode_no": 9,
+    "title": "意外的惊喜",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "建立场景并推进剧情",
+            "visual": "场景1：超市 / 白天；索菲亚站在超市货架前，神色疲惫。她伸手拿了一包山楂片，看着包装，眉头微皱。突然，她感到一阵强烈的反胃，捂住嘴，强压下恶心的感觉。她深吸一口气，眼神中闪过一丝不安，似乎意识到了什么。她放下山楂片，转身快步走向日用品区，拿起一盒验孕棒，紧紧攥在手里。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "推进对白与冲突",
+            "visual": "场景2：宿舍卫生间 / 白天；她猛地站起身，验孕棒掉在洗手台上。她看着镜子里的自己，脸色苍白。她双手捂住脸，顺着墙壁缓缓滑下，蹲在地上。距离去瑞士只剩十天，这个孩子的到来彻底打乱了她的计划。她感到前所未有的恐慌和无助。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：（喃喃自语，声音颤抖）不……怎么会是现在……",
+            "duration": 2.72
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "推进对白与冲突",
+            "visual": "场景2：宿舍卫生间 / 白天；她猛地站起身，验孕棒掉在洗手台上。她看着镜子里的自己，脸色苍白。她双手捂住脸，顺着墙壁缓缓滑下，蹲在地上。距离去瑞士只剩十天，这个孩子的到来彻底打乱了她的计划。她感到前所未有的恐慌和无助。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：（带着哭腔）我该怎么办……詹姆斯……如果他知道了……",
+            "duration": 2.94
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "推进对白与冲突",
+            "visual": "场景3：宿舍房间 / 白天；索菲亚擦干眼泪，眼神逐渐变得坚定。她拿出手机，深吸一口气，开始搜索附近的医院。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：（内心独白）四年了，我好不容易才下定决心离开。这个孩子……是我和他的羁绊，还是我新的枷锁？",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "推进对白与冲突",
+            "visual": "场景3：宿舍房间 / 白天；索菲亚擦干眼泪，眼神逐渐变得坚定。她拿出手机，深吸一口气，开始搜索附近的医院。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：（低声自语）必须去医院确认一下……不能让他发现。",
+            "duration": 2.83
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "建立场景并推进剧情",
+            "visual": "场景4：医院走廊 / 白天；索菲亚戴着口罩，低着头匆匆走在医院的走廊里。她手里捏着挂号单，神情紧张，不时警惕地环顾四周，生怕遇到熟人。她走到妇产科诊室门前，深吸一口气，推门走了进去。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 4,
+    "dialogue_covered": 4,
+    "dialogue_coverage_rate": 1.0,
+    "missing_dialogues": [],
+    "unknown_characters": [],
+    "required_props": [
+      "验孕棒"
+    ],
+    "missing_required_props": [
+      "验孕棒"
+    ],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": true,
+      "characters_in_story_bible": true,
+      "required_props_covered": false,
+      "props_in_story_bible": true
+    }
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "episode_no": 12,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0012.json",
+  "storyboard": {
+    "episode_no": 12,
+    "title": "最后的晚餐",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代环境与人物关系，营造压抑气氛",
+            "visual": "全景：但丁餐厅私人酒窖，水晶吊灯在洁白的桌布上投下锐利的阴影。詹姆斯和索菲亚相对而坐，气氛压抑而尴尬。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现詹姆斯罕见的温情",
+            "visual": "中景/特写：詹姆斯放下巴罗洛红酒瓶，伸手覆住索菲亚的手。索菲亚微微一怔。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "索菲亚"
+            ],
+            "dialogue": "詹姆斯：关于之前的事，我有话要跟你解释——",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "突发状况打断温情，引入冲突",
+            "visual": "中景：酒窖的门突然被猛地撞开。迈克尔快步冲进来，神色慌张地凑到詹姆斯耳边低语。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "迈克尔",
+              "索菲亚"
+            ],
+            "dialogue": "迈克尔：老板，薇姬小姐……割腕……紧急情况……",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "展现詹姆斯的震惊与决绝",
+            "visual": "中景：詹姆斯猛地松开索菲亚的手，霍然起身，椅子在地板上划出刺耳的声响，随后翻倒在地。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "索菲亚"
+            ],
+            "dialogue": "詹姆斯：什么？！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "詹姆斯抛下索菲亚",
+            "visual": "全景：詹姆斯毫不犹豫地转身向外走去，黑色大衣扬起。他在门口顿了顿，目光在迈克尔和索菲亚之间飞快地扫过。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "迈克尔",
+              "索菲亚"
+            ],
+            "dialogue": "詹姆斯：送她去医院。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "展现索菲亚的绝望与崩溃",
+            "visual": "特写：詹姆斯消失在楼梯口。索菲亚呆坐在原位，天旋地转，视线越来越窄，最终眼前一黑，晕倒在地。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "交代索菲亚苏醒及当前处境",
+            "visual": "主观镜头/中景：索菲亚缓缓睁开眼，视线模糊。看到医生正和迈克尔在门口交谈。",
+            "characters": [
+              "索菲亚",
+              "医生",
+              "迈克尔"
+            ],
+            "dialogue": "医生：考虑到病人的身体状况——",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "迈克尔接到电话，打断医生的话",
+            "visual": "中景：迈克尔的手机突然像火警警报般尖啸起来。迈克尔慌忙接起，绷紧脊背。",
+            "characters": [
+              "迈克尔",
+              "医生"
+            ],
+            "dialogue": "迈克尔：是，老板？……明白。先生，我马上过去。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "迈克尔留下黑卡离开",
+            "visual": "特写：道具:黑卡；迈克尔将一张黑卡拍在医生的病历夹上，随后匆匆离去。",
+            "characters": [
+              "迈克尔",
+              "医生"
+            ],
+            "dialogue": "迈克尔：你们想留她住到新年都可以。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "医生告知怀孕信息",
+            "visual": "中景：医生转过身看向索菲亚，语气轻快。",
+            "characters": [
+              "医生",
+              "索菲亚"
+            ],
+            "dialogue": "医生：啊，你醒了。你大概怀孕十三周了。胎儿很健康，但鉴于你刚才晕倒了……我们会留你观察四十八小时。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "索菲亚请求保密",
+            "visual": "特写：医生犹豫了一下，索菲亚暗暗松了口气，眼神恳求。",
+            "characters": [
+              "医生",
+              "索菲亚"
+            ],
+            "dialogue": "医生：刚才我没跟你的……同伴提这件事。\n索菲亚：别告诉任何人，拜托了。",
+            "duration": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 10,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 0.0,
+    "missing_dialogues": [
+      "詹姆斯：（眼神复杂，语气难得温和）关于之前的事，我有话要跟你解释——",
+      "迈克尔：（急切低语）老板，薇姬小姐……割腕……紧急情况……",
+      "詹姆斯：（震惊且焦急）什么？！",
+      "詹姆斯：（冷酷地对迈克尔下令）送她去医院。",
+      "医生：（压低声音）考虑到病人的身体状况——",
+      "迈克尔：（绷紧脊背）是，老板？……明白。先生，我马上过去。",
+      "迈克尔：（匆忙）你们想留她住到新年都可以。",
+      "医生：（轻快）啊，你醒了。你大概怀孕十三周了。胎儿很健康，但鉴于你刚才晕倒了……我们会留你观察四十八小时。",
+      "医生：（犹豫了一下）刚才我没跟你的……同伴提这件事。",
+      "索菲亚：（暗暗松了口气，低声恳求）别告诉任何人，拜托了。"
+    ],
+    "unknown_characters": [],
+    "required_props": [],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "episode_no": 15,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0015.json",
+  "storyboard": {
+    "episode_no": 15,
+    "title": "飞向自由",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代环境与人物状态",
+            "visual": "全景，苏黎世机场到达大厅，索菲亚深吸一口气，神情疲惫但如释重负，在人群中张望。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "引入新角色，推进剧情",
+            "visual": "中景，埃里克温和地走近索菲亚。",
+            "characters": [
+              "索菲亚",
+              "埃里克"
+            ],
+            "dialogue": "埃里克：索菲亚？",
+            "duration": 2.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "角色互动",
+            "visual": "近景，索菲亚转过身，略显紧张。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：我是。",
+            "duration": 2.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "交代信息与待遇",
+            "visual": "中景，埃里克微笑着展示胸牌，动作轻柔地准备接行李。",
+            "characters": [
+              "埃里克"
+            ],
+            "dialogue": "埃里克：你好，我是埃里克。所长特意交代，要给我们的明星研究员最高规格的贵宾待遇。优先登机手续已经办好，行李交给我吧。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "情绪转折",
+            "visual": "近景，索菲亚松了一口气，递过行李箱。",
+            "characters": [
+              "索菲亚",
+              "埃里克"
+            ],
+            "dialogue": "索菲亚：谢谢你，埃里克。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "交代研究所的重视",
+            "visual": "跟随镜头，埃里克小心翼翼地接过行李箱，侧身引着索菲亚往前走。",
+            "characters": [
+              "索菲亚",
+              "埃里克"
+            ],
+            "dialogue": "埃里克：实验室新添置了双光子显微镜，是洛朗博士专门为你的蛋白质研究申请购置的。对了，团队还全票通过了你的作息偏好——早上九点前不开任何会议，晚上绝不安排工作。",
+            "duration": 8.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 1,
+            "purpose": "展现感动",
+            "visual": "特写，索菲亚抬手按住胸口，眼眶微红。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：谢谢……你们太周到了。",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "交代动作",
+            "visual": "中景，两人走向安检口，埃里克递给索菲亚一叠明信片。",
+            "characters": [
+              "索菲亚",
+              "埃里克"
+            ],
+            "dialogue": "埃里克：想家的时候可以写写信。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "展现决绝",
+            "visual": "近景，索菲亚接过明信片，看了一眼，毫不犹豫地将它们丢进垃圾桶。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "角色反应",
+            "visual": "近景，埃里克愣住。",
+            "characters": [
+              "埃里克"
+            ],
+            "dialogue": "埃里克：你没有想写信的人吗？",
+            "duration": 2.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "表达告别过去的决心",
+            "visual": "特写，索菲亚回头望向落地窗外，眼神决绝。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：再也没有了。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "推进动作",
+            "visual": "全景，索菲亚转身，大步朝着登机口走去。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "交代环境",
+            "visual": "全景，飞机在跑道上缓缓启动，机身震动。",
+            "characters": [],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "对比情绪",
+            "visual": "中景，埃里克坐在索菲亚旁边，兴致勃勃地说话。",
+            "characters": [
+              "索菲亚",
+              "埃里克"
+            ],
+            "dialogue": "埃里克：苏黎世的农贸市场特别棒！八月的桃子堪称一绝，尝一口，简直像把阳光含在了嘴里！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "展现内心的平静与希望",
+            "visual": "近景，索菲亚没有回话，手贴在舷窗上看着窗外，手轻轻抚上小腹，嘴角露出久违的笑容。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "交代新环境",
+            "visual": "全景，索菲亚推开公寓的门，房间布置温馨。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 4,
+            "purpose": "交代信息",
+            "visual": "近景，索菲亚放下背包，拿出手机看邮件。道具:录取通知书（压在背包里，镜头带过背包）。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：“洛朗博士的夫人是本院妇产科主任，她已亲自为你预约了所有产检项目……”",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 4,
+            "purpose": "情绪落点",
+            "visual": "中景，索菲亚走到窗前，看着窗外的雪景，深吸一口气，闭上眼睛。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 11,
+    "dialogue_covered": 3,
+    "dialogue_coverage_rate": 0.2727,
+    "missing_dialogues": [
+      "埃里克：（温和地走近）索菲亚？",
+      "索菲亚：（转过身，有些紧张）我是。",
+      "埃里克：（微笑，展示胸牌）你好，我是埃里克。所长特意交代，要给我们的明星研究员最高规格的贵宾待遇。优先登机手续已经办好，行李交给我吧。",
+      "索菲亚：（松了一口气，递过行李箱）谢谢你，埃里克。",
+      "索菲亚：（抬手按住胸口，眼眶微红）谢谢……你们太周到了。",
+      "埃里克：（愣住）你没有想写信的人吗？",
+      "索菲亚：（回头望向落地窗外，眼神决绝）再也没有了。",
+      "索菲亚：（轻声念出邮件内容）“洛朗博士的夫人是本院妇产科主任，她已亲自为你预约了所有产检项目……”"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "录取通知书"
+    ],
+    "missing_required_props": [
+      "录取通知书"
+    ],
+    "unknown_props": [
+      "录取通知书（压在背包里"
+    ],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": false,
+      "props_in_story_bible": false
+    }
+  }
+}

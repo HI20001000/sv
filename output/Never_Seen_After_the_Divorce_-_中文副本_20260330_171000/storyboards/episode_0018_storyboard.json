@@ -1,0 +1,203 @@
+{
+  "episode_no": 18,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0018.json",
+  "storyboard": {
+    "episode_no": 18,
+    "title": "权力的逼问",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代环境与人物状态",
+            "visual": "顶层公寓办公室，光线昏暗。詹姆斯坐在宽大的办公桌后，眼神阴鸷，领带松垮。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "引入新角色，推进剧情",
+            "visual": "迈克尔推门而入，神色冷峻，走到办公桌前。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "迈克尔"
+            ],
+            "dialogue": "迈克尔：老板，人带来了。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "展现詹姆斯的威压",
+            "visual": "詹姆斯微微抬眼，声音低沉。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：带进来。",
+            "duration": 2.5
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "展现冲突双方碰面",
+            "visual": "两名保镖押着略显狼狈的研究所所长走进办公室。詹姆斯站起身，缓缓走向他。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "研究所所长"
+            ],
+            "dialogue": "研究所所长：莫雷蒂先生，你这是绑架！你用私人飞机把我强行带到这里，到底想干什么？",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "展现詹姆斯的筹码",
+            "visual": "詹姆斯冷笑，走回办公桌旁拿起一张支票，狠狠拍在茶几上。道具:支票",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：绑架？所长先生，我只是请你来谈笔生意。给你的研究项目拨款一百万欧元。只要你告诉我，索菲亚在哪儿。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "展现所长的强硬态度",
+            "visual": "研究所所长瞥了一眼支票，眼神坚定地直视詹姆斯。",
+            "characters": [
+              "研究所所长"
+            ],
+            "dialogue": "研究所所长：莫雷蒂先生，索菲亚·莫雷蒂是我们研究所的重点培养对象。她的个人隐私，我无权透露。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "展现詹姆斯的失控",
+            "visual": "詹姆斯眼神瞬间变得凶狠，一把揪住所长的衣领。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "研究所所长"
+            ],
+            "dialogue": "詹姆斯：隐私？她是我妻子！她肚子里怀着我的孩子！你敢跟我谈隐私？",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "进一步激怒詹姆斯",
+            "visual": "研究所所长毫不退缩，直视暴怒的詹姆斯。",
+            "characters": [
+              "研究所所长"
+            ],
+            "dialogue": "研究所所长：据我所知，她已经是单身了。而且，她明确表示过，不想被打扰。",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "武力升级",
+            "visual": "詹姆斯猛地推开所长，大步走到办公桌旁拉开抽屉，抄出一把手枪。道具:手枪",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "旁观者反应",
+            "visual": "迈克尔站在一旁微微皱眉，但没有上前阻止。",
+            "characters": [
+              "迈克尔"
+            ],
+            "dialogue": "",
+            "duration": 2.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "生死威胁",
+            "visual": "詹姆斯大步走回所长面前，将枪口直接抵在所长的额头上。道具:手枪",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "研究所所长"
+            ],
+            "dialogue": "詹姆斯：我再问最后一遍。索菲亚，在哪儿？",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 3,
+            "purpose": "所长不屈",
+            "visual": "研究所所长额头冒出冷汗，但依然直视詹姆斯的眼睛。",
+            "characters": [
+              "研究所所长"
+            ],
+            "dialogue": "研究所所长：你就算杀了我，我也不会出卖我的研究员。莫雷蒂先生，你的权势在这里，毫无用处。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 3,
+            "purpose": "悬念收尾",
+            "visual": "詹姆斯手指缓缓扣上扳机，眼神疯狂，呼吸急促。枪口死死抵着所长的额头。道具:手枪",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "研究所所长"
+            ],
+            "dialogue": "詹姆斯：你以为我不敢开枪吗？",
+            "duration": 4.5
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 11,
+    "dialogue_covered": 1,
+    "dialogue_coverage_rate": 0.0909,
+    "missing_dialogues": [
+      "詹姆斯：（声音低沉，带着不容置疑的威压）带进来。",
+      "研究所所长：（强作镇定）莫雷蒂先生，你这是绑架！你用私人飞机把我强行带到这里，到底想干什么？",
+      "詹姆斯：（冷笑一声，走回办公桌旁）绑架？所长先生，我只是请你来谈笔生意。",
+      "詹姆斯：给你的研究项目拨款一百万欧元。只要你告诉我，索菲亚在哪儿。",
+      "研究所所长：（瞥了一眼支票，眼神坚定）莫雷蒂先生，索菲亚·莫雷蒂是我们研究所的重点培养对象。她的个人隐私，我无权透露。",
+      "詹姆斯：（眼神瞬间变得凶狠，一把揪住所长的衣领）隐私？她是我妻子！她肚子里怀着我的孩子！你敢跟我谈隐私？",
+      "研究所所长：（毫不退缩）据我所知，她已经是单身了。而且，她明确表示过，不想被打扰。",
+      "詹姆斯：（咬牙切齿，声音仿佛从地狱里传来）我再问最后一遍。索菲亚，在哪儿？",
+      "研究所所长：（额头冒出冷汗，但依然直视詹姆斯的眼睛）你就算杀了我，我也不会出卖我的研究员。莫雷蒂先生，你的权势在这里，毫无用处。",
+      "詹姆斯：（手指缓缓扣上扳机，眼神疯狂）你以为我不敢开枪吗？"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "手枪"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

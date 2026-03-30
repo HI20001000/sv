@@ -154,6 +154,7 @@ def _handle_docs_command(console: Console, session: PromptSession, llm) -> None:
         f"逐集规划(项目): {result.project_episode_generation_plan_path}\n"
         f"逐集规划(根目录): {result.root_episode_generation_plan_path}\n"
         f"剧集内容目录: {result.episodes_dir}\n"
+        f"剧集计划目录: {result.episodes_plan_dir}\n"
         f"分镜目录: {result.storyboards_dir}\n"
         f"Unit 数量: {result.unit_count}\n"
         f"目标剧集数: {result.target_episode_count}\n"
@@ -268,3 +269,5 @@ def run_terminal_chat(llm, chain, console: Console) -> None:
 
         history.append(HumanMessage(content=user_input))
         history.append(AIMessage(content=assistant_text))
+
+

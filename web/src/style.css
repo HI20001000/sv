@@ -262,7 +262,12 @@ h1 {
 
 .status-card {
   flex: 1 1 0;
-  min-height: 76px;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 12px 14px;
 }
 
 .status-card strong,
@@ -277,12 +282,9 @@ h1 {
   word-break: break-word;
 }
 
-.status-with-dot {
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  gap: var(--space-3);
+.status-value {
+  margin-top: 0 !important;
+  font-size: 15px !important;
 }
 
 .status-dot {
@@ -317,6 +319,10 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-weight: 600;
+}
+
+.status-card .status-label {
+  margin-bottom: 0;
 }
 
 .notice {
@@ -853,6 +859,13 @@ h1 {
   list-style: none;
 }
 
+.collapsible-summary > div {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
 .collapsible-summary::-webkit-details-marker {
   display: none;
 }
@@ -890,7 +903,6 @@ h1 {
 }
 
 .collapsible-meta {
-  margin-top: 6px;
   color: var(--text-tertiary);
   font-size: 13px;
   line-height: 1.6;

@@ -1,0 +1,151 @@
+{
+  "episode_no": 5,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0005.json",
+  "storyboard": {
+    "episode_no": 5,
+    "title": "暴露的风险",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代场景与核心危机",
+            "visual": "阳光洒在长餐桌上，詹姆斯·莫雷蒂坐在主位，手里拿着道具:瑞士研究所的申请表，眉头微皱。索菲亚端着咖啡杯，神情紧张。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "索菲亚"
+            ],
+            "dialogue": "詹姆斯：（举起申请表，挑眉）生物医学工程？你什么时候偷偷申请了这个海外项目？",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现索菲亚的掩饰",
+            "visual": "索菲亚强装镇定，耸了耸肩，但桌下的手指悄悄攥紧。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：是我同学托我帮她拿的表格。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "推进质问",
+            "visual": "詹姆斯翻看手中的道具:瑞士研究所的申请表，目光快速扫过。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：苏黎世啊。你最讨厌下雪了。",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "展现詹姆斯的控制欲",
+            "visual": "詹姆斯放下咖啡杯，漆黑的眸子紧紧锁住索菲亚，眼神锐利。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "索菲亚"
+            ],
+            "dialogue": "詹姆斯：你根本没必要再去读什么学位。只要你开口，我明天就能任命你当莫雷蒂医疗的首席研究员。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "打断冲突，引入新角色",
+            "visual": "薇姬·罗西穿着真丝睡袍，一阵风似的走进餐厅，笑容满面。",
+            "characters": [
+              "薇姬·罗西"
+            ],
+            "dialogue": "薇姬：早啊，亲爱的们！",
+            "duration": 2.5
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "展现薇姬与詹姆斯的亲密",
+            "visual": "薇姬·罗西径直走到詹姆斯身边，坐在他的椅臂上，手指熟稔地拂过他的肩膀。",
+            "characters": [
+              "薇姬·罗西",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "薇姬：（亲昵地）詹姆斯，律师说中午前要我们过目新的赌场合同呢。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 1,
+            "purpose": "危机暂时解除",
+            "visual": "詹姆斯站起身，看都没再看一眼桌上的道具:瑞士研究所的申请表，准备离开。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：去书房谈。",
+            "duration": 2.5
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "情绪释放与转折",
+            "visual": "确认两人走远后，索菲亚长长地舒了一口气，一把将桌上的道具:瑞士研究所的申请表扯了回来，低头看着表格。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：（喃喃自语）这座镀金牢笼，我不稀罕了。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "展现决绝的行动",
+            "visual": "特写索菲亚的手，不再颤抖。她拿起笔，在道具:瑞士研究所的申请表上的“婚姻状况”一栏，一笔一划地写下“单身”。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 9,
+    "dialogue_covered": 3,
+    "dialogue_coverage_rate": 0.3333,
+    "missing_dialogues": [
+      "索菲亚：（强装镇定，耸耸肩）是我同学托我帮她拿的表格。",
+      "詹姆斯：（翻到下一页，目光快速扫过）苏黎世啊。你最讨厌下雪了。",
+      "索菲亚：（冷冷地看着他，没有应声）",
+      "詹姆斯：（放下咖啡杯，漆黑的眸子紧紧锁住索菲亚，眼神锐利）你根本没必要再去读什么学位。只要你开口，我明天就能任命你当莫雷蒂医疗的首席研究员。",
+      "薇姬：（穿着真丝睡袍，笑声清脆）早啊，亲爱的们！",
+      "詹姆斯：（站起身，看都没再看一眼桌上的申请表）去书房谈。"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "瑞士研究所的申请表"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [
+      "瑞士研究所的申请表扯了回来",
+      "瑞士研究所的申请表上的“婚姻状况”一栏"
+    ],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": false
+    }
+  }
+}

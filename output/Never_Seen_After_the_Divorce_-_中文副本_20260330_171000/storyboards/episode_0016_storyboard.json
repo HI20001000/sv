@@ -1,0 +1,165 @@
+{
+  "episode_no": 16,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0016.json",
+  "storyboard": {
+    "episode_no": 16,
+    "title": "迟来的真相",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代环境与人物状态，展现詹姆斯的烦躁。",
+            "visual": "奔驰车急刹在庄园门口，詹姆斯脸色阴沉地走进门厅，薇姬紧随其后。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "薇姬·罗西"
+            ],
+            "dialogue": "薇姬：（捂着胸口，娇嗔抱怨）詹姆斯！你最近到底怎么了？忘了我们的观影计划不说，刚才开车还那么危险！",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现詹姆斯对薇姬的冷漠态度。",
+            "visual": "詹姆斯冷漠地走着，看都不看薇姬一眼。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "薇姬·罗西"
+            ],
+            "dialogue": "詹姆斯：我累了，找你的闺蜜们陪你去吧。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "交代薇姬的抱怨，暗示索菲亚的离开。",
+            "visual": "薇姬轻哼一声，对着镜子补妆。",
+            "characters": [
+              "薇姬·罗西"
+            ],
+            "dialogue": "薇姬：自从索菲亚去了她那宝贝实验室，你就一直这副样子。说真的，她恐怕就是在闹脾气吧，谁让你最近总陪着我。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "引入关键道具，推动剧情发展。",
+            "visual": "管家局促地站在大理石餐桌旁，桌上放着一本皮质封面的 道具:相册。",
+            "characters": [
+              "管家",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "管家：（小心翼翼）先生，我在垃圾桶里发现了这个。想着......里面的东西或许是您想留下的。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "展现詹姆斯的内心触动与悔恨。",
+            "visual": "詹姆斯缓缓伸手拿起 道具:相册，翻开第一页，特写照片上索菲亚灿烂的笑容和他冷漠的脸。詹姆斯手指猛地收紧，相册书脊发出脆响。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "展现詹姆斯的震惊与慌乱。",
+            "visual": "詹姆斯猛地推开主卧的门，门撞在墙上。房间里空空荡荡，步入式衣帽间里只剩光秃秃的金属杆。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：（呼吸急促，难以置信）索菲亚……",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "表现詹姆斯试图联系索菲亚的绝望。",
+            "visual": "詹姆斯慌乱地掏出手机拨打电话，听着冰冷的语音信箱提示音，痛苦地用手掌捂住双眼。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "引入另一个关键道具，推向高潮。",
+            "visual": "詹姆斯失魂落魄地走出主卧，薇姬拿着一个牛皮纸信封走过来递给他。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "薇姬·罗西"
+            ],
+            "dialogue": "薇姬：詹姆斯，早些时候有个快递员送过来的。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "揭示真相，詹姆斯遭受巨大打击。",
+            "visual": "詹姆斯瞥见信封上的法院地址，浑身一僵，一把夺过信封撕开。一张薄薄的 道具:离婚判决书 飘落在地。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：（低头看去，瞳孔骤缩，声音颤抖）离婚判决书……原告：索菲亚·莫雷蒂。被告：詹姆斯·莫雷蒂。判决结果：离婚生效。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "展现詹姆斯的彻底崩溃与悔恨。",
+            "visual": "詹姆斯双腿一软险些栽倒，死死盯着 道具:离婚判决书 上的签名，满眼绝望与懊悔。薇姬在一旁说话，但他完全听不见。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "薇姬·罗西"
+            ],
+            "dialogue": "詹姆斯：（喃喃自语）她用我最擅长的手段，将了我一军……我亲手签下了自己的离婚协议书。",
+            "duration": 6.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 8,
+    "dialogue_covered": 4,
+    "dialogue_coverage_rate": 0.5,
+    "missing_dialogues": [
+      "詹姆斯：（冷漠，看都不看她一眼）我累了，找你的闺蜜们陪你去吧。",
+      "薇姬：（轻哼一声，补妆）自从索菲亚去了她那宝贝实验室，你就一直这副样子。说真的，她恐怕就是在闹脾气吧，谁让你最近总陪着我。",
+      "薇姬：（递上信封）詹姆斯，早些时候有个快递员送过来的。",
+      "詹姆斯：（喃喃自语，满眼绝望与懊悔）她用我最擅长的手段，将了我一军……我亲手签下了自己的离婚协议书。"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "离婚判决书",
+      "相册"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

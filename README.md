@@ -13,6 +13,7 @@
 ## 环境要求
 
 - Python 3.10+
+- Node.js 18+
 - 可用的 OpenAI-compatible 接口（项目通过 `langchain-openai` 调用）
 
 ---
@@ -21,6 +22,13 @@
 
 ```powershell
 pip install -r requirements.txt
+```
+
+前端依赖安装：
+
+```powershell
+cd web
+npm install
 ```
 
 ---
@@ -59,6 +67,39 @@ STORYBOARD_MAX_WORKERS=4
 ---
 
 ## 启动
+
+### 1) 启动 Web API
+
+在项目根目录执行：
+
+```powershell
+uvicorn web_api:app --reload --host 127.0.0.1 --port 8000
+```
+
+启动后可访问：
+
+- API 基础地址：`http://127.0.0.1:8000`
+- Swagger 文档：`http://127.0.0.1:8000/api/docs`
+
+### 2) 启动前端开发环境
+
+在 `web/` 目录执行：
+
+```powershell
+cd web
+npm run dev
+```
+
+默认访问地址通常为：
+
+- `http://127.0.0.1:5173`
+
+说明：
+
+- 前端开发服务器会将 `/api` 请求代理到 `http://127.0.0.1:8000`
+- 使用前端界面时，请先启动 Web API，再启动前端
+
+### 3) 启动终端 CLI
 
 ```powershell
 python chat_cli.py

@@ -1,0 +1,293 @@
+{
+  "episode_no": 4,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0004.json",
+  "storyboard": {
+    "episode_no": 4,
+    "title": "喧闹的夜晚",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代环境与薇姬的喧宾夺主",
+            "visual": "全景，夜晚的莫雷蒂庄园客厅灯火通明。薇姬·罗西穿着华丽的丝绸睡袍，正指挥着佣人们搬运大大小小的行李箱和装饰品。",
+            "characters": [
+              "薇姬·罗西"
+            ],
+            "dialogue": "薇姬：（指手画脚）那个花瓶放窗台那边！对，小心点，那可是我从巴黎带回来的。还有这些画，明天找人挂到走廊去。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现索菲亚的反应",
+            "visual": "中景，索菲亚穿着简单的家居服，从楼梯上走下来，看着眼前混乱的场景，微微皱眉。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：这是在做什么？",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "展现薇姬的挑衅与女主人的姿态",
+            "visual": "近景，薇姬转过身，笑容满面地看着索菲亚。",
+            "characters": [
+              "薇姬·罗西",
+              "索菲亚"
+            ],
+            "dialogue": "薇姬：哦，索菲亚！詹姆斯同意我把客房套房重新布置一下。毕竟要住一阵子，总得有点家的感觉嘛。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "展现詹姆斯的偏袒",
+            "visual": "中景，詹姆斯·莫雷蒂从书房走出来，手里端着一杯威士忌，神色有些疲惫但并不反对。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：罗西家和我们做了几十年生意伙伴，她想怎么布置就随她吧。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "展现索菲亚的隐忍",
+            "visual": "特写，索菲亚咬了咬嘴唇，压下心中的苦涩。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：随你们便。",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "交代索菲亚的工作状态与詹姆斯的亲昵",
+            "visual": "中景，深夜的卧室，索菲亚坐在书桌前对着电脑。詹姆斯推门进来，走到索菲亚身后，手轻轻搭在她的肩膀上。",
+            "characters": [
+              "索菲亚",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：还在忙？",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "展现索菲亚的身体反应",
+            "visual": "近景，索菲亚身体微微一僵，但没有躲开。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：嗯，还有几份报告。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "突发孕吐反应",
+            "visual": "特写，詹姆斯俯下身正要吻她的脖颈，索菲亚突然感到一阵强烈的反胃，猛地捂住嘴。",
+            "characters": [
+              "索菲亚",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：（动作僵住，皱眉）你怎么了？",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "索菲亚掩饰怀孕",
+            "visual": "近景，索菲亚深吸一口气，强压下恶心感。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：没什么……可能是实验室的午餐不干净。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "突发状况打断",
+            "visual": "全景，楼下突然传来“砰”的一声巨响，像是玻璃碎裂的声音。",
+            "characters": [
+              "薇姬·罗西"
+            ],
+            "dialogue": "薇姬：（画外音，声音颤抖）詹姆斯！詹姆斯！是不是有小偷？我好怕！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 2,
+            "purpose": "詹姆斯的保护欲与武器展示",
+            "visual": "中景，詹姆斯眼神一凛，立刻放开索菲亚，从床头柜里迅速抽出 道具:手枪。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：待在这里，别出声。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 2,
+            "purpose": "索菲亚的绝望",
+            "visual": "特写，詹姆斯冲出房间，留下索菲亚独自坐在原处。索菲亚看着空荡荡的门口，眼神逐渐变得冰冷而绝望。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：（自嘲地低语）是啊，她才是你需要保护的人。",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "詹姆斯发现申请表",
+            "visual": "中景，次日清晨的餐厅。索菲亚正在喝咖啡，詹姆斯坐在对面，手里拿着 道具:瑞士研究所的申请表，眉头微皱。",
+            "characters": [
+              "索菲亚",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：（扬起申请表）生物医学工程？你什么时候偷偷申请了苏黎世的海外项目？你最讨厌下雪了。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "索菲亚的掩饰",
+            "visual": "近景，索菲亚强装镇定，手心出汗。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：是我同学托我帮她拿的表格。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "詹姆斯的控制欲",
+            "visual": "近景，詹姆斯眼神锐利地看着索菲亚。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：你根本没必要再去读什么学位。只要你开口，我明天就能任命你当莫雷蒂医疗的首席研究员。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 3,
+            "purpose": "薇姬的介入",
+            "visual": "中景，薇姬穿着真丝睡袍，一阵风似的走进餐厅，自然地坐在詹姆斯的椅臂上。",
+            "characters": [
+              "薇姬·罗西",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "薇姬：早啊，亲爱的们！詹姆斯，律师说中午前要我们过目新的赌场合同呢。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 3,
+            "purpose": "詹姆斯离开",
+            "visual": "中景，詹姆斯立刻站起身，放下 道具:瑞士研究所的申请表。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：去书房谈。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 3,
+            "purpose": "索菲亚的决断",
+            "visual": "特写，詹姆斯和薇姬并肩离开。索菲亚一把将 道具:申请表 扯了回来，翻到“婚姻状况”那一栏，拿起笔，一笔一划地写下。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：单身。",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "索菲亚整理旧物",
+            "visual": "中景，索菲亚在房间里收拾自己仅剩的几件衣物。她拉开床头柜，拿出一本厚重的 道具:皮质封面的相册。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 4,
+            "purpose": "告别过去",
+            "visual": "特写，索菲亚轻抚照片，眼神决绝。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：这场貌合神离的婚姻，我演够了。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 4,
+            "purpose": "丢弃过去，准备离开",
+            "visual": "全景，索菲亚合上 道具:相册，毫不犹豫地将其丢进垃圾桶，发出“咚”的一声闷响。她拉起行李箱，头也不回地走出了房间。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 19,
+    "dialogue_covered": 10,
+    "dialogue_coverage_rate": 0.5263,
+    "missing_dialogues": [
+      "薇姬：（转过身，笑容满面）哦，索菲亚！詹姆斯同意我把客房套房重新布置一下。毕竟要住一阵子，总得有点家的感觉嘛。",
+      "索菲亚：（咬了咬嘴唇，压下心中的苦涩）随你们便。",
+      "索菲亚：（身体微微一僵，但没有躲开）嗯，还有几份报告。",
+      "索菲亚：（深吸一口气，强压下恶心感）没什么……可能是实验室的午餐不干净。",
+      "索菲亚：（强装镇定，手心出汗）是我同学托我帮她拿的表格。",
+      "詹姆斯：（眼神锐利）你根本没必要再去读什么学位。只要你开口，我明天就能任命你当莫雷蒂医疗的首席研究员。",
+      "詹姆斯：（立刻站起身，放下申请表）去书房谈。",
+      "索菲亚：（拿起笔，一笔一划地写下）单身。",
+      "索菲亚：（轻抚照片，眼神决绝）这场貌合神离的婚姻，我演够了。"
+    ],
+    "unknown_characters": [],
+    "required_props": [],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

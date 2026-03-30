@@ -1,0 +1,270 @@
+{
+  "episode_no": 10,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0010.json",
+  "storyboard": {
+    "episode_no": 10,
+    "title": "医院的偶遇",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代信息",
+            "visual": "索菲亚独自坐在走廊的长椅上，手里紧紧攥着一张道具:超声波检查单/照片，神情疲惫迷茫。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "推进剧情",
+            "visual": "医生从诊室走出来，递给索菲亚一份报告，语气轻快。",
+            "characters": [
+              "索菲亚",
+              "医生"
+            ],
+            "dialogue": "医生：已经十二周了。恭喜你！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "情绪转折",
+            "visual": "索菲亚勉强扯出一个苦笑，手轻轻覆在平坦的小腹上。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：十二周……",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "推进剧情",
+            "visual": "索菲亚深吸一口气，拿出手机，手指颤抖着拨通了詹姆斯·莫雷蒂的电话。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "交代信息",
+            "visual": "索菲亚猛地抬头，看到二十英尺外詹姆斯·莫雷蒂站在那里，他的黑色外套披在薇姬·罗西肩上。",
+            "characters": [
+              "索菲亚",
+              "詹姆斯·莫雷蒂",
+              "薇姬·罗西"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "推进剧情",
+            "visual": "镜头切向虚掩的诊室门，传出医生的声音。",
+            "characters": [
+              "医生"
+            ],
+            "dialogue": "医生：……避免剧烈运动，未来两个月也不能有性生活。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "情绪转折",
+            "visual": "詹姆斯·莫雷蒂嘴角勾起一抹温柔的笑意，耐心回应。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯·莫雷蒂：我会确保她好好休息的。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "冲突爆发",
+            "visual": "索菲亚眼眶泛红，像逃命般冲出楼梯间，迎面撞上拿着病历本的护士，文件散落一地。",
+            "characters": [
+              "索菲亚",
+              "护士"
+            ],
+            "dialogue": "护士：哎呀，小心点！",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "交代信息",
+            "visual": "詹姆斯·莫雷蒂听到动静走过来，看到蹲在地上的索菲亚，眉头紧锁。",
+            "characters": [
+              "索菲亚",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯·莫雷蒂：索菲亚？你怎么在这里？",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 2,
+            "purpose": "情绪转折",
+            "visual": "索菲亚拼命压抑着声音里的颤抖，将道具:超声波检查单/照片死死攥进兜里。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：胃疼。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 2,
+            "purpose": "推进剧情",
+            "visual": "薇姬·罗西紧随其后走来，手里拿着一张道具:超声波检查单/照片，亲昵地挽住詹姆斯·莫雷蒂的胳膊。",
+            "characters": [
+              "薇姬·罗西",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "薇姬·罗西：詹姆斯跟我说你总不按时吃饭。我们该给她找点姜茶暖暖胃。",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 2,
+            "purpose": "冲突爆发",
+            "visual": "詹姆斯·莫雷蒂顺着索菲亚的目光看去，脸色瞬间变得惨白，慌乱地想要解释。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯·莫雷蒂：索菲亚，让我解释——",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 9,
+            "scene_no": 2,
+            "purpose": "情绪转折",
+            "visual": "薇姬·罗西手指死死攥住詹姆斯·莫雷蒂的袖口，将脸颊贴在他肩膀上。",
+            "characters": [
+              "薇姬·罗西",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "薇姬·罗西：詹姆斯！我们说好的。",
+            "duration": 3.5
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "推进剧情",
+            "visual": "索菲亚看着僵在原地的詹姆斯·莫雷蒂，心如死灰，猛地转身快步走向电梯。",
+            "characters": [
+              "索菲亚",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "冲突爆发",
+            "visual": "詹姆斯·莫雷蒂下意识迈出半步，薇姬·罗西在身后声音陡然尖锐。",
+            "characters": [
+              "薇姬·罗西",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "薇姬·罗西：詹姆斯！你答应过我的！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "情绪转折",
+            "visual": "索菲亚走进电梯转过身，门缝中詹姆斯·莫雷蒂僵在两个女人之间，目光死死锁住索菲亚，眼中翻涌着悔恨，电梯门缓缓合上。",
+            "characters": [
+              "索菲亚",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 4.5
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "交代信息",
+            "visual": "索菲亚走出医院，冬日的寒风吹起她的头发，她停下脚步，手再次轻轻覆在小腹上。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 4,
+            "purpose": "情绪转折",
+            "visual": "索菲亚从背包里摸出被压在最底层的道具:录取通知书，眼神逐渐变得坚定。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：这辈子，我第一次觉得，自己无处可去。但现在，我必须离开。",
+            "duration": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 11,
+    "dialogue_covered": 1,
+    "dialogue_coverage_rate": 0.0909,
+    "missing_dialogues": [
+      "医生：（语气轻快）已经十二周了。恭喜你！",
+      "索菲亚：（勉强扯出一个苦笑，低声喃喃）十二周……",
+      "詹姆斯：（声音温柔，带着索菲亚从未听过的耐心）我会确保她好好休息的。",
+      "詹姆斯：（诧异）索菲亚？你怎么在这里？",
+      "索菲亚：（拼命压抑着声音里的颤抖，将超声波检查单死死攥进兜里）胃疼。",
+      "薇姬：（语气甜腻，带着一丝炫耀）詹姆斯跟我说你总不按时吃饭。我们该给她找点姜茶暖暖胃。",
+      "詹姆斯：（顺着索菲亚的目光看去，脸色瞬间变得惨白，慌乱地想要解释）索菲亚，让我解释——",
+      "薇姬：（手指死死攥住詹姆斯的袖口，声音尖锐）詹姆斯！我们说好的。",
+      "薇姬：（声音陡然尖锐）詹姆斯！你答应过我的！",
+      "索菲亚：（内心独白）这辈子，我第一次觉得，自己无处可去。但现在，我必须离开。"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "超声波检查单/照片"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [
+      "超声波检查单/照片死死攥进兜里"
+    ],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": false
+    }
+  }
+}

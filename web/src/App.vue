@@ -44,8 +44,7 @@ const chatMessages = ref([
   {
     role: 'system',
     type: 'system',
-    content:
-      'Workspace ready. Chat normally, or use slash commands like /help, /ping, /clear, /history, and /docs <filename>.',
+    content: 'Workspace ready. Use chat or /docs to start.',
   },
 ])
 
@@ -68,17 +67,9 @@ const storyBackgroundRows = computed(() => {
 })
 const episodeItems = computed(() => projectBundle.value?.episodes_index?.episodes || [])
 const storyboardItems = computed(() => projectBundle.value?.storyboards_index?.episodes || [])
-const apiStatusText = computed(() => {
-  if (!health.value) return '連接中'
-  return health.value.status === 'ok' ? '正常' : '異常'
-})
 const apiStatusClass = computed(() => {
   if (!health.value) return 'status-connecting'
   return health.value.status === 'ok' ? 'status-ok' : 'status-error'
-})
-const llmStatusText = computed(() => {
-  if (!health.value) return '連接中'
-  return health.value.has_llm_env ? '正常' : '異常'
 })
 const llmStatusClass = computed(() => {
   if (!health.value) return 'status-connecting'
@@ -422,25 +413,19 @@ onBeforeUnmount(() => {
       <div class="status-strip">
         <div class="status-card">
           <span class="status-label">API</span>
-          <strong class="status-with-dot">
-            <span>{{ apiStatusText }}</span>
-            <span class="status-dot" :class="apiStatusClass"></span>
-          </strong>
+          <span class="status-dot" :class="apiStatusClass"></span>
         </div>
         <div class="status-card">
           <span class="status-label">LLM</span>
-          <strong class="status-with-dot">
-            <span>{{ llmStatusText }}</span>
-            <span class="status-dot" :class="llmStatusClass"></span>
-          </strong>
+          <span class="status-dot" :class="llmStatusClass"></span>
         </div>
         <div class="status-card">
           <span class="status-label">Inputs</span>
-          <strong>{{ documents.length }}</strong>
+          <strong class="status-value">{{ documents.length }}</strong>
         </div>
         <div class="status-card">
-          <span class="status-label">Projects</span>
-          <strong>{{ projects.length }}</strong>
+          <span class="status-label">Outputs</span>
+          <strong class="status-value">{{ projects.length }}</strong>
         </div>
       </div>
     </header>

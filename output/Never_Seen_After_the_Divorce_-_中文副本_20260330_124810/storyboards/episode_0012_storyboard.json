@@ -1,0 +1,218 @@
+{
+  "episode_no": 12,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0012.json",
+  "storyboard": {
+    "episode_no": 12,
+    "title": "隐瞒孕情",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代环境与索菲亚苏醒状态",
+            "visual": "病房内光线昏暗，索菲亚缓缓睁开眼，视线从模糊变得清晰。病房门口，医生正拿着病历本和迈克尔低声交谈。",
+            "characters": [
+              "索菲亚",
+              "迈克尔",
+              "医生"
+            ],
+            "dialogue": "医生：（压低声音）考虑到病人的身体状况——",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现索菲亚内心的恐慌",
+            "visual": "特写索菲亚紧张的神情，她挣扎着想要起身阻止。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：（内心独白）糟了！要是被迈克尔知道我怀孕，詹姆斯绝对不会放我走！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "打断医生的话，转移迈克尔注意力",
+            "visual": "一阵刺耳的手机铃声响起。迈克尔迅速掏出手机，看清来电显示后瞬间绷紧脊背。",
+            "characters": [
+              "迈克尔"
+            ],
+            "dialogue": "迈克尔：是，老板？……明白。先生，我马上过去。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "迈克尔支付费用并离开",
+            "visual": "迈克尔匆忙挂断电话，从口袋里掏出道具:黑卡，直接拍在医生的病历夹上。看都没看病床上的索菲亚一眼，转身匆匆离去。",
+            "characters": [
+              "迈克尔",
+              "医生",
+              "索菲亚"
+            ],
+            "dialogue": "迈克尔：老板有急事。医药费从这里扣，你们想留她住到新年都可以。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "医生告知索菲亚怀孕事实",
+            "visual": "房门震动嗡嗡作响。医生微张着嘴，转过身走向病床。",
+            "characters": [
+              "医生",
+              "索菲亚"
+            ],
+            "dialogue": "医生：啊，莫雷蒂夫人，你醒了。你大概怀孕十三周了。胎儿很健康，但鉴于你刚才晕倒了，我们需要留你观察四十八小时。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "索菲亚恳求医生保密",
+            "visual": "医生犹豫了一下，瞥了眼紧闭的房门。索菲亚暗暗松了口气，一把抓住医生的袖口，眼神恳切。",
+            "characters": [
+              "医生",
+              "索菲亚"
+            ],
+            "dialogue": "医生：刚才……我还没来得及跟你的同伴提这件事。\n索菲亚：医生，别告诉任何人。拜托了，这对我非常重要。",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "交代时间流逝与出院准备",
+            "visual": "两天后，走廊明亮。索菲亚换好衣服准备出院，走到护士站附近，停下脚步。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "通过护士八卦刺激索菲亚",
+            "visual": "镜头聚焦帘子，传来护士们的议论声。索菲亚低头看着自己苍白的手指。",
+            "characters": [
+              "索菲亚",
+              "护士们"
+            ],
+            "dialogue": "护士A（画外音）：莫雷蒂先生和夫人简直像皇室一样！他们把801套房布置成了顶层行宫，莫雷蒂先生寸步不离地守着她。\n护士B（画外音）：那是当然，他对她这么上心，还不是因为莫雷蒂家族终于要迎来继承人了。只要她皱一下眉头，莫雷蒂先生就能召来一整队专家。",
+            "duration": 8.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "展现索菲亚的彻底死心与决绝",
+            "visual": "索菲亚自嘲地冷笑了一声，挺直脊背，大步走出医院。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "艾玛递交文件",
+            "visual": "冷风中，艾玛将一个牛皮纸信封递给索菲亚。索菲亚接过信封，看着上面“道具:离婚判决书”几个字。",
+            "characters": [
+              "索菲亚",
+              "艾玛"
+            ],
+            "dialogue": "索菲亚：谢谢你，艾玛。\n艾玛：你真的决定好了吗？",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "索菲亚表明计划",
+            "visual": "索菲亚眼神坚定，看着手中的信封。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：我已经交代过办事员，把寄给詹姆斯的那份延迟三天再投递。等这份文件送到他桌上时，我已经身在苏黎世了。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "寄出判决书，象征解脱",
+            "visual": "索菲亚毫不犹豫地将信封投入邮筒。伴随着“咚”的一声轻响，她长舒一口气，仿佛卸下了千斤重担。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "索菲亚收到好消息",
+            "visual": "索菲亚坐在电脑前，紧张地盯着屏幕。一封新邮件弹了出来，她轻声念出邮件内容。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：“恭喜你开启人生新篇章！我们已为你备好家属公寓，并预约了产检。我们将特派同事在机场接应你，全程零压力。”",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 4,
+            "purpose": "展现对未来的希望",
+            "visual": "索菲亚的手轻轻覆在平坦的小腹上，眼眶微红，嘴角扬起了久违的、充满希望的笑容。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚：（低声，语气坚决）宝宝，我们终于可以离开这里了。再见了，詹姆斯。",
+            "duration": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 13,
+    "dialogue_covered": 9,
+    "dialogue_coverage_rate": 0.6923,
+    "missing_dialogues": [
+      "医生：（转过身走向病床）啊，莫雷蒂夫人，你醒了。你大概怀孕十三周了。胎儿很健康，但鉴于你刚才晕倒了，我们需要留你观察四十八小时。",
+      "医生：（犹豫了一下，瞥了眼紧闭的房门）刚才……我还没来得及跟你的同伴提这件事。",
+      "索菲亚：（暗暗松了口气，一把抓住医生的袖口，眼神恳切）医生，别告诉任何人。拜托了，这对我非常重要。",
+      "索菲亚：（轻声念出邮件内容）“恭喜你开启人生新篇章！我们已为你备好家属公寓，并预约了产检。我们将特派同事在机场接应你，全程零压力。”"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "黑卡"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [
+      "离婚判决书”几个字"
+    ],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": false
+    }
+  }
+}

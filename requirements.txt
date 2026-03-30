@@ -3,3 +3,6 @@ langchain-openai>=0.2.0
 python-dotenv>=1.0.1
 rich>=13.9.0
 prompt_toolkit>=3.0.47
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+python-multipart>=0.0.12

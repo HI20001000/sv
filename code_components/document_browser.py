@@ -6,7 +6,8 @@ from xml.etree import ElementTree as ET
 from zipfile import BadZipFile, ZipFile
 
 
-INPUT_DIR = Path("input_documents")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+INPUT_DIR = PROJECT_ROOT / "input_documents"
 SUPPORTED_EXTENSIONS = {".txt", ".docx"}
 DOCX_NAMESPACE = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
 TEXT_ENCODINGS = ["utf-8-sig", "utf-8", "cp950", "big5", "gbk", "latin-1"]

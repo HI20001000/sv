@@ -1,0 +1,251 @@
+{
+  "episode_no": 17,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0017.json",
+  "storyboard": {
+    "episode_no": 17,
+    "title": "校园寻踪",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "开场交代环境与人物状态",
+            "visual": "一辆黑色奔驰车伴随着刺耳的轮胎摩擦声，在大学校门前急刹停下。车门猛地推开，詹姆斯冲下车。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现詹姆斯的焦躁与慌乱",
+            "visual": "詹姆斯一向打理得一丝不苟的西装此刻皱巴巴的，领带被扯得松垮，眼神中透着前所未有的焦躁与慌乱。他大步流星地穿过成群嬉笑的学生，目光在人群中急切地搜寻。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：（喃喃自语，呼吸急促）索菲亚……你在哪……",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "展现詹姆斯的无力感与盲目寻找",
+            "visual": "詹姆斯像没头苍蝇一样在校园里乱撞。他看到一个保安，快步冲过去。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "保安"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "推进冲突，获取信息",
+            "visual": "詹姆斯一把抓住保安的胳膊，神情激动。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "保安"
+            ],
+            "dialogue": "詹姆斯：（声音嘶哑）生物实验室在哪？索菲亚·莫雷蒂的实验室！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "保安提供关键信息并嘲讽",
+            "visual": "保安被吓了一跳，挣脱开，轻蔑地打量着詹姆斯皱巴巴的西装。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "保安"
+            ],
+            "dialogue": "保安：生物实验室？所有研究生上周就都离校了。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "詹姆斯的震惊反应",
+            "visual": "詹姆斯如遭雷击，僵在原地。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：离校了？去哪了？",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "保安的诛心之言",
+            "visual": "保安冷笑一声，转身离开。詹姆斯踉跄后退了一步，脸色惨白。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "保安"
+            ],
+            "dialogue": "保安：真正的家人，本该知道这些的。",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "交代时间流逝与新场景",
+            "visual": "暮色降临，校园广场被染成暗沉的色调。詹姆斯拦住了一个头发挑着蓝色发束的小个子女孩。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "蓝发女孩"
+            ],
+            "dialogue": "詹姆斯：（急切）打扰一下，你认识索菲亚吗？索菲亚·莫雷蒂！",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "女孩的质疑",
+            "visual": "蓝发女孩停下脚步，眯起眼睛上下打量他，语气充满质疑。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "蓝发女孩"
+            ],
+            "dialogue": "蓝发女孩：你是索菲亚的哥哥？",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "詹姆斯的错愕",
+            "visual": "詹姆斯愣了一下，刚想解释。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：我……",
+            "duration": 2.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 3,
+            "purpose": "抛出重磅信息",
+            "visual": "蓝发女孩打断他，语气尖锐。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "蓝发女孩"
+            ],
+            "dialogue": "蓝发女孩：那两周前她晕倒的时候，你怎么没来？",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 3,
+            "purpose": "詹姆斯的震惊与追问",
+            "visual": "詹姆斯世界瞬间天旋地转，一把抓住女孩的肩膀。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "蓝发女孩"
+            ],
+            "dialogue": "詹姆斯：晕倒？什么晕倒？！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 3,
+            "purpose": "揭露索菲亚怀孕及险些流产的真相",
+            "visual": "蓝发女孩用力挣脱，怒目圆睁，双手紧紧攥着课本，指节泛白。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "蓝发女孩"
+            ],
+            "dialogue": "蓝发女孩：你妹妹上周差点就保不住孩子了！她住院的时候，你到底死哪儿去了？！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 3,
+            "purpose": "詹姆斯的情绪崩溃与回忆闪回",
+            "visual": "詹姆斯浑身僵住，血液仿佛瞬间凝固。他猛地想起医院里的偶遇，索菲亚苍白的脸，她下意识护住小腹的动作，还有那张被揉皱的道具:超声波检查单。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 3,
+            "purpose": "詹姆斯绝望的询问",
+            "visual": "詹姆斯声音沙哑得像被砂纸磨过，浑身颤抖。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：她……她现在在哪儿？",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 9,
+            "scene_no": 3,
+            "purpose": "得知索菲亚的去向",
+            "visual": "蓝发女孩抿紧嘴唇，语气冰冷，字字诛心。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "蓝发女孩"
+            ],
+            "dialogue": "蓝发女孩：走了。上周去瑞士了。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 10,
+            "scene_no": 3,
+            "purpose": "结尾情绪定格",
+            "visual": "詹姆斯如坠冰窟，绝望地闭上眼睛。道具:瑞士研究所的申请表 的画面在他脑海中闪过。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 13,
+    "dialogue_covered": 2,
+    "dialogue_coverage_rate": 0.1538,
+    "missing_dialogues": [
+      "詹姆斯：（一把抓住保安的胳膊，声音嘶哑）生物实验室在哪？索菲亚·莫雷蒂的实验室！",
+      "保安：（被吓了一跳，挣脱开，轻蔑地打量着詹姆斯皱巴巴的西装）生物实验室？所有研究生上周就都离校了。",
+      "詹姆斯：（如遭雷击，僵在原地）离校了？去哪了？",
+      "保安：（冷笑一声）真正的家人，本该知道这些的。",
+      "蓝发女孩：（停下脚步，眯起眼睛上下打量他，语气充满质疑）你是索菲亚的哥哥？",
+      "詹姆斯：（愣了一下，刚想解释）我……",
+      "蓝发女孩：（打断他，语气尖锐）那两周前她晕倒的时候，你怎么没来？",
+      "詹姆斯：（世界瞬间天旋地转，一把抓住女孩的肩膀）晕倒？什么晕倒？！",
+      "蓝发女孩：（用力挣脱，怒目圆睁，双手紧紧攥着课本，指节泛白）你妹妹上周差点就保不住孩子了！她住院的时候，你到底死哪儿去了？！",
+      "詹姆斯：（声音沙哑得像被砂纸磨过，浑身颤抖）她……她现在在哪儿？",
+      "蓝发女孩：（抿紧嘴唇，语气冰冷，字字诛心）走了。上周去瑞士了。"
+    ],
+    "unknown_characters": [],
+    "required_props": [],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

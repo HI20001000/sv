@@ -1,0 +1,795 @@
+{
+  "target_episode_count": 20,
+  "planned_episode_count": 20,
+  "allocation_strategy": "根據劇情信息量、字數比例與衝突強度進行分配。u_0001作為開篇鋪墊與逃離計畫的建立，字數較少且事件集中，分配8集；u_0002包含懷孕誤會、正式逃離、男主發現真相及崩潰追妻等多個高潮爆點，字數多且情緒起伏極大，分配12集。",
+  "episode_source": "llm_then_normalized",
+  "unit_allocations": [
+    {
+      "unit_id": "u_0001",
+      "episode_count": 8,
+      "char_count": 4947,
+      "reason": "涵蓋背景交代、女配介入、女主死心並騙簽離婚協議的鋪墊階段，節奏緊湊，主要承擔劇情起點與懸念鋪設的功能。"
+    },
+    {
+      "unit_id": "u_0002",
+      "episode_count": 12,
+      "char_count": 8199,
+      "reason": "包含懷孕誤會、女主逃離出國、男主發現離婚真相與懷孕事實後的崩潰發瘋，事件密集且情緒爆點極強，戲劇張力大，需要更多集數充分展現高潮與轉折。"
+    }
+  ],
+  "story_unit_catalog": [
+    {
+      "unit_id": "u_0001",
+      "unit_order": 1,
+      "char_count": 4947,
+      "source_span": {
+        "start_para": 1,
+        "end_para": 29
+      }
+    },
+    {
+      "unit_id": "u_0002",
+      "unit_order": 2,
+      "char_count": 8199,
+      "source_span": {
+        "start_para": 30,
+        "end_para": 75
+      }
+    }
+  ],
+  "generation_input_contract": {
+    "required_files": [
+      "story_bible.json",
+      "episode_generation_plan.json",
+      "story_units.json"
+    ],
+    "binding_key": "unit_id",
+    "per_episode_input": {
+      "episode_plan_object": "episodes[n]",
+      "source_units_lookup": "story_units by unit_id in episodes[n].source_units"
+    }
+  },
+  "episodes": [
+    {
+      "episode_no": 1,
+      "title": "名存实亡的婚姻",
+      "source_units": [
+        "u_0001"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0001",
+          "unit_order": 1,
+          "char_count": 4947,
+          "source_span": {
+            "start_para": 1,
+            "end_para": 29
+          }
+        }
+      ],
+      "arc_goal": "展现索菲亚在莫雷蒂家族的压抑处境，以及她对詹姆斯彻底死心的前奏。",
+      "opening_hook": "索菲亚在书房看着詹姆斯，心中盘算着如何让他签下离婚协议。",
+      "core_beats": [
+        "索菲亚回忆自己作为莫雷蒂夫人的压抑生活。",
+        "詹姆斯对索菲亚态度冷漠，展现两人名存实亡的夫妻关系。",
+        "索菲亚拿出伪装成学校表格的离婚协议书。"
+      ],
+      "character_focus": [
+        "索菲亚",
+        "詹姆斯·莫雷蒂"
+      ],
+      "props_used": [
+        "离婚协议书",
+        "学校表格"
+      ],
+      "ending_hook": "詹姆斯拿起笔，准备在表格上签字，他会发现真相吗？",
+      "continuity_requirements": [
+        "索菲亚的内心独白需体现出对婚姻的绝望和对自由的渴望。"
+      ],
+      "generation_brief": "重点刻画索菲亚的心理活动和詹姆斯的冷漠，营造压抑的家庭氛围，为后续的逃离做铺垫。"
+    },
+    {
+      "episode_no": 2,
+      "title": "骗签协议",
+      "source_units": [
+        "u_0001"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0001",
+          "unit_order": 1,
+          "char_count": 4947,
+          "source_span": {
+            "start_para": 1,
+            "end_para": 29
+          }
+        }
+      ],
+      "arc_goal": "索菲亚成功骗取詹姆斯在离婚协议上签字，迈出逃离的第一步。",
+      "opening_hook": "詹姆斯看着眼前的“学校表格”，眉头微皱。",
+      "core_beats": [
+        "索菲亚紧张地看着詹姆斯，生怕他看穿伪装。",
+        "詹姆斯因不耐烦或轻视，没有仔细阅读便签下了名字。",
+        "索菲亚迅速收起文件，心中暗自松了一口气。"
+      ],
+      "character_focus": [
+        "索菲亚",
+        "詹姆斯·莫雷蒂"
+      ],
+      "props_used": [
+        "离婚协议书",
+        "学校表格"
+      ],
+      "ending_hook": "索菲亚拿到签好字的协议，心中开始盘算下一步的计划。",
+      "continuity_requirements": [
+        "詹姆斯签字的动作要显得随意且不耐烦，凸显他对索菲亚的忽视。"
+      ],
+      "generation_brief": "表现索菲亚在骗签过程中的紧张与成功后的如释重负，强化詹姆斯的傲慢与大意。"
+    },
+    {
+      "episode_no": 3,
+      "title": "青梅竹马的介入",
+      "source_units": [
+        "u_0001"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0001",
+          "unit_order": 1,
+          "char_count": 4947,
+          "source_span": {
+            "start_para": 1,
+            "end_para": 29
+          }
+        }
+      ],
+      "arc_goal": "引入薇姬角色，加剧索菲亚与詹姆斯之间的矛盾。",
+      "opening_hook": "薇姬突然出现在莫雷蒂庄园，打破了短暂的平静。",
+      "core_beats": [
+        "薇姬以青梅竹马的身份住进庄园，举止亲密。",
+        "詹姆斯对薇姬百般宠溺，与对索菲亚的冷漠形成鲜明对比。",
+        "索菲亚冷眼旁观，内心更加坚定离开的决心。"
+      ],
+      "character_focus": [
+        "索菲亚",
+        "詹姆斯·莫雷蒂",
+        "薇姬·罗西"
+      ],
+      "props_used": [],
+      "ending_hook": "薇姬故意在索菲亚面前宣示主权，索菲亚将如何应对？",
+      "continuity_requirements": [
+        "薇姬的出现必须显得理所当然且带有挑衅意味。"
+      ],
+      "generation_brief": "通过薇姬的介入，进一步展现詹姆斯对索菲亚的忽视，强化索菲亚离开的合理性。"
+    },
+    {
+      "episode_no": 4,
+      "title": "生理性抗拒",
+      "source_units": [
+        "u_0001"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0001",
+          "unit_order": 1,
+          "char_count": 4947,
+          "source_span": {
+            "start_para": 1,
+            "end_para": 29
+          }
+        }
+      ],
+      "arc_goal": "展现索菲亚对詹姆斯亲密行为的抗拒，凸显两人关系的破裂。",
+      "opening_hook": "詹姆斯在薇姬离开后，试图对索菲亚表现出亲昵。",
+      "core_beats": [
+        "詹姆斯靠近索菲亚，试图拥抱或亲吻她。",
+        "索菲亚产生强烈的生理性抗拒，推开詹姆斯。",
+        "詹姆斯对此感到不解和愤怒，两人发生争执。"
+      ],
+      "character_focus": [
+        "索菲亚",
+        "詹姆斯·莫雷蒂"
+      ],
+      "props_used": [],
+      "ending_hook": "詹姆斯愤怒离去，索菲亚独自留在房间，感到前所未有的疲惫。",
+      "continuity_requirements": [
+        "索菲亚的抗拒必须是出于内心的厌恶和对即将离开的决绝。"
+      ],
+      "generation_brief": "刻画索菲亚对詹姆斯的排斥，展现她内心的决绝，加深两人之间的裂痕。"
+    },
+    {
+      "episode_no": 5,
+      "title": "发现申请表",
+      "source_units": [
+        "u_0001"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0001",
+          "unit_order": 1,
+          "char_count": 4947,
+          "source_span": {
+            "start_para": 1,
+            "end_para": 29
+          }
+        }
+      ],
+      "arc_goal": "詹姆斯发现索菲亚的瑞士研究所申请表，引发冲突。",
+      "opening_hook": "詹姆斯无意中在书房发现了索菲亚的瑞士研究所申请表。",
+      "core_beats": [
+        "詹姆斯质问索菲亚为何要申请去瑞士。",
+        "索菲亚试图掩饰，但詹姆斯态度强硬，表示反对。",
+        "两人关系降至冰点，气氛剑拔弩张。"
+      ],
+      "character_focus": [
+        "索菲亚",
+        "詹姆斯·莫雷蒂"
+      ],
+      "props_used": [
+        "瑞士研究所的申请表"
+      ],
+      "ending_hook": "就在两人僵持不下时，薇姬的声音突然从门外传来。",
+      "continuity_requirements": [
+        "詹姆斯的反对要体现出他的控制欲，而非对索菲亚的关心。"
+      ],
+      "generation_brief": "通过申请表引发冲突，展现詹姆斯的控制欲和索菲亚的无奈，为后续逃离增加阻碍。"
+    },
+    {
+      "episode_no": 6,
+      "title": "薇姬的打断",
+      "source_units": [
+        "u_0001"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0001",
+          "unit_order": 1,
+          "char_count": 4947,
+          "source_span": {
+            "start_para": 1,
+            "end_para": 29
+          }
+        }
+      ],
+      "arc_goal": "薇姬的打断化解了冲突，但也让索菲亚更加看清詹姆斯的态度。",
+      "opening_hook": "薇姬推门而入，打破了书房里紧张的气氛。",
+      "core_beats": [
+        "薇姬以娇嗔的语气向詹姆斯提出要求，转移了他的注意力。",
+        "詹姆斯立刻放下申请表，转而安抚薇姬。",
+        "索菲亚趁机收起申请表，心中冷笑。"
+      ],
+      "character_focus": [
+        "索菲亚",
+        "詹姆斯·莫雷蒂",
+        "薇姬·罗西"
+      ],
+      "props_used": [
+        "瑞士研究所的申请表"
+      ],
+      "ending_hook": "看着詹姆斯和薇姬离去的背影，索菲亚做出了最终决定。",
+      "continuity_requirements": [
+        "薇姬的打断要显得自然且带有目的性，詹姆斯的态度转变要迅速。"
+      ],
+      "generation_brief": "利用薇姬的打断展现詹姆斯对索菲亚的轻视，促使索菲亚下定决心离开。"
+    },
+    {
+      "episode_no": 7,
+      "title": "单身声明",
+      "source_units": [
+        "u_0001"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0001",
+          "unit_order": 1,
+          "char_count": 4947,
+          "source_span": {
+            "start_para": 1,
+            "end_para": 29
+          }
+        }
+      ],
+      "arc_goal": "索菲亚在申请表上填写单身，正式接受瑞士项目。",
+      "opening_hook": "索菲亚独自坐在书桌前，看着眼前的申请表。",
+      "core_beats": [
+        "索菲亚回忆起与詹姆斯的点滴，心中再无波澜。",
+        "她在婚姻状况一栏坚定地填上了“单身”。",
+        "索菲亚点击发送邮件，正式接受了瑞士研究所的邀请。"
+      ],
+      "character_focus": [
+        "索菲亚"
+      ],
+      "props_used": [
+        "瑞士研究所的申请表"
+      ],
+      "ending_hook": "邮件发送成功的提示音响起，索菲亚的逃离计划正式启动。",
+      "continuity_requirements": [
+        "填写“单身”的动作要充满决绝和解脱感。"
+      ],
+      "generation_brief": "重点刻画索菲亚填写申请表时的心理活动，展现她彻底告别过去的决心。"
+    },
+    {
+      "episode_no": 8,
+      "title": "丢弃的相册",
+      "source_units": [
+        "u_0001"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0001",
+          "unit_order": 1,
+          "char_count": 4947,
+          "source_span": {
+            "start_para": 1,
+            "end_para": 29
+          }
+        }
+      ],
+      "arc_goal": "索菲亚收拾行李，丢掉承载回忆的相册，准备彻底离开。",
+      "opening_hook": "索菲亚开始收拾行李，目光落在一本皮质封面的相册上。",
+      "core_beats": [
+        "索菲亚翻开相册，看着里面自己明媚的笑容和詹姆斯冷漠的脸庞。",
+        "她毫不犹豫地将相册扔进垃圾桶，象征着斩断过去。",
+        "索菲亚提着行李箱，最后看了一眼这个名义上的家。"
+      ],
+      "character_focus": [
+        "索菲亚"
+      ],
+      "props_used": [
+        "皮质封面的相册"
+      ],
+      "ending_hook": "索菲亚走出房门，迎接她的将是全新的生活，而詹姆斯对此一无所知。",
+      "continuity_requirements": [
+        "丢弃相册的动作要果断，不留余地。"
+      ],
+      "generation_brief": "通过丢弃相册这一象征性动作，完成索菲亚在第一单元的情感转变和物理准备。"
+    },
+    {
+      "episode_no": 9,
+      "title": "意外的怀孕",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 8199,
+          "source_span": {
+            "start_para": 30,
+            "end_para": 75
+          }
+        }
+      ],
+      "arc_goal": "索菲亚发现自己怀孕，打乱了原有的逃离计划。",
+      "opening_hook": "索菲亚在收拾行李时突然感到一阵恶心，她拿出验孕棒。",
+      "core_beats": [
+        "验孕棒显示两条杠，索菲亚震惊地发现自己怀孕了。",
+        "她前往医院进行检查，医生确认她已怀孕十三周。",
+        "索菲亚陷入纠结：是否要告诉詹姆斯这个消息？"
+      ],
+      "character_focus": [
+        "索菲亚",
+        "医生"
+      ],
+      "props_used": [
+        "超声波检查单"
+      ],
+      "ending_hook": "索菲亚拿着检查单走出诊室，却在走廊里看到了熟悉的身影。",
+      "continuity_requirements": [
+        "怀孕的消息必须让索菲亚感到震惊和恐惧，而非喜悦。"
+      ],
+      "generation_brief": "展现索菲亚发现怀孕后的慌乱与纠结，为后续的误会埋下伏笔。"
+    },
+    {
+      "episode_no": 10,
+      "title": "医院的误会",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 8199,
+          "source_span": {
+            "start_para": 30,
+            "end_para": 75
+          }
+        }
+      ],
+      "arc_goal": "索菲亚在医院撞见詹姆斯陪同薇姬产检，产生巨大误会。",
+      "opening_hook": "索菲亚在医院走廊里，看到了詹姆斯和薇姬。",
+      "core_beats": [
+        "索菲亚听到护士议论“莫雷蒂夫人”怀孕，误以为是薇姬。",
+        "她看到薇姬手里的超声波照片，认定詹姆斯让薇姬怀孕了。",
+        "索菲亚心灰意冷，将自己的检查单紧紧攥进兜里，决定隐瞒怀孕。"
+      ],
+      "character_focus": [
+        "索菲亚",
+        "詹姆斯·莫雷蒂",
+        "薇姬·罗西",
+        "护士们"
+      ],
+      "props_used": [
+        "超声波检查单"
+      ],
+      "ending_hook": "索菲亚悄悄离开医院，彻底断绝了告诉詹姆斯真相的念头。",
+      "continuity_requirements": [
+        "护士的议论和薇姬的举动必须足以让索菲亚产生合理的误会。"
+      ],
+      "generation_brief": "通过医院的巧合制造巨大误会，将索菲亚推向彻底绝望的深渊。"
+    },
+    {
+      "episode_no": 11,
+      "title": "最后的晚餐",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 8199,
+          "source_span": {
+            "start_para": 30,
+            "end_para": 75
+          }
+        }
+      ],
+      "arc_goal": "詹姆斯因薇姬离席，索菲亚晕倒住院，进一步加深两人隔阂。",
+      "opening_hook": "索菲亚和詹姆斯在但丁餐厅共进晚餐，气氛压抑。",
+      "core_beats": [
+        "詹姆斯接到关于薇姬突发状况的电话，毫不犹豫地离席。",
+        "索菲亚独自留在餐厅，因情绪激动和孕期反应晕倒。",
+        "索菲亚被送往医院，迈克尔赶来处理。"
+      ],
+      "character_focus": [
+        "索菲亚",
+        "詹姆斯·莫雷蒂",
+        "迈克尔"
+      ],
+      "props_used": [
+        "黑卡"
+      ],
+      "ending_hook": "索菲亚在病床上醒来，看到迈克尔，她必须想办法隐瞒怀孕的事实。",
+      "continuity_requirements": [
+        "詹姆斯的离席要显得冷酷无情，凸显薇姬在他心中的地位。"
+      ],
+      "generation_brief": "展现詹姆斯的冷漠和索菲亚的脆弱，为索菲亚隐瞒孕情创造条件。"
+    },
+    {
+      "episode_no": 12,
+      "title": "隐瞒孕情",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 8199,
+          "source_span": {
+            "start_para": 30,
+            "end_para": 75
+          }
+        }
+      ],
+      "arc_goal": "索菲亚成功对迈克尔隐瞒孕情，为逃离扫清障碍。",
+      "opening_hook": "迈克尔站在病床前，询问索菲亚的病情。",
+      "core_beats": [
+        "索菲亚强装镇定，谎称只是劳累过度。",
+        "迈克尔用黑卡支付了费用，并未深究。",
+        "索菲亚暗自庆幸，更加坚定了逃离的决心。"
+      ],
+      "character_focus": [
+        "索菲亚",
+        "迈克尔"
+      ],
+      "props_used": [
+        "黑卡"
+      ],
+      "ending_hook": "迈克尔离开后，索菲亚立刻联系了瑞士研究所的接应人。",
+      "continuity_requirements": [
+        "索菲亚的谎言必须显得合理且不容置疑，迈克尔的反应要符合其身份。"
+      ],
+      "generation_brief": "表现索菲亚在危机中的机智与冷静，确保逃离计划顺利进行。"
+    },
+    {
+      "episode_no": 13,
+      "title": "寄出判决书",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 8199,
+          "source_span": {
+            "start_para": 30,
+            "end_para": 75
+          }
+        }
+      ],
+      "arc_goal": "索菲亚寄出离婚判决书，正式宣告婚姻结束。",
+      "opening_hook": "索菲亚出院后，从艾玛手中接过了装有离婚判决书的信封。",
+      "core_beats": [
+        "索菲亚看着手中的离婚判决书，心中五味杂陈。",
+        "她将判决书寄往莫雷蒂庄园，作为给詹姆斯的最后“礼物”。",
+        "索菲亚前往机场，准备飞往瑞士。"
+      ],
+      "character_focus": [
+        "索菲亚",
+        "艾玛"
+      ],
+      "props_used": [
+        "离婚判决书"
+      ],
+      "ending_hook": "索菲亚在机场见到了接应的埃里克，登上了飞往苏黎世的航班。",
+      "continuity_requirements": [
+        "寄出判决书的动作要充满仪式感，象征着彻底的解脱。"
+      ],
+      "generation_brief": "通过寄出判决书，完成索菲亚在法律和情感上的双重切割。"
+    },
+    {
+      "episode_no": 14,
+      "title": "飞往苏黎世",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 8199,
+          "source_span": {
+            "start_para": 30,
+            "end_para": 75
+          }
+        }
+      ],
+      "arc_goal": "索菲亚成功逃离，在瑞士开启新生活。",
+      "opening_hook": "飞机在跑道上缓缓启动，索菲亚看着窗外逐渐缩小的城市。",
+      "core_beats": [
+        "索菲亚在飞机上回忆起过去的种种，流下释然的眼泪。",
+        "抵达苏黎世后，埃里克为她安排了妥当的住处和工作环境。",
+        "索菲亚抚摸着肚子，决定独自抚养孩子长大。"
+      ],
+      "character_focus": [
+        "索菲亚",
+        "埃里克"
+      ],
+      "props_used": [],
+      "ending_hook": "索菲亚在瑞士安顿下来，而此时的莫雷蒂庄园，詹姆斯正面临着巨大的冲击。",
+      "continuity_requirements": [
+        "展现索菲亚抵达瑞士后的轻松与对未来的期许。"
+      ],
+      "generation_brief": "刻画索菲亚逃离后的心理状态，与即将陷入疯狂的詹姆斯形成对比。"
+    },
+    {
+      "episode_no": 15,
+      "title": "人去楼空",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 8199,
+          "source_span": {
+            "start_para": 30,
+            "end_para": 75
+          }
+        }
+      ],
+      "arc_goal": "詹姆斯发现索菲亚搬空了家，开始感到不安。",
+      "opening_hook": "詹姆斯回到莫雷蒂庄园，发现家里异常安静。",
+      "core_beats": [
+        "詹姆斯走进卧室，发现索菲亚的衣物和私人物品全部消失。",
+        "管家局促地递上从垃圾桶里找回的皮质相册。",
+        "詹姆斯看着相册，心中涌起一股莫名的恐慌。"
+      ],
+      "character_focus": [
+        "詹姆斯·莫雷蒂",
+        "管家"
+      ],
+      "props_used": [
+        "皮质封面的相册"
+      ],
+      "ending_hook": "就在詹姆斯准备派人寻找索菲亚时，一份快递送到了他面前。",
+      "continuity_requirements": [
+        "詹姆斯的反应要从最初的疑惑逐渐转变为恐慌和不安。"
+      ],
+      "generation_brief": "通过空荡荡的房间和被丢弃的相册，展现詹姆斯失去索菲亚后的初步反应。"
+    },
+    {
+      "episode_no": 16,
+      "title": "离婚生效",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 8199,
+          "source_span": {
+            "start_para": 30,
+            "end_para": 75
+          }
+        }
+      ],
+      "arc_goal": "詹姆斯收到离婚判决书，震惊发现自己被骗签了协议。",
+      "opening_hook": "詹姆斯拆开快递信封，抽出里面的文件。",
+      "core_beats": [
+        "詹姆斯看到“离婚判决书”几个大字，如遭雷击。",
+        "他回想起那天索菲亚让他签的“学校表格”，恍然大悟。",
+        "詹姆斯愤怒地撕毁了判决书，无法接受这个事实。"
+      ],
+      "character_focus": [
+        "詹姆斯·莫雷蒂"
+      ],
+      "props_used": [
+        "离婚判决书",
+        "离婚协议书"
+      ],
+      "ending_hook": "詹姆斯立刻冲出庄园，驱车前往索菲亚的大学寻找线索。",
+      "continuity_requirements": [
+        "詹姆斯的愤怒和震惊要表现得淋漓尽致，体现出他被戏弄后的失控。"
+      ],
+      "generation_brief": "展现詹姆斯得知真相后的崩溃与愤怒，推动他采取疯狂的寻人行动。"
+    },
+    {
+      "episode_no": 17,
+      "title": "校园寻踪",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 8199,
+          "source_span": {
+            "start_para": 30,
+            "end_para": 75
+          }
+        }
+      ],
+      "arc_goal": "詹姆斯在大学寻找索菲亚，得知她已离开。",
+      "opening_hook": "詹姆斯的奔驰车在大学校门前急刹停下。",
+      "core_beats": [
+        "詹姆斯冲进校园，四处寻找索菲亚的身影。",
+        "保安告诉他，所有研究生上周就已经离校了。",
+        "詹姆斯不甘心，继续在校园里打听索菲亚的下落。"
+      ],
+      "character_focus": [
+        "詹姆斯·莫雷蒂",
+        "保安"
+      ],
+      "props_used": [],
+      "ending_hook": "詹姆斯在生物实验室外，遇到了一个染着蓝发的女孩。",
+      "continuity_requirements": [
+        "詹姆斯的行为要显得焦躁和急迫，与平时的冷静形成反差。"
+      ],
+      "generation_brief": "通过詹姆斯在校园的盲目寻找，展现他失去索菲亚后的慌乱无措。"
+    },
+    {
+      "episode_no": 18,
+      "title": "得知真相",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 8199,
+          "source_span": {
+            "start_para": 30,
+            "end_para": 75
+          }
+        }
+      ],
+      "arc_goal": "詹姆斯从蓝发女孩口中得知索菲亚怀孕且险些流产的真相，陷入极度悔恨。",
+      "opening_hook": "蓝发女孩怒目圆睁地看着詹姆斯，似乎知道些什么。",
+      "core_beats": [
+        "蓝发女孩痛斥詹姆斯，透露索菲亚怀了他的孩子且险些流产。",
+        "詹姆斯如遭重击，回想起医院里索菲亚苍白的脸庞，悔恨交加。",
+        "女孩告诉他，索菲亚上周已经去了瑞士。"
+      ],
+      "character_focus": [
+        "詹姆斯·莫雷蒂",
+        "蓝发女孩"
+      ],
+      "props_used": [],
+      "ending_hook": "得知真相的詹姆斯彻底崩溃，他发誓要不惜一切代价找回索菲亚。",
+      "continuity_requirements": [
+        "蓝发女孩的指责要像一把尖刀刺中詹姆斯的要害，引发他深深的自责。"
+      ],
+      "generation_brief": "这是詹姆斯情感转变的关键点，重点刻画他得知真相后的悔恨与痛苦。"
+    },
+    {
+      "episode_no": 19,
+      "title": "连夜逼问",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 8199,
+          "source_span": {
+            "start_para": 30,
+            "end_para": 75
+          }
+        }
+      ],
+      "arc_goal": "詹姆斯动用强权，逼问瑞士研究所所长索菲亚的下落。",
+      "opening_hook": "凌晨三点，研究所所长被詹姆斯的私人飞机接到了总部。",
+      "core_beats": [
+        "詹姆斯坐在顶层公寓的办公室里，眼神阴鸷地看着所长。",
+        "他将一张一百万欧元的支票狠狠拍在桌上，要求得知索菲亚的下落。",
+        "所长迫于压力，透露了索菲亚在苏黎世的具体位置。"
+      ],
+      "character_focus": [
+        "詹姆斯·莫雷蒂",
+        "研究所所长"
+      ],
+      "props_used": [
+        "支票"
+      ],
+      "ending_hook": "詹姆斯拿到地址，立刻命令迈克尔准备飞往瑞士的专机。",
+      "continuity_requirements": [
+        "詹姆斯的行为要展现出黑手党继承人的强权与霸道，以及他不达目的誓不罢休的决心。"
+      ],
+      "generation_brief": "展现詹姆斯为了找回索菲亚不择手段的疯狂状态，推向高潮。"
+    },
+    {
+      "episode_no": 20,
+      "title": "追妻之路",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 8199,
+          "source_span": {
+            "start_para": 30,
+            "end_para": 75
+          }
+        }
+      ],
+      "arc_goal": "詹姆斯踏上前往瑞士的追妻之路，全剧留下悬念。",
+      "opening_hook": "詹姆斯登上飞往苏黎世的私人飞机，手中紧紧攥着那张写有地址的纸条。",
+      "core_beats": [
+        "詹姆斯在飞机上回想起与索菲亚的过往，心中充满了懊悔和渴望。",
+        "与此同时，索菲亚在瑞士的实验室里专注地工作，对即将到来的风暴一无所知。",
+        "飞机降落在苏黎世机场，詹姆斯大步走出机舱，眼神坚定。"
+      ],
+      "character_focus": [
+        "詹姆斯·莫雷蒂",
+        "索菲亚"
+      ],
+      "props_used": [],
+      "ending_hook": "詹姆斯能否成功找回索菲亚？索菲亚又是否会原谅他？故事在此留下悬念。",
+      "continuity_requirements": [
+        "结尾要营造出风雨欲来的紧张感，同时展现两人截然不同的状态。"
+      ],
+      "generation_brief": "作为大结局，收束前文线索，同时为可能的后续故事留下悬念，强化追妻火葬场的主题。"
+    }
+  ],
+  "notes": "规划严格遵循了20集的总集数要求，前8集聚焦于索菲亚的绝望与逃离计划的铺垫，后12集则集中展现怀孕误会、成功逃离以及詹姆斯得知真相后的疯狂追妻，节奏紧凑，情感冲突强烈。",
+  "validation": {
+    "sum_matches_target": true,
+    "all_episodes_have_source_units": true,
+    "all_source_units_resolvable": true,
+    "target_episode_count": 20,
+    "planned_episode_count": 20
+  }
+}

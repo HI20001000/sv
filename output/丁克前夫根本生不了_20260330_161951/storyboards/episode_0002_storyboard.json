@@ -1,0 +1,256 @@
+{
+  "episode_no": 2,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0002.json",
+  "storyboard": {
+    "episode_no": 2,
+    "title": "鸠占鹊巢与三十年的谎言",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代场景与人物状态，展现马国梁的得意",
+            "visual": "民政局门口，白天。马国梁拿着离婚证，满脸轻松。顾盼站在一旁，表情冷淡。",
+            "characters": [
+              "马国梁",
+              "顾盼"
+            ],
+            "dialogue": "马国梁：（得意）盼盼，没办法，两个人都老了，感情早就破裂了。不过还好，我还有一儿一女跟着我，往后也能享享天伦之乐。我送你回去？",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现顾盼的冷漠与决绝",
+            "visual": "顾盼冷冷地看着马国梁，微微摇头。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：（冷淡）不用了。",
+            "duration": 2.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "展现反派的挑衅",
+            "visual": "不远处的车里，方柔坐在副驾驶上，降下车窗，冲顾盼露出胜利者的微笑。",
+            "characters": [
+              "方柔",
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "推进剧情，接收情报",
+            "visual": "顾盼转身离开。道具:手机 震动，她低头看了一眼屏幕，显示周侦探发来的短信。顾盼冷笑一声，拦下一辆出租车。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "展示旧家被占据的现状",
+            "visual": "旧家客厅，白天。顾盼推门进入，客厅正中央挂着马国梁和方柔一家四口的超大全家福。方柔挽着马国梁，马曼妮和马天宇在对家具指指点点。",
+            "characters": [
+              "顾盼",
+              "马国梁",
+              "方柔",
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "方柔：（假装热情）哎呀，顾姐，是落了什么东西吗？我帮你找找？",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "展现顾盼的抗拒与冷淡",
+            "visual": "顾盼侧身避开方柔伸过来的手，走向自己的物品。",
+            "characters": [
+              "顾盼",
+              "方柔"
+            ],
+            "dialogue": "顾盼：（侧身避开方柔的手）还有最后几件东西，我拿完就走。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "展现马曼妮的嫌弃",
+            "visual": "马曼妮嫌弃地踢了踢沙发。",
+            "characters": [
+              "马曼妮"
+            ],
+            "dialogue": "马曼妮：（嫌弃地踢了踢沙发）妈，这屋子装修太旧了吧？这布艺沙发老气横秋的，我同学家的轻奢风可好看了。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "展现马天宇的附和",
+            "visual": "马天宇在一旁附和，满脸不屑。",
+            "characters": [
+              "马天宇"
+            ],
+            "dialogue": "马天宇：（附和）就是，爸是怎么在这种地方住下去的？赶紧全换了！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "展现方柔的娇嗔与算计",
+            "visual": "方柔挽着马国梁的胳膊，娇嗔地说着。",
+            "characters": [
+              "方柔",
+              "马国梁"
+            ],
+            "dialogue": "方柔：（娇嗔）你看孩子们多有主见，这房子确实得重新收拾，咱们可不能亏待了孩子。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 2,
+            "purpose": "展现马国梁的绝情",
+            "visual": "马国梁不耐烦地看向顾盼，下逐客令。",
+            "characters": [
+              "马国梁",
+              "顾盼"
+            ],
+            "dialogue": "马国梁：（不耐烦地看向顾盼）盼盼，东西收拾好了吧？一次性拿完，以后就不用总回来拿这拿那的了，免得大家都尴尬。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 2,
+            "purpose": "揭示方柔的阴谋",
+            "visual": "顾盼的 道具:手机 震动，她点开放在耳边，听着 道具:通话录音。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "方柔（录音声音）：放心，等马国梁把房子过户到孩子名下，我就卷走他的存款，咱们带着孩子远走高飞，那老东西就是个冤大头。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 2,
+            "purpose": "展现顾盼的嘲讽与离去",
+            "visual": "顾盼放下手机，看着眼前的一家四口，嘴角勾起一抹嘲讽。拎起帆布袋，头也不回地走出大门。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：（放下手机，看着眼前“温馨”的一家四口，嘴角勾起一抹嘲讽）祝你们，一家人“永远”幸福。",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "展示外界的指责与不解",
+            "visual": "顾盼的新公寓，白天。顾盼在整理东西，道具:手机 不断响起。她点开几条语音。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "邻居奶奶（语音）：盼盼啊，都这把年纪了还被丈夫抛弃，晚年凄凉呦，太惨了。\n表姐（语音）：你年轻时再怎么潇洒能干，晚年还不是输了，连个家都守不住！\n顾盼母亲（语音）：盼盼，以前你说丁克就丁克，非要坚持，现在呢？有个孩子多好，至少不会落到这步田地！\n朋友（语音）：马国梁愿意陪你演戏这么多年，算仁至义尽了。要我说，方柔来了也得叫你一声姐，不如你搬回去凑合过，好歹沾沾孩子的光。",
+            "duration": 12.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "展现顾盼的无奈与决断",
+            "visual": "顾盼听着这些语音，没有愤怒，只有深深的悲哀与可笑。她将 道具:手机 扔在沙发上，走向保险柜。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "揭示三十年的秘密",
+            "visual": "顾盼打开保险柜，拿出泛黄的 道具:诊断报告、道具:产检单 和一叠 道具:转账流水。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：（轻抚那份泛黄的报告，喃喃自语）三十年了……马国梁，当年你拿着这份弱精症的报告，红着眼睛求我替你保全男人的尊严。我顶着所有人的骂名，为你演了三十年的丁克妻子。",
+            "duration": 8.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 4,
+            "purpose": "特写关键证据",
+            "visual": "特写 道具:诊断报告 最后一页，赫然写着“马国梁，弱精症，精子活力极低，基本无自然生育可能”。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 4,
+            "purpose": "展现顾盼的愤怒与反击决心",
+            "visual": "顾盼拿起 道具:产检单，眼神变得凌厉。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：（眼神变得凌厉）你以为我不知道你早就在外面养了女人？你以为那两个孩子真的是你的种？",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 4,
+            "purpose": "开启反击计划",
+            "visual": "顾盼拿起 道具:手机，拨通了电话。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：周哥，马国梁和方柔的婚礼定在什么时候？对，我要送他们一份大礼，让所有人都看看，这场三十年的笑话，到底是谁在演！",
+            "duration": 6.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 13,
+    "dialogue_covered": 13,
+    "dialogue_coverage_rate": 1.0,
+    "missing_dialogues": [],
+    "unknown_characters": [],
+    "required_props": [],
+    "missing_required_props": [],
+    "unknown_props": [
+      "诊断报告、道具:产检单"
+    ],
+    "checks": {
+      "all_dialogue_covered": true,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": false
+    }
+  }
+}

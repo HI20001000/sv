@@ -25,14 +25,15 @@ from code_components.langChain import (
 )
 
 
-OUTPUT_ROOT = Path("output")
-CLEANING_PROMPT_PATH = Path("prompt/script_cleaning_prompt_v1.md")
-FEATURE_PROMPT_PATH = Path("prompt/script_feature_extraction_prompt_v1.md")
-UNIT_FRAMEWORK_PROMPT_PATH = Path("prompt/unit_framework_extraction_prompt_v1.md")
-UNIT_EPISODE_PLAN_PROMPT_PATH = Path("prompt/unit_episode_split_planning_prompt_v1.md")
-EPISODE_GENERATION_PLAN_PROMPT_PATH = Path("prompt/episode_generation_planning_prompt_v1.md")
-EPISODE_CONTENT_PROMPT_PATH = Path("prompt/episode_content_generation_prompt_v1.md")
-STORYBOARD_PROMPT_PATH = Path("prompt/storyboard_generation_prompt_v1.md")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+OUTPUT_ROOT = PROJECT_ROOT / "output"
+CLEANING_PROMPT_PATH = PROJECT_ROOT / "prompt/script_cleaning_prompt_v1.md"
+FEATURE_PROMPT_PATH = PROJECT_ROOT / "prompt/script_feature_extraction_prompt_v1.md"
+UNIT_FRAMEWORK_PROMPT_PATH = PROJECT_ROOT / "prompt/unit_framework_extraction_prompt_v1.md"
+UNIT_EPISODE_PLAN_PROMPT_PATH = PROJECT_ROOT / "prompt/unit_episode_split_planning_prompt_v1.md"
+EPISODE_GENERATION_PLAN_PROMPT_PATH = PROJECT_ROOT / "prompt/episode_generation_planning_prompt_v1.md"
+EPISODE_CONTENT_PROMPT_PATH = PROJECT_ROOT / "prompt/episode_content_generation_prompt_v1.md"
+STORYBOARD_PROMPT_PATH = PROJECT_ROOT / "prompt/storyboard_generation_prompt_v1.md"
 CLEANING_CHUNK_SIZE = 4000
 DEFAULT_FEATURE_CHUNK_SIZE = 4000
 DEFAULT_UNIT_WINDOW_MIN = 1500
@@ -41,8 +42,8 @@ DEFAULT_EPISODE_COUNT = 60
 DEFAULT_EPISODE_SPLIT_REPAIR_ROUNDS = 2
 DEFAULT_EPISODE_CONTENT_MAX_WORKERS = 4
 DEFAULT_STORYBOARD_MAX_WORKERS = 4
-EPISODE_PLAN_ROOT_PATH = Path("episode_split_plan.json")
-EPISODE_GENERATION_PLAN_ROOT_PATH = Path("episode_generation_plan.json")
+EPISODE_PLAN_ROOT_PATH = PROJECT_ROOT / "episode_split_plan.json"
+EPISODE_GENERATION_PLAN_ROOT_PATH = PROJECT_ROOT / "episode_generation_plan.json"
 ProgressCallback = Callable[[str, dict[str, Any]], None]
 
 

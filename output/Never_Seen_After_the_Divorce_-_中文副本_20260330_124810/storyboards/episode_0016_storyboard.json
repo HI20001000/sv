@@ -1,0 +1,252 @@
+{
+  "episode_no": 16,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0016.json",
+  "storyboard": {
+    "episode_no": 16,
+    "title": "离婚生效",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代环境与人物状态",
+            "visual": "莫雷蒂庄园门厅，气氛死寂。管家局促地站在大理石餐桌旁，桌上放着道具:皮质封面的相册。",
+            "characters": [
+              "管家",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "先生，我在垃圾桶里发现了这个。想着……里面的东西或许是您想留下的。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现詹姆斯的心理冲击",
+            "visual": "詹姆斯缓缓拿起道具:皮质封面的相册，翻开。特写相册里的婚纱照，索菲亚笑容灿烂，詹姆斯面容冷漠。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "表现懊悔情绪",
+            "visual": "詹姆斯一页页翻看，手部特写，捏紧相册边缘，书脊发出脆响。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "展现詹姆斯的慌乱",
+            "visual": "詹姆斯猛地推开主卧的门，门撞在墙上发出一声巨响。镜头扫过空荡荡的步入式衣帽间。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "尝试联系索菲亚",
+            "visual": "詹姆斯呼吸急促，掏出手机拨打电话。特写手机屏幕。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "您所拨打的用户——",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "表现无力感",
+            "visual": "詹姆斯挂断重拨，用手掌狠狠压住双眼，神情痛苦。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "引入关键道具",
+            "visual": "书房内，詹姆斯焦躁不安。薇姬走进来，递给他一个牛皮纸信封。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "薇姬·罗西"
+            ],
+            "dialogue": "早些时候有个快递员送过来的。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "揭示真相",
+            "visual": "詹姆斯撕开信封，一张纸飘落在地。特写地上的道具:离婚判决书。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "离婚判决书……原告：索菲亚·莫雷蒂。被告：詹姆斯·莫雷蒂。判决结果：离婚生效。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "表现震惊与恍然大悟",
+            "visual": "詹姆斯双腿一软，险些栽倒。闪回他签下道具:离婚协议书（伪装成学校表格）的画面。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "她用我最擅长的手段，将了我一军。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 3,
+            "purpose": "冲突爆发",
+            "visual": "薇姬轻佻地搭上他的肩膀，詹姆斯猛地推开她，桌上的水晶花瓶摔得粉碎。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "薇姬·罗西"
+            ],
+            "dialogue": "詹姆斯，这不过是个女学生闹脾气罢了，她迟早会哭着回来求你的——\n我有妻子！",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "展现詹姆斯的急切",
+            "visual": "傍晚的大学校园，詹姆斯像无头苍蝇一样寻找，拦住保安。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "保安"
+            ],
+            "dialogue": "生物实验室在哪？索菲亚的实验室！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 4,
+            "purpose": "受到打击",
+            "visual": "保安轻蔑地打量他。",
+            "characters": [
+              "保安",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "所有研究生上周就都离校了。真正的家人，本该知道这些的。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 4,
+            "purpose": "寻找线索",
+            "visual": "詹姆斯在广场上拦住蓝发女孩。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "蓝发女孩"
+            ],
+            "dialogue": "你认识索菲亚吗？她在哪？",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 4,
+            "purpose": "得知怀孕真相",
+            "visual": "蓝发女孩眯起眼睛，充满敌意地看着他。",
+            "characters": [
+              "蓝发女孩",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "你是索菲亚的哥哥？那两周前她晕倒的时候，你怎么没来？有个混蛋让她怀了孕，然后就消失得无影无踪。她上周差点就保不住孩子了！她住院的时候，你到底死哪儿去了？",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 4,
+            "purpose": "得知去向",
+            "visual": "詹姆斯声音沙哑，满眼不可置信。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "蓝发女孩"
+            ],
+            "dialogue": "她现在在哪儿？\n走了。上周去瑞士了。",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 5,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 5,
+            "purpose": "展现极端的行动",
+            "visual": "深夜顶层公寓办公室，詹姆斯眼神暴戾，将道具:支票狠狠拍在桌上。研究所所长被保镖押在桌前。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "研究所所长"
+            ],
+            "dialogue": "给你的研究项目拨款一百万欧元。告诉我她的下落！",
+            "duration": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 6,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 0.0,
+    "missing_dialogues": [
+      "管家：（双手不安地绞着围裙）先生，我在垃圾桶里发现了这个。想着……里面的东西或许是您想留下的。",
+      "手机语音：您所拨打的用户——",
+      "薇姬：早些时候有个快递员送过来的。",
+      "詹姆斯：生物实验室在哪？索菲亚的实验室！",
+      "保安：（轻蔑地打量他）所有研究生上周就都离校了。真正的家人，本该知道这些的。",
+      "詹姆斯：（咬牙切齿，眼神狰狞）给你的研究项目拨款一百万欧元。告诉我她的下落！"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "离婚判决书",
+      "离婚协议书"
+    ],
+    "missing_required_props": [
+      "离婚协议书"
+    ],
+    "unknown_props": [
+      "离婚协议书（伪装成学校表格）的画面",
+      "支票狠狠拍在桌上"
+    ],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": false,
+      "props_in_story_bible": false
+    }
+  }
+}

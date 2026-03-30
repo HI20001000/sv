@@ -1,0 +1,109 @@
+{
+  "episode_no": 7,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0007.json",
+  "storyboard": {
+    "episode_no": 7,
+    "title": "单身声明",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代环境与核心道具",
+            "visual": "阳光透过窗帘缝隙洒在书桌上，特写桌上的 道具:瑞士研究所的申请表。",
+            "characters": [],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现角色情绪与决心",
+            "visual": "索菲亚独自坐在书桌前，手指轻轻抚过 道具:瑞士研究所的申请表，眼神中闪过一丝复杂的情绪，随后深吸一口气，眼神变得坚定。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "四年了，这场戏也该谢幕了。",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "推进动作，展现内心挣扎与决断",
+            "visual": "特写索菲亚拿起笔，手微微悬停在 道具:瑞士研究所的申请表 的“婚姻状况”一栏上方，眼神逐渐变冷，不再犹豫。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "核心动作：填写单身",
+            "visual": "特写笔尖在 道具:瑞士研究所的申请表 上一笔一划、重重地写下“单身”二字。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "单身。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "推进剧情：回复邮件",
+            "visual": "索菲亚放下笔，打开面前的笔记本电脑，屏幕显示催促邮件。她快速敲下“接受邀请”的字样。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "情绪释放与动作确认",
+            "visual": "索菲亚最后环视了一圈卧室，果断按下鼠标左键。电脑发出清脆的提示音。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 1,
+            "purpose": "收尾：计划启动",
+            "visual": "索菲亚长舒一口气，嘴角勾起释然的微笑。她将 道具:瑞士研究所的申请表 仔细折好，放进背包最底层。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 0,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 1.0,
+    "missing_dialogues": [],
+    "unknown_characters": [],
+    "required_props": [
+      "瑞士研究所的申请表"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": true,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "episode_no": 18,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0018.json",
+  "storyboard": {
+    "episode_no": 18,
+    "title": "得知真相",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代环境与人物状态",
+            "visual": "傍晚的大学校园广场，詹姆斯穿着皱巴巴的西装，神色焦急地在校园里穿梭，拦住一名保安。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "保安"
+            ],
+            "dialogue": "詹姆斯：（急切）生物实验室在哪？索菲亚·莫雷蒂的实验室！",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "推进冲突，展现保安对詹姆斯的轻蔑",
+            "visual": "保安轻蔑地打量着詹姆斯皱巴巴的西装，冷漠回应。",
+            "characters": [
+              "保安",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "保安：（轻蔑地打量他）生物实验室？所有研究生上周就都离校了。真正的家人，本该知道这些的。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "情绪转折，詹姆斯受到打击并继续寻找",
+            "visual": "詹姆斯神色痛苦，推开保安，继续在广场上寻找，拦住了一个抱着课本的蓝发女孩。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "蓝发女孩"
+            ],
+            "dialogue": "詹姆斯：同学，你认识索菲亚吗？索菲亚·莫雷蒂！",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "交代信息，蓝发女孩质疑詹姆斯身份",
+            "visual": "蓝发女孩停下脚步，眯起眼睛打量詹姆斯。",
+            "characters": [
+              "蓝发女孩",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "蓝发女孩：（停下脚步，眯起眼睛打量他）你是索菲亚的哥哥？",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "推进冲突，詹姆斯急切追问",
+            "visual": "詹姆斯愣了一下，没有否认，急切地追问。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：（愣了一下，没有否认）告诉我她在哪里！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "交代核心信息，蓝发女孩揭露真相",
+            "visual": "蓝发女孩冷笑，随后怒目圆睁，双手紧攥课本，痛斥詹姆斯。",
+            "characters": [
+              "蓝发女孩",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "蓝发女孩：（冷笑）那两周前她晕倒的时候，你怎么没来？\n詹姆斯：（如遭雷击）晕倒？\n蓝发女孩：（怒目圆睁，双手紧攥课本）有个混蛋让她怀了孕，然后就消失得无影无踪！你妹妹上周差点就保不住孩子了！她住院的时候，你到底死哪儿去了？！",
+            "duration": 8.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 1,
+            "purpose": "情绪展现，詹姆斯极度悔恨",
+            "visual": "詹姆斯浑身僵住，踉跄了一步，几乎站立不稳。特写他痛苦的表情。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：（声音沙哑，带着颤抖）保不住孩子……她现在在哪儿？",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 1,
+            "purpose": "交代索菲亚去向",
+            "visual": "蓝发女孩语气冰冷地回答。",
+            "characters": [
+              "蓝发女孩"
+            ],
+            "dialogue": "蓝发女孩：（语气冰冷）走了。上周去瑞士了。",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "交代环境与人物状态",
+            "visual": "午夜，詹姆斯顶层公寓的办公室一片狼藉。詹姆斯双眼通红，领带被扯得松垮，正在疯狂地打电话。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "詹姆斯：（对着电话怒吼）我不管你们用什么方法！查！查瑞士所有的航班记录！查那个该死的研究所！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "推进剧情，迈克尔汇报",
+            "visual": "迈克尔快步走入办公室，神色紧张。",
+            "characters": [
+              "迈克尔",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "迈克尔：（快步走入，神色紧张）老板，人带到了。",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "交代环境与人物状态",
+            "visual": "凌晨三点，研究所所长穿着睡衣，惊恐地站在办公桌前。詹姆斯猛地站起身，道具:支票；将一张支票狠狠拍在桌上。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "研究所所长"
+            ],
+            "dialogue": "詹姆斯：（眼神狰狞，犹如困兽）给你的研究项目拨款一百万欧元。告诉我，她的下落！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "展现所长的恐惧",
+            "visual": "研究所所长颤抖着看着桌上的道具:支票，结结巴巴地回答。",
+            "characters": [
+              "研究所所长"
+            ],
+            "dialogue": "研究所所长：（颤抖着看着支票）莫、莫雷蒂先生……索菲亚她……",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "情绪爆发，詹姆斯逼问",
+            "visual": "詹姆斯一把揪住所长的衣领，咬牙切齿地逼问。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "研究所所长"
+            ],
+            "dialogue": "詹姆斯：（一把揪住所长的衣领，咬牙切齿）说！她在哪？！",
+            "duration": 4.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 15,
+    "dialogue_covered": 15,
+    "dialogue_coverage_rate": 1.0,
+    "missing_dialogues": [],
+    "unknown_characters": [],
+    "required_props": [],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": true,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

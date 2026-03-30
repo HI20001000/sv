@@ -1,0 +1,311 @@
+{
+  "episode_no": 1,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0001.json",
+  "storyboard": {
+    "episode_no": 1,
+    "title": "名存实亡的婚姻",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代环境与人物状态",
+            "visual": "全景：律师事务所内，索菲亚一身学生打扮，将一份文件放在律师桌上。律师抬头打量她，面露轻视。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "我要申请离婚。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现律师的质疑",
+            "visual": "近景：律师皱着眉头，看着索菲亚。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "年轻女士，离婚可不是一时兴起就能办的事。",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "展现索菲亚的决心",
+            "visual": "特写：索菲亚眼神坚定，直视律师。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "盖章就好。我会拿到我丈夫的签名。",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "交代索菲亚在庄园的透明人地位",
+            "visual": "全景：索菲亚走在莫雷蒂庄园安静的走廊上，路过的保镖对她视而不见。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "引出书房内的情景",
+            "visual": "中景：索菲亚停在詹姆斯的书房门前，深吸一口气，推开虚掩的门。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "展现詹姆斯与薇姬的亲密",
+            "visual": "中景：书房内，詹姆斯姿态松弛地坐在办公桌后，薇姬坐在他旁边，正亲昵地喂他吃抹了松露的面包。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "薇姬·罗西"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "展现詹姆斯对索菲亚的冷淡",
+            "visual": "近景：詹姆斯看到索菲亚进门，脸上的笑容瞬间消失，声音冷淡。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "索菲亚"
+            ],
+            "dialogue": "索菲亚。没想到你回来得这么快。",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "展现薇姬的挑衅",
+            "visual": "近景：薇姬转过身，笑意盈盈地看着索菲亚，带着一丝挑衅。",
+            "characters": [
+              "薇姬·罗西",
+              "索菲亚"
+            ],
+            "dialogue": "哦，索菲亚！我们正吃点小点心呢。可惜就够两个人分，不过我想......",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 3,
+            "purpose": "展现索菲亚的冷硬回应",
+            "visual": "中景：索菲亚打断薇姬的话，迈步走上前。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "不必了。",
+            "duration": 2.5
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "引出核心道具",
+            "visual": "特写：索菲亚将一份文件推到詹姆斯面前。道具:学校表格",
+            "characters": [
+              "索菲亚",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 4,
+            "purpose": "展现詹姆斯的疑惑",
+            "visual": "近景：詹姆斯端着威士忌，微微皱眉看着文件。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "这是什么？",
+            "duration": 2.5
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 4,
+            "purpose": "索菲亚用谎言掩饰",
+            "visual": "中景：索菲亚翻到签名页，强装镇定，声音微颤。道具:学校表格",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "学校要一份签过字的安全责任承诺书。是为了我的研究项目。毕竟现在，你是我唯一的家人了。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 4,
+            "purpose": "制造紧张感",
+            "visual": "近景：詹姆斯皱眉，准备细看文件内容。",
+            "characters": [
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "我看看——",
+            "duration": 2.5
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 4,
+            "purpose": "薇姬打断詹姆斯的查看",
+            "visual": "中景：薇姬伸手挽住詹姆斯的胳膊，娇嗔地劝阻。",
+            "characters": [
+              "薇姬·罗西",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "哎呀，詹姆斯。你也太较真了！不过是份表格而已。你忘了上个月慈善晚宴，我们签了多少份文件吗？",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 4,
+            "purpose": "完成核心动作",
+            "visual": "特写：詹姆斯拿起钢笔，在文件上龙飞凤舞地签下名字。索菲亚迅速抽回文件。道具:离婚协议书",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 4,
+            "purpose": "薇姬的嘲讽",
+            "visual": "近景：薇姬嗤笑一声，看着索菲亚。",
+            "characters": [
+              "薇姬·罗西"
+            ],
+            "dialogue": "说真的，詹姆斯，你对她哪像对妻子，分明是把她当妹妹疼。",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 4,
+            "purpose": "索菲亚离场",
+            "visual": "全景：詹姆斯没有否认，抿了一口威士忌。索菲亚转身快步走出书房。",
+            "characters": [
+              "詹姆斯·莫雷蒂",
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          }
+        ]
+      },
+      {
+        "scene_no": 5,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 5,
+            "purpose": "展现索菲亚的释然与决心",
+            "visual": "中景：索菲亚靠在走廊墙上，双手微微颤抖地攥着签好字的文件，长长地舒了一口气。道具:离婚协议书",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "我自由了。这座镀金牢笼，我不稀罕了。这场貌合神离的婚姻，我也演够了。詹姆斯可以留着他的帝国，他的血腥暴力，还有他的薇姬。我只要，把我的人生，夺回来。",
+            "duration": 8.0
+          }
+        ]
+      },
+      {
+        "scene_no": 6,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 6,
+            "purpose": "交代索菲亚准备离开",
+            "visual": "全景：卧室里，索菲亚在收拾行李，将大部分衣物装箱。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 6,
+            "purpose": "引出回忆道具",
+            "visual": "特写：索菲亚拉开床头柜，拿出一本相册。道具:皮质封面的相册",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 6,
+            "purpose": "彻底告别过去",
+            "visual": "中景：索菲亚翻看相册后冷笑一声，将相册重重地扔进垃圾桶。道具:皮质封面的相册",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "这么多年来，我一直是詹姆斯·莫雷蒂人生里的旁观者。如今，帷幕已然落下，是时候退场了。",
+            "duration": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 12,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 0.0,
+    "missing_dialogues": [
+      "索菲亚：（语气平静）我要申请离婚。",
+      "律师：（皱眉，打量索菲亚）年轻女士，离婚可不是一时兴起就能办的事。",
+      "索菲亚：（眼神坚定）盖章就好。我会拿到我丈夫的签名。",
+      "詹姆斯：（声音冷淡）索菲亚。没想到你回来得这么快。",
+      "薇姬：（笑意盈盈，带着挑衅）哦，索菲亚！我们正吃点小点心呢。可惜就够两个人分，不过我想......",
+      "索菲亚：（打断薇姬，迈步上前）不必了。",
+      "詹姆斯：（眯起眼睛）这是什么？",
+      "索菲亚：（翻到签名页，强装镇定）学校要一份签过字的安全责任承诺书。是为了我的研究项目。（咽了咽口水，声音微颤）毕竟现在，你是我唯一的家人了。",
+      "詹姆斯：（皱眉，准备细看）我看看——",
+      "薇姬：（伸手挽住詹姆斯的胳膊，娇嗔）哎呀，詹姆斯。你也太较真了！不过是份表格而已。你忘了上个月慈善晚宴，我们签了多少份文件吗？",
+      "索菲亚：（内心独白）我自由了。这座镀金牢笼，我不稀罕了。这场貌合神离的婚姻，我也演够了。詹姆斯可以留着他的帝国，他的血腥暴力，还有他的薇姬。我只要，把我的人生，夺回来。",
+      "索菲亚：（内心独白）这么多年来，我一直是詹姆斯·莫雷蒂人生里的旁观者。如今，帷幕已然落下，是时候退场了。"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "离婚协议书",
+      "学校表格"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

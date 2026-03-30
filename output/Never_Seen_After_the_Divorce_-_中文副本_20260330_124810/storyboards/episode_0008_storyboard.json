@@ -1,0 +1,143 @@
+{
+  "episode_no": 8,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0008.json",
+  "storyboard": {
+    "episode_no": 8,
+    "title": "丢弃的相册",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代环境与索菲亚的离开准备",
+            "visual": "全景：空荡荡的卧室里，索菲亚正在将最后几件衣物叠好放进行李箱，动作利落。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "引出核心道具",
+            "visual": "中景：索菲亚走到床头柜前，拉开抽屉，拿出一本厚重的 道具:皮质封面的相册，轻轻抚摸着封面，眼神复杂。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "展现相册内容，对比两人的情感状态",
+            "visual": "特写：缓缓翻开的 道具:皮质封面的相册。照片中的索菲亚笑容明媚，充满爱意；而詹姆斯则僵硬地站着，表情冷漠，眼神躲闪。",
+            "characters": [
+              "索菲亚",
+              "詹姆斯·莫雷蒂"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "表达索菲亚的自嘲与觉醒",
+            "visual": "近景：索菲亚看着照片，嘴角勾起一抹自嘲的苦笑，低声喃喃。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "每个月雷打不动地拉着你去照相馆……我真是个傻瓜。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "果断斩断过去",
+            "visual": "中景：索菲亚眼神变得坚定决绝，合上 道具:皮质封面的相册，转身走到房间角落的垃圾桶旁，将其无情地扔了进去。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "这份沾染了谎言的爱情，连垃圾回收车都会嫌弃。",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "完成告别，准备离开",
+            "visual": "全景：索菲亚不再看垃圾桶，走到行李箱旁拉起拉杆。她环顾四周，最后看了一眼这个房间，眼神中再无留恋。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 1,
+            "purpose": "决绝离去",
+            "visual": "中景：索菲亚转身，提着行李箱大步走出卧室，房门在她身后重重关上。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "展现索菲亚离开时的轻松与坚定",
+            "visual": "全景：索菲亚提着行李箱走在宽敞华丽的大理石走廊上，步伐坚定而轻快。阳光透过落地窗洒在她身上。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "帷幕已然落下，是时候退场了。詹姆斯，你的帝国，你的薇姬，都与我无关了。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "彻底离开莫雷蒂庄园",
+            "visual": "远景：索菲亚的身影消失在走廊尽头，毫不回头。",
+            "characters": [
+              "索菲亚"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 3,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 0.0,
+    "missing_dialogues": [
+      "索菲亚：（低声喃喃）每个月雷打不动地拉着你去照相馆……我真是个傻瓜。",
+      "索菲亚：（语气冰冷）这份沾染了谎言的爱情，连垃圾回收车都会嫌弃。",
+      "索菲亚：（内心独白）帷幕已然落下，是时候退场了。詹姆斯，你的帝国，你的薇姬，都与我无关了。"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "皮质封面的相册"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

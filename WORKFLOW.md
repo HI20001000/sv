@@ -112,7 +112,7 @@ input_documents/<source>.txt|docx
 
 ### 2.1 劇本清洗
 
-- Prompt：`prompt/script_cleaning_prompt_v1.md`
+- Prompt：`prompt/script_cleaning_prompt.md`
 - 輸入：原始文檔文本 `raw_script`
 - 輸出：`script_cleaned.txt`
 - 關鍵參數：`CLEANING_CHUNK_SIZE`，默認 `4000`
@@ -125,7 +125,7 @@ input_documents/<source>.txt|docx
 
 ### 2.2 特徵提取（Story Bible）
 
-- Prompt：`prompt/script_feature_extraction_prompt_v1.md`
+- Prompt：`prompt/script_feature_extraction_prompt.md`
 - 輸入：清洗後文本
 - 輸出：`story_bible.json`
 - 關鍵參數：`FEATURE_CHUNK_SIZE`，默認 `4000`
@@ -141,6 +141,7 @@ input_documents/<source>.txt|docx
 
 ### 2.3 Unit 拆分
 
+- Prompt：`prompt/unit_split_prompt.md`
 - 輸入：清洗後文本
 - 輸出：`story_units.json`
 - 關鍵參數：
@@ -152,14 +153,15 @@ input_documents/<source>.txt|docx
   - `source_span`
   - `text`
 - 工作內容：
+  - 讀取 `unit_split_prompt.md` 內的拆分規則與配置
   - 按段落與句子進行規則切分
-  - 控制每個 unit 的字數窗口
+  - 控制每個 unit 的字數窗口與尾段合併策略
 - 資料變化：
   - 長文本 -> 可分配、可規劃、可引用的故事單元
 
 ### 2.4 Unit 框架提煉
 
-- Prompt：`prompt/unit_framework_extraction_prompt_v1.md`
+- Prompt：`prompt/unit_framework_extraction_prompt.md`
 - 輸入：每個 unit 的 `unit_id + text`
 - 輸出：`unit_frameworks.json`
 - 目標字段：
@@ -176,7 +178,7 @@ input_documents/<source>.txt|docx
 
 ### 2.5 拆集規劃
 
-- Prompt：`prompt/unit_episode_split_planning_prompt_v1.md`
+- Prompt：`prompt/unit_episode_split_planning_prompt.md`
 - 輸入：`unit_frameworks + target_episode_count`
 - 輸出：
   - 項目內：`output/.../episode_split_plan.json`
@@ -197,7 +199,7 @@ input_documents/<source>.txt|docx
 
 ### 2.6 逐集生成規劃
 
-- Prompt：`prompt/episode_generation_planning_prompt_v1.md`
+- Prompt：`prompt/episode_generation_planning_prompt.md`
 - 輸入：
   - `story_bible`
   - `story_units`
@@ -225,7 +227,7 @@ input_documents/<source>.txt|docx
 
 ### 2.7 逐集內容生成
 
-- Prompt：`prompt/episode_content_generation_prompt_v1.md`
+- Prompt：`prompt/episode_content_generation_prompt.md`
 - 輸入：
   - `story_bible`
   - 單集 `episode_plan`
@@ -243,7 +245,7 @@ input_documents/<source>.txt|docx
 
 ### 2.8 逐集分鏡生成
 
-- Prompt：`prompt/storyboard_generation_prompt_v1.md`
+- Prompt：`prompt/storyboard_generation_prompt.md`
 - 輸入：
   - `story_bible`
   - `episodes/episode_000x.json`

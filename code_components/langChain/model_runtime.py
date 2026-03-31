@@ -14,6 +14,17 @@ from rich.live import Live
 from rich.markdown import Markdown
 from rich.panel import Panel
 
+from code_components.prompt_registry import (
+    CLEANING_PROMPT_PATH,
+    EPISODE_CONTENT_PROMPT_PATH,
+    EPISODE_GENERATION_PLAN_PROMPT_PATH,
+    FEATURE_PROMPT_PATH,
+    STORYBOARD_PROMPT_PATH,
+    UNIT_EPISODE_PLAN_PROMPT_PATH,
+    UNIT_FRAMEWORK_PROMPT_PATH,
+    resolve_prompt_path,
+)
+
 
 def build_workflow(llm: ChatOpenAI):
     """LangChain workflow: prompt -> model -> parser."""
@@ -91,7 +102,7 @@ def ping_model(llm: ChatOpenAI) -> Tuple[str, float]:
 def clean_script_with_prompt(
     llm: ChatOpenAI,
     raw_script: str,
-    prompt_path: Path | str = "prompt/script_cleaning_prompt_v1.md",
+    prompt_path: Path | str = CLEANING_PROMPT_PATH,
 ) -> str:
     response_text = _invoke_prompt_template(
         llm=llm,
@@ -107,7 +118,7 @@ def clean_script_with_prompt(
 def extract_script_features_with_prompt(
     llm: ChatOpenAI,
     script_text: str,
-    prompt_path: Path | str = "prompt/script_feature_extraction_prompt_v1.md",
+    prompt_path: Path | str = FEATURE_PROMPT_PATH,
 ) -> str:
     return _invoke_prompt_template(
         llm=llm,
@@ -120,7 +131,7 @@ def extract_unit_framework_with_prompt(
     llm: ChatOpenAI,
     unit_id: str,
     unit_text: str,
-    prompt_path: Path | str = "prompt/unit_framework_extraction_prompt_v1.md",
+    prompt_path: Path | str = UNIT_FRAMEWORK_PROMPT_PATH,
 ) -> str:
     return _invoke_prompt_template_with_variables(
         llm=llm,
@@ -136,7 +147,7 @@ def plan_unit_episode_split_with_prompt(
     llm: ChatOpenAI,
     unit_framework_json: str,
     target_episode_count: int,
-    prompt_path: Path | str = "prompt/unit_episode_split_planning_prompt_v1.md",
+    prompt_path: Path | str = UNIT_EPISODE_PLAN_PROMPT_PATH,
 ) -> str:
     return _invoke_prompt_template_with_variables(
         llm=llm,
@@ -154,7 +165,7 @@ def plan_episode_generation_with_prompt(
     unit_framework_json: str,
     episode_split_plan_json: str,
     target_episode_count: int,
-    prompt_path: Path | str = "prompt/episode_generation_planning_prompt_v1.md",
+    prompt_path: Path | str = EPISODE_GENERATION_PLAN_PROMPT_PATH,
 ) -> str:
     return _invoke_prompt_template_with_variables(
         llm=llm,
@@ -173,7 +184,7 @@ def generate_episode_content_with_prompt(
     story_bible_json: str,
     episode_plan_json: str,
     source_units_json: str,
-    prompt_path: Path | str = "prompt/episode_content_generation_prompt_v1.md",
+    prompt_path: Path | str = EPISODE_CONTENT_PROMPT_PATH,
 ) -> str:
     return _invoke_prompt_template_with_variables(
         llm=llm,
@@ -190,7 +201,7 @@ def generate_storyboard_with_prompt(
     llm: ChatOpenAI,
     story_bible_json: str,
     episode_json: str,
-    prompt_path: Path | str = "prompt/storyboard_generation_prompt_v1.md",
+    prompt_path: Path | str = STORYBOARD_PROMPT_PATH,
 ) -> str:
     return _invoke_prompt_template_with_variables(
         llm=llm,
@@ -219,9 +230,7 @@ def _invoke_prompt_template_with_variables(
     prompt_path: Path | str,
     variables: dict[str, str],
 ) -> str:
-    prompt_file = Path(prompt_path)
-    if not prompt_file.exists():
-        raise FileNotFoundError(f"Prompt file not found: {prompt_file}")
+    prompt_file = resolve_prompt_path(prompt_path)
 
     prompt_template = prompt_file.read_text(encoding="utf-8")
     user_prompt = prompt_template

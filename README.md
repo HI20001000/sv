@@ -165,13 +165,14 @@ output/
 
 | Prompt 文件 | 对应流程阶段 | 在流程中做什么 | 主要用意 |
 |---|---|---|---|
-| `prompt/script_cleaning_prompt_v1.md` | 1. 剧本清洗 | 清洗原始文本，输出 `script_cleaned.txt` | 去噪、规范格式、保留原剧情表达，为后续结构化处理提供稳定输入 |
-| `prompt/script_feature_extraction_prompt_v1.md` | 2. 特征提取 | 从清洗文本抽取结构化特征，输出 `story_bible.json` | 提取角色、道具、背景等核心信息，作为后续规划与生成的基础 |
-| `prompt/unit_framework_extraction_prompt_v1.md` | 4. Unit 框架提炼 | 对每个 unit 提炼摘要与冲突信息，输出 `unit_frameworks.json` | 把长文本 unit 转成可用于拆集决策的“剧情框架” |
-| `prompt/unit_episode_split_planning_prompt_v1.md` | 5. 拆集规划 | 按 unit 分配 `episode_count`，输出 `episode_split_plan.json` | 在满足总集数约束下完成 unit->集数分配，并保证可校验 |
-| `prompt/episode_generation_planning_prompt_v1.md` | 6. 逐集生成规划 | 产出每集的标题、目标、beats、角色焦点等，输出 `episode_generation_plan.json` | 把“拆集结果”变成“逐集可执行的生成蓝图” |
-| `prompt/episode_content_generation_prompt_v1.md` | 7. 逐集内容生成 | 基于 story bible + 单集规划 + source units 生成单集剧本内容 | 生成可直接使用的单集脚本文本（非分镜） |
-| `prompt/storyboard_generation_prompt_v1.md` | 8. 逐集分镜生成 | 基于单集剧本与 story bible 生成分镜 JSON | 将剧本进一步结构化为场景/镜头级输出，便于后续制作 |
+| `prompt/script_cleaning_prompt.md` | 1. 剧本清洗 | 清洗原始文本，输出 `script_cleaned.txt` | 去噪、规范格式、保留原剧情表达，为后续结构化处理提供稳定输入 |
+| `prompt/script_feature_extraction_prompt.md` | 2. 特征提取 | 从清洗文本抽取结构化特征，输出 `story_bible.json` | 提取角色、道具、背景等核心信息，作为后续规划与生成的基础 |
+| `prompt/unit_split_prompt.md` | 3. Unit 拆分 | 读取拆分规则与参数，输出 `story_units.json` | 控制 unit 切分窗口、句子边界与尾段合并策略，使该阶段也可通过 prompt 调整 |
+| `prompt/unit_framework_extraction_prompt.md` | 4. Unit 框架提炼 | 对每个 unit 提炼摘要与冲突信息，输出 `unit_frameworks.json` | 把长文本 unit 转成可用于拆集决策的“剧情框架” |
+| `prompt/unit_episode_split_planning_prompt.md` | 5. 拆集规划 | 按 unit 分配 `episode_count`，输出 `episode_split_plan.json` | 在满足总集数约束下完成 unit->集数分配，并保证可校验 |
+| `prompt/episode_generation_planning_prompt.md` | 6. 逐集生成规划 | 产出每集的标题、目标、beats、角色焦点等，输出 `episode_generation_plan.json` | 把“拆集结果”变成“逐集可执行的生成蓝图” |
+| `prompt/episode_content_generation_prompt.md` | 7. 逐集内容生成 | 基于 story bible + 单集规划 + source units 生成单集剧本内容 | 生成可直接使用的单集脚本文本（非分镜） |
+| `prompt/storyboard_generation_prompt.md` | 8. 逐集分镜生成 | 基于单集剧本与 story bible 生成分镜 JSON | 将剧本进一步结构化为场景/镜头级输出，便于后续制作 |
 
 补充说明：
 

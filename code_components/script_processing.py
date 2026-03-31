@@ -23,21 +23,26 @@ from code_components.langChain import (
     plan_episode_generation_with_prompt,
     plan_unit_episode_split_with_prompt,
 )
-
+from code_components.prompt_registry import (
+    CLEANING_PROMPT_PATH,
+    EPISODE_CONTENT_PROMPT_PATH,
+    EPISODE_GENERATION_PLAN_PROMPT_PATH,
+    FEATURE_PROMPT_PATH,
+    STORYBOARD_PROMPT_PATH,
+    UNIT_SPLIT_PROMPT_PATH,
+    UNIT_EPISODE_PLAN_PROMPT_PATH,
+    UNIT_FRAMEWORK_PROMPT_PATH,
+    resolve_prompt_path,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_ROOT = PROJECT_ROOT / "output"
-CLEANING_PROMPT_PATH = PROJECT_ROOT / "prompt/script_cleaning_prompt_v1.md"
-FEATURE_PROMPT_PATH = PROJECT_ROOT / "prompt/script_feature_extraction_prompt_v1.md"
-UNIT_FRAMEWORK_PROMPT_PATH = PROJECT_ROOT / "prompt/unit_framework_extraction_prompt_v1.md"
-UNIT_EPISODE_PLAN_PROMPT_PATH = PROJECT_ROOT / "prompt/unit_episode_split_planning_prompt_v1.md"
-EPISODE_GENERATION_PLAN_PROMPT_PATH = PROJECT_ROOT / "prompt/episode_generation_planning_prompt_v1.md"
-EPISODE_CONTENT_PROMPT_PATH = PROJECT_ROOT / "prompt/episode_content_generation_prompt_v1.md"
-STORYBOARD_PROMPT_PATH = PROJECT_ROOT / "prompt/storyboard_generation_prompt_v1.md"
 CLEANING_CHUNK_SIZE = 4000
 DEFAULT_FEATURE_CHUNK_SIZE = 4000
 DEFAULT_UNIT_WINDOW_MIN = 1500
 DEFAULT_UNIT_WINDOW_MAX = 2200
+DEFAULT_UNIT_SPLIT_SENTENCE_BOUNDARIES = "。！？!?；;"
+DEFAULT_UNIT_SPLIT_MERGE_SHORT_TAIL = True
 DEFAULT_EPISODE_COUNT = 60
 DEFAULT_EPISODE_SPLIT_REPAIR_ROUNDS = 2
 DEFAULT_EPISODE_CONTENT_MAX_WORKERS = 4
@@ -167,19 +172,25 @@ def process_script_to_output(
         encoding="utf-8",
     )
 
-    unit_window_min, unit_window_max = _read_unit_window_config()
+    unit_split_config = _read_unit_split_prompt_config()
+    unit_window_min = unit_split_config["window_min"]
+    unit_window_max = unit_split_config["window_max"]
     _emit_progress(
         progress_callback,
         stage="unit_split",
         message=f"3/8 拆分 Unit 中（窗口: {unit_window_min}-{unit_window_max} 字）",
         unit_window_min=unit_window_min,
         unit_window_max=unit_window_max,
+        unit_split_sentence_boundaries=unit_split_config["sentence_boundaries"],
+        unit_split_merge_short_tail_unit=unit_split_config["merge_short_tail_unit"],
     )
     unit_split_started_at = time.perf_counter()
     story_units = _split_into_units(
         text=cleaned_script,
         window_min=unit_window_min,
         window_max=unit_window_max,
+        sentence_boundaries=unit_split_config["sentence_boundaries"],
+        merge_short_tail_unit=unit_split_config["merge_short_tail_unit"],
     )
     unit_split_elapsed = time.perf_counter() - unit_split_started_at
     step_elapsed_seconds["unit_split"] = unit_split_elapsed
@@ -366,6 +377,7 @@ def process_script_to_output(
         "cleaning_prompt_file": str(CLEANING_PROMPT_PATH),
         "feature_prompt_file": str(FEATURE_PROMPT_PATH),
         "feature_chunk_size": _read_feature_chunk_size_config(),
+        "unit_split_prompt_file": str(UNIT_SPLIT_PROMPT_PATH),
         "unit_framework_prompt_file": str(UNIT_FRAMEWORK_PROMPT_PATH),
         "unit_episode_plan_prompt_file": str(UNIT_EPISODE_PLAN_PROMPT_PATH),
         "episode_split_repair_rounds": _read_episode_split_repair_rounds_config(),
@@ -388,6 +400,8 @@ def process_script_to_output(
         "storyboard_max_workers": _read_storyboard_max_workers_config(),
         "unit_window_min": unit_window_min,
         "unit_window_max": unit_window_max,
+        "unit_split_sentence_boundaries": unit_split_config["sentence_boundaries"],
+        "unit_split_merge_short_tail_unit": unit_split_config["merge_short_tail_unit"],
         "unit_count": len(story_units),
         "target_episode_count": target_episode_count,
         "planned_episode_count": planned_episode_count,
@@ -2624,6 +2638,50 @@ def _read_unit_window_config() -> tuple[int, int]:
     return window_min, window_max
 
 
+def _read_unit_split_prompt_config() -> dict[str, Any]:
+    window_min, window_max = _read_unit_window_config()
+    config: dict[str, Any] = {
+        "window_min": window_min,
+        "window_max": window_max,
+        "sentence_boundaries": DEFAULT_UNIT_SPLIT_SENTENCE_BOUNDARIES,
+        "merge_short_tail_unit": DEFAULT_UNIT_SPLIT_MERGE_SHORT_TAIL,
+    }
+
+    prompt_path = resolve_prompt_path(UNIT_SPLIT_PROMPT_PATH)
+    prompt_text = prompt_path.read_text(encoding="utf-8")
+    match = re.search(r"```json\s*(\{.*?\})\s*```", prompt_text, re.DOTALL)
+    if not match:
+        return config
+
+    try:
+        prompt_config = json.loads(match.group(1))
+    except json.JSONDecodeError as exc:
+        raise ValueError("Invalid JSON config in unit_split_prompt.md") from exc
+
+    if not isinstance(prompt_config, dict):
+        raise ValueError("unit_split_prompt.md config must be a JSON object")
+
+    if "window_min" in prompt_config:
+        config["window_min"] = _coerce_int(prompt_config.get("window_min"), default=window_min, minimum=1)
+    if "window_max" in prompt_config:
+        config["window_max"] = _coerce_int(prompt_config.get("window_max"), default=window_max, minimum=1)
+    if config["window_min"] >= config["window_max"]:
+        raise ValueError("unit_split_prompt.md requires window_min to be smaller than window_max")
+
+    sentence_boundaries = prompt_config.get("sentence_boundaries", DEFAULT_UNIT_SPLIT_SENTENCE_BOUNDARIES)
+    if not isinstance(sentence_boundaries, str) or not sentence_boundaries.strip():
+        raise ValueError("unit_split_prompt.md requires sentence_boundaries to be a non-empty string")
+    config["sentence_boundaries"] = sentence_boundaries
+
+    merge_short_tail_unit = prompt_config.get(
+        "merge_short_tail_unit", DEFAULT_UNIT_SPLIT_MERGE_SHORT_TAIL
+    )
+    if not isinstance(merge_short_tail_unit, bool):
+        raise ValueError("unit_split_prompt.md requires merge_short_tail_unit to be true or false")
+    config["merge_short_tail_unit"] = merge_short_tail_unit
+    return config
+
+
 def _read_feature_chunk_size_config() -> int:
     raw_size = os.getenv("FEATURE_CHUNK_SIZE", str(DEFAULT_FEATURE_CHUNK_SIZE))
     try:
@@ -2696,7 +2754,13 @@ def _read_storyboard_max_workers_config() -> int:
     return workers
 
 
-def _split_into_units(text: str, window_min: int, window_max: int) -> list[dict[str, Any]]:
+def _split_into_units(
+    text: str,
+    window_min: int,
+    window_max: int,
+    sentence_boundaries: str = DEFAULT_UNIT_SPLIT_SENTENCE_BOUNDARIES,
+    merge_short_tail_unit: bool = DEFAULT_UNIT_SPLIT_MERGE_SHORT_TAIL,
+) -> list[dict[str, Any]]:
     normalized = text.replace("\r\n", "\n").strip()
     if not normalized or normalized == "[EMPTY_SCRIPT]":
         return []
@@ -2704,7 +2768,7 @@ def _split_into_units(text: str, window_min: int, window_max: int) -> list[dict[
     paragraphs = [p.strip() for p in re.split(r"\n{2,}", normalized) if p.strip()]
     expanded: list[tuple[str, int, int]] = []
     for para_index, paragraph in enumerate(paragraphs):
-        pieces = _split_paragraph_if_needed(paragraph, window_max)
+        pieces = _split_paragraph_if_needed(paragraph, window_max, sentence_boundaries)
         if not pieces:
             continue
         for piece in pieces:
@@ -2750,7 +2814,7 @@ def _split_into_units(text: str, window_min: int, window_max: int) -> list[dict[
         )
         unit_idx += 1
 
-    if len(units) >= 2 and units[-1]["char_count"] < window_min:
+    if merge_short_tail_unit and len(units) >= 2 and units[-1]["char_count"] < window_min:
         merged_text = (units[-2]["text"] + "\n\n" + units[-1]["text"]).strip()
         units[-2]["text"] = merged_text
         units[-2]["char_count"] = len(merged_text)
@@ -2760,11 +2824,15 @@ def _split_into_units(text: str, window_min: int, window_max: int) -> list[dict[
     return units
 
 
-def _split_paragraph_if_needed(paragraph: str, window_max: int) -> list[str]:
+def _split_paragraph_if_needed(
+    paragraph: str,
+    window_max: int,
+    sentence_boundaries: str = DEFAULT_UNIT_SPLIT_SENTENCE_BOUNDARIES,
+) -> list[str]:
     if len(paragraph) <= window_max:
         return [paragraph]
 
-    sentences = _sentence_split(paragraph)
+    sentences = _sentence_split(paragraph, sentence_boundaries)
     chunks: list[str] = []
     current = ""
 
@@ -2796,6 +2864,15 @@ def _split_paragraph_if_needed(paragraph: str, window_max: int) -> list[str]:
         chunks.append(current.strip())
 
     return chunks
+
+
+def _sentence_split_with_boundaries(
+    text: str,
+    sentence_boundaries: str = DEFAULT_UNIT_SPLIT_SENTENCE_BOUNDARIES,
+) -> list[str]:
+    escaped_boundaries = re.escape(sentence_boundaries)
+    parts = re.split(rf"(?<=[{escaped_boundaries}])", text)
+    return [part for part in parts if part and part.strip()]
 
 
 def _sentence_split(text: str) -> list[str]:

@@ -211,6 +211,12 @@ p {
   min-width: 0;
 }
 
+.topbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
 .kicker,
 .panel-kicker {
   margin-bottom: var(--space-2);
@@ -344,6 +350,12 @@ h1 {
   min-width: 1380px;
 }
 
+.workspace-grid-prompts {
+  grid-template-columns: minmax(880px, 1fr) 340px;
+  grid-template-areas: "prompts chat";
+  min-width: 1260px;
+}
+
 .panel-input {
   grid-area: input;
 }
@@ -364,6 +376,10 @@ h1 {
 
 .panel-output {
   grid-area: output;
+}
+
+.panel-prompts {
+  grid-area: prompts;
 }
 
 .panel-chat {
@@ -455,6 +471,7 @@ h1 {
 .project-select,
 .document-item,
 .preview-list-item,
+.prompt-step-card,
 .tab-button {
   border-radius: 12px;
 }
@@ -483,6 +500,12 @@ h1 {
   color: var(--text-primary);
 }
 
+.ghost-button.toggle-active {
+  border-color: var(--border-strong);
+  background: var(--bg-hover);
+  color: var(--accent-strong);
+}
+
 .danger-link {
   align-self: center;
   border: none;
@@ -499,6 +522,7 @@ h1 {
 .document-list,
 .preview-list,
 .preview-detail,
+.prompt-workflow-list,
 .story-grid {
   overflow: auto;
 }
@@ -513,6 +537,14 @@ h1 {
   padding-right: var(--space-1);
 }
 
+.prompt-workflow-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-height: 0;
+  padding-right: var(--space-1);
+}
+
 .document-item,
 .preview-list-item {
   display: flex;
@@ -521,6 +553,18 @@ h1 {
   gap: var(--space-3);
   width: 100%;
   padding: 14px 15px;
+  border: 1px solid var(--border-soft);
+  background: var(--bg-soft);
+  text-align: left;
+}
+
+.prompt-step-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: var(--space-3);
+  align-items: flex-start;
+  width: 100%;
+  padding: 15px;
   border: 1px solid var(--border-soft);
   background: var(--bg-soft);
   text-align: left;
@@ -543,12 +587,31 @@ h1 {
     var(--bg-card);
 }
 
+.prompt-step-card.active {
+  border-color: var(--border-accent);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+    var(--bg-card);
+}
+
+.prompt-step-card.disabled {
+  opacity: 0.72;
+}
+
 .document-main,
 .detail-head {
   display: flex;
   flex-direction: column;
   gap: 6px;
   min-width: 0;
+}
+
+.detail-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  align-items: center;
 }
 
 .document-main strong,
@@ -588,8 +651,109 @@ h1 {
 }
 
 .panel-chat,
-.panel-output {
+.panel-output,
+.panel-prompts {
   min-width: 0;
+}
+
+.prompt-status {
+  margin-top: var(--space-4);
+  padding: 12px 14px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--bg-soft);
+  color: var(--text-secondary);
+}
+
+.prompt-workspace {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  min-height: 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.prompt-step-order {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.prompt-step-main {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.prompt-step-main strong {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.prompt-step-main span,
+.prompt-editor-meta {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.prompt-step-main code {
+  color: var(--text-secondary);
+  font-family: "IBM Plex Mono", "Cascadia Code", monospace;
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.prompt-editor-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+}
+
+.prompt-editor-head {
+  display: grid;
+  gap: var(--space-3);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.prompt-editor-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.prompt-editor-textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 420px;
+  resize: none;
+  margin-top: var(--space-4);
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-inset);
+  color: var(--text-primary);
+  font-family: "IBM Plex Mono", "Cascadia Code", monospace;
+  font-size: 13px;
+  line-height: 1.75;
 }
 
 .chat-stream {
@@ -1126,6 +1290,7 @@ h1 {
 .command-chip:hover,
 .document-item:hover,
 .preview-list-item:hover,
+.prompt-step-card:hover,
 .project-select:hover,
 .tab-button:hover {
   border-color: var(--border-strong);
@@ -1140,6 +1305,7 @@ h1 {
 .command-chip:hover,
 .document-item:hover,
 .preview-list-item:hover,
+.prompt-step-card:hover,
 .project-select:hover,
 .tab-button:hover {
   background: var(--bg-hover);
@@ -1147,6 +1313,7 @@ h1 {
 
 .document-item:active,
 .preview-list-item:active,
+.prompt-step-card:active,
 .ghost-button:active,
 .command-chip:active,
 .tab-button:active,
@@ -1155,7 +1322,9 @@ h1 {
 }
 
 .chat-composer textarea:hover,
-.chat-composer textarea:focus-visible {
+.chat-composer textarea:focus-visible,
+.prompt-editor-textarea:hover,
+.prompt-editor-textarea:focus-visible {
   border-color: var(--border-strong);
 }
 
@@ -1218,6 +1387,10 @@ textarea:disabled {
     overflow-y: hidden;
   }
 
+  .workspace-grid-prompts {
+    min-width: 1140px;
+  }
+
   .panel {
     height: 100%;
   }
@@ -1238,13 +1411,22 @@ textarea:disabled {
   }
 
   .project-select,
-  .tab-row {
+  .tab-row,
+  .topbar-actions {
     width: 100%;
   }
 
   .tab-row {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .prompt-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .prompt-editor-meta {
+    flex-direction: column;
   }
 
   .tab-button {
@@ -1260,6 +1442,10 @@ textarea:disabled {
 
   .workspace-grid {
     min-width: 1280px;
+  }
+
+  .workspace-grid-prompts {
+    min-width: 1080px;
   }
 
   .topbar,
@@ -1293,7 +1479,8 @@ textarea:disabled {
   }
 
   .panel-actions > *,
-  .command-row > * {
+  .command-row > *,
+  .topbar-actions > * {
     flex: 1 1 auto;
   }
 }

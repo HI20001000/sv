@@ -22,6 +22,12 @@ from code_components.langChain import (
     make_llm,
     ping_model,
 )
+from code_components.prompt_registry import (
+    get_prompt_path_by_key,
+    get_prompt_workflow_step,
+    resolve_prompt_path,
+    serialize_prompt_workflow,
+)
 from code_components.script_processing import process_script_to_output
 
 
@@ -35,6 +41,10 @@ load_dotenv(ENV_PATH, encoding="utf-8-sig")
 
 class ChatRequest(BaseModel):
     message: str
+
+
+class PromptUpdateRequest(BaseModel):
+    content: str
 
 
 class ApiState:
@@ -237,6 +247,62 @@ def get_storyboard(project_name: str, episode_no: int) -> dict[str, Any]:
     project_dir = _resolve_project_dir(project_name)
     data = _safe_read_json(project_dir / "storyboards" / f"episode_{episode_no:04d}_storyboard.json")
     return {"project": project_name, "data": data}
+
+
+@app.get("/api/prompts")
+def get_prompts() -> dict[str, Any]:
+    items = serialize_prompt_workflow()
+    default_prompt_key = next((item["key"] for item in items if item["has_prompt"]), None)
+    return {
+        "items": items,
+        "default_prompt_key": default_prompt_key,
+    }
+
+
+@app.get("/api/prompts/{prompt_key}")
+def get_prompt(prompt_key: str) -> dict[str, Any]:
+    try:
+        step = get_prompt_workflow_step(prompt_key)
+        prompt_path = get_prompt_path_by_key(prompt_key)
+    except KeyError as exc:
+        raise HTTPException(status_code=404, detail="Prompt workflow step not found.") from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    resolved_path = resolve_prompt_path(prompt_path)
+    return {
+        "key": step["key"],
+        "order": step["order"],
+        "stage": step["stage"],
+        "title": step["title"],
+        "description": step["description"],
+        "file_name": resolved_path.name,
+        "file_path": str(resolved_path),
+        "content": resolved_path.read_text(encoding="utf-8"),
+    }
+
+
+@app.put("/api/prompts/{prompt_key}")
+def update_prompt(prompt_key: str, payload: PromptUpdateRequest) -> dict[str, Any]:
+    try:
+        step = get_prompt_workflow_step(prompt_key)
+        prompt_path = get_prompt_path_by_key(prompt_key)
+    except KeyError as exc:
+        raise HTTPException(status_code=404, detail="Prompt workflow step not found.") from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    prompt_path.parent.mkdir(parents=True, exist_ok=True)
+    prompt_path.write_text(payload.content, encoding="utf-8")
+
+    return {
+        "message": f"Saved prompt for {step['title']}",
+        "key": step["key"],
+        "file_name": prompt_path.name,
+        "file_path": str(prompt_path),
+        "updated_at": datetime.fromtimestamp(prompt_path.stat().st_mtime).isoformat(timespec="seconds"),
+        "content": payload.content,
+    }
 
 
 @app.post("/api/workflow/run")

@@ -36,6 +36,24 @@ export function getOutputProjects() {
   return request('/output/projects')
 }
 
+export function getPrompts() {
+  return request('/prompts')
+}
+
+export function getPrompt(promptKey) {
+  return request(`/prompts/${encodeURIComponent(promptKey)}`)
+}
+
+export function updatePrompt(promptKey, content) {
+  return request(`/prompts/${encodeURIComponent(promptKey)}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ content }),
+  })
+}
+
 export function getOutputProject(projectName) {
   return request(`/output/projects/${encodeURIComponent(projectName)}`)
 }

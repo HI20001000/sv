@@ -25,6 +25,10 @@ from code_components.prompt_registry import (
     resolve_prompt_path,
 )
 
+OPTIONAL_PROMPT_VARIABLE_DEFAULTS = {
+    "PROJECT_BIBLE": "",
+}
+
 
 def build_workflow(llm: ChatOpenAI):
     """LangChain workflow: prompt -> model -> parser."""
@@ -221,7 +225,10 @@ def _invoke_prompt_template(
     return _invoke_prompt_template_with_variables(
         llm=llm,
         prompt_path=prompt_path,
-        variables={"RAW_SCRIPT": input_text},
+        variables={
+            "RAW_SCRIPT": input_text,
+            "PROJECT_BIBLE": "",
+        },
     )
 
 
@@ -234,7 +241,8 @@ def _invoke_prompt_template_with_variables(
 
     prompt_template = prompt_file.read_text(encoding="utf-8")
     user_prompt = prompt_template
-    for key, value in variables.items():
+    resolved_variables = {**OPTIONAL_PROMPT_VARIABLE_DEFAULTS, **variables}
+    for key, value in resolved_variables.items():
         user_prompt = user_prompt.replace(f"{{{{{key}}}}}", value)
     response = llm.invoke(user_prompt)
     return str(response.content)

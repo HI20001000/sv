@@ -1,0 +1,249 @@
+{
+  "episode_no": 6,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0006.json",
+  "storyboard": {
+    "episode_no": 6,
+    "title": "隐忍五年的调查",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代顾盼的处境与朋友的不解",
+            "visual": "中景；顾盼坐在沙发上，面无表情地看着前方；空间略显空荡；镜头缓慢推近；焦点在顾盼脸上；自然光透入；道具:手机。",
+            "characters": [
+              "顾盼",
+              "朋友们"
+            ],
+            "dialogue": "朋友们（语音）：盼盼，马国梁愿意陪你演戏这么多年，算仁至义尽了。你当年非要丁克，放着好好的孩子不生，到底图什么？",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现顾盼的委屈与愤怒",
+            "visual": "特写；顾盼嘴角勾起一抹冷笑，眼神透着嘲讽；镜头轻微手持；焦点锁定双眼；侧逆光勾勒脸部轮廓。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：图什么？图我替他背了三十年“不会生孩子”的骂名，保全了他作为男人的尊严！",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "建立回忆场景与轻松氛围",
+            "visual": "中近景；顾盼拿着精美的礼物盒坐进副驾驶，满脸笑意；车内空间狭窄；镜头固定；焦点在顾盼和礼物盒上；明亮的车内光线。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "引入意外发现",
+            "visual": "特写；顾盼伸手打开手套箱，翻出一叠单据，表情转为疑惑；主观过肩镜头；焦点转移到单据上。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "揭示方柔怀孕的铁证",
+            "visual": "特写；顾盼的手拿着一张单据，手指微微颤抖；镜头微移推近；浅景深突出单据；道具:方柔的产检单。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：孕妇产检单……姓名，方柔？",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "揭示马国梁长期转移财产的铁证",
+            "visual": "特写；顾盼快速翻动下面厚厚的银行流水单，眼眶逐渐通红，呼吸急促；镜头轻微手持晃动；道具:转钱的流水。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：转账记录……每个月都在转钱，一转就是十几年？！",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "表现顾盼从崩溃到冷静的情绪转折",
+            "visual": "中近景；顾盼死死攥着单据，闭上眼深吸一口气，再睁开时眼神变得冰冷锐利；镜头缓慢推近面部；车内光线显得压抑。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 2,
+            "purpose": "确立顾盼隐忍复仇的决心",
+            "visual": "特写；顾盼将单据原封不动地放回手套箱关上，动作机械而冷静；镜头固定；焦点在手部动作。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "画外音：他不逼我生孩子，不是因为爱我，而是早就为自己留好了后路！既然你不仁，就别怪我不义。",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "交代顾盼隐藏的底牌",
+            "visual": "中景；顾盼走到墙角，蹲下身打开一个隐蔽的保险柜；镜头跟随动作下移；室内光线昏暗，保险柜内透出微光。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "展示收集多年的证据",
+            "visual": "特写；保险柜内整齐码放着厚厚的一叠文件和几个U盘，顾盼的手伸入拿出一份文件；主观镜头；焦点在文件和U盘上；道具:U盘。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "抒发隐忍五年的情绪",
+            "visual": "特写；顾盼轻抚文件表面，眼神冷酷；镜头轻微手持；侧光打在脸上凸显坚毅。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：马国梁，你以为我这五年是怎么过的？你以为我净身出户，是真的成全你们？",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 3,
+            "purpose": "引入方柔的挑衅",
+            "visual": "中近景；顾盼走到桌前，随手拆开桌上的一份烫金请柬，一张字条掉落；镜头俯拍桌面；焦点在请柬上；道具:婚礼请柬。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：娟秀的字迹……方柔，你还真是迫不及待。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 3,
+            "purpose": "展示请柬内容与挑衅意味",
+            "visual": "特写；顾盼捏着字条，眼神充满嘲弄；过肩镜头看向字条；浅景深。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：“顾盼姐，我与马国梁即将举行婚礼。你作为前妻，一定也希望看到他幸福。你的到场，将对我们意义非凡。”",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 3,
+            "purpose": "表现顾盼迎战的决心",
+            "visual": "中景；顾盼将请柬狠狠拍在桌上，抬起头冷笑；镜头微震；光线冷硬；道具:婚礼请柬。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：意义非凡？想让我去当你们幸福的背景板？好啊，我成全你们。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 3,
+            "purpose": "建立与周侦探的联系",
+            "visual": "中近景；顾盼拿起手机拨通号码，贴在耳边；镜头缓慢平移；焦点在顾盼侧脸；道具:手机。",
+            "characters": [
+              "顾盼",
+              "周侦探"
+            ],
+            "dialogue": "周侦探（电话音）：顾女士。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 3,
+            "purpose": "确认婚礼时间地点",
+            "visual": "特写；顾盼眼神锐利，语气平淡但透着杀气；镜头轻微手持推近；背景完全虚化。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：周哥，马国梁和方柔的婚礼定在盛世豪庭牡丹厅，下周六中午十二点。你那边准备得怎么样了？",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 9,
+            "scene_no": 3,
+            "purpose": "确认证据万无一失",
+            "visual": "特写；顾盼静静听着电话，嘴角逐渐勾起一抹冷笑；镜头固定；侧逆光。",
+            "characters": [
+              "顾盼",
+              "周侦探"
+            ],
+            "dialogue": "周侦探（电话音）：顾女士放心，一切都准备就绪。这五年来收集的方柔出轨视频、录音，还有那两个孩子的亲子鉴定，都已经做好备份，万无一失。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 10,
+            "scene_no": 3,
+            "purpose": "宣告全面收网与复仇高潮的到来",
+            "visual": "中近景；顾盼看着保险柜的方向，眼神坚定且充满复仇的快意；镜头缓慢拉远，展现她掌控全局的姿态；室内光线形成明暗对比。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：很好。隐忍了五年，这张网，终于可以收了。我要让他们在这场最风光的婚礼上，身败名裂！",
+            "duration": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 13,
+    "dialogue_covered": 11,
+    "dialogue_coverage_rate": 0.8462,
+    "missing_dialogues": [
+      "朋友（语音）：盼盼，马国梁愿意陪你演戏这么多年，算仁至义尽了。你当年非要丁克，放着好好的孩子不生，到底图什么？",
+      "顾盼（内心独白）：他不逼我生孩子，不是因为爱我，而是早就为自己留好了后路！既然你不仁，就别怪我不义。"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "方柔的产检单",
+      "转钱的流水"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

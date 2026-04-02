@@ -1,0 +1,220 @@
+{
+  "episode_no": 13,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0013.json",
+  "storyboard": {
+    "episode_no": 13,
+    "title": "三十年前的录音",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "展现马国梁被激怒后的无能狂怒",
+            "visual": "中近景；马国梁脸色铁青，额头青筋暴起，手指着镜头方向怒吼；镜头微微手持晃动，强化愤怒情绪。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：你胡说！你这是污蔑！我能生！曼妮和天宇就是我的亲生骨肉！你血口喷人！",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "交代宾客初期的质疑态度",
+            "visual": "中景；几名宾客交头接耳，眼神狐疑地看向画外；焦点在最前面的两名宾客脸上。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "宾客们：不会是顾盼被刺激疯了吧？她自己不能生，现在还来给马国梁泼脏水，也太过分了……",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "表现舆论开始动摇",
+            "visual": "特写；另一名宾客微微皱眉，眼神打量着画外的马国梁。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "宾客们：不一定吧，你看马国梁的样子，脸色都白了，说不定顾盼说的是真的……",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "展现马国梁企图用暴力掩盖心虚",
+            "visual": "中景；马国梁眼神阴沉，猛地向前扑去，伸手抢夺顾盼手中的话筒；镜头快速推近；道具:话筒。",
+            "characters": [
+              "马国梁",
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "展现顾盼的从容不迫与反击准备",
+            "visual": "中近景；顾盼嗤笑一声，敏捷侧身躲开马国梁的手，从手拿包里掏出手机，低头在屏幕上操作；镜头平稳跟随顾盼动作；道具:手机。",
+            "characters": [
+              "顾盼",
+              "马国梁"
+            ],
+            "dialogue": "顾盼：是不是污蔑，你自己听。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "抛出第一层核心证据，证明顾盼身体健康",
+            "visual": "特写；顾盼手中的手机屏幕亮起，背景虚化；大厅音响传出声音，镜头缓缓上移至顾盼冷漠的脸；道具:手机录音。",
+            "characters": [
+              "顾盼",
+              "刘医生"
+            ],
+            "dialogue": "刘医生：顾女士，经过全面的检查，您的生育能力完全正常，卵巢功能也很好。但……马先生的情况不太乐观。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 1,
+            "purpose": "展现马国梁听到当年录音时的震惊",
+            "visual": "特写；马国梁听到录音后瞳孔地震，脸色瞬间煞白，身体僵硬；镜头缓慢推近他的脸部。",
+            "characters": [
+              "马国梁",
+              "顾盼"
+            ],
+            "dialogue": "顾盼：什么意思？刘医生，你直说吧。",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 1,
+            "purpose": "彻底揭开马国梁不育的真相",
+            "visual": "中近景；全场安静，镜头环视几位震惊的宾客，最后落回马国梁惨白的脸上。",
+            "characters": [
+              "马国梁",
+              "宾客们",
+              "刘医生"
+            ],
+            "dialogue": "刘医生：他的精子活力极低，远低于正常水平。他的情况比较严重，属于先天性弱精症，几乎没有自然生育的可能，哪怕做试管婴儿，成功率也不足百分之一。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 9,
+            "scene_no": 1,
+            "purpose": "揭示顾盼背负三十年骂名的委屈，完成情感反转",
+            "visual": "特写；顾盼静静站立，眼神中透着一丝释然与嘲讽；过肩镜头带到对面呆若木鸡的马国梁。",
+            "characters": [
+              "顾盼",
+              "马国梁"
+            ],
+            "dialogue": "顾盼：……我知道了，刘医生，拜托你，这件事先不要告诉他。我会告诉他和我们的父母，是我不想生，是我坚持要丁克，这样就没有人知道是马国梁的问题了。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 10,
+            "scene_no": 1,
+            "purpose": "展现舆论彻底反转",
+            "visual": "中景；宾客们愣在原地，随后爆发出惊呼，有人捂住嘴巴，看向顾盼的眼神充满同情。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "宾客们：天呐！原来这么多年顾盼坚持丁克，不是因为她自私，而是因为马国梁根本不能生育！",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 11,
+            "scene_no": 1,
+            "purpose": "强化对马国梁的道德谴责",
+            "visual": "中近景；一名宾客满脸义愤，指着画外的马国梁痛骂。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "宾客们：她为了维护丈夫的尊严，心甘情愿背了三十年的骂名！马国梁居然还为了生孩子抛弃她？真不是个东西！",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 12,
+            "scene_no": 1,
+            "purpose": "引导矛盾焦点转移至方柔",
+            "visual": "中景；另一名宾客突然瞪大眼睛，猛地转头伸手指向画外的方柔方向。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "宾客们：等等！既然马国梁不能生育，那方柔的那两个孩子……到底是谁的？！",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 13,
+            "scene_no": 1,
+            "purpose": "展现方柔母子谎言被揭穿后的极度恐慌",
+            "visual": "中景；马曼妮和马天宇吓得脸色惨白，往后瑟缩；方柔面无血色，指尖剧烈颤抖，踉跄后退。",
+            "characters": [
+              "方柔",
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 14,
+            "scene_no": 1,
+            "purpose": "表现方柔垂死挣扎的狡辩",
+            "visual": "特写；方柔拼命摇头，眼神惊慌失措，试图抓住画外马国梁的方向。",
+            "characters": [
+              "方柔"
+            ],
+            "dialogue": "方柔：假的……这肯定是你找人伪造的！录音是假的！国梁，你别信她，她在陷害我，陷害我们一家！",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 15,
+            "scene_no": 1,
+            "purpose": "展现马国梁遭受双重打击后的崩溃",
+            "visual": "中景；马国梁双腿一软，身子一歪，勉强伸手扶着旁边的椅子才稳住；镜头轻微晃动，表现他信仰崩塌的眩晕感。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 16,
+            "scene_no": 1,
+            "purpose": "承上启下，将马国梁的怒火彻底引向方柔",
+            "visual": "特写；马国梁大口喘着粗气，猛地转头，双眼猩红死死盯着画外的方柔；镜头缓慢推近，压迫感极强。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：这到底是怎么回事？！",
+            "duration": 3.5
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 0,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 1.0,
+    "missing_dialogues": [],
+    "unknown_characters": [],
+    "required_props": [
+      "手机录音",
+      "手机"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": true,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

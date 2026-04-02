@@ -1,0 +1,311 @@
+{
+  "episode_no": 19,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0019.json",
+  "storyboard": {
+    "episode_no": 19,
+    "title": "无法拨通的电话",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代马国梁颓废惨状",
+            "visual": "中景；马国梁颓废地坐在地毯上，头发凌乱，双眼通红，周围散落着被撕碎的照片和玻璃渣；光线昏暗压抑；道具:全家福照片。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展示马国梁借酒浇愁的痛苦",
+            "visual": "近景；马国梁抓起桌上的烈酒仰头猛灌，辛辣酒液呛得他剧烈咳嗽，眼泪鼻涕混在一起流下；镜头轻微手持晃动。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "表现马国梁的悔恨与自嘲",
+            "visual": "特写；马国梁边咳边惨笑，声音嘶哑，表情痛苦扭曲。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：孤家寡人……报应……这都是我的报应！",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "马国梁试图联系顾盼",
+            "visual": "中近景；马国梁跌跌撞撞爬向沙发，颤抖着手摸出手机；道具:手机。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "强化拨号前的犹豫与渴望",
+            "visual": "特写；手机屏幕上显示“顾盼”的名字，马国梁的大拇指悬在拨号键上方剧烈颤抖；过肩主观镜头；道具:手机。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "马国梁崩溃求原谅",
+            "visual": "近景；马国梁对着手机屏幕，哭得像个孩子，满脸泪水。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：盼盼……对不起……我错了，求求你原谅我，我们重新开始好不好……",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 1,
+            "purpose": "情绪转折，意识到现实的冰冷",
+            "visual": "中景；马国梁手指即将按下拨号键时突然僵住，环顾四周空荡荡冷冰冰的房间，眼中光芒彻底暗淡。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 1,
+            "purpose": "表现极度的自我厌恶",
+            "visual": "特写；马国梁喃喃自语，充满自我厌恶，眼神空洞。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：我有什么资格……我亲手毁了一切，我还有什么脸打扰她……",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 9,
+            "scene_no": 1,
+            "purpose": "彻底断绝念想",
+            "visual": "特写；马国梁缓缓闭上眼睛，深吸一口气，手指无力松开，手机掉在地上屏幕粉碎；焦点跟随手机下落；道具:手机。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 10,
+            "scene_no": 1,
+            "purpose": "强化马国梁的绝望结局",
+            "visual": "中远景；马国梁彻底崩溃，捂住脸，在黑暗的客厅里发出绝望凄厉的痛哭声；高角度俯拍强化孤立无援感。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "交代顾盼阳光明媚的新生活状态",
+            "visual": "中景；顾盼穿着清爽休闲装，哼着轻快的歌，将鲜艳的裙子叠好放进行李箱；阳光明媚，色调温暖。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "展示女大学生的支持与祝福",
+            "visual": "近景；桌上放着一束娇艳的鲜花和卡片，顾盼看着卡片会心一笑；焦点在卡片上。",
+            "characters": [
+              "顾盼",
+              "女大学生"
+            ],
+            "dialogue": "画外音：顾姨，你太厉害了！手撕渣男小三，太解气了！以后谁要是再敢说你坏话，我第一个站出来反驳！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "顾盼接听电话",
+            "visual": "中近景；桌上的手机响起，顾盼接起电话，顺手按下免提；道具:手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "邻居奶奶表达歉意",
+            "visual": "特写；顾盼一边整理行李一边听电话，表情温和放松。",
+            "characters": [
+              "顾盼",
+              "邻居奶奶"
+            ],
+            "dialogue": "画外音：盼盼啊，是奶奶错了，之前不该误会你。你这孩子，替那个混账背了这么多年的黑锅，太苦了……",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "顾盼释然回应",
+            "visual": "近景；顾盼微笑着对着手机说话，语气温柔。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：奶奶，没事的，都过去了。我现在挺好的，您别放在心上。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 2,
+            "purpose": "父母打来视频通话",
+            "visual": "特写；手机屏幕上显示父母老泪纵横的脸，顾盼接通视频通话；主观视角；道具:手机。",
+            "characters": [
+              "顾盼",
+              "顾盼父母"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 2,
+            "purpose": "父母愧疚道歉",
+            "visual": "近景；顾盼看着屏幕，眼眶微红，但眼神释然。",
+            "characters": [
+              "顾盼",
+              "顾盼父母"
+            ],
+            "dialogue": "画外音：盼盼，是爸妈糊涂，不该一直怪你生不出孩子……你受了天大的委屈，怎么都不跟家里说啊！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 2,
+            "purpose": "顾盼安慰父母，展现彻底放下",
+            "visual": "中近景；顾盼笑容灿烂，对着屏幕安慰父母。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：爸，妈，我这不是怕你们担心嘛。现在真相大白了，我一点都不委屈。你们好好保重身体，不用操心我。",
+            "duration": 5.5
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "表现顾盼心结彻底解开",
+            "visual": "中景；顾盼挂断电话，长长地舒了一口气，表情彻底放松，如释重负。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "引出前往云南的计划",
+            "visual": "近景；顾盼走到桌前，拿起一张飞往云南的头等舱机票；焦点转移到机票上。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "宣告新生活的开始",
+            "visual": "特写；顾盼看着机票，轻声自语，眼神坚定且充满期待。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：马国梁，你的戏落幕了，而我的人生，才刚刚开始。",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 3,
+            "purpose": "展现顾盼干脆利落的行动",
+            "visual": "全景；顾盼将机票塞进随身包，拉上行李箱拉链，戴上墨镜，拉着行李箱大步走向门口。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 3,
+            "purpose": "充满希望的结尾",
+            "visual": "中景；顾盼推开门，迎着灿烂的阳光走了出去；背影充满希望，逆光拍摄，画面明亮。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.5
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 9,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 0.0,
+    "missing_dialogues": [
+      "马国梁：（边咳边惨笑，声音嘶哑）孤家寡人……报应……这都是我的报应！",
+      "马国梁：（对着手机屏幕，哭得像个孩子）盼盼……对不起……我错了，求求你原谅我，我们重新开始好不好……",
+      "马国梁：（喃喃自语，充满自我厌恶）我有什么资格……我亲手毁了一切，我还有什么脸打扰她……",
+      "女大学生：（画外音，语气激动）顾姨，你太厉害了！手撕渣男小三，太解气了！以后谁要是再敢说你坏话，我第一个站出来反驳！",
+      "邻居奶奶：（电话音，充满愧疚）盼盼啊，是奶奶错了，之前不该误会你。你这孩子，替那个混账背了这么多年的黑锅，太苦了……",
+      "顾盼：（语气温和，一边整理行李一边说）奶奶，没事的，都过去了。我现在挺好的，您别放在心上。",
+      "顾盼父母：（电话音，哽咽）盼盼，是爸妈糊涂，不该一直怪你生不出孩子……你受了天大的委屈，怎么都不跟家里说啊！",
+      "顾盼：（眼眶微红，但笑容灿烂）爸，妈，我这不是怕你们担心嘛。现在真相大白了，我一点都不委屈。你们好好保重身体，不用操心我。",
+      "顾盼：（看着机票，轻声自语）马国梁，你的戏落幕了，而我的人生，才刚刚开始。"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "手机"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

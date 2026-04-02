@@ -45,6 +45,7 @@ DEFAULT_UNIT_SPLIT_SENTENCE_BOUNDARIES = "。！？!?；;"
 DEFAULT_UNIT_SPLIT_MERGE_SHORT_TAIL = True
 DEFAULT_EPISODE_COUNT = 60
 DEFAULT_EPISODE_SPLIT_REPAIR_ROUNDS = 2
+DEFAULT_CLEANING_MAX_WORKERS = 1
 DEFAULT_EPISODE_CONTENT_MAX_WORKERS = 4
 DEFAULT_STORYBOARD_MAX_WORKERS = 4
 EPISODE_PLAN_ROOT_PATH = PROJECT_ROOT / "episode_split_plan.json"
@@ -373,6 +374,7 @@ def process_script_to_output(
         "cleaned_chars": cleaned_chars,
         "cleaning_overlong": is_cleaning_overlong,
         "cleaning_chunk_size": cleaning_chunk_size,
+        "cleaning_max_workers": _read_cleaning_max_workers_config(),
         "cleaning_strategy": cleaning_strategy,
         "cleaning_prompt_file": str(CLEANING_PROMPT_PATH),
         "feature_prompt_file": str(FEATURE_PROMPT_PATH),
@@ -2494,46 +2496,96 @@ def _empty_story_bible() -> dict[str, Any]:
     }
 
 
+def _format_exception_brief(exc: Exception) -> str:
+    exc_type = type(exc).__name__
+    message = _coerce_text(str(exc))
+    details = _coerce_text(repr(exc))
+
+    if message and details and message != details:
+        return f"{exc_type}: {message} | {details}"
+    if message:
+        return f"{exc_type}: {message}"
+    if details:
+        return f"{exc_type}: {details}"
+    return exc_type
+
+
 def _clean_script_robust(
     llm,
     raw_script: str,
     cleaning_chunk_size: int,
     progress_callback: ProgressCallback | None = None,
 ) -> tuple[str, str]:
-    cleaned = clean_script_with_prompt(
-        llm=llm,
-        raw_script=raw_script,
-        prompt_path=CLEANING_PROMPT_PATH,
-    )
-    if cleaned.strip():
+    is_overlong = len(raw_script) > cleaning_chunk_size
+    cleaned = ""
+
+    if not is_overlong:
+        try:
+            cleaned = clean_script_with_prompt(
+                llm=llm,
+                raw_script=raw_script,
+                prompt_path=CLEANING_PROMPT_PATH,
+            )
+        except Exception as exc:
+            _emit_progress(
+                progress_callback,
+                stage="cleaning_internal",
+                message=(
+                    f"剧本清洗主流程调用失败，进入兜底策略："
+                    f"{_format_exception_brief(exc)}"
+                ),
+                cleaning_strategy="llm_failed",
+            )
+
+        if cleaned.strip():
+            _emit_progress(
+                progress_callback,
+                stage="cleaning_internal",
+                message="剧本清洗主流程返回有效结果",
+                cleaning_strategy="llm",
+            )
+            return cleaned, "llm"
+
         _emit_progress(
             progress_callback,
             stage="cleaning_internal",
-            message="剧本清洗主流程返回有效结果",
-            cleaning_strategy="llm",
+            message="剧本清洗主流程返回空结果，进入兜底策略",
         )
-        return cleaned, "llm"
+    else:
+        _emit_progress(
+            progress_callback,
+            stage="cleaning_internal",
+            message="剧本超过单次清洗阈值，优先走分块清洗",
+            cleaning_strategy="chunked_preferred",
+        )
 
-    _emit_progress(
-        progress_callback,
-        stage="cleaning_internal",
-        message="剧本清洗主流程返回空结果，进入兜底策略",
-    )
-    if len(raw_script) <= cleaning_chunk_size * 2:
+    try:
         chunked_cleaned = _clean_script_in_chunks(
             llm=llm,
             raw_script=raw_script,
             cleaning_chunk_size=cleaning_chunk_size,
             progress_callback=progress_callback,
         )
-        if chunked_cleaned.strip():
-            _emit_progress(
-                progress_callback,
-                stage="cleaning_internal",
-                message="分块清洗成功",
-                cleaning_strategy="chunked",
-            )
-            return chunked_cleaned, "chunked"
+    except Exception as exc:
+        chunked_cleaned = ""
+        _emit_progress(
+            progress_callback,
+            stage="cleaning_internal",
+            message=(
+                f"分块清洗失败，使用本地清洗兜底："
+                f"{_format_exception_brief(exc)}"
+            ),
+            cleaning_strategy="chunked_failed",
+        )
+
+    if chunked_cleaned.strip():
+        _emit_progress(
+            progress_callback,
+            stage="cleaning_internal",
+            message="分块清洗成功",
+            cleaning_strategy="chunked",
+        )
+        return chunked_cleaned, "chunked"
 
     _emit_progress(
         progress_callback,
@@ -2554,29 +2606,107 @@ def _clean_script_in_chunks(
     if not chunks:
         return ""
 
+    max_workers = min(_read_cleaning_max_workers_config(), max(len(chunks), 1))
     _emit_progress(
         progress_callback,
         stage="cleaning_internal",
-        message=f"分块清洗中（共 {len(chunks)} 块）",
+        message=f"分块清洗中（共 {len(chunks)} 块，并发: {max_workers}）",
         chunk_count=len(chunks),
+        max_workers=max_workers,
     )
-    cleaned_chunks: list[str] = []
-    for chunk_index, chunk in enumerate(chunks, start=1):
-        _emit_progress(
-            progress_callback,
-            stage="cleaning_internal",
-            message=f"分块清洗进度：第 {chunk_index}/{len(chunks)} 块",
-            chunk_index=chunk_index,
-            chunk_count=len(chunks),
-        )
-        cleaned_chunk = clean_script_with_prompt(
-            llm=llm,
-            raw_script=chunk,
-            prompt_path=CLEANING_PROMPT_PATH,
-        ).strip()
-        cleaned_chunks.append(cleaned_chunk if cleaned_chunk else chunk.strip())
+    if max_workers <= 1:
+        cleaned_chunks: list[str] = []
+        for chunk_index, chunk in enumerate(chunks, start=1):
+            _emit_progress(
+                progress_callback,
+                stage="cleaning_internal",
+                message=f"分块清洗进度：第 {chunk_index}/{len(chunks)} 块",
+                chunk_index=chunk_index,
+                chunk_count=len(chunks),
+            )
+            try:
+                cleaned_chunk = clean_script_with_prompt(
+                    llm=llm,
+                    raw_script=chunk,
+                    prompt_path=CLEANING_PROMPT_PATH,
+                ).strip()
+            except Exception as exc:
+                _emit_progress(
+                    progress_callback,
+                    stage="cleaning_internal",
+                    message=(
+                        f"第 {chunk_index}/{len(chunks)} 块清洗失败，保留原文："
+                        f"{_format_exception_brief(exc)}"
+                    ),
+                    chunk_index=chunk_index,
+                    chunk_count=len(chunks),
+                )
+                cleaned_chunk = ""
+            cleaned_chunks.append(cleaned_chunk if cleaned_chunk else chunk.strip())
+        return "\n\n".join(part for part in cleaned_chunks if part)
 
-    return "\n\n".join(part for part in cleaned_chunks if part)
+    cleaned_chunks_by_index: list[str] = [""] * len(chunks)
+    llm_thread_local = threading.local()
+    completed_count = 0
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(
+                _clean_single_script_chunk,
+                llm=llm,
+                llm_thread_local=llm_thread_local,
+                chunk=chunk,
+            ): (chunk_index, chunk)
+            for chunk_index, chunk in enumerate(chunks, start=1)
+        }
+
+        for future in as_completed(futures):
+            chunk_index, chunk = futures[future]
+            try:
+                cleaned_chunk = future.result().strip()
+            except Exception as exc:
+                _emit_progress(
+                    progress_callback,
+                    stage="cleaning_internal",
+                    message=(
+                        f"第 {chunk_index}/{len(chunks)} 块清洗失败，保留原文："
+                        f"{_format_exception_brief(exc)}"
+                    ),
+                    chunk_index=chunk_index,
+                    chunk_count=len(chunks),
+                    max_workers=max_workers,
+                )
+                cleaned_chunk = ""
+
+            cleaned_chunks_by_index[chunk_index - 1] = cleaned_chunk if cleaned_chunk else chunk.strip()
+            completed_count += 1
+            _emit_progress(
+                progress_callback,
+                stage="cleaning_internal",
+                message=(
+                    f"分块清洗已完成 {completed_count}/{len(chunks)} 块"
+                    f"（刚完成第 {chunk_index} 块）"
+                ),
+                chunk_index=chunk_index,
+                chunk_count=len(chunks),
+                completed_chunk_count=completed_count,
+                max_workers=max_workers,
+            )
+
+    return "\n\n".join(part for part in cleaned_chunks_by_index if part)
+
+
+def _clean_single_script_chunk(
+    llm,
+    llm_thread_local: threading.local | None,
+    chunk: str,
+) -> str:
+    worker_llm = _get_parallel_worker_llm(llm=llm, llm_thread_local=llm_thread_local)
+    return clean_script_with_prompt(
+        llm=worker_llm,
+        raw_script=chunk,
+        prompt_path=CLEANING_PROMPT_PATH,
+    )
 
 
 def _split_text(text: str, chunk_size: int) -> list[str]:
@@ -2706,6 +2836,18 @@ def _read_cleaning_chunk_size_config() -> int:
     return chunk_size
 
 
+def _read_cleaning_max_workers_config() -> int:
+    raw_workers = os.getenv("CLEANING_MAX_WORKERS", str(DEFAULT_CLEANING_MAX_WORKERS))
+    try:
+        workers = int(raw_workers)
+    except ValueError as exc:
+        raise ValueError("CLEANING_MAX_WORKERS must be an integer") from exc
+
+    if workers <= 0:
+        raise ValueError("CLEANING_MAX_WORKERS must be positive")
+    return workers
+
+
 def _read_episode_count_config() -> int:
     raw_count = os.getenv("DEFAULT_EPISODE_COUNT", str(DEFAULT_EPISODE_COUNT))
     try:
@@ -2832,7 +2974,7 @@ def _split_paragraph_if_needed(
     if len(paragraph) <= window_max:
         return [paragraph]
 
-    sentences = _sentence_split(paragraph, sentence_boundaries)
+    sentences = _sentence_split_with_boundaries(paragraph, sentence_boundaries)
     chunks: list[str] = []
     current = ""
 

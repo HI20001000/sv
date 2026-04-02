@@ -1,0 +1,64 @@
+{
+  "target_episode_count": 20,
+  "planned_episode_count": 20,
+  "allocation_strategy": "整体采用‘8-8-4’的节奏结构：前段（u_0001-u_0003）共8集，用于铺垫背叛、建立反派仇恨值并揭示核心悬念；中段高潮（u_0004-u_0006）共8集，集中展现婚礼上的极致拉扯、当众打脸与铁证曝光，节奏紧凑且爽感密集；尾声（u_0007）分配4集，因其包含反派内讧、男主悔恨、女主洗清骂名及开启新生等大量收尾事件，需充足篇幅确保情绪彻底释放。",
+  "unit_allocations": [
+    {
+      "unit_id": "u_0001",
+      "episode_count": 3,
+      "char_count": 2186,
+      "reason": "作为开局，需充分展现男主的无耻摊牌、小三的鸠占鹊巢以及女主的冷静应对，建立初步的冲突与悬念，3集能稳扎稳打立住人设。"
+    },
+    {
+      "unit_id": "u_0002",
+      "episode_count": 3,
+      "char_count": 2176,
+      "reason": "包含女主受亲友误解指责的委屈，同时向观众揭开‘男主不孕’的核心机密，情绪压抑与悬念反转并存，需要3集来拉满观众的期待值。"
+    },
+    {
+      "unit_id": "u_0003",
+      "episode_count": 2,
+      "char_count": 1588,
+      "reason": "属于复仇前的过渡与筹备期，交代隐忍过往并接下婚礼请柬，信息明确且节奏需明快，分配2集快速推进至高潮场景。"
+    },
+    {
+      "unit_id": "u_0004",
+      "episode_count": 2,
+      "char_count": 2119,
+      "reason": "婚礼开场戏，主要功能是营造反派的嚣张气焰与暴风雨前的宁静，2集篇幅足以将矛盾推至爆发边缘而不显拖沓。"
+    },
+    {
+      "unit_id": "u_0005",
+      "episode_count": 3,
+      "char_count": 2125,
+      "reason": "婚礼高潮第一阶段，涵盖男主赠房、女主发难、扇耳光及口头揭露不孕真相，情绪爆点密集，需3集详细刻画冲突瞬间。"
+    },
+    {
+      "unit_id": "u_0006",
+      "episode_count": 3,
+      "char_count": 1718,
+      "reason": "婚礼高潮第二阶段，连续抛出录音与出轨视频两大铁证，彻底击溃反派防线，是全剧最核心的爽点，需3集释放复仇快感。"
+    },
+    {
+      "unit_id": "u_0007",
+      "episode_count": 4,
+      "char_count": 4623,
+      "reason": "结局信息量极大（字数最多），包含反派互殴、被扫地出门、男主悔恨、女主销毁冻卵及云南新生等多个重要情节，需4集完整收束全剧。"
+    }
+  ],
+  "notes": "高潮部分（u_0005与u_0006）的单集切分建议卡在关键证据抛出或反派情绪崩溃的瞬间，以维持极高的连播率；u_0007虽为结局，但事件密度极高，切忌压缩过快导致烂尾。",
+  "validation": {
+    "sum_matches_target": true,
+    "unit_count": 7,
+    "target_episode_count": 20,
+    "planned_episode_count": 20,
+    "all_units_covered": true,
+    "no_unknown_unit_ids": true,
+    "no_duplicate_unit_ids": true,
+    "missing_unit_ids": [],
+    "unknown_unit_ids": [],
+    "duplicate_unit_ids": [],
+    "errors": [],
+    "is_valid": true
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "episode_no": 15,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0015.json",
+  "storyboard": {
+    "episode_no": 15,
+    "title": "崩潰的渣男",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "展示真相曝光后的死寂与马国梁的崩溃起点",
+            "visual": "中景；马国梁死死盯着大屏幕，身体僵硬，大脑一片空白；背景大屏幕定格着方柔的脸；镜头缓慢推近马国梁；焦点锁定马国梁，背景微虚；现场光线暗淡死寂。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现宾客的嘲笑与议论，施加社会压力",
+            "visual": "中近景；几名宾客交头接耳，眼神充满震惊与嘲笑；镜头轻微手持浮动；焦点在说话的宾客脸上；宴会厅顶光打下。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "宾客A：天哪……原来马国梁才是那个不能生的废人。宾客B：不仅是个废人，还替别人养了二十多年的野种，连家产都要被卷跑了！真是个绝世大冤种！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "表现马国梁的生理反应与极度愤怒",
+            "visual": "特写；马国梁脸色惨白，额角青筋剧烈跳动，浑身发抖；镜头微移；焦点锐利；侧光凸显面部肌肉抽搐。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "展现方柔垂死挣扎与极度恐慌",
+            "visual": "中近景；方柔瘫坐在地上，双手死死抓着皱巴巴的婚纱，拼命摇头；俯拍视角建立弱势感；焦点锁定方柔惊恐的双眼。",
+            "characters": [
+              "方柔"
+            ],
+            "dialogue": "方柔：假的……这肯定是你找人伪造的！国梁，你别信她！是顾盼陷害我，她陷害我们一家！",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "表现马国梁的怒火转移与压迫感",
+            "visual": "中景；马国梁缓缓转头死死盯着方柔，视线随后扫向躲在后方的马曼妮和马天宇；过肩镜头建立压迫关系；镜头缓慢平移。",
+            "characters": [
+              "马国梁",
+              "方柔",
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "展现马国梁理智断线",
+            "visual": "特写；马国梁咬牙切齿，双眼猩红，面部肌肉扭曲；镜头极近距离手持；背景完全虚化。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：伪造？那视频里的声音，那张脸，难道也是伪造的？！",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 1,
+            "purpose": "爆发肢体冲突，引入关键道具",
+            "visual": "中景；马国梁猛地转身，一把抓起桌上的香槟杯，用尽全身力气狠狠砸向方柔；动作迅猛，镜头快速跟随；道具:香槟杯。",
+            "characters": [
+              "马国梁",
+              "方柔"
+            ],
+            "dialogue": "方柔：啊！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 1,
+            "purpose": "展示方柔的狼狈与孩子们的懦弱",
+            "visual": "中景；香槟杯在方柔身上碎裂，酒液飞溅，马曼妮和马天宇吓得连连后退缩在角落；镜头轻微晃动；道具:香槟杯。",
+            "characters": [
+              "方柔",
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "马天宇：妈……这到底是怎么回事啊……\n马曼妮：别看我，我什么都不知道！",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 9,
+            "scene_no": 1,
+            "purpose": "展现马国梁的极端暴力与愤怒宣泄",
+            "visual": "中近景；马国梁如野兽般冲上前，揪住方柔头发将她半提起来，狠狠扇了一个耳光；手持镜头跟随动作剧烈晃动；高对比度光线强化冲突。",
+            "characters": [
+              "马国梁",
+              "方柔"
+            ],
+            "dialogue": "马国梁：你个贱人！！我掏心掏肺对你三十年，为了你，我连结发妻子都不要了！你就是这么回报我的？！拿别人的野种来骗我的钱！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 10,
+            "scene_no": 1,
+            "purpose": "展现方柔的卑微求饶",
+            "visual": "中景；方柔被打得嘴角流血，哭喊着抱住马国梁的腿；仰拍视角展现她的卑微求饶；焦点在方柔流血的嘴角。",
+            "characters": [
+              "方柔",
+              "马国梁"
+            ],
+            "dialogue": "方柔：国梁，我错了！我真的是一时糊涂！但曼妮和天宇叫了你二十多年的爸啊，你不能这么绝情！",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 11,
+            "scene_no": 1,
+            "purpose": "展现彻底决裂",
+            "visual": "中景；马国梁一脚将方柔踹开，满脸嫌恶地指着她怒吼；镜头稳定，空间关系拉开；冷色调光线。",
+            "characters": [
+              "马国梁",
+              "方柔"
+            ],
+            "dialogue": "马国梁：滚！别弄脏了我的衣服！你们全都是吸血鬼！骗子！",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 12,
+            "scene_no": 1,
+            "purpose": "交代闹剧全貌与旁观者反应",
+            "visual": "全景；婚礼现场一片狼藉，周围宾客纷纷举起手机开启闪光灯拍摄，马国梁在中央狂怒，方柔倒地；高机位俯拍交代全局；闪光灯频闪。",
+            "characters": [
+              "马国梁",
+              "方柔",
+              "宾客们"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 13,
+            "scene_no": 1,
+            "purpose": "展现顾盼的胜利者姿态",
+            "visual": "中近景；顾盼身姿挺拔站在不远处，手里端着香槟，嘴角勾起嘲讽冷笑；侧逆光勾勒出胜利者的从容；焦点锁定顾盼；道具:香槟杯。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 14,
+            "scene_no": 1,
+            "purpose": "顾盼完成复仇的嘲讽",
+            "visual": "特写；顾盼举起酒杯遥遥一敬，眼神冷漠而痛快；镜头缓慢推近；背景的喧闹人群被严重虚化；道具:香槟杯。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：新婚快乐啊，马先生。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 15,
+            "scene_no": 1,
+            "purpose": "顾盼潇洒离场，结束本集",
+            "visual": "中景；顾盼将香槟一饮而尽，转身头也不回地走向宴会厅大门；镜头跟随顾盼背影移动；焦点始终在顾盼身上，背景彻底模糊；道具:香槟杯。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.5
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 0,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 1.0,
+    "missing_dialogues": [],
+    "unknown_characters": [],
+    "required_props": [
+      "香槟杯"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": true,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

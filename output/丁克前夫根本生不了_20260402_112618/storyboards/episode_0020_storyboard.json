@@ -1,0 +1,260 @@
+{
+  "episode_no": 20,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0020.json",
+  "storyboard": {
+    "episode_no": 20,
+    "title": "洱海边的风",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "展现马国梁家破人亡后的狼藉与落魄",
+            "visual": "中景；马国梁头发凌乱、脸色灰败，跌跌撞撞走到酒柜旁；镜头缓慢推近；背景是满地玻璃碎片；道具:全家福相框。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "表现马国梁借酒浇愁的痛苦与悔恨",
+            "visual": "特写；马国梁抓起一瓶烈酒猛灌，被呛得剧烈咳嗽，眼泪鼻涕混在一起；镜头轻微手持晃动，强化狼狈感。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：（剧烈咳嗽，眼泪鼻涕混在一起，喃喃自语）顾盼……顾盼……是我错了，是我亲手把你推开的……",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "展现马国梁试图联系顾盼的犹豫",
+            "visual": "中近景；马国梁瘫倒在沙发上，颤抖着手翻出号码，手指停在拨号键上迟迟未按；侧逆光压低面部细节；道具:手机。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "表现马国梁极度的绝望与崩溃",
+            "visual": "特写；马国梁狠狠抽了自己一个耳光，捂着脸痛哭流涕，手指松开；镜头焦点随手部动作下移。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：（捂着脸，痛哭流涕）对不起……对不起……",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "交代手机摔碎的细节，象征无法挽回的局面",
+            "visual": "特写；手机“啪嗒”一声掉在地上，屏幕摔得粉碎；镜头固定；道具:手机。",
+            "characters": [],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "表现马国梁突发疾病的惨状",
+            "visual": "中景；马国梁脸色突变，痛苦地捂住胸口，呼吸急促，挣扎着去够地上的手机，随后重重栽倒在地，痛苦蜷缩；镜头俯拍，强调其孤立无援；道具:手机。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "交代顾盼轻松准备出行的状态与父母的道歉",
+            "visual": "中景；阳光明媚，顾盼穿着休闲装，正轻松地往行李箱里装衣服；镜头缓慢平移；一旁的手机开着免提；道具:手机。",
+            "characters": [
+              "顾盼",
+              "顾盼的母亲"
+            ],
+            "dialogue": "顾盼母亲（电话音）：盼盼，是爸妈错了，不该一直怪你，你受委屈了……",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "展现顾盼对过往的释怀",
+            "visual": "中近景；顾盼一边整理衣物一边对着手机说话，神情轻松自然；焦点在顾盼带笑的脸庞。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：（语气轻松）妈，都过去了。我订了去云南的机票，打算好好玩一阵子，你们不用担心我。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "引入邻居的祝贺，强化女主胜利的爽感",
+            "visual": "中景；顾盼打开门，女大学生捧着一大束鲜花站在门外，满脸崇拜；过肩镜头建立互动关系。",
+            "characters": [
+              "顾盼",
+              "亲友邻居"
+            ],
+            "dialogue": "女大学生：顾姨，这花送给你！你太厉害了，手撕渣男小三，太解气了！以后谁要是再敢说你坏话，我第一个站出来反驳！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "表现顾盼彻底放下他人看法的通透",
+            "visual": "近景；顾盼笑着接过鲜花，眼神温和而坚定；镜头微推。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：（笑着接过鲜花）谢谢你。不过，别人的看法已经不重要了，我要去过自己的日子了。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "交代顾盼处理最后牵挂的决定",
+            "visual": "中近景；顾盼送走女孩后，拿起手机拨通号码，贴在耳边；光线明亮柔和；道具:手机。",
+            "characters": [
+              "顾盼",
+              "刘医生"
+            ],
+            "dialogue": "顾盼：喂，刘医生吗？对，我冻在卵子库的卵子，我决定全部捐赠出去。希望能帮到真正需要的人。谢谢。",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "交代顾盼在旅途中的惬意状态",
+            "visual": "中景；顾盼靠在车座椅背上，转头看着窗外明媚的阳光，深呼吸，神情舒畅；车窗外光影在脸上流转。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "交代反派们的凄惨下场",
+            "visual": "特写；顾盼低头看向震动的手机屏幕，眼神平静无波；镜头聚焦在手机屏幕的微光上；道具:手机。",
+            "characters": [
+              "顾盼",
+              "周侦探"
+            ],
+            "dialogue": "周侦探（短信语音播报）：顾女士，方柔母子被赶出后无家可归，方柔的情人因赌债跑路了。马曼妮和马天宇跟方柔反目，已经离家出走。另外，马国梁因情绪激动突发高血压，住进了医院，身边连个照料的人都没有。",
+            "duration": 8.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "表现顾盼彻底终结过去的决绝",
+            "visual": "近景；顾盼手指轻敲屏幕回复消息，边打字边轻声念出，随后按下发送键；镜头轻微手持。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：（边打字边轻声念出）知道了，后续不用再跟进了，辛苦你了，周哥。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 3,
+            "purpose": "展现顾盼放下一切的轻松",
+            "visual": "中近景；顾盼将手机锁屏，随手扔进包里，转头继续看向窗外的风景，嘴角带着释然的微笑；道具:手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "建立大理洱海的宁静环境与顾盼的悠闲状态",
+            "visual": "全景转中景；波光粼粼的洱海背景下，顾盼穿着一袭飘逸的长裙坐在阳台藤椅上，桌上热茶袅袅；镜头缓慢推进。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 4,
+            "purpose": "表现顾盼对前半生的总结与释怀",
+            "visual": "近景；微风吹拂顾盼的头发，她端起茶杯轻轻抿了一口，嘴角勾起淡淡的微笑；柔和的自然光打在脸上。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：（内心独白）马国梁筹谋一生，终究落得个两头空。而我，为了这段婚姻，活成了别人眼中的样子，却忘了自己真正想要的是什么。好在，三十年的枷锁，今天终于彻底卸下。",
+            "duration": 8.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 4,
+            "purpose": "展现顾盼拥抱新生活的自由感",
+            "visual": "中景；顾盼站起身走到阳台边缘，张开双臂，迎着洱海的风闭上眼睛深吸气；逆光勾勒出她自由的身影。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 4,
+            "purpose": "点题全剧，表现顾盼新生的喜悦",
+            "visual": "特写；顾盼睁开眼，望着广阔的洱海，笑容灿烂明媚；镜头缓慢推近，定格在她充满希望的脸庞上。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：（轻声，带着对未来的期许）我的人生，才刚刚开始。",
+            "duration": 4.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 11,
+    "dialogue_covered": 11,
+    "dialogue_coverage_rate": 1.0,
+    "missing_dialogues": [],
+    "unknown_characters": [],
+    "required_props": [
+      "手机"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": true,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

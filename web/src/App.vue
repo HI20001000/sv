@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 import {
   deleteInputDocument,
@@ -40,6 +40,7 @@ const promptOriginal = ref('')
 const promptStatus = ref('')
 
 const chatInput = ref('')
+const chatStream = ref(null)
 const fileInput = ref(null)
 const notice = ref('')
 const workflowPollers = new Map()
@@ -159,6 +160,12 @@ function formatWorkflowMessage(payload) {
 
 function pushMessage(role, content, type = role) {
   chatMessages.value.push({ role, content, type })
+}
+
+async function scrollChatToBottom() {
+  await nextTick()
+  if (!chatStream.value) return
+  chatStream.value.scrollTop = chatStream.value.scrollHeight
 }
 
 function clearPromptEditor() {
@@ -569,6 +576,7 @@ async function handleChatSubmit() {
 
 onMounted(() => {
   bootstrap()
+  scrollChatToBottom()
 })
 
 onBeforeUnmount(() => {
@@ -577,6 +585,22 @@ onBeforeUnmount(() => {
   })
   workflowPollers.clear()
 })
+
+watch(
+  () => chatMessages.value.length,
+  () => {
+    scrollChatToBottom()
+  },
+)
+
+watch(
+  () => busy.value.chat || busy.value.workflow,
+  (isBusy, wasBusy) => {
+    if (isBusy !== wasBusy) {
+      scrollChatToBottom()
+    }
+  },
+)
 </script>
 
 <template>
@@ -801,7 +825,7 @@ onBeforeUnmount(() => {
           </div>
         </div>
 
-        <div class="chat-stream">
+        <div ref="chatStream" class="chat-stream">
           <article
             v-for="(message, index) in chatMessages"
             :key="`${message.role}-${index}`"

@@ -1,0 +1,70 @@
+{
+  "target_episode_count": 20,
+  "planned_episode_count": 20,
+  "allocation_strategy": "整體遵循『緊湊鋪墊-重磅高潮-舒缓收尾』的節奏。前兩個單元快速交代背景與矛盾；第三單元信息量巨大，增加集數以深化女主智謀人設；第五、六單元為全劇核心高潮，分配最多集數以充分展現打臉與反轉的極致爽感；結尾單元字數多且需交代多方命運，給予充足篇幅進行情緒昇華。",
+  "unit_allocations": [
+    {
+      "unit_id": "u_0001",
+      "episode_count": 2,
+      "char_count": 1621,
+      "reason": "開篇交代離婚背景，建立渣男自鳴得意與女主暗中佈局的信息差，節奏明快，2集足以完成引入。"
+    },
+    {
+      "unit_id": "u_0002",
+      "episode_count": 2,
+      "char_count": 1884,
+      "reason": "過渡情節，主要展現小三鳩佔鵲巢與女主獲取初步證據，矛盾進一步積累，分配2集保持緊湊節奏。"
+    },
+    {
+      "unit_id": "u_0003",
+      "episode_count": 3,
+      "char_count": 1817,
+      "reason": "核心背景揭示，包含30年替夫背鍋的隱情與5年暗中佈局的回憶，信息量極大，需3集充分刻畫女主的隱忍與底牌。"
+    },
+    {
+      "unit_id": "u_0004",
+      "episode_count": 2,
+      "char_count": 2251,
+      "reason": "高潮前夕的蓄勢，女主高調赴宴與挑釁應對，屬於暴風雨前的寧靜，2集可有效拉扯觀眾期待感。"
+    },
+    {
+      "unit_id": "u_0005",
+      "episode_count": 3,
+      "char_count": 2312,
+      "reason": "全劇第一大高潮，婚禮現場財產爭奪與當眾爆出男主不育真相，衝突極其激烈，需3集細緻展現爆發過程。"
+    },
+    {
+      "unit_id": "u_0006",
+      "episode_count": 3,
+      "char_count": 2161,
+      "reason": "全劇第二大高潮，錄音與視頻鐵證連發，渣男小三當場互撕，戲劇張力拉滿，分配3集將爽感推至頂峰。"
+    },
+    {
+      "unit_id": "u_0007",
+      "episode_count": 2,
+      "char_count": 2144,
+      "reason": "高潮餘波，渣男清算小三，女主功成身退，屬於爽感延續與收束，2集節奏明快不拖沓。"
+    },
+    {
+      "unit_id": "u_0008",
+      "episode_count": 3,
+      "char_count": 2441,
+      "reason": "大結局，需交代渣男悔恨、小三落魄以及女主的新生，事件多且字數最長，分配3集確保情緒充分釋放與昇華。"
+    }
+  ],
+  "notes": "高潮部分（u_0005, u_0006）共佔據6集，是全劇的流量密碼，建議在實際劇本編寫時將每個反轉點精確卡在單集結尾以增強黏性。",
+  "validation": {
+    "sum_matches_target": true,
+    "unit_count": 8,
+    "target_episode_count": 20,
+    "planned_episode_count": 20,
+    "all_units_covered": true,
+    "no_unknown_unit_ids": true,
+    "no_duplicate_unit_ids": true,
+    "missing_unit_ids": [],
+    "unknown_unit_ids": [],
+    "duplicate_unit_ids": [],
+    "errors": [],
+    "is_valid": true
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "episode_no": 18,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0018.json",
+  "storyboard": {
+    "episode_no": 18,
+    "title": "遲來的悔恨與道歉",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代环境与角色绝望状态",
+            "visual": "中景；马国梁瘫坐在沙发上猛灌酒，周围满地玻璃渣；镜头缓慢推进；暗调光线；道具:全家福相框，道具:马国梁的诊断报告。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "表现马国梁的极度悔恨",
+            "visual": "特写；马国梁眼眶通红，满脸绝望地看着手中的报告；镜头轻微手持晃动；道具:马国梁的诊断报告。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：三十年……顾盼，你替我扛了三十年不能生育的骂名，我却为了一个骗局，亲手把你推开……我真是一个彻头彻尾的蠢货！",
+            "duration": 7.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "展现犹豫与挣扎",
+            "visual": "特写；马国梁颤抖的手指悬在手机拨号键上；焦点在手机屏幕；道具:手机。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "情绪彻底崩溃",
+            "visual": "中近景；马国梁痛哭流涕，身体佝偻；侧逆光压低面部细节。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：顾盼，对不起……对不起……",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "象征希望破灭",
+            "visual": "特写；手机掉落在地上，屏幕瞬间摔得粉碎；慢动作；道具:手机。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "引入来访者",
+            "visual": "中景；顾盼打开门，阳光洒入，门外站着满脸愧疚的邻居奶奶和抱鲜花的女大学生；过肩镜头。",
+            "characters": [
+              "顾盼",
+              "邻居奶奶",
+              "女大学生"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "展现邻居的歉意",
+            "visual": "中近景；邻居奶奶紧紧拉住顾盼的手，眼眶湿润；焦点在两人交握的手上。",
+            "characters": [
+              "顾盼",
+              "邻居奶奶"
+            ],
+            "dialogue": "邻居奶奶：盼盼，是奶奶老糊涂了，之前不该误会你。你这孩子，这些年心里太苦了……",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "展现年轻人的支持",
+            "visual": "中近景；女大学生义愤填膺地将鲜花塞进顾盼怀里；镜头微移。",
+            "characters": [
+              "顾盼",
+              "女大学生"
+            ],
+            "dialogue": "女大学生：顾姨，你昨天在婚礼上太厉害了！手撕渣男小三，简直太解气了！以后谁要是再敢说你一句坏话，我第一个站出来骂回去！",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "表现顾盼的释怀",
+            "visual": "特写；顾盼接过鲜花，释然地微笑；面部光线柔和明亮。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：谢谢你们。其实把真相说出来，我心里的大石头也落地了。都过去了。",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "交代动作与接听电话",
+            "visual": "中景；顾盼将鲜花插进花瓶，拿起响起的手机按下接听键；道具:手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "表现父母的愧疚",
+            "visual": "特写；顾盼听电话，表情变得柔和；背景虚化。",
+            "characters": [
+              "顾盼",
+              "顾盼的父母"
+            ],
+            "dialogue": "画外音：盼盼，是爸妈错了……我们不该一直怪你守不住家，是我们瞎了眼，看错了马国梁那个畜生！你受委屈了……",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "展现顾盼的坚强与宽慰",
+            "visual": "中近景；顾盼眼神温柔，轻声对着手机安慰；镜头缓慢推近。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：妈，别哭了。我这不是挺好的吗？婚前财产我一分没少拿，现在还看清了烂人的真面目，应该替我高兴才对。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 3,
+            "purpose": "父亲的呼唤",
+            "visual": "特写；顾盼微微低头听电话；侧光。",
+            "characters": [
+              "顾盼",
+              "顾盼的父母"
+            ],
+            "dialogue": "画外音：盼盼，回家来吧，爸给你做你最爱吃的菜。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 3,
+            "purpose": "表明决心",
+            "visual": "中景；顾盼眼神坚定，看向前方回应。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：爸，妈，过阵子我再回去看你们。我有个地方，现在必须去。",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "交代退票升舱动作",
+            "visual": "过肩镜头；顾盼坐在电脑前操作，屏幕上显示着机票订单；焦点在屏幕；道具:云南机票。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 4,
+            "purpose": "接收反派结局信息",
+            "visual": "特写；手机震动，顾盼拿起手机看着屏幕念出声；道具:手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：“方柔母子无家可归，情人跑路。马国梁突发高血压住院，无人照料。”",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 4,
+            "purpose": "彻底斩断过去",
+            "visual": "中近景；顾盼面无波澜，手指飞快打字回复，随后将手机反扣在桌面上；道具:手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 4,
+            "purpose": "迎接新生",
+            "visual": "中景；顾盼转头看向窗外灿烂的阳光，伸了个懒腰；暖色调光线。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 4,
+            "purpose": "宣告独立宣言",
+            "visual": "特写；顾盼嘴角上扬，眼神充满希望和坚定；缓慢推近。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：三十年了，这一次，我只为我自己而活。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 4,
+            "purpose": "走向新生活",
+            "visual": "全景；顾盼合上电脑，起身走向充满阳光的窗边；背影洒脱。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 11,
+    "dialogue_covered": 1,
+    "dialogue_coverage_rate": 0.0909,
+    "missing_dialogues": [
+      "马国梁：（哽咽，自嘲）三十年……顾盼，你替我扛了三十年不能生育的骂名，我却为了一个骗局，亲手把你推开……我真是一个彻头彻尾的蠢货！",
+      "马国梁：（痛哭流涕）顾盼，对不起……对不起……",
+      "邻居奶奶：（紧紧拉住顾盼的手，眼眶湿润）盼盼，是奶奶老糊涂了，之前不该误会你。你这孩子，这些年心里太苦了……",
+      "女大学生：（将鲜花塞进顾盼怀里，义愤填膺）顾姨，你昨天在婚礼上太厉害了！手撕渣男小三，简直太解气了！以后谁要是再敢说你一句坏话，我第一个站出来骂回去！",
+      "顾盼：（接过鲜花，释然地笑了）谢谢你们。其实把真相说出来，我心里的大石头也落地了。都过去了。",
+      "顾盼的母亲：（电话音，带着哭腔）盼盼，是爸妈错了……我们不该一直怪你守不住家，是我们瞎了眼，看错了马国梁那个畜生！你受委屈了……",
+      "顾盼：（眼神温柔，轻声安慰）妈，别哭了。我这不是挺好的吗？婚前财产我一分没少拿，现在还看清了烂人的真面目，应该替我高兴才对。",
+      "顾盼的父亲：（电话音，叹气）盼盼，回家来吧，爸给你做你最爱吃的菜。",
+      "顾盼：（看着手机屏幕念出声）“方柔母子无家可归，情人跑路。马国梁突发高血压住院，无人照料。”",
+      "顾盼：（嘴角上扬，眼神坚定）三十年了，这一次，我只为我自己而活。"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "马国梁的诊断报告",
+      "手机"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

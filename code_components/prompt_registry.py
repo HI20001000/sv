@@ -16,10 +16,14 @@ UNIT_EPISODE_PLAN_PROMPT_PATH = PROMPT_DIR / "unit_episode_split_planning_prompt
 EPISODE_GENERATION_PLAN_PROMPT_PATH = PROMPT_DIR / "episode_generation_planning_prompt.md"
 EPISODE_CONTENT_PROMPT_PATH = PROMPT_DIR / "episode_content_generation_prompt.md"
 STORYBOARD_PROMPT_PATH = PROMPT_DIR / "storyboard_generation_prompt.md"
+KB_FEATURE_PROMPT_PATH = PROMPT_DIR / "kb_script_feature_extraction_prompt.md"
+SCHEMA_ALIGNMENT_PROMPT_PATH = PROMPT_DIR / "schema_semantic_alignment_prompt.md"
+SCHEMA_OPTIMIZATION_PROMPT_PATH = PROMPT_DIR / "schema_optimization_prompt.md"
 
 PROMPT_WORKFLOW_STEPS: tuple[dict[str, Any], ...] = (
     {
         "key": "script_cleaning",
+        "workflow": "docs",
         "order": 1,
         "stage": "cleaning",
         "title": "Script Cleaning",
@@ -28,6 +32,7 @@ PROMPT_WORKFLOW_STEPS: tuple[dict[str, Any], ...] = (
     },
     {
         "key": "feature_extraction",
+        "workflow": "docs",
         "order": 2,
         "stage": "feature_extraction",
         "title": "Feature Extraction",
@@ -35,8 +40,27 @@ PROMPT_WORKFLOW_STEPS: tuple[dict[str, Any], ...] = (
         "prompt_path": FEATURE_PROMPT_PATH,
     },
     {
-        "key": "unit_split",
+        "key": "schema_semantic_alignment",
+        "workflow": "docs",
         "order": 3,
+        "stage": "schema_alignment_scoring",
+        "title": "Schema Semantic Alignment",
+        "description": "Score source and TopK knowledge-base schemas across weighted business fields.",
+        "prompt_path": SCHEMA_ALIGNMENT_PROMPT_PATH,
+    },
+    {
+        "key": "schema_optimization",
+        "workflow": "docs",
+        "order": 4,
+        "stage": "schema_optimization",
+        "title": "Schema Optimization",
+        "description": "Optimize low-scoring schema fields using the selected TopK reference schema.",
+        "prompt_path": SCHEMA_OPTIMIZATION_PROMPT_PATH,
+    },
+    {
+        "key": "unit_split",
+        "workflow": "docs",
+        "order": 5,
         "stage": "unit_split",
         "title": "Unit Split",
         "description": "Split the cleaned script into units using editable runtime prompt rules.",
@@ -44,7 +68,8 @@ PROMPT_WORKFLOW_STEPS: tuple[dict[str, Any], ...] = (
     },
     {
         "key": "unit_framework",
-        "order": 4,
+        "workflow": "docs",
+        "order": 6,
         "stage": "unit_framework",
         "title": "Unit Framework Extraction",
         "description": "Summarize each unit into a structured framework for planning.",
@@ -52,7 +77,8 @@ PROMPT_WORKFLOW_STEPS: tuple[dict[str, Any], ...] = (
     },
     {
         "key": "episode_split_plan",
-        "order": 5,
+        "workflow": "docs",
+        "order": 7,
         "stage": "episode_plan",
         "title": "Episode Split Planning",
         "description": "Turn unit frameworks into a multi-episode split plan.",
@@ -60,7 +86,8 @@ PROMPT_WORKFLOW_STEPS: tuple[dict[str, Any], ...] = (
     },
     {
         "key": "episode_generation_plan",
-        "order": 6,
+        "workflow": "docs",
+        "order": 8,
         "stage": "episode_generation_plan",
         "title": "Episode Generation Planning",
         "description": "Build the full per-episode generation plan from the story bible and split plan.",
@@ -68,7 +95,8 @@ PROMPT_WORKFLOW_STEPS: tuple[dict[str, Any], ...] = (
     },
     {
         "key": "episode_content_generation",
-        "order": 7,
+        "workflow": "docs",
+        "order": 9,
         "stage": "episode_content_generation",
         "title": "Episode Content Generation",
         "description": "Generate each episode script from its plan and source units.",
@@ -76,11 +104,21 @@ PROMPT_WORKFLOW_STEPS: tuple[dict[str, Any], ...] = (
     },
     {
         "key": "storyboard_generation",
-        "order": 8,
+        "workflow": "docs",
+        "order": 10,
         "stage": "storyboard_generation",
         "title": "Storyboard Generation",
         "description": "Generate shot-by-shot storyboard output from the episode content.",
         "prompt_path": STORYBOARD_PROMPT_PATH,
+    },
+    {
+        "key": "kb_feature_extraction",
+        "workflow": "knowledge_base",
+        "order": 11,
+        "stage": "knowledge_base_feature_extraction",
+        "title": "Knowledge Base Feature Extraction",
+        "description": "Extract the fixed knowledge-base feature schema from uploaded hit-drama scripts.",
+        "prompt_path": KB_FEATURE_PROMPT_PATH,
     },
 )
 
@@ -143,6 +181,7 @@ def serialize_prompt_workflow() -> list[dict[str, Any]]:
         items.append(
             {
                 "key": step["key"],
+                "workflow": step.get("workflow", "docs"),
                 "order": step["order"],
                 "stage": step["stage"],
                 "title": step["title"],

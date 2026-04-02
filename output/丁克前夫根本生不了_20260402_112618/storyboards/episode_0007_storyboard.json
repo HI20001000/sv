@@ -1,0 +1,397 @@
+{
+  "episode_no": 7,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0007.json",
+  "storyboard": {
+    "episode_no": 7,
+    "title": "挑衅的请柬",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代挑衅道具",
+            "visual": "特写；茶几上的烫金请柬，精致丝带包装显得格外刺眼；镜头缓慢推近；光线明亮；道具:婚礼请柬。",
+            "characters": [],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展示顾盼冷漠态度",
+            "visual": "中近景；顾盼靠在沙发上端着咖啡，眼神冷漠地扫过请柬；旁边的手机开着免提；侧逆光；道具:手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "交代朋友的愤怒",
+            "visual": "特写；顾盼面无表情地听着电话，手背微微靠在沙发扶手上；镜头轻微手持；道具:手机。",
+            "characters": [
+              "顾盼",
+              "朋友们"
+            ],
+            "dialogue": "朋友们：盼盼，他什么意思？明摆着是羞辱你呢！你前脚才刚搬出去，他后脚就风风光光娶小三！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "强化挑衅意味",
+            "visual": "中近景；顾盼轻笑一声，放下手中的咖啡杯；焦点锁定在她的面部表情。",
+            "characters": [
+              "顾盼",
+              "朋友们"
+            ],
+            "dialogue": "朋友们：就是！这婚宴请柬就是赤裸裸的挑衅！你可千万别去，去了就是自讨羞辱，让他们得意忘形！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "展现顾盼的迎战决心",
+            "visual": "特写；顾盼嘴角勾起一丝笑意，眼神锐利；镜头微推。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：去，我当然要去。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "表现朋友的错愕",
+            "visual": "中近景；顾盼拿起茶几上的请柬；镜头跟随手部动作；道具:婚礼请柬。",
+            "characters": [
+              "顾盼",
+              "朋友们"
+            ],
+            "dialogue": "朋友们：你——你怎么想的啊？去了干嘛？看他们秀恩爱吗？",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 1,
+            "purpose": "揭示顾盼的真实目的",
+            "visual": "中景；顾盼随手将请柬扔进一旁的垃圾桶，动作干脆利落；道具:婚礼请柬。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：放心，我不是去给自己添堵的。我就是去看个笑话，看一场精心策划的闹剧，如何演砸。",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "建立通话场景",
+            "visual": "中景；顾盼走到落地窗前，看着窗外城市景色，举着手机通话；背影挺拔；道具:手机。",
+            "characters": [
+              "顾盼",
+              "周侦探"
+            ],
+            "dialogue": "周侦探：顾女士。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "交代婚礼时间地点",
+            "visual": "中近景；顾盼侧脸，眼神锐利，语气平淡；侧逆光勾勒面部轮廓。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：周哥，马国梁和方柔的婚礼定在盛世豪庭牡丹厅，下周六中午十二点，你那边准备得怎么样了？",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "确认现场设备控制权",
+            "visual": "特写；顾盼静静听着电话，微微点头；镜头缓慢推近。",
+            "characters": [
+              "顾盼",
+              "周侦探"
+            ],
+            "dialogue": "周侦探：顾女士放心，一切都准备就绪。牡丹厅的投屏和音响我已经对接好了，婚礼当天我会在现场，确保所有证据都能正常播放。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "追问关键证据",
+            "visual": "中近景；顾盼转过身，背靠落地窗，神情严肃。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：房产过户的资料呢？",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "确认证据万无一失",
+            "visual": "特写；顾盼垂下眼眸，认真倾听；焦点锁定在她的面部细节。",
+            "characters": [
+              "顾盼",
+              "周侦探"
+            ],
+            "dialogue": "周侦探：马国梁准备在婚礼上过户房产给那两个孩子，房产的公示资料我也拿到了原件和复印件。还有方柔和她情人的视频、录音，都已经做好备份，万无一失。",
+            "duration": 7.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 2,
+            "purpose": "表现顾盼的满意",
+            "visual": "特写；顾盼满意地勾起嘴角，露出一丝冷笑。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：很好。",
+            "duration": 2.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 2,
+            "purpose": "揭示意外惊喜线索",
+            "visual": "中近景；顾盼微微挑眉，显得有些意外；镜头轻微浮动。",
+            "characters": [
+              "顾盼",
+              "周侦探"
+            ],
+            "dialogue": "周侦探：另外，方柔的情人最近催钱催得紧。我查到他也打算去婚礼现场，想来是想找方柔要说法。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 2,
+            "purpose": "展现顾盼成竹在胸",
+            "visual": "特写；顾盼眼中闪过一丝精光，笑容加深，眼神充满期待。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：真是天助我也。好，辛苦你了周哥，咱们婚礼上见。",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "展示顾盼的蜕变与精致",
+            "visual": "中景；顾盼站在高档女装店的试衣镜前，换上新衣服，踩着细高跟；镜头上下扫视展现曼妙身姿；道具:酒红色旗袍。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "表现顾盼的反击宣言",
+            "visual": "特写；镜子里的顾盼光芒四射，从容自信；焦点锁定在她的面部表情。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：方柔，你不是想扬眉吐气吗？我倒要看看，你这女主人能当多久。",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "交代婚礼现场的奢华与虚伪",
+            "visual": "全景；金碧辉煌的宴会厅，马国梁穿着西装意气风发，方柔穿着婚纱挽着他；两人正在接受宾客祝福；环境光线明亮。",
+            "characters": [
+              "马国梁",
+              "方柔",
+              "宾客们"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 4,
+            "purpose": "顾盼惊艳登场",
+            "visual": "中景；宴会厅大门被推开，顾盼气场全开地走进来；镜头跟随顾盼移动；道具:酒红色旗袍。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 4,
+            "purpose": "展现宾客的震惊与议论",
+            "visual": "中近景；周围的宾客们停下交谈，目光齐刷刷落向顾盼，交头接耳；焦点在宾客惊讶的表情上。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "宾客们：她怎么来了？马国梁和方柔竟然还敢邀请她？不会是来闹事的吧？换做是谁，被前夫这么对待，都咽不下这口气。哎，毕竟被抛弃了，想来是不甘心吧。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 4,
+            "purpose": "表现顾盼的从容不迫",
+            "visual": "中景；顾盼对议论充耳不闻，姿态优雅地从侍者托盘里端起一杯香槟；道具:香槟杯。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 4,
+            "purpose": "确认盟友就位",
+            "visual": "主观镜头；顾盼视线扫过全场，落在角落里戴着鸭舌帽和口罩的周侦探身上，周侦探微微点头；焦点转移。",
+            "characters": [
+              "顾盼",
+              "周侦探"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 5,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 5,
+            "purpose": "建立对峙空间",
+            "visual": "中景；顾盼端着酒杯走到马国梁和方柔面前，马曼妮和马天宇站在后方用鄙夷的目光看着顾盼；建立压迫关系。",
+            "characters": [
+              "顾盼",
+              "马国梁",
+              "方柔",
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 5,
+            "purpose": "顾盼主动出击",
+            "visual": "特写；顾盼嘴角含笑，眼神平淡地看着两人；过肩镜头。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：恭喜啊，终于如愿以偿了。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 5,
+            "purpose": "展现方柔的绿茶挑衅",
+            "visual": "中近景；方柔眼底闪过嫉妒，随即换上委屈面孔，轻轻靠在马国梁身上；镜头微移捕捉表情变化。",
+            "characters": [
+              "方柔",
+              "马国梁"
+            ],
+            "dialogue": "方柔：谢谢你能来，顾姐。毕竟当年你不能生育，还假装丁克，马国梁也是没办法，不想让你伤心，才想到这个办法，两全其美。现在我们终于能光明正大地在一起了，以后我会好好照顾马国梁的。",
+            "duration": 8.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 5,
+            "purpose": "展现马国梁的虚伪",
+            "visual": "中近景；马国梁端着酒杯上前，满脸虚伪的歉意；焦点在马国梁脸上。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：都过去了，盼盼。我自问对你也是不离不弃，仁至义尽了。现在我老了，就想过过儿女环绕的晚年生活，也希望你能体谅一下。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 5,
+            "purpose": "表现顾盼的怜悯与嘲讽",
+            "visual": "特写；顾盼低头轻笑，目光扫过马国梁身后的马曼妮和马天宇，眼神带着毫不掩饰的怜悯；镜头轻微手持。",
+            "characters": [
+              "顾盼",
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 5,
+            "purpose": "完成敬酒动作",
+            "visual": "特写；顾盼举起酒杯，轻轻碰了碰马国梁的杯子，香槟泡沫微微溅出；道具:香槟杯。",
+            "characters": [
+              "顾盼",
+              "马国梁"
+            ],
+            "dialogue": "顾盼：我当然体谅。只是希望你们，能一直这么幸福。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 5,
+            "purpose": "顾盼退场等待好戏",
+            "visual": "中景；顾盼毫不留恋地转身离开，走到角落坐下，优雅地抿了一口香槟，冷冷注视着台上的四人；道具:香槟杯。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 21,
+    "dialogue_covered": 15,
+    "dialogue_coverage_rate": 0.7143,
+    "missing_dialogues": [
+      "朋友（电话音，焦急愤怒）：盼盼，他什么意思？明摆着是羞辱你呢！你前脚才刚搬出去，他后脚就风风光光娶小三！",
+      "朋友B（电话音）：就是！这婚宴请柬就是赤裸裸的挑衅！你可千万别去，去了就是自讨羞辱，让他们得意忘形！",
+      "朋友（电话音，愣住）：你——你怎么想的啊？去了干嘛？看他们秀恩爱吗？",
+      "宾客A（压低声音）：她怎么来了？马国梁和方柔竟然还敢邀请她？",
+      "宾客B：不会是来闹事的吧？换做是谁，被前夫这么对待，都咽不下这口气。",
+      "宾客C：哎，毕竟被抛弃了，想来是不甘心吧。"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "婚礼请柬",
+      "手机"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

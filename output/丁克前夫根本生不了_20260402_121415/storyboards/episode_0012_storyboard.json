@@ -1,0 +1,264 @@
+{
+  "episode_no": 12,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0012.json",
+  "storyboard": {
+    "episode_no": 12,
+    "title": "惊天大瓜",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代场景与马国梁的得意",
+            "visual": "中景；马国梁满脸得意地高举房产公示证书，方柔、马曼妮和马天宇站在一旁满脸得意；镜头缓慢推近；道具:房产公示证书。",
+            "characters": [
+              "马国梁",
+              "方柔",
+              "马曼妮",
+              "马天宇",
+              "宾客们"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "顾盼打断婚礼",
+            "visual": "特写；顾盼猛地站起身，将手中的香槟杯重重砸在桌面上，酒液飞溅；镜头轻微震动；道具:香槟杯。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "顾盼提出反对",
+            "visual": "中近景；顾盼眼神凌厉，直视舞台方向；镜头微推。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：我反对！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "展示全场震惊与方柔的愤怒",
+            "visual": "全景转中景；全场瞬间安静，宾客齐刷刷转头看向顾盼；焦点快速转移到舞台上的方柔，她脸色阴沉，气得浑身发抖。",
+            "characters": [
+              "方柔",
+              "宾客们"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "方柔指责顾盼",
+            "visual": "中近景；方柔指着镜头方向，表情愤怒扭曲；过肩镜头建立冲突感。",
+            "characters": [
+              "方柔"
+            ],
+            "dialogue": "方柔：顾盼，今天是我们一家四口大好的日子，你到底想捣什么乱？这里不欢迎你，你给我滚出去！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "马国梁伪装好父亲",
+            "visual": "中景；马国梁满脸嫌恶，假装无奈地叹气，手里拿着话筒；道具:话筒。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：盼盼，我知道你生不了孩子，心里难受。看到我儿女双全，你嫉恨得慌，可是你也得接受现实啊。我们已经离婚了，这房子虽然写着咱俩的名字，可我们都老了，要它也没用了，留给孩子们，不是挺好的吗？",
+            "duration": 8.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 1,
+            "purpose": "马曼妮和马天宇煽风点火",
+            "visual": "中景；马曼妮假装抹眼泪，马天宇在一旁大声附和，对着台下指手画脚。",
+            "characters": [
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "马曼妮：顾阿姨，你就是容不下我们，想让我们无家可归吗？\n马天宇：就是！大家快把她赶出去！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 1,
+            "purpose": "展现宾客的误解与指责",
+            "visual": "近景；两名宾客交头接耳，对着顾盼的方向指指点点；焦点在宾客脸上。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "宾客们：这前妻也太不懂事了，跑人家婚礼上闹。生不出孩子还嫉妒人家，真难看。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 9,
+            "scene_no": 1,
+            "purpose": "司仪试图平息事端",
+            "visual": "中景；司仪急忙跑进画面，面带尴尬的笑容，伸手试图安抚顾盼。",
+            "characters": [
+              "司仪"
+            ],
+            "dialogue": "司仪：顾女士，您作为马国梁先生的前妻，一定也希望他能一家和睦，老有所养吧？今天是大喜的日子，有什么事，咱们私下解决，别坏了气氛。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 10,
+            "scene_no": 1,
+            "purpose": "顾盼从容登台",
+            "visual": "中景；顾盼丝毫不慌，放下酒杯，径直走向舞台前；镜头跟随顾盼移动，展现她强大的气场。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 11,
+            "scene_no": 1,
+            "purpose": "顾盼抛出悬念",
+            "visual": "特写；顾盼眼神冷冽，嘴角带着一丝嘲讽的笑意；镜头缓慢推近面部。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：当然，我当然希望他一家和睦。不过我要纠正一点，不能生的，并不是我。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 12,
+            "scene_no": 1,
+            "purpose": "展现马国梁与方柔的慌乱",
+            "visual": "中近景；方柔微微一怔，眼神闪过慌乱；马国梁眉头紧锁，脸色阴沉；焦点在两人表情变化上。",
+            "characters": [
+              "方柔",
+              "马国梁"
+            ],
+            "dialogue": "马国梁：你这话是什么意思？",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 13,
+            "scene_no": 1,
+            "purpose": "顾盼揭示冻卵事实",
+            "visual": "中近景；顾盼带着几分怜悯看着马国梁，姿态从容自信。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：没什么意思。我的卵子还在卵子库冻着，健康得很，医生说随时可以取出来培育胚胎。想要孩子，对我来说，不过是一句话的事。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 14,
+            "scene_no": 1,
+            "purpose": "马国梁情绪失控砸话筒",
+            "visual": "中景；马国梁勃然大怒，面目狰狞，猛地将手里的话筒狠狠砸在地上；镜头轻微晃动配合砸地动作；道具:话筒。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 15,
+            "scene_no": 1,
+            "purpose": "马国梁恶毒辱骂顾盼",
+            "visual": "近景；马国梁指着顾盼歇斯底里地怒吼，青筋暴起；主观压迫视角。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：你不是不想跟我要孩子吗？！当初我求着你生，你死活不肯！现在离了婚，你又想去做试管，你是不是贱？！就那么不想生我的孩子吗？！",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 16,
+            "scene_no": 1,
+            "purpose": "顾盼掌掴马国梁",
+            "visual": "中近景；顾盼冷冷地看着他，突然上前一步，抬手狠狠甩了马国梁一记响亮的耳光；动作干脆利落，镜头随巴掌动作快速甩动。",
+            "characters": [
+              "顾盼",
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 17,
+            "scene_no": 1,
+            "purpose": "展现马国梁的震惊",
+            "visual": "特写；马国梁被打懵了，捂着脸，不敢置信地瞪着顾盼；背景虚化。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 18,
+            "scene_no": 1,
+            "purpose": "顾盼准备宣布真相",
+            "visual": "中景；顾盼弯腰从容地捡起地上的话筒，拍了拍并调整音量；道具:话筒。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 19,
+            "scene_no": 1,
+            "purpose": "顾盼爆出弱精症真相",
+            "visual": "特写；顾盼死死盯住马国梁和方柔，眼神极具压迫感，掷地有声地宣布真相；镜头缓慢推近。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：因为不能生的从来不是我，而是你！你马国梁有先天性弱精症，根本没有生育能力！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 20,
+            "scene_no": 1,
+            "purpose": "展现真相曝光后的全场反应",
+            "visual": "全景转中景；全场爆发出巨大的哗然声；马国梁如遭雷击僵在原地，方柔面如死灰瘫软下去；镜头拉远展现全场混乱。",
+            "characters": [
+              "马国梁",
+              "方柔",
+              "宾客们"
+            ],
+            "dialogue": "",
+            "duration": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 0,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 1.0,
+    "missing_dialogues": [],
+    "unknown_characters": [],
+    "required_props": [
+      "话筒"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": true,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

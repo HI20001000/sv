@@ -1,0 +1,937 @@
+{
+  "target_episode_count": 20,
+  "planned_episode_count": 20,
+  "allocation_strategy": "整体分配重仓于‘婚礼打脸’与‘恶人互撕’的核心高潮环节。前3个Unit（7集）快速推进离婚、鸠占鹊巢与真相揭露的铺垫，极致拉扯并积累期待感；第4-7个Unit（11集）作为全剧高潮，细腻拆解婚礼上的绝地反击、铁证曝光与渣男小三的现世报，最大化释放短剧爽感；最后1个Unit（2集）交代结局与女主新生，完成情绪收束。",
+  "episode_source": "llm_then_normalized",
+  "unit_allocations": [
+    {
+      "unit_id": "u_0001",
+      "episode_count": 2,
+      "char_count": 1621,
+      "reason": "开篇快速切入离婚核心冲突，建立女主‘将计就计’隐忍反击的悬念，节奏紧凑，2集足以完成背景交代与钩子设置。"
+    },
+    {
+      "unit_id": "u_0002",
+      "episode_count": 2,
+      "char_count": 2145,
+      "reason": "主要交代小三鸠占鹊巢与外界对女主的非议，功能在于进一步压抑女主处境并暗中收集证据，为后续爆发蓄力，分配2集。"
+    },
+    {
+      "unit_id": "u_0003",
+      "episode_count": 3,
+      "char_count": 2071,
+      "reason": "包含‘三十年替夫背锅’与‘五年隐忍调查’的双重重大真相揭露，信息量极大且情绪极具张力，是全剧重要的情感转折点，需3集充足篇幅铺垫。"
+    },
+    {
+      "unit_id": "u_0004",
+      "episode_count": 2,
+      "char_count": 1775,
+      "reason": "属于高潮前的暴风雨前夜，主要承担反派极致挑衅与女主从容应对的拉扯功能，2集足以推高观众期待值。"
+    },
+    {
+      "unit_id": "u_0005",
+      "episode_count": 3,
+      "char_count": 2285,
+      "reason": "全剧第一层核心大高潮，包含当众拒签、掌掴渣男并爆出不育真相，冲突极其激烈，情绪爆点强，需多分集数展现戏剧张力。"
+    },
+    {
+      "unit_id": "u_0006",
+      "episode_count": 3,
+      "char_count": 2063,
+      "reason": "全剧第二层核心大高潮（爽点集中释放期），连续抛出录音与开房视频铁证，反转密集，需详细刻画反派谎言崩塌与绝望的过程，分配3集。"
+    },
+    {
+      "unit_id": "u_0007",
+      "episode_count": 3,
+      "char_count": 2985,
+      "reason": "恶人互撕与现世报环节，包含暴打小三、扫地出门及渣男极度悔恨。该段落文本量最大（近3000字）且情绪浓烈，是观众最期待的惩罚环节，分配3集。"
+    },
+    {
+      "unit_id": "u_0008",
+      "episode_count": 2,
+      "char_count": 1641,
+      "reason": "结局收尾段落，交代反派的最终凄惨下场与女主洗清冤屈后的释怀新生，2集即可完整交代余波并完成全剧的情绪升华。"
+    }
+  ],
+  "story_unit_catalog": [
+    {
+      "unit_id": "u_0001",
+      "unit_order": 1,
+      "char_count": 1621,
+      "source_span": {
+        "start_para": 1,
+        "end_para": 4
+      }
+    },
+    {
+      "unit_id": "u_0002",
+      "unit_order": 2,
+      "char_count": 2145,
+      "source_span": {
+        "start_para": 5,
+        "end_para": 14
+      }
+    },
+    {
+      "unit_id": "u_0003",
+      "unit_order": 3,
+      "char_count": 2071,
+      "source_span": {
+        "start_para": 15,
+        "end_para": 32
+      }
+    },
+    {
+      "unit_id": "u_0004",
+      "unit_order": 4,
+      "char_count": 1775,
+      "source_span": {
+        "start_para": 33,
+        "end_para": 35
+      }
+    },
+    {
+      "unit_id": "u_0005",
+      "unit_order": 5,
+      "char_count": 2285,
+      "source_span": {
+        "start_para": 36,
+        "end_para": 37
+      }
+    },
+    {
+      "unit_id": "u_0006",
+      "unit_order": 6,
+      "char_count": 2063,
+      "source_span": {
+        "start_para": 38,
+        "end_para": 39
+      }
+    },
+    {
+      "unit_id": "u_0007",
+      "unit_order": 7,
+      "char_count": 2985,
+      "source_span": {
+        "start_para": 40,
+        "end_para": 42
+      }
+    },
+    {
+      "unit_id": "u_0008",
+      "unit_order": 8,
+      "char_count": 1641,
+      "source_span": {
+        "start_para": 43,
+        "end_para": 45
+      }
+    }
+  ],
+  "generation_input_contract": {
+    "required_files": [
+      "story_bible.json",
+      "episode_generation_plan.json",
+      "story_units.json"
+    ],
+    "binding_key": "unit_id",
+    "per_episode_input": {
+      "episode_plan_object": "episodes[n]",
+      "source_units_lookup": "story_units by unit_id in episodes[n].source_units"
+    }
+  },
+  "episodes": [
+    {
+      "episode_no": 1,
+      "title": "三十年婚姻的背叛",
+      "source_units": [
+        "u_0001"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0001",
+          "unit_order": 1,
+          "char_count": 1621,
+          "source_span": {
+            "start_para": 1,
+            "end_para": 4
+          }
+        }
+      ],
+      "arc_goal": "交代马国梁摊牌离婚的背景，展现顾盼的隐忍与暗中谋划。",
+      "opening_hook": "原本计划环游世界的退休夫妻，丈夫为何突然提出离婚？",
+      "core_beats": [
+        "马国梁向顾盼摊牌，以顾盼不能生育为借口提出离婚。",
+        "马国梁得意地表示要接回情人方柔及一对儿女，享受天伦之乐。",
+        "顾盼口袋里的手机震动，收到周侦探的短信，对一切早有预料。",
+        "顾盼果断同意离婚，令马国梁感到错愕，但马国梁随即沉浸在胜利的喜悦中。"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "马国梁"
+      ],
+      "props_used": [
+        "手机"
+      ],
+      "ending_hook": "顾盼爽快答应离婚的背后，究竟隐藏着什么秘密？",
+      "continuity_requirements": [
+        "顾盼表现出极度的冷静，与马国梁的得意形成鲜明对比。"
+      ],
+      "generation_brief": "重点刻画马国梁的虚伪与自私，以及顾盼收到侦探短信后的从容不迫。通过对话展现两人信息差造成的戏剧张力。"
+    },
+    {
+      "episode_no": 2,
+      "title": "虚假的天伦之乐",
+      "source_units": [
+        "u_0001"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0001",
+          "unit_order": 1,
+          "char_count": 1621,
+          "source_span": {
+            "start_para": 1,
+            "end_para": 4
+          }
+        }
+      ],
+      "arc_goal": "展现外界对顾盼的误解与马国梁的高调炫耀，为后续反击蓄力。",
+      "opening_hook": "离婚消息传开，顾盼成了众人眼中的可怜虫，她会作何反应？",
+      "core_beats": [
+        "离婚消息传开，邻居、朋友和父母纷纷同情或责怪顾盼晚年凄凉。",
+        "顾盼未作辩解，默默承受外界的非议。",
+        "马国梁在朋友圈高调发布全家福炫耀，并带方柔母子高调消费。",
+        "顾盼暗中通过周侦探监视马国梁一家，准备揭开隐藏三十年的真相。"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "马国梁",
+        "方柔",
+        "顾盼盼的父母"
+      ],
+      "props_used": [
+        "全家福照片"
+      ],
+      "ending_hook": "看着马国梁虚假的幸福，顾盼准备如何利用隐藏三十年的“不育”真相进行反击？",
+      "continuity_requirements": [
+        "需展现马国梁朋友圈全家福的细节，为后续全家福被砸碎做铺垫。"
+      ],
+      "generation_brief": "强化外界世俗观念对顾盼的压力，对比马国梁一家的嚣张跋扈，拉升观众对顾盼反击的期待感。"
+    },
+    {
+      "episode_no": 3,
+      "title": "鸠占鹊巢",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 2145,
+          "source_span": {
+            "start_para": 5,
+            "end_para": 14
+          }
+        }
+      ],
+      "arc_goal": "完成离婚财产分割，展现方柔一家的登堂入室与嚣张气焰。",
+      "opening_hook": "离婚手续办妥，小三迫不及待登堂入室，顾盼将面临怎样的屈辱？",
+      "core_beats": [
+        "顾盼与马国梁在民政局办妥离婚手续，顾盼拿走属于自己的一半存款与婚前财产。",
+        "方柔带着马曼妮和马天宇搬入老房子，鸠占鹊巢。",
+        "马曼妮和马天宇对老房子的装修和家具挑三拣四，态度鄙夷。",
+        "马国梁为了讨好方柔母子，对顾盼下达逐客令。"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "马国梁",
+        "方柔",
+        "马曼妮",
+        "马天宇"
+      ],
+      "props_used": [],
+      "ending_hook": "面对鸠占鹊巢的方柔一家，顾盼会就此忍气吞声吗？",
+      "continuity_requirements": [
+        "马曼妮和马天宇的嚣张态度需重点刻画，为后续揭露他们非亲生做情绪铺垫。"
+      ],
+      "generation_brief": "通过方柔母子的挑剔和马国梁的绝情，将反派的仇恨值拉满，顾盼的冷眼旁观体现出她的清醒。"
+    },
+    {
+      "episode_no": 4,
+      "title": "暗流涌动",
+      "source_units": [
+        "u_0002"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0002",
+          "unit_order": 2,
+          "char_count": 2145,
+          "source_span": {
+            "start_para": 5,
+            "end_para": 14
+          }
+        }
+      ],
+      "arc_goal": "揭露方柔的真实阴谋，顾盼从容搬离并面对外界指责。",
+      "opening_hook": "方柔的温柔体贴背后，究竟藏着怎样恶毒的算计？",
+      "core_beats": [
+        "顾盼收到周侦探发来的通话录音，内容是方柔与陌生男人密谋骗取房产并卷款私奔。",
+        "顾盼听完录音冷笑，彻底离开老房子，搬入自己的婚前公寓。",
+        "入住公寓后，顾盼遭到远房表姐等外人对她离婚的指责与嘲讽。",
+        "顾盼无视指责，静静等待方柔阴谋发酵。"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "周侦探",
+        "方柔"
+      ],
+      "props_used": [
+        "通话录音",
+        "手机"
+      ],
+      "ending_hook": "掌握了方柔卷款私奔的致命把柄，顾盼将在何时引爆这颗炸弹？",
+      "continuity_requirements": [
+        "通话录音的内容必须明确提到方柔企图卷走马国梁的财产。"
+      ],
+      "generation_brief": "展现顾盼掌握核心证据后的从容，与外界不明真相的指责形成反差，突出女主的独立大女主内核。"
+    },
+    {
+      "episode_no": 5,
+      "title": "三十年的黑锅",
+      "source_units": [
+        "u_0003"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0003",
+          "unit_order": 3,
+          "char_count": 2071,
+          "source_span": {
+            "start_para": 15,
+            "end_para": 32
+          }
+        }
+      ],
+      "arc_goal": "揭开三十年丁克真相，展现顾盼曾经的巨大牺牲。",
+      "opening_hook": "所有人都责怪顾盼坚持丁克，但真相真的如此吗？",
+      "core_beats": [
+        "父母与朋友不断来电责怪顾盼坚持丁克导致婚姻破裂，朋友甚至荒唐劝和。",
+        "顾盼陷入回忆：三十年前，马国梁查出患有先天性弱精症。",
+        "马国梁拿着诊断报告红着眼求顾盼，顾盼心软答应替他隐瞒。",
+        "顾盼主动对外宣称自己坚持丁克，替马国梁背负了三十年的骂名。"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "马国梁",
+        "朋友们"
+      ],
+      "props_used": [
+        "诊断报告"
+      ],
+      "ending_hook": "替人背锅三十年，顾盼的深情换来的却是背叛，她将如何讨回公道？",
+      "continuity_requirements": [
+        "必须清晰交代马国梁患有先天性弱精症，几乎无自然生育可能这一核心设定。"
+      ],
+      "generation_brief": "通过回忆杀形成强烈的情感冲击，将马国梁的自私软弱与顾盼的深情付出进行极致对比。"
+    },
+    {
+      "episode_no": 6,
+      "title": "隐忍五年的调查",
+      "source_units": [
+        "u_0003"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0003",
+          "unit_order": 3,
+          "char_count": 2071,
+          "source_span": {
+            "start_para": 15,
+            "end_para": 32
+          }
+        }
+      ],
+      "arc_goal": "揭露顾盼隐忍五年的调查过程，展示其掌握的铁证。",
+      "opening_hook": "顾盼为何对马国梁的出轨毫不意外？她到底隐瞒了什么？",
+      "core_beats": [
+        "顾盼回忆五年前，在马国梁车里意外发现了一张方柔的产检单。",
+        "顾盼没有打草惊蛇，而是暗中聘请了做事缜密的周侦探。",
+        "五年来，周侦探收集了大量证据：方柔出轨、孩子非亲生、马国梁转移财产的流水。",
+        "顾盼看着保险柜里的铁证，眼神逐渐变得冷酷。"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "周侦探"
+      ],
+      "props_used": [
+        "方柔的产检单",
+        "转钱的流水"
+      ],
+      "ending_hook": "隐忍五年的复仇之网已经织好，只等猎物入局。",
+      "continuity_requirements": [
+        "强调顾盼的隐忍与智谋，她不是傻白甜，而是步步为营的复仇者。"
+      ],
+      "generation_brief": "展现顾盼发现背叛后的清醒与果断，详细列出她掌握的底牌，让观众对后续的打脸充满期待。"
+    },
+    {
+      "episode_no": 7,
+      "title": "嚣张的请柬",
+      "source_units": [
+        "u_0003"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0003",
+          "unit_order": 3,
+          "char_count": 2071,
+          "source_span": {
+            "start_para": 15,
+            "end_para": 32
+          }
+        }
+      ],
+      "arc_goal": "顾盼收到婚礼请柬，决定赴宴并启动复仇计划。",
+      "opening_hook": "离婚刚满三十天，顾盼竟收到了前夫和小三的婚礼请柬？",
+      "core_beats": [
+        "顾盼收到一封来自方柔的婚礼请柬，字里行间充满挑衅。",
+        "朋友们得知后气愤不已，纷纷打电话劝阻顾盼不要去受辱。",
+        "顾盼冷笑，决定赴这场“鸿门宴”，亲手撕破他们的伪装。",
+        "顾盼致电周侦探，确认婚礼当天的反击准备工作。"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "方柔",
+        "朋友们",
+        "周侦探"
+      ],
+      "props_used": [
+        "婚礼请柬",
+        "手机"
+      ],
+      "ending_hook": "盛大的婚礼即将变成修罗场，顾盼将如何大闹这场“鸿门宴”？",
+      "continuity_requirements": [
+        "请柬上的挑衅留言需原音重现，激化矛盾。"
+      ],
+      "generation_brief": "通过方柔的极度嚣张挑衅与顾盼的冷酷决断，将冲突推向高潮前夕，营造暴风雨前的宁静。"
+    },
+    {
+      "episode_no": 8,
+      "title": "盛装赴宴",
+      "source_units": [
+        "u_0004"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0004",
+          "unit_order": 4,
+          "char_count": 1775,
+          "source_span": {
+            "start_para": 33,
+            "end_para": 35
+          }
+        }
+      ],
+      "arc_goal": "婚礼当天，顾盼惊艳亮相，复仇设备与人员全部就位。",
+      "opening_hook": "面对前夫与小三的盛大婚礼，顾盼会以怎样的姿态出现？",
+      "core_beats": [
+        "婚礼当天，顾盼与周侦探暗中对接，确认牡丹厅的投屏、音响及方柔出轨证据均已就绪。",
+        "周侦探告知，方柔的情人也已安排在现场附近。",
+        "顾盼拒绝朋友的最后劝阻，精心打扮，盛装出席盛世豪庭的婚礼。",
+        "顾盼步入宴会厅，绝佳的状态与气场瞬间吸引了全场目光。"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "周侦探"
+      ],
+      "props_used": [
+        "方柔和她情人的视频、录音"
+      ],
+      "ending_hook": "顾盼的出现让全场震惊，她将如何面对渣男小三的婚礼？",
+      "continuity_requirements": [
+        "顾盼的妆造必须华丽、自信，与之前被同情的形象形成强烈反差。"
+      ],
+      "generation_brief": "重点渲染婚礼现场的豪华与顾盼出场时的惊艳，展现大女主从容不迫、掌控全局的气场。"
+    },
+    {
+      "episode_no": 9,
+      "title": "虚伪的挑衅",
+      "source_units": [
+        "u_0004"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0004",
+          "unit_order": 4,
+          "char_count": 1775,
+          "source_span": {
+            "start_para": 33,
+            "end_para": 35
+          }
+        }
+      ],
+      "arc_goal": "顾盼在婚礼现场面对马国梁和方柔的当面挑衅，隐忍不发等待时机。",
+      "opening_hook": "前妻出现在婚礼现场，渣男小三会如何发难？",
+      "core_beats": [
+        "顾盼的出现引发宾客窃窃私语，她与角落的周侦探交换眼神。",
+        "顾盼主动上前向新人敬酒，方柔故意摆出胜利者的姿态。",
+        "方柔与马国梁一唱一和，以顾盼“不能生育”为由进行虚伪的挑衅和羞辱。",
+        "顾盼淡定回应，不卑不亢，随后退至角落静待好戏开场。"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "马国梁",
+        "方柔",
+        "宾客们"
+      ],
+      "props_used": [],
+      "ending_hook": "虚伪的挑衅即将到头，顾盼等待的复仇高潮即将上演！",
+      "continuity_requirements": [
+        "马国梁和方柔的嘴脸越丑陋，后续被打脸时的爽感就越强。"
+      ],
+      "generation_brief": "刻画反派在婚礼上的得意忘形，顾盼的克制是为了后续爆发积攒能量，拉扯观众情绪。"
+    },
+    {
+      "episode_no": 10,
+      "title": "我反对！",
+      "source_units": [
+        "u_0005"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0005",
+          "unit_order": 5,
+          "char_count": 2285,
+          "source_span": {
+            "start_para": 36,
+            "end_para": 37
+          }
+        }
+      ],
+      "arc_goal": "马国梁宣布过户房产，顾盼当众打断婚礼，引爆第一层高潮。",
+      "opening_hook": "马国梁竟要在婚礼上把婚内房产送给小三的孩子？",
+      "core_beats": [
+        "婚礼正式开始，司仪深情讲述马国梁和方柔虚假的“爱情故事”。",
+        "马国梁在台上高调拿出房产公示证书，宣布将与顾盼的婚内房产过户给马曼妮和马天宇。",
+        "就在工作人员准备宣读协议时，顾盼猛地站起身。",
+        "顾盼将手中的香槟杯重重砸在桌上，大声喊出：“我反对！”"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "马国梁",
+        "司仪"
+      ],
+      "props_used": [
+        "房产公示证书",
+        "香槟杯"
+      ],
+      "ending_hook": "顾盼的一声“反对”引爆全场，她将如何阻止这场荒唐的过户？",
+      "continuity_requirements": [
+        "香槟杯砸桌的声音需清脆响亮，作为全场安静的转折点。"
+      ],
+      "generation_brief": "高潮起步，重点表现马国梁的慷慨陈词与顾盼霸气打断的瞬间，营造极强的戏剧冲突。"
+    },
+    {
+      "episode_no": 11,
+      "title": "道德绑架",
+      "source_units": [
+        "u_0005"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0005",
+          "unit_order": 5,
+          "char_count": 2285,
+          "source_span": {
+            "start_para": 36,
+            "end_para": 37
+          }
+        }
+      ],
+      "arc_goal": "面对全场指责，顾盼澄清自身生育能力，马国梁破防辱骂。",
+      "opening_hook": "面对全场的指责与道德绑架，顾盼将如何反击？",
+      "core_beats": [
+        "方柔、马国梁及两个孩子立刻指责顾盼是因为不能生育而嫉妒闹事。",
+        "马国梁煽动宾客，宾客们开始对顾盼指指点点，进行道德绑架。",
+        "顾盼冷笑走上台，当众澄清自己身体完全健康，且早已在卵子库冻卵。",
+        "马国梁气急败坏，出言辱骂顾盼自私恶毒。"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "马国梁",
+        "方柔",
+        "宾客"
+      ],
+      "props_used": [
+        "冻卵"
+      ],
+      "ending_hook": "面对马国梁的辱骂，顾盼即将揭开那个隐藏三十年的惊天秘密！",
+      "continuity_requirements": [
+        "顾盼提到冻卵时，马国梁的反应应是震惊转为愤怒。"
+      ],
+      "generation_brief": "展现反派试图用舆论压制女主的丑态，女主的澄清步步紧逼，为爆出不育真相做最后铺垫。"
+    },
+    {
+      "episode_no": 12,
+      "title": "惊天大瓜",
+      "source_units": [
+        "u_0005"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0005",
+          "unit_order": 5,
+          "char_count": 2285,
+          "source_span": {
+            "start_para": 36,
+            "end_para": 37
+          }
+        }
+      ],
+      "arc_goal": "顾盼掌掴马国梁，当众爆出其弱精症真相，完成第一层打脸。",
+      "opening_hook": "三十年的委屈，顾盼将在这一刻彻底爆发！",
+      "core_beats": [
+        "面对马国梁的辱骂，顾盼毫不犹豫地狠狠掌掴了马国梁。",
+        "马国梁被打懵，怒摔话筒。",
+        "顾盼捡起地上的话筒，调整音量。",
+        "顾盼向全场大声宣布：“不能生的从来不是我，而是你马国梁！你有先天性弱精症！”"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "马国梁"
+      ],
+      "props_used": [
+        "话筒"
+      ],
+      "ending_hook": "惊天大瓜爆出，全场哗然，马国梁的“儿女双全”人设瞬间崩塌！",
+      "continuity_requirements": [
+        "掌掴动作要干脆利落，宣布真相的声音必须通过麦克风传遍全场。"
+      ],
+      "generation_brief": "全剧核心爽点之一，动作与台词需极具爆发力，彻底撕破马国梁的虚伪面具。"
+    },
+    {
+      "episode_no": 13,
+      "title": "铁证如山",
+      "source_units": [
+        "u_0006"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0006",
+          "unit_order": 6,
+          "char_count": 2063,
+          "source_span": {
+            "start_para": 38,
+            "end_para": 39
+          }
+        }
+      ],
+      "arc_goal": "播放医疗录音，用铁证锤死马国梁的不育事实。",
+      "opening_hook": "马国梁拼死否认不育，顾盼拿出了什么致命证据？",
+      "core_beats": [
+        "马国梁极度愤怒，大声否认自己有病，并试图上前抢夺顾盼的话筒。",
+        "顾盼灵活躲开，迅速将手机连接到宴会厅的音响上。",
+        "全场响起当年刘医生的诊断录音，清晰证实马国梁患有严重弱精症。",
+        "录音中还包含顾盼为了维护马国梁尊严，主动提出隐瞒真相的对话。"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "马国梁",
+        "刘医生"
+      ],
+      "props_used": [
+        "录音",
+        "手机",
+        "话筒"
+      ],
+      "ending_hook": "铁证如山，马国梁彻底傻眼，那方柔的两个孩子到底是谁的？",
+      "continuity_requirements": [
+        "录音播放时全场必须安静，录音内容需清晰无误地传达给每一个宾客。"
+      ],
+      "generation_brief": "通过录音证据完成逻辑闭环，不仅锤死男主不育，更洗清了女主三十年的冤屈，引发宾客同情。"
+    },
+    {
+      "episode_no": 14,
+      "title": "小三的真面目",
+      "source_units": [
+        "u_0006"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0006",
+          "unit_order": 6,
+          "char_count": 2063,
+          "source_span": {
+            "start_para": 38,
+            "end_para": 39
+          }
+        }
+      ],
+      "arc_goal": "播放方柔出轨视频，彻底曝光方柔的阴谋，完成第二层打脸。",
+      "opening_hook": "既然马国梁不能生育，那方柔的两个孩子究竟是从哪来的？",
+      "core_beats": [
+        "宾客风向大变，纷纷同情顾盼，并开始大声质疑方柔孩子的身世。",
+        "方柔惊慌失措，拼命向马国梁狡辩孩子是他的。",
+        "顾盼对着角落的周侦探比了一个手势，周侦探按下遥控器。",
+        "大屏幕瞬间播放方柔与情人的高清开房视频，以及两人密谋骗取马家财产的对话。"
+      ],
+      "character_focus": [
+        "顾盼盼",
+        "方柔",
+        "周侦探",
+        "宾客们"
+      ],
+      "props_used": [
+        "高清视频"
+      ],
+      "ending_hook": "视频一出，方柔的真面目彻底暴露，马国梁将如何面对这奇耻大辱？",
+      "continuity_requirements": [
+        "视频内容必须极具冲击力，让方柔百口莫辩。"
+      ],
+      "generation_brief": "连续抛出重磅炸弹，将矛头转向小三，彻底击溃反派的心理防线，爽感持续叠加。"
+    },
+    {
+      "episode_no": 15,
+      "title": "谎言崩塌",
+      "source_units": [
+        "u_0006"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0006",
+          "unit_order": 6,
+          "char_count": 2063,
+          "source_span": {
+            "start_para": 38,
+            "end_para": 39
+          }
+        }
+      ],
+      "arc_goal": "展现真相大白后反派的绝望与崩溃。",
+      "opening_hook": "精心策划三十年的骗局被当众揭穿，方柔和马国梁将面临怎样的深渊？",
+      "core_beats": [
+        "视频播放完毕，全场陷入一片死寂，所有人用鄙夷的目光看着方柔。",
+        "方柔彻底瘫坐在地上，双手死死抓着洁白的婚纱，面如死灰。",
+        "马国梁呆立当场，意识到自己被骗了三十年，替别人养了二十多年孩子。",
+        "马国梁浑身发抖，双眼猩红，陷入了极度的愤怒与崩溃之中。"
+      ],
+      "character_focus": [
+        "马国梁",
+        "方柔",
+        "宾客们"
+      ],
+      "props_used": [],
+      "ending_hook": "愤怒到极点的马国梁，会对方柔做出怎样疯狂的举动？",
+      "continuity_requirements": [
+        "重点刻画马国梁从得意到震惊再到极度愤怒的表情变化。"
+      ],
+      "generation_brief": "高潮后的情绪沉淀期，聚焦反派的惨状，让观众充分享受恶人遭报应的快感。"
+    },
+    {
+      "episode_no": 16,
+      "title": "狗咬狗",
+      "source_units": [
+        "u_0007"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0007",
+          "unit_order": 7,
+          "char_count": 2985,
+          "source_span": {
+            "start_para": 40,
+            "end_para": 42
+          }
+        }
+      ],
+      "arc_goal": "马国梁暴打方柔，情人现身闹事，顾盼功成身退。",
+      "opening_hook": "得知自己戴了三十年绿帽子，马国梁终于发疯了！",
+      "core_beats": [
+        "马国梁抓起桌上的香槟杯狠狠砸向方柔，冲上去对其疯狂暴打，怒斥其骗局。",
+        "马国梁当众宣布取消婚礼，现场一片混乱。",
+        "方柔的情人突然从人群中冲出，向方柔索要赌债，场面彻底失控。",
+        "顾盼冷笑嘲讽众人后优雅退场，在门外从周侦探手中接过装有亲子鉴定和流水的U盘。"
+      ],
+      "character_focus": [
+        "马国梁",
+        "方柔",
+        "方柔的情人",
+        "顾盼盼",
+        "周侦探"
+      ],
+      "props_used": [
+        "香槟杯",
+        "U盘"
+      ],
+      "ending_hook": "闹剧收场，顾盼全身而退，马国梁和方柔的下场才刚刚开始。",
+      "continuity_requirements": [
+        "恶人互撕的场面需激烈，顾盼的离场需保持大女主的优雅与从容。"
+      ],
+      "generation_brief": "展现“恶人自有恶人磨”的经典爽文桥段，顾盼拿到最后底牌，彻底抽身事外。"
+    },
+    {
+      "episode_no": 17,
+      "title": "扫地出门",
+      "source_units": [
+        "u_0007"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0007",
+          "unit_order": 7,
+          "char_count": 2985,
+          "source_span": {
+            "start_para": 40,
+            "end_para": 42
+          }
+        }
+      ],
+      "arc_goal": "马国梁将方柔母子三人强行赶出家门，彻底决裂。",
+      "opening_hook": "鸠占鹊巢的方柔母子，终于迎来了被扫地出门的时刻！",
+      "core_beats": [
+        "画面转至马国梁的老房子，马国梁在家中狂砸物品泄愤。",
+        "方柔带着马曼妮和马天宇跪在地上苦苦哀求，试图挽回。",
+        "马国梁绝情冷酷，怒斥他们是野种，拒绝任何求情。",
+        "马国梁命令佣人上前，将方柔母子三人硬生生地拖出家门，扔在街头。"
+      ],
+      "character_focus": [
+        "马国梁",
+        "方柔",
+        "马曼妮",
+        "马天宇",
+        "佣人"
+      ],
+      "props_used": [],
+      "ending_hook": "方柔母子被扫地出门，马国梁终于尝到了众叛亲离的滋味。",
+      "continuity_requirements": [
+        "呼应第3集方柔母子搬进来的嚣张，形成强烈的命运反差。"
+      ],
+      "generation_brief": "重点刻画马国梁的无情与方柔母子的狼狈，完成对小三一家的物理惩罚。"
+    },
+    {
+      "episode_no": 18,
+      "title": "迟来的悔恨",
+      "source_units": [
+        "u_0007"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0007",
+          "unit_order": 7,
+          "char_count": 2985,
+          "source_span": {
+            "start_para": 40,
+            "end_para": 42
+          }
+        }
+      ],
+      "arc_goal": "马国梁面对破碎的家，陷入对失去顾盼的极度悔恨。",
+      "opening_hook": "赶走了骗子，马国梁的家却彻底空了，他会想起那个被他抛弃的妻子吗？",
+      "core_beats": [
+        "马国梁独自留在狼藉空荡的客厅，四周死一般寂静。",
+        "他的目光落在地上被砸碎、撕裂的全家福照片上。",
+        "马国梁回忆起顾盼三十年来无微不至的照顾和替他背锅的牺牲。",
+        "回想起离婚时顾盼的忠告，马国梁瘫倒在地，痛哭流涕，陷入无尽的悔恨。"
+      ],
+      "character_focus": [
+        "马国梁"
+      ],
+      "props_used": [
+        "全家福照片"
+      ],
+      "ending_hook": "失去了一切的马国梁，还能挽回那个被他伤透了心的女人吗？",
+      "continuity_requirements": [
+        "全家福照片的破碎象征着马国梁虚假幸福的彻底毁灭。"
+      ],
+      "generation_brief": "纯粹的内心戏与情绪渲染，将渣男的现世报推向精神层面的极致痛苦。"
+    },
+    {
+      "episode_no": 19,
+      "title": "无法拨通的电话",
+      "source_units": [
+        "u_0008"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0008",
+          "unit_order": 8,
+          "char_count": 1641,
+          "source_span": {
+            "start_para": 43,
+            "end_para": 45
+          }
+        }
+      ],
+      "arc_goal": "马国梁求原谅无果，顾盼收获众人的道歉与释怀。",
+      "opening_hook": "痛不欲生的马国梁企图求得原谅，顾盼会给他机会吗？",
+      "core_beats": [
+        "马国梁痛苦买醉，拿出手机试图打电话给顾盼祈求原谅。",
+        "在拨号的最后一刻，他意识到自己根本没有资格，绝望地将手机摔碎。",
+        "另一边，真相大白后，顾盼接到了邻居奶奶、女大学生及父母的致歉电话。",
+        "顾盼微笑着接受了道歉，心中的最后一点芥蒂彻底消散。"
+      ],
+      "character_focus": [
+        "马国梁",
+        "顾盼盼",
+        "邻居奶奶",
+        "女大学生",
+        "顾盼父母"
+      ],
+      "props_used": [
+        "手机"
+      ],
+      "ending_hook": "所有的冤屈都已洗清，顾盼将如何开启她的新生活？",
+      "continuity_requirements": [
+        "马国梁的颓废与顾盼的阳光释然需通过平行剪辑形成强烈对比。"
+      ],
+      "generation_brief": "交代配角对女主态度的转变，完成女主名誉的彻底恢复，同时断绝渣男最后的念想。"
+    },
+    {
+      "episode_no": 20,
+      "title": "海阔天空",
+      "source_units": [
+        "u_0008"
+      ],
+      "source_unit_details": [
+        {
+          "unit_id": "u_0008",
+          "unit_order": 8,
+          "char_count": 1641,
+          "source_span": {
+            "start_para": 43,
+            "end_para": 45
+          }
+        }
+      ],
+      "arc_goal": "交代反派最终凄惨下场，顾盼在云南开启全新自由的生活。",
+      "opening_hook": "渣男小三自食恶果，顾盼的未来又在何方？",
+      "core_beats": [
+        "顾盼联系医院，决定将冷冻的卵子捐出，彻底斩断过去的羁绊。",
+        "顾盼独自前往云南，完成那场被耽搁的环游之旅。",
+        "在洱海边，顾盼收到侦探最后一条短信：方柔众叛亲离流落街头，马国梁突发高血压住院无人照料。",
+        "顾盼平静地删掉短信，迎着微风，露出释然的微笑，大步走向新生活。"
+      ],
+      "character_focus": [
+        "顾盼盼"
+      ],
+      "props_used": [
+        "冻卵",
+        "手机"
+      ],
+      "ending_hook": "（大结局）告别错的过去，才能迎来对的人生。",
+      "continuity_requirements": [
+        "云南的风景需明亮开阔，象征女主心境的彻底解脱。"
+      ],
+      "generation_brief": "大结局收尾，用反派的凄惨衬托女主的新生，画面基调从前期的压抑转为彻底的明媚开朗，完成全剧的情绪升华。"
+    }
+  ],
+  "notes": "严格按照20集规划，前7集铺垫悬念与收集证据，第8-18集集中展现婚礼高潮与恶人互撕，最后2集收尾。道具与角色分配完全遵循story_bible设定。",
+  "validation": {
+    "sum_matches_target": true,
+    "all_episodes_have_source_units": true,
+    "all_source_units_resolvable": true,
+    "target_episode_count": 20,
+    "planned_episode_count": 20
+  }
+}

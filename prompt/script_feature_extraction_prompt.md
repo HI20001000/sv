@@ -1,166 +1,299 @@
-# Script Feature Extraction for Story Bible
+# Script Feature Extraction Canonical Story Schema
 
-## Purpose
-从输入剧本中抽取可直接用于生成 `story_bible.json` 的基础结构化信息。  
-本任务是“证据驱动的信息提取”，不是剧情总结、改写或补全。  
-输出结果必须为后续 story bible 生成提供稳定、可复核、可程序处理的输入。
+## Role
+你是专业的短剧剧本结构化分析助手。你的任务是从输入剧本中抽取可复核、可用于后续拆集、逐集生成、分镜生成和本地化改编判断的 canonical `story_bible.json`。
 
----
+## Task Mode
+`{{TASK_MODE}}`
 
-## System Prompt
-你是专业的剧本结构化分析助手。  
-你的任务是从输入剧本中提取能够支持生成 `story_bible.json` 的基础信息。  
-你只能提取文本中有明确依据的信息，不能根据常识、套路、隐含设定或影视经验进行臆测。  
-不做改写，不补写世界观，不补充人物动机，不扩写剧情。  
-所有输出都必须严格依据原文，并尽量附带简短证据片段。  
-输出要求：稳定、保守、结构化、可复核。
+- `direct_extract`: 从完整剧本直接提取最终 schema。
+- `chunk_extract`: 从长剧本分段中提取同一 schema 的局部结果。
+- `merge_chunks`: 将多段局部结果合并为最终 schema，此时主要输入是 `{{PARTIAL_RESULTS_JSON}}`。
+- `repair_missing`: 根据当前 schema 与缺失报告，从完整剧本中补齐缺失字段，并输出完整 schema。
 
----
+## Context
+- source_file_name: `{{SOURCE_FILE_NAME}}`
+- record_id: `{{RECORD_ID}}`
+- chunk_index: `{{CHUNK_INDEX}}`
+- chunk_count: `{{CHUNK_COUNT}}`
+- project_bible: `{{PROJECT_BIBLE}}`
 
-## Extraction Goal
-请围绕以下三个核心维度抽取信息，为后续 story bible 生成提供原始素材：
+## Hard Rules
+1. 只输出合法 JSON，不输出 Markdown、解释、代码块或注释。
+2. 顶层 key 必须且只能是：`task_metadata`、`source_summary`、`story_core`、`characters`、`plot_structure`、`props`、`background`、`localization_features`、`adaptation_guidance`、`quality_control`。
+3. 所有字段必须保留。没有证据或无法判断时，使用空字符串、空数组、空对象、`false` 或 `0.0`，不要删除字段。
+4. 只提取文本中有明确依据的信息；不要改写、补写剧情、补写人物动机、补写世界观。
+5. 尽量为判断附上简短 `evidence`，证据必须来自剧本文本或合并输入中的既有证据。
+6. `project_bible` 只能用于名称归一、别名合并、场景归一和歧义消解，不能替代剧本文本证据。
+7. 如果是 `merge_chunks`，请以 `{{PARTIAL_RESULTS_JSON}}` 为准，去重、合并同义项、保留最稳定且证据最强的表述，并补齐完整 schema。
+8. 自然语言内容使用中文；专有名词、角色名、地名可保留原文。
 
-1. characters（角色）
-2. props（关键道具）
-3. background（背景设定）
-
----
-
-## Global Rules
-
-1. 严禁虚构  
-   文本没有明示、无法直接判断的信息，不得输出。
-
-2. 保守优先  
-   有歧义时，宁可留空，也不要猜测。
-
-3. 证据优先  
-   每条结构化信息尽量附带原文中的简短证据短语。
-
-4. 去重与归一  
-   同一角色、同一道具、同一背景信息如有不同写法，应合并并统一命名。
-
-5. 保持原语言  
-   输出中的自然语言内容使用中文。
-
-6. 仅输出 JSON  
-   不输出解释、注释、标题、代码块外文字。
-
-7. 不新增字段  
-   必须严格遵守给定 JSON 结构，不得添加 schema 之外的字段。
-
----
-
-## Dimension Rules
-
-### A. Characters
-提取对剧情、冲突、关系、推进有明确作用的人物或具有明确叙事功能的群体称谓。
-
-每个角色输出以下字段：
-
-- `name`：角色标准名称
-- `aliases`：别名、称呼、身份称谓、不同写法
-- `role_type`：角色类型，只能从以下枚举中选择：
-  - `主角`
-  - `配角`
-  - `反派`
-  - `群体角色`
-  - `未知`
-- `summary`：基于文本可直接归纳的简短角色说明，仅描述文本中明确体现的身份、作用或关系，不扩写心理与设定
-- `evidence`：支持该角色信息的原文短语数组
-
-角色提取规则：
-1. 纯代词（如“他”“她”）不要单独输出，除非无法还原姓名且其确实构成独立角色。
-2. 只出现一次且对剧情没有明显作用的路人可不提取。
-3. 若无法判断角色定位，`role_type` 填 `未知`。
-4. `summary` 只允许写“文本直接支持”的内容，例如：
-   - “女儿”
-   - “公司主管”
-   - “与主角存在债务关系的人”
-   不要写无依据的性格、动机、成长线。
-
----
-
-### B. Props
-仅提取在剧情中具有明确叙事功能的物品。
-
-每个道具输出以下字段：
-
-- `name`：道具名称
-- `purpose`：该道具在剧情中的功能或作用
-- `owner_or_user`：主要持有者或使用者；若无法判断则为空字符串
-- `evidence`：支持该道具及其作用的原文短语数组
-
-道具提取规则：
-只有满足以下至少一项，才可以作为道具输出：
-1. 被角色主动使用
-2. 推动情节发展
-3. 触发冲突、转折或结果
-4. 承载线索、证据、秘密或象征意义
-5. 被反复提及并具有明确叙事作用
-
-补充规则：
-1. 普通环境摆设、无功能背景物品不要输出。
-2. 若文本只提到物品存在，但看不出其叙事作用，不要输出。
-3. `purpose` 应简洁描述功能，不要复述完整剧情。
-4. `owner_or_user` 仅在文本可判断时填写。
-
----
-
-### C. Background
-提取可直接支持 story bible 的背景设定信息。
-
-输出以下字段：
-
-- `era`：时代背景，如“现代”“近未来”“古代”；无法判断则为空字符串
-- `locations`：对剧情承载有意义的主要地域/场景背景数组
-- `social_context`：社会关系或结构背景数组，如“家庭关系”“职场上下级”“校园环境”“贫富差异”
-- `world_rules`：文本中明确体现的世界规则、设定规则、社会运行规则；若无则为空数组
-- `evidence`：支持背景信息的原文短语数组
-
-背景提取规则：
-1. 仅提取文本明示或高置信可直接依据的信息。
-2. 不可仅凭常识推断时代、地域、阶层或世界观。
-3. `locations` 仅保留有叙事承载意义的主要场景，不要罗列所有零碎地点。
-4. `social_context` 使用简短标签，不写成长段说明。
-5. `world_rules` 仅在文本明确呈现某种规则时输出，例如：
-   - “人死后会进入循环”
-   - “机器人拥有合法身份”
-   - “家族继承权决定婚姻安排”
-   若没有明示，不要推断。
-
----
-
-## Input
+## Input Script
 `{{RAW_SCRIPT}}`
 
----
+## Partial Results For Merge
+`{{PARTIAL_RESULTS_JSON}}`
+
+## Current Schema For Repair
+`{{CURRENT_SCHEMA_JSON}}`
+
+## Missing Report For Repair
+`{{MISSING_REPORT_JSON}}`
 
 ## Output JSON Schema
-```json
 {
+  "task_metadata": {
+    "task_id": "",
+    "source_type": "",
+    "source_title": "",
+    "language": "",
+    "target_locale": "",
+    "analysis_purpose": "",
+    "version": "",
+    "notes": ""
+  },
+  "source_summary": {
+    "short_summary": "",
+    "full_summary": "",
+    "theme": "",
+    "genre": [],
+    "tone": [],
+    "narrative_style": "",
+    "evidence": []
+  },
+  "story_core": {
+    "protagonist": {
+      "name": "",
+      "aliases": [],
+      "role_type": "主角",
+      "summary": "",
+      "goal": "",
+      "pain_point": "",
+      "motivation": "",
+      "weakness": "",
+      "growth_arc": "",
+      "evidence": []
+    },
+    "antagonist": {
+      "name": "",
+      "aliases": [],
+      "role_type": "反派",
+      "summary": "",
+      "goal": "",
+      "conflict_with_protagonist": "",
+      "threat_level": "",
+      "evidence": []
+    },
+    "core_conflict": {
+      "conflict_type": "",
+      "conflict_description": "",
+      "stakes": "",
+      "central_question": "",
+      "evidence": []
+    },
+    "protagonist_objective": "",
+    "protagonist_pain_point": "",
+    "relationship_tensions": [
+      {
+        "characters": [],
+        "relationship_type": "",
+        "tension_point": "",
+        "emotional_state": "",
+        "evidence": []
+      }
+    ]
+  },
   "characters": [
     {
       "name": "",
       "aliases": [],
       "role_type": "未知",
+      "importance_level": "主要/次要/背景",
       "summary": "",
-      "evidence": []
+      "personality": [],
+      "goal": "",
+      "motivation": "",
+      "relationship_to_protagonist": "",
+      "relationship_to_antagonist": "",
+      "character_arc": "",
+      "key_actions": [],
+      "localization_notes": "",
+      "evidence": [],
+      "confidence": 0.0
     }
   ],
+  "plot_structure": {
+    "major_plot_points": [
+      {
+        "order": 1,
+        "plot_point": "",
+        "function": "开端/推进/危机/高潮/结局",
+        "characters_involved": [],
+        "location": "",
+        "emotional_effect": "",
+        "evidence": []
+      }
+    ],
+    "turning_points": [
+      {
+        "order": 1,
+        "description": "",
+        "before_state": "",
+        "after_state": "",
+        "impact": "",
+        "evidence": []
+      }
+    ],
+    "reversal_points": [
+      {
+        "order": 1,
+        "description": "",
+        "reversal_type": "",
+        "impact_on_story": "",
+        "evidence": []
+      }
+    ],
+    "emotional_curve": [
+      {
+        "stage": "",
+        "emotion": "",
+        "intensity": 0,
+        "trigger_event": "",
+        "evidence": []
+      }
+    ],
+    "hook_points": [
+      {
+        "type": "",
+        "description": "",
+        "placement": "",
+        "intended_effect": "",
+        "evidence": []
+      }
+    ]
+  },
   "props": [
     {
       "name": "",
+      "prop_type": "",
       "purpose": "",
       "owner_or_user": "",
-      "evidence": []
+      "story_function": "",
+      "symbolic_meaning": "",
+      "replaceable": true,
+      "localization_notes": "",
+      "evidence": [],
+      "confidence": 0.0
     }
   ],
   "background": {
     "era": "",
-    "locations": [],
+    "time_period": "",
+    "locations": [
+      {
+        "name": "",
+        "location_type": "",
+        "description": "",
+        "story_function": "",
+        "localization_notes": "",
+        "evidence": []
+      }
+    ],
     "social_context": [],
-    "world_rules": [],
+    "world_rules": [
+      {
+        "rule": "",
+        "description": "",
+        "impact_on_plot": "",
+        "evidence": []
+      }
+    ],
+    "power_structure": "",
+    "economic_context": "",
+    "cultural_context": "",
     "evidence": []
+  },
+  "localization_features": {
+    "cultural_binding_elements": [
+      {
+        "item": "",
+        "type": "",
+        "description": "",
+        "localization_difficulty": "低/中/高",
+        "suggested_adaptation": "",
+        "evidence": []
+      }
+    ],
+    "relationship_terms": [
+      {
+        "term": "",
+        "meaning": "",
+        "relationship_context": "",
+        "target_locale_adaptation": "",
+        "risk_level": "低/中/高",
+        "evidence": []
+      }
+    ],
+    "value_expression_terms": [
+      {
+        "term": "",
+        "value_type": "",
+        "meaning": "",
+        "adaptation_strategy": "",
+        "evidence": []
+      }
+    ],
+    "worldview_terms": [
+      {
+        "term": "",
+        "definition": "",
+        "importance": "",
+        "translation_or_adaptation": "",
+        "evidence": []
+      }
+    ],
+    "replaceable_carriers": [
+      {
+        "original_item": "",
+        "function_in_story": "",
+        "replacement_options": [],
+        "replacement_constraints": "",
+        "evidence": []
+      }
+    ],
+    "high_risk_localization_items": [
+      {
+        "item": "",
+        "risk_type": "",
+        "risk_description": "",
+        "risk_level": "低/中/高",
+        "mitigation_strategy": "",
+        "evidence": []
+      }
+    ]
+  },
+  "adaptation_guidance": {
+    "must_keep_elements": [],
+    "can_modify_elements": [],
+    "should_remove_or_replace_elements": [],
+    "tone_preservation_notes": "",
+    "character_preservation_notes": "",
+    "plot_preservation_notes": "",
+    "localization_strategy": "",
+    "evidence": []
+  },
+  "quality_control": {
+    "missing_information": [],
+    "ambiguous_points": [],
+    "assumptions": [],
+    "consistency_checks": [
+      {
+        "check_item": "",
+        "result": "",
+        "issue": "",
+        "suggestion": ""
+      }
+    ],
+    "overall_confidence": 0.0
   }
 }

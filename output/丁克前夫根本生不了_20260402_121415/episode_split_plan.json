@@ -1,0 +1,70 @@
+{
+  "target_episode_count": 20,
+  "planned_episode_count": 20,
+  "allocation_strategy": "整体分配重仓于‘婚礼打脸’与‘恶人互撕’的核心高潮环节。前3个Unit（7集）快速推进离婚、鸠占鹊巢与真相揭露的铺垫，极致拉扯并积累期待感；第4-7个Unit（11集）作为全剧高潮，细腻拆解婚礼上的绝地反击、铁证曝光与渣男小三的现世报，最大化释放短剧爽感；最后1个Unit（2集）交代结局与女主新生，完成情绪收束。",
+  "unit_allocations": [
+    {
+      "unit_id": "u_0001",
+      "episode_count": 2,
+      "char_count": 1621,
+      "reason": "开篇快速切入离婚核心冲突，建立女主‘将计就计’隐忍反击的悬念，节奏紧凑，2集足以完成背景交代与钩子设置。"
+    },
+    {
+      "unit_id": "u_0002",
+      "episode_count": 2,
+      "char_count": 2145,
+      "reason": "主要交代小三鸠占鹊巢与外界对女主的非议，功能在于进一步压抑女主处境并暗中收集证据，为后续爆发蓄力，分配2集。"
+    },
+    {
+      "unit_id": "u_0003",
+      "episode_count": 3,
+      "char_count": 2071,
+      "reason": "包含‘三十年替夫背锅’与‘五年隐忍调查’的双重重大真相揭露，信息量极大且情绪极具张力，是全剧重要的情感转折点，需3集充足篇幅铺垫。"
+    },
+    {
+      "unit_id": "u_0004",
+      "episode_count": 2,
+      "char_count": 1775,
+      "reason": "属于高潮前的暴风雨前夜，主要承担反派极致挑衅与女主从容应对的拉扯功能，2集足以推高观众期待值。"
+    },
+    {
+      "unit_id": "u_0005",
+      "episode_count": 3,
+      "char_count": 2285,
+      "reason": "全剧第一层核心大高潮，包含当众拒签、掌掴渣男并爆出不育真相，冲突极其激烈，情绪爆点强，需多分集数展现戏剧张力。"
+    },
+    {
+      "unit_id": "u_0006",
+      "episode_count": 3,
+      "char_count": 2063,
+      "reason": "全剧第二层核心大高潮（爽点集中释放期），连续抛出录音与开房视频铁证，反转密集，需详细刻画反派谎言崩塌与绝望的过程，分配3集。"
+    },
+    {
+      "unit_id": "u_0007",
+      "episode_count": 3,
+      "char_count": 2985,
+      "reason": "恶人互撕与现世报环节，包含暴打小三、扫地出门及渣男极度悔恨。该段落文本量最大（近3000字）且情绪浓烈，是观众最期待的惩罚环节，分配3集。"
+    },
+    {
+      "unit_id": "u_0008",
+      "episode_count": 2,
+      "char_count": 1641,
+      "reason": "结局收尾段落，交代反派的最终凄惨下场与女主洗清冤屈后的释怀新生，2集即可完整交代余波并完成全剧的情绪升华。"
+    }
+  ],
+  "notes": "分配严格遵循20集总数限制。高潮段落（u_0005至u_0007）共占据9集，确保了‘打脸复仇’这一核心看点有足够的时长进行细腻呈现，符合短剧受众的爽点需求。",
+  "validation": {
+    "sum_matches_target": true,
+    "unit_count": 8,
+    "target_episode_count": 20,
+    "planned_episode_count": 20,
+    "all_units_covered": true,
+    "no_unknown_unit_ids": true,
+    "no_duplicate_unit_ids": true,
+    "missing_unit_ids": [],
+    "unknown_unit_ids": [],
+    "duplicate_unit_ids": [],
+    "errors": [],
+    "is_valid": true
+  }
+}

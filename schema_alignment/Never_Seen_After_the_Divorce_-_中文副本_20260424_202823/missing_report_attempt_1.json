@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "missing_count": 0,
+  "missing_fields": [],
+  "checked_required_set": [
+    "story_core.core_conflict",
+    "story_core.protagonist_objective",
+    "story_core.protagonist_pain_point",
+    "story_core.relationship_tensions",
+    "plot_structure.major_plot_points",
+    "plot_structure.reversal_points",
+    "plot_structure.emotional_curve",
+    "plot_structure.hook_points",
+    "localization_features.cultural_binding_elements",
+    "localization_features.high_risk_localization_items",
+    "source_summary.genre_or_theme",
+    "background.era_or_world_rules_or_cultural_context"
+  ],
+  "attempt": 1,
+  "max_attempts": 3
+}

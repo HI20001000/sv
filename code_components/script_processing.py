@@ -34,6 +34,19 @@ from code_components.prompt_registry import (
     UNIT_FRAMEWORK_PROMPT_PATH,
     resolve_prompt_path,
 )
+from code_components.schema_alignment import (
+    align_schema_with_knowledge_base,
+    create_schema_alignment_run_dir,
+    read_schema_extraction_max_attempts,
+    validate_required_fields,
+    write_json_artifact,
+)
+from code_components.story_schema import (
+    empty_story_schema,
+    merge_story_schemas,
+    normalize_story_schema,
+    story_schema_to_runtime_context,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_ROOT = PROJECT_ROOT / "output"
@@ -45,6 +58,7 @@ DEFAULT_UNIT_SPLIT_SENTENCE_BOUNDARIES = "。！？!?；;"
 DEFAULT_UNIT_SPLIT_MERGE_SHORT_TAIL = True
 DEFAULT_EPISODE_COUNT = 60
 DEFAULT_EPISODE_SPLIT_REPAIR_ROUNDS = 2
+DEFAULT_CLEANING_MAX_WORKERS = 1
 DEFAULT_EPISODE_CONTENT_MAX_WORKERS = 4
 DEFAULT_STORYBOARD_MAX_WORKERS = 4
 EPISODE_PLAN_ROOT_PATH = PROJECT_ROOT / "episode_split_plan.json"
@@ -120,7 +134,7 @@ def process_script_to_output(
         progress_callback,
         stage="cleaning_done",
         message=(
-            "1/8 剧本清洗完成（"
+            "1/3 剧本清洗完成（"
             f"策略: {cleaning_strategy}，清洗后字数: {cleaned_chars}，"
             f"耗时: {cleaning_elapsed:.2f}s）"
         ),
@@ -140,15 +154,18 @@ def process_script_to_output(
     text_to_write = cleaned_script if cleaned_script else "[EMPTY_SCRIPT]"
     cleaned_script_path.write_text(text_to_write, encoding="utf-8")
 
+    alignment_dir = create_schema_alignment_run_dir(project_dir)
     _emit_progress(
         progress_callback,
         stage="feature_extraction",
-        message="2/8 特征提取中",
+        message="2/3 特征提取与 Schema 缺失校验中",
+        schema_alignment_dir=str(alignment_dir),
     )
     feature_started_at = time.perf_counter()
-    story_bible = _extract_story_bible(
+    story_bible = _extract_validated_story_bible(
         llm=llm,
         cleaned_script=cleaned_script,
+        alignment_dir=alignment_dir,
         progress_callback=progress_callback,
     )
     feature_elapsed = time.perf_counter() - feature_started_at
@@ -159,18 +176,143 @@ def process_script_to_output(
         progress_callback,
         stage="feature_extraction_done",
         message=(
-            "2/8 特征提取完成（"
+            "2/3 特征提取及缺失校验完成（"
             f"角色: {len(feature_characters) if isinstance(feature_characters, list) else 0}，"
             f"道具: {len(feature_props) if isinstance(feature_props, list) else 0}，"
             f"耗时: {feature_elapsed:.2f}s）"
         ),
         elapsed_seconds=feature_elapsed,
     )
+    _emit_progress(
+        progress_callback,
+        stage="schema_alignment",
+        message="3/3 Knowledge Base TopK Schema 对齐与优化中",
+    )
+    alignment_started_at = time.perf_counter()
+    alignment_result = align_schema_with_knowledge_base(
+        llm=llm,
+        schema=story_bible,
+        run_dir=alignment_dir,
+        progress_callback=progress_callback,
+    )
+    story_bible = alignment_result["schema"]
+    alignment_elapsed = time.perf_counter() - alignment_started_at
+    step_elapsed_seconds["schema_alignment"] = alignment_elapsed
+    _emit_progress(
+        progress_callback,
+        stage="schema_alignment_done",
+        message=(
+            "3/3 Knowledge Base TopK Schema 对齐完成（"
+            f"分数: {alignment_result['summary'].get('topk_aggregate', 0):.3f}，"
+            f"阈值: {alignment_result['summary'].get('threshold', 0):.3f}，"
+            f"耗时: {alignment_elapsed:.2f}s）"
+        ),
+        elapsed_seconds=alignment_elapsed,
+        schema_alignment_summary=alignment_result["summary"],
+    )
     story_bible_path = project_dir / "story_bible.json"
     story_bible_path.write_text(
         json.dumps(story_bible, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+    target_episode_count = _read_episode_count_config()
+    placeholders = _write_pre_unit_placeholders(
+        project_dir=project_dir,
+        target_episode_count=target_episode_count,
+    )
+    story_units_path = placeholders["story_units_path"]
+    unit_frameworks_path = placeholders["unit_frameworks_path"]
+    project_episode_plan_path = placeholders["project_episode_plan_path"]
+    project_episode_generation_plan_path = placeholders["project_episode_generation_plan_path"]
+    episodes_dir = placeholders["episodes_dir"]
+    storyboards_dir = placeholders["storyboards_dir"]
+
+    total_elapsed_seconds = time.perf_counter() - run_started_at
+    meta_path = project_dir / "project_meta.json"
+    meta = {
+        "created_at": datetime.now().isoformat(timespec="seconds"),
+        "source_file": source_path.name,
+        "source_chars": source_chars,
+        "cleaned_chars": cleaned_chars,
+        "cleaning_overlong": is_cleaning_overlong,
+        "cleaning_chunk_size": cleaning_chunk_size,
+        "cleaning_max_workers": _read_cleaning_max_workers_config(),
+        "cleaning_strategy": cleaning_strategy,
+        "cleaning_prompt_file": str(CLEANING_PROMPT_PATH),
+        "feature_prompt_file": str(FEATURE_PROMPT_PATH),
+        "feature_chunk_size": _read_feature_chunk_size_config(),
+        "schema_alignment_dir": str(alignment_dir),
+        "schema_alignment_summary": alignment_result["summary"],
+        "workflow_stop_reason": "Stopped before unit split after schema alignment gate.",
+        "unit_split_prompt_file": str(UNIT_SPLIT_PROMPT_PATH),
+        "unit_framework_prompt_file": str(UNIT_FRAMEWORK_PROMPT_PATH),
+        "unit_episode_plan_prompt_file": str(UNIT_EPISODE_PLAN_PROMPT_PATH),
+        "episode_split_repair_rounds": _read_episode_split_repair_rounds_config(),
+        "episode_generation_plan_prompt_file": str(EPISODE_GENERATION_PLAN_PROMPT_PATH),
+        "episode_content_prompt_file": str(EPISODE_CONTENT_PROMPT_PATH),
+        "storyboard_prompt_file": str(STORYBOARD_PROMPT_PATH),
+        "cleaned_script_file": cleaned_script_path.name,
+        "story_bible_file": story_bible_path.name,
+        "story_units_file": story_units_path.name,
+        "unit_frameworks_file": unit_frameworks_path.name,
+        "episode_split_plan_file": project_episode_plan_path.name,
+        "episode_split_plan_root_file": str(EPISODE_PLAN_ROOT_PATH),
+        "episode_generation_plan_file": project_episode_generation_plan_path.name,
+        "episode_generation_plan_root_file": str(EPISODE_GENERATION_PLAN_ROOT_PATH),
+        "episodes_dir": episodes_dir.name,
+        "episodes_overview_file": "episodes_overview.json",
+        "storyboards_dir": storyboards_dir.name,
+        "storyboards_index_file": "index.json",
+        "episode_content_max_workers": _read_episode_content_max_workers_config(),
+        "storyboard_max_workers": _read_storyboard_max_workers_config(),
+        "unit_count": 0,
+        "target_episode_count": target_episode_count,
+        "planned_episode_count": 0,
+        "planned_episode_outline_count": 0,
+        "generated_episode_count": 0,
+        "generated_storyboard_count": 0,
+        "step_elapsed_seconds": {
+            key: round(value, 4) for key, value in step_elapsed_seconds.items()
+        },
+        "total_elapsed_seconds": round(total_elapsed_seconds, 4),
+    }
+    meta_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
+    _emit_progress(
+        progress_callback,
+        stage="done",
+        message=(
+            "Schema 前置流程完成，已在 Unit 拆分前停止"
+            f"（总耗时: {total_elapsed_seconds:.2f}s）"
+        ),
+        total_elapsed_seconds=total_elapsed_seconds,
+        schema_alignment_dir=str(alignment_dir),
+    )
+
+    return ScriptOutputResult(
+        project_dir=project_dir,
+        cleaned_script_path=cleaned_script_path,
+        story_bible_path=story_bible_path,
+        story_units_path=story_units_path,
+        unit_frameworks_path=unit_frameworks_path,
+        project_episode_plan_path=project_episode_plan_path,
+        root_episode_plan_path=EPISODE_PLAN_ROOT_PATH,
+        project_episode_generation_plan_path=project_episode_generation_plan_path,
+        root_episode_generation_plan_path=EPISODE_GENERATION_PLAN_ROOT_PATH,
+        episodes_dir=episodes_dir,
+        storyboards_dir=storyboards_dir,
+        unit_count=0,
+        target_episode_count=target_episode_count,
+        planned_episode_count=0,
+        planned_episode_outline_count=0,
+        generated_episode_count=0,
+        generated_storyboard_count=0,
+        source_snapshot_path=source_snapshot_path,
+        source_chars=source_chars,
+        cleaned_chars=cleaned_chars,
+        total_elapsed_seconds=total_elapsed_seconds,
+    )
+
+    runtime_story_context = story_schema_to_runtime_context(story_bible)
 
     unit_split_config = _read_unit_split_prompt_config()
     unit_window_min = unit_split_config["window_min"]
@@ -280,7 +422,7 @@ def process_script_to_output(
     episode_generation_plan_started_at = time.perf_counter()
     episode_generation_plan = _generate_episode_generation_plan(
         llm=llm,
-        story_bible=story_bible,
+        story_bible=runtime_story_context,
         story_units=story_units,
         unit_frameworks=unit_frameworks,
         episode_split_plan=episode_plan,
@@ -322,7 +464,7 @@ def process_script_to_output(
         llm=llm,
         project_dir=project_dir,
         episodes_dir=episodes_dir,
-        story_bible=story_bible,
+        story_bible=runtime_story_context,
         story_units=story_units,
         episode_generation_plan=episode_generation_plan,
         target_episode_count=target_episode_count,
@@ -349,7 +491,7 @@ def process_script_to_output(
         llm=llm,
         episodes_dir=episodes_dir,
         storyboards_dir=storyboards_dir,
-        story_bible=story_bible,
+        story_bible=runtime_story_context,
         target_episode_count=target_episode_count,
         progress_callback=progress_callback,
     )
@@ -373,6 +515,7 @@ def process_script_to_output(
         "cleaned_chars": cleaned_chars,
         "cleaning_overlong": is_cleaning_overlong,
         "cleaning_chunk_size": cleaning_chunk_size,
+        "cleaning_max_workers": _read_cleaning_max_workers_config(),
         "cleaning_strategy": cleaning_strategy,
         "cleaning_prompt_file": str(CLEANING_PROMPT_PATH),
         "feature_prompt_file": str(FEATURE_PROMPT_PATH),
@@ -478,6 +621,186 @@ def _emit_progress(
         return
 
 
+def _extract_validated_story_bible(
+    llm,
+    cleaned_script: str,
+    alignment_dir: Path,
+    progress_callback: ProgressCallback | None = None,
+) -> dict[str, Any]:
+    max_attempts = read_schema_extraction_max_attempts()
+    current_schema: dict[str, Any] = _empty_story_bible()
+    missing_report: dict[str, Any] | None = None
+
+    for attempt in range(1, max_attempts + 1):
+        if attempt == 1:
+            current_schema = _extract_story_bible(
+                llm=llm,
+                cleaned_script=cleaned_script,
+                progress_callback=progress_callback,
+            )
+        else:
+            current_schema = _repair_story_bible_missing(
+                llm=llm,
+                cleaned_script=cleaned_script,
+                current_schema=current_schema,
+                missing_report=missing_report or {},
+            )
+
+        missing_report = validate_required_fields(current_schema)
+        missing_report = {
+            **missing_report,
+            "attempt": attempt,
+            "max_attempts": max_attempts,
+        }
+        report_path = alignment_dir / f"missing_report_attempt_{attempt}.json"
+        write_json_artifact(report_path, missing_report)
+
+        if missing_report["passed"]:
+            _emit_progress(
+                progress_callback,
+                stage="schema_validation",
+                message=f"Schema 缺失校验通过（attempt {attempt}/{max_attempts}，缺失 0 项）",
+                attempt=attempt,
+                max_attempts=max_attempts,
+                missing_report=str(report_path),
+            )
+            write_json_artifact(
+                alignment_dir / "schema_extraction_validation_summary.json",
+                {
+                    "status": "passed",
+                    "attempt": attempt,
+                    "max_attempts": max_attempts,
+                    "missing_report": str(report_path),
+                },
+            )
+            return current_schema
+
+        missing_fields = [
+            str(item.get("business_field") or item.get("field"))
+            for item in missing_report.get("missing_fields", [])
+            if isinstance(item, dict)
+        ]
+        _emit_progress(
+            progress_callback,
+            stage="schema_validation",
+            message=(
+                f"Schema 缺失校验未通过（attempt {attempt}/{max_attempts}，"
+                f"缺失 {missing_report['missing_count']} 项）：{', '.join(missing_fields)}"
+            ),
+            attempt=attempt,
+            max_attempts=max_attempts,
+            missing_count=missing_report["missing_count"],
+            missing_report=str(report_path),
+        )
+
+    final_report_path = alignment_dir / f"missing_report_attempt_{max_attempts}.json"
+    final_missing_fields = [
+        str(item.get("business_field") or item.get("field"))
+        for item in (missing_report or {}).get("missing_fields", [])
+        if isinstance(item, dict)
+    ]
+    raise ValueError(
+        "Schema extraction failed required-field validation after "
+        f"{max_attempts} attempts. Missing fields: {', '.join(final_missing_fields)}. "
+        f"See {final_report_path}"
+    )
+
+
+def _repair_story_bible_missing(
+    llm,
+    cleaned_script: str,
+    current_schema: dict[str, Any],
+    missing_report: dict[str, Any],
+) -> dict[str, Any]:
+    raw_response = extract_script_features_with_prompt(
+        llm=llm,
+        script_text=cleaned_script,
+        task_mode="repair_missing",
+        current_schema_json=json.dumps(current_schema, ensure_ascii=False, indent=2),
+        missing_report_json=json.dumps(missing_report, ensure_ascii=False, indent=2),
+        prompt_path=FEATURE_PROMPT_PATH,
+    )
+    parsed = _parse_json_response(raw_response, source_name="Feature missing-field repair")
+    return _normalize_story_bible(parsed)
+
+
+def _write_pre_unit_placeholders(project_dir: Path, target_episode_count: int) -> dict[str, Path]:
+    story_units_path = project_dir / "story_units.json"
+    unit_frameworks_path = project_dir / "unit_frameworks.json"
+    project_episode_plan_path = project_dir / "episode_split_plan.json"
+    project_episode_generation_plan_path = project_dir / "episode_generation_plan.json"
+    episodes_dir = project_dir / "episodes"
+    storyboards_dir = project_dir / "storyboards"
+    episodes_dir.mkdir(parents=True, exist_ok=True)
+    storyboards_dir.mkdir(parents=True, exist_ok=True)
+
+    story_units_path.write_text("[]", encoding="utf-8")
+    unit_frameworks_path.write_text("[]", encoding="utf-8")
+
+    episode_plan_placeholder = {
+        "status": "not_run",
+        "reason": "Stopped before unit split after schema alignment gate.",
+        "target_episode_count": target_episode_count,
+        "planned_episode_count": 0,
+        "episodes": [],
+    }
+    episode_generation_plan_placeholder = {
+        "status": "not_run",
+        "reason": "Stopped before unit split after schema alignment gate.",
+        "target_episode_count": target_episode_count,
+        "planned_episode_count": 0,
+        "episodes": [],
+    }
+    episodes_index = {
+        "target_episode_count": target_episode_count,
+        "generated_episode_count": 0,
+        "episodes": [],
+    }
+    storyboards_index = {
+        "target_episode_count": target_episode_count,
+        "generated_storyboard_count": 0,
+        "episodes": [],
+    }
+
+    project_episode_plan_path.write_text(
+        json.dumps(episode_plan_placeholder, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    EPISODE_PLAN_ROOT_PATH.write_text(
+        json.dumps(episode_plan_placeholder, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    project_episode_generation_plan_path.write_text(
+        json.dumps(episode_generation_plan_placeholder, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    EPISODE_GENERATION_PLAN_ROOT_PATH.write_text(
+        json.dumps(episode_generation_plan_placeholder, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    (episodes_dir / "index.json").write_text(
+        json.dumps(episodes_index, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    (project_dir / "episodes_overview.json").write_text(
+        json.dumps(episodes_index, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    (storyboards_dir / "index.json").write_text(
+        json.dumps(storyboards_index, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+    return {
+        "story_units_path": story_units_path,
+        "unit_frameworks_path": unit_frameworks_path,
+        "project_episode_plan_path": project_episode_plan_path,
+        "project_episode_generation_plan_path": project_episode_generation_plan_path,
+        "episodes_dir": episodes_dir,
+        "storyboards_dir": storyboards_dir,
+    }
+
+
 def _extract_story_bible(
     llm,
     cleaned_script: str,
@@ -512,6 +835,9 @@ def _extract_story_bible(
             raw_response = extract_script_features_with_prompt(
                 llm=llm,
                 script_text=chunk,
+                task_mode="direct_extract" if len(chunks) == 1 else "chunk_extract",
+                chunk_index=chunk_index,
+                chunk_count=len(chunks),
                 prompt_path=FEATURE_PROMPT_PATH,
             )
             parsed = _parse_json_response(raw_response, source_name="Feature extraction")
@@ -528,7 +854,30 @@ def _extract_story_bible(
     if not extracted_chunks:
         raise ValueError("Feature extraction failed for all chunks")
 
-    merged = _merge_story_bibles(extracted_chunks)
+    if len(extracted_chunks) == 1:
+        merged = extracted_chunks[0]
+    else:
+        try:
+            _emit_progress(
+                progress_callback,
+                stage="feature_extraction_internal",
+                message=f"特征分段合并中（有效分段: {len(extracted_chunks)}/{len(chunks)}）",
+                chunk_success_count=len(extracted_chunks),
+                chunk_count=len(chunks),
+            )
+            raw_response = extract_script_features_with_prompt(
+                llm=llm,
+                script_text="",
+                task_mode="merge_chunks",
+                partial_results_json=json.dumps(extracted_chunks, ensure_ascii=False, indent=2),
+                chunk_count=len(chunks),
+                prompt_path=FEATURE_PROMPT_PATH,
+            )
+            parsed = _parse_json_response(raw_response, source_name="Feature chunk merge")
+            merged = _normalize_story_bible(parsed)
+        except Exception:
+            merged = _merge_story_bibles(extracted_chunks)
+
     _emit_progress(
         progress_callback,
         stage="feature_extraction_internal",
@@ -545,62 +894,7 @@ def _extract_story_bible(
 
 
 def _merge_story_bibles(items: list[dict[str, Any]]) -> dict[str, Any]:
-    if not items:
-        return _empty_story_bible()
-
-    character_map: dict[str, dict[str, Any]] = {}
-    prop_map: dict[str, dict[str, Any]] = {}
-
-    era = ""
-    locations: list[str] = []
-    social_context: list[str] = []
-    world_rules: list[str] = []
-    background_evidence: list[str] = []
-
-    for item in items:
-        normalized_item = _normalize_story_bible(item)
-        for character in normalized_item.get("characters", []):
-            key = _build_entity_key(character.get("name"), character.get("aliases"))
-            if not key:
-                continue
-            if key not in character_map:
-                character_map[key] = character
-            else:
-                character_map[key] = _merge_character_record(character_map[key], character)
-
-        for prop in normalized_item.get("props", []):
-            key = _build_entity_key(prop.get("name"), [])
-            if not key:
-                continue
-            if key not in prop_map:
-                prop_map[key] = prop
-            else:
-                prop_map[key] = _merge_prop_record(prop_map[key], prop)
-
-        background = normalized_item.get("background", {})
-        if isinstance(background, dict):
-            current_era = _coerce_text(background.get("era"))
-            if not era and current_era:
-                era = current_era
-            locations = _unique_texts(locations + _coerce_text_sequence(background.get("locations")))
-            social_context = _unique_texts(social_context + _coerce_text_sequence(background.get("social_context")))
-            world_rules = _unique_texts(world_rules + _coerce_text_sequence(background.get("world_rules")))
-            background_evidence = _unique_texts(
-                background_evidence + _coerce_text_sequence(background.get("evidence"))
-            )
-
-    merged = {
-        "characters": list(character_map.values()),
-        "props": list(prop_map.values()),
-        "background": {
-            "era": era,
-            "locations": locations,
-            "social_context": social_context,
-            "world_rules": world_rules,
-            "evidence": background_evidence,
-        },
-    }
-    return _normalize_story_bible(merged)
+    return merge_story_schemas(items)
 
 
 def _merge_character_record(base: dict[str, Any], incoming: dict[str, Any]) -> dict[str, Any]:
@@ -2318,46 +2612,7 @@ def _parse_json_response(raw_response: str, source_name: str = "LLM") -> Any:
 
 
 def _normalize_story_bible(data: Any) -> dict[str, Any]:
-    if not isinstance(data, dict):
-        return _empty_story_bible()
-
-    raw_characters = data.get("characters")
-    raw_props = data.get("props")
-    raw_background = data.get("background")
-
-    if not isinstance(raw_characters, list):
-        raw_characters = []
-    if not isinstance(raw_props, list):
-        raw_props = []
-    if not isinstance(raw_background, dict):
-        raw_background = {}
-
-    characters: list[dict[str, Any]] = []
-    for item in raw_characters:
-        normalized = _normalize_character_item(item)
-        if normalized is not None:
-            characters.append(normalized)
-
-    props: list[dict[str, Any]] = []
-    for item in raw_props:
-        normalized = _normalize_prop_item(item)
-        if normalized is not None:
-            props.append(normalized)
-
-    background = {
-        "era": _coerce_text(raw_background.get("era")),
-        "locations": _coerce_text_sequence(raw_background.get("locations")),
-        "social_context": _coerce_text_sequence(raw_background.get("social_context")),
-        "world_rules": _coerce_text_sequence(raw_background.get("world_rules")),
-        "evidence": _coerce_text_sequence(raw_background.get("evidence")),
-    }
-
-    normalized = {
-        "characters": characters,
-        "props": props,
-        "background": background,
-    }
-    return _dedupe_story_bible(normalized)
+    return normalize_story_schema(data)
 
 
 def _normalize_character_item(item: Any) -> dict[str, Any] | None:
@@ -2481,17 +2736,21 @@ def _dedupe_story_bible(story_bible: dict[str, Any]) -> dict[str, Any]:
 
 
 def _empty_story_bible() -> dict[str, Any]:
-    return {
-        "characters": [],
-        "props": [],
-        "background": {
-            "era": "",
-            "locations": [],
-            "social_context": [],
-            "world_rules": [],
-            "evidence": [],
-        },
-    }
+    return empty_story_schema()
+
+
+def _format_exception_brief(exc: Exception) -> str:
+    exc_type = type(exc).__name__
+    message = _coerce_text(str(exc))
+    details = _coerce_text(repr(exc))
+
+    if message and details and message != details:
+        return f"{exc_type}: {message} | {details}"
+    if message:
+        return f"{exc_type}: {message}"
+    if details:
+        return f"{exc_type}: {details}"
+    return exc_type
 
 
 def _clean_script_robust(
@@ -2500,40 +2759,76 @@ def _clean_script_robust(
     cleaning_chunk_size: int,
     progress_callback: ProgressCallback | None = None,
 ) -> tuple[str, str]:
-    cleaned = clean_script_with_prompt(
-        llm=llm,
-        raw_script=raw_script,
-        prompt_path=CLEANING_PROMPT_PATH,
-    )
-    if cleaned.strip():
+    is_overlong = len(raw_script) > cleaning_chunk_size
+    cleaned = ""
+
+    if not is_overlong:
+        try:
+            cleaned = clean_script_with_prompt(
+                llm=llm,
+                raw_script=raw_script,
+                prompt_path=CLEANING_PROMPT_PATH,
+            )
+        except Exception as exc:
+            _emit_progress(
+                progress_callback,
+                stage="cleaning_internal",
+                message=(
+                    f"剧本清洗主流程调用失败，进入兜底策略："
+                    f"{_format_exception_brief(exc)}"
+                ),
+                cleaning_strategy="llm_failed",
+            )
+
+        if cleaned.strip():
+            _emit_progress(
+                progress_callback,
+                stage="cleaning_internal",
+                message="剧本清洗主流程返回有效结果",
+                cleaning_strategy="llm",
+            )
+            return cleaned, "llm"
+
         _emit_progress(
             progress_callback,
             stage="cleaning_internal",
-            message="剧本清洗主流程返回有效结果",
-            cleaning_strategy="llm",
+            message="剧本清洗主流程返回空结果，进入兜底策略",
         )
-        return cleaned, "llm"
+    else:
+        _emit_progress(
+            progress_callback,
+            stage="cleaning_internal",
+            message="剧本超过单次清洗阈值，优先走分块清洗",
+            cleaning_strategy="chunked_preferred",
+        )
 
-    _emit_progress(
-        progress_callback,
-        stage="cleaning_internal",
-        message="剧本清洗主流程返回空结果，进入兜底策略",
-    )
-    if len(raw_script) <= cleaning_chunk_size * 2:
+    try:
         chunked_cleaned = _clean_script_in_chunks(
             llm=llm,
             raw_script=raw_script,
             cleaning_chunk_size=cleaning_chunk_size,
             progress_callback=progress_callback,
         )
-        if chunked_cleaned.strip():
-            _emit_progress(
-                progress_callback,
-                stage="cleaning_internal",
-                message="分块清洗成功",
-                cleaning_strategy="chunked",
-            )
-            return chunked_cleaned, "chunked"
+    except Exception as exc:
+        chunked_cleaned = ""
+        _emit_progress(
+            progress_callback,
+            stage="cleaning_internal",
+            message=(
+                f"分块清洗失败，使用本地清洗兜底："
+                f"{_format_exception_brief(exc)}"
+            ),
+            cleaning_strategy="chunked_failed",
+        )
+
+    if chunked_cleaned.strip():
+        _emit_progress(
+            progress_callback,
+            stage="cleaning_internal",
+            message="分块清洗成功",
+            cleaning_strategy="chunked",
+        )
+        return chunked_cleaned, "chunked"
 
     _emit_progress(
         progress_callback,
@@ -2554,29 +2849,107 @@ def _clean_script_in_chunks(
     if not chunks:
         return ""
 
+    max_workers = min(_read_cleaning_max_workers_config(), max(len(chunks), 1))
     _emit_progress(
         progress_callback,
         stage="cleaning_internal",
-        message=f"分块清洗中（共 {len(chunks)} 块）",
+        message=f"分块清洗中（共 {len(chunks)} 块，并发: {max_workers}）",
         chunk_count=len(chunks),
+        max_workers=max_workers,
     )
-    cleaned_chunks: list[str] = []
-    for chunk_index, chunk in enumerate(chunks, start=1):
-        _emit_progress(
-            progress_callback,
-            stage="cleaning_internal",
-            message=f"分块清洗进度：第 {chunk_index}/{len(chunks)} 块",
-            chunk_index=chunk_index,
-            chunk_count=len(chunks),
-        )
-        cleaned_chunk = clean_script_with_prompt(
-            llm=llm,
-            raw_script=chunk,
-            prompt_path=CLEANING_PROMPT_PATH,
-        ).strip()
-        cleaned_chunks.append(cleaned_chunk if cleaned_chunk else chunk.strip())
+    if max_workers <= 1:
+        cleaned_chunks: list[str] = []
+        for chunk_index, chunk in enumerate(chunks, start=1):
+            _emit_progress(
+                progress_callback,
+                stage="cleaning_internal",
+                message=f"分块清洗进度：第 {chunk_index}/{len(chunks)} 块",
+                chunk_index=chunk_index,
+                chunk_count=len(chunks),
+            )
+            try:
+                cleaned_chunk = clean_script_with_prompt(
+                    llm=llm,
+                    raw_script=chunk,
+                    prompt_path=CLEANING_PROMPT_PATH,
+                ).strip()
+            except Exception as exc:
+                _emit_progress(
+                    progress_callback,
+                    stage="cleaning_internal",
+                    message=(
+                        f"第 {chunk_index}/{len(chunks)} 块清洗失败，保留原文："
+                        f"{_format_exception_brief(exc)}"
+                    ),
+                    chunk_index=chunk_index,
+                    chunk_count=len(chunks),
+                )
+                cleaned_chunk = ""
+            cleaned_chunks.append(cleaned_chunk if cleaned_chunk else chunk.strip())
+        return "\n\n".join(part for part in cleaned_chunks if part)
 
-    return "\n\n".join(part for part in cleaned_chunks if part)
+    cleaned_chunks_by_index: list[str] = [""] * len(chunks)
+    llm_thread_local = threading.local()
+    completed_count = 0
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(
+                _clean_single_script_chunk,
+                llm=llm,
+                llm_thread_local=llm_thread_local,
+                chunk=chunk,
+            ): (chunk_index, chunk)
+            for chunk_index, chunk in enumerate(chunks, start=1)
+        }
+
+        for future in as_completed(futures):
+            chunk_index, chunk = futures[future]
+            try:
+                cleaned_chunk = future.result().strip()
+            except Exception as exc:
+                _emit_progress(
+                    progress_callback,
+                    stage="cleaning_internal",
+                    message=(
+                        f"第 {chunk_index}/{len(chunks)} 块清洗失败，保留原文："
+                        f"{_format_exception_brief(exc)}"
+                    ),
+                    chunk_index=chunk_index,
+                    chunk_count=len(chunks),
+                    max_workers=max_workers,
+                )
+                cleaned_chunk = ""
+
+            cleaned_chunks_by_index[chunk_index - 1] = cleaned_chunk if cleaned_chunk else chunk.strip()
+            completed_count += 1
+            _emit_progress(
+                progress_callback,
+                stage="cleaning_internal",
+                message=(
+                    f"分块清洗已完成 {completed_count}/{len(chunks)} 块"
+                    f"（刚完成第 {chunk_index} 块）"
+                ),
+                chunk_index=chunk_index,
+                chunk_count=len(chunks),
+                completed_chunk_count=completed_count,
+                max_workers=max_workers,
+            )
+
+    return "\n\n".join(part for part in cleaned_chunks_by_index if part)
+
+
+def _clean_single_script_chunk(
+    llm,
+    llm_thread_local: threading.local | None,
+    chunk: str,
+) -> str:
+    worker_llm = _get_parallel_worker_llm(llm=llm, llm_thread_local=llm_thread_local)
+    return clean_script_with_prompt(
+        llm=worker_llm,
+        raw_script=chunk,
+        prompt_path=CLEANING_PROMPT_PATH,
+    )
 
 
 def _split_text(text: str, chunk_size: int) -> list[str]:
@@ -2706,6 +3079,18 @@ def _read_cleaning_chunk_size_config() -> int:
     return chunk_size
 
 
+def _read_cleaning_max_workers_config() -> int:
+    raw_workers = os.getenv("CLEANING_MAX_WORKERS", str(DEFAULT_CLEANING_MAX_WORKERS))
+    try:
+        workers = int(raw_workers)
+    except ValueError as exc:
+        raise ValueError("CLEANING_MAX_WORKERS must be an integer") from exc
+
+    if workers <= 0:
+        raise ValueError("CLEANING_MAX_WORKERS must be positive")
+    return workers
+
+
 def _read_episode_count_config() -> int:
     raw_count = os.getenv("DEFAULT_EPISODE_COUNT", str(DEFAULT_EPISODE_COUNT))
     try:
@@ -2832,7 +3217,7 @@ def _split_paragraph_if_needed(
     if len(paragraph) <= window_max:
         return [paragraph]
 
-    sentences = _sentence_split(paragraph, sentence_boundaries)
+    sentences = _sentence_split_with_boundaries(paragraph, sentence_boundaries)
     chunks: list[str] = []
     current = ""
 

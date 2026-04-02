@@ -1,0 +1,312 @@
+{
+  "episode_no": 10,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0010.json",
+  "storyboard": {
+    "episode_no": 10,
+    "title": "我反对！",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代婚礼现场环境与司仪开场",
+            "visual": "全景；牡丹厅布置奢华，宾客满座，司仪正拿着话筒讲话；建立镜头缓慢推进；全景深；明亮华丽的舞台光；道具:话筒。",
+            "characters": [
+              "司仪"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现司仪对马国梁和方柔的虚假赞美",
+            "visual": "中近景；司仪声情并茂地讲述着；正面平视；焦点集中在司仪面部；舞台聚光灯；道具:话筒。",
+            "characters": [
+              "司仪"
+            ],
+            "dialogue": "司仪：（深情款款）三十年的默默陪伴，三十年的不离不弃！马国梁先生为了保护他的爱人，隐忍了整整三十年！而方柔女士，更是一个不求名分、默默付出的伟大女人！今天，这对历经千难万险的有情人，终于走到了阳光下！",
+            "duration": 8.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "表现宾客被虚假故事感动",
+            "visual": "中景；台下宾客热烈鼓掌，几个宾客交头接耳；轻微手持横移；背景虚化；宴会厅环境光。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "强化宾客对马国梁的正面评价",
+            "visual": "特写；两名宾客交头接耳，表情感动擦眼泪；过肩镜头；浅景深；柔和环境光。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "宾客A：（感动擦眼泪）太感人了，马总真是个重情重义的好男人。宾客B：是啊，这才是真爱啊！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "揭示顾盼盼对这场骗局的嘲讽态度",
+            "visual": "特写；顾盼盼独自坐在角落，嘴角勾起一抹嘲讽的冷笑；侧面镜头微推；背景虚化突出冷峻表情；角落暗光。",
+            "characters": [
+              "顾盼盼"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "展示马国梁与方柔的虚假深情",
+            "visual": "中景；马国梁紧紧牵着穿婚纱的方柔，方柔眼眶微红挤出眼泪；正面平视；焦点在两人面部；明亮柔和的舞台光。",
+            "characters": [
+              "马国梁",
+              "方柔"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "引入马曼妮和马天宇参与互动",
+            "visual": "中景；马曼妮和马天宇捧着鲜花走上台递给两人；跟随运镜；全景深；舞台光。",
+            "characters": [
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "表现马国梁对两个非亲生孩子的慈爱",
+            "visual": "中近景；马国梁满脸欣慰接过鲜花，抬手摸马天宇的头，拍马曼妮肩膀；微移；焦点在马国梁慈父般的表情；舞台光。",
+            "characters": [
+              "马国梁",
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "马国梁准备发表重要讲话",
+            "visual": "中景；马国梁抬手示意全场安静，拿起话筒表情激动；正面微推；焦点在马国梁；聚光灯；道具:话筒。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：（抬手示意全场安静，拿起话筒，声音激动）各位亲朋好友！今天，我能和方柔走到一起，能有曼妮和天宇这两个孩子陪在身边，我觉得我是世界上最幸福的人！",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "马国梁卖惨并表达对方柔的感激",
+            "visual": "中近景；马国梁目光扫过台下，表情感慨委屈；缓慢推近；浅景深；舞台光；道具:话筒。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：我曾经以为，自己将一辈子没有孩子，只能过着凄凉的丁克生活，孤独终老。可上天怜爱我，让我的爱人方柔，给我带来了一子一女，让我能够圆满一生！",
+            "duration": 8.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 2,
+            "purpose": "表现方柔的做作与配合",
+            "visual": "特写；方柔紧紧抱住马国梁的胳膊，娇滴滴地哽咽；仰拍特写；焦点在方柔做作的表情；舞台光。",
+            "characters": [
+              "方柔",
+              "马国梁"
+            ],
+            "dialogue": "方柔：（紧紧抱住马国梁的胳膊，娇滴滴地哽咽）国梁，只要能和你在一起，我受多少委屈都愿意……",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 2,
+            "purpose": "展现马国梁的虚假承诺",
+            "visual": "特写；马国梁拍拍方柔的手背；局部特写；浅景深；舞台光。",
+            "characters": [
+              "马国梁",
+              "方柔"
+            ],
+            "dialogue": "马国梁：（拍拍方柔的手背）柔柔，我无以为报，只能用实际行动来表达我的心意！",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "亮出关键道具房产公示证书",
+            "visual": "中景；马国梁转身从工作人员手中拿过红色的房产公示证书，高高举起展示；跟随动作上摇；焦点在证书上；明亮舞台光；道具:房产公示证书。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "马国梁高调宣布过户房产",
+            "visual": "中近景；马国梁声音洪亮地宣布；仰拍建立压迫感；焦点在马国梁自信的面部；聚光灯；道具:房产公示证书。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：（声音洪亮）我没什么能给他们的！这套房子，是我之前的婚内房产！现在，我决定把这套房产，正式过户给我的两个孩子——马曼妮和马天宇！助他们顺遂成长！",
+            "duration": 7.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "表现台下宾客的热烈反应",
+            "visual": "全景；台下爆发出雷鸣般的欢呼声和鼓掌声；固定镜头；全景深；宴会厅明亮光线。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 3,
+            "purpose": "宾客对马国梁行为的赞赏",
+            "visual": "中景；宾客们齐声夸赞，表情激动；轻微手持；焦点在人群；环境光。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "宾客们：（齐声夸赞）马总大气！马总真是个好父亲！这两个孩子太有福气了！",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 3,
+            "purpose": "揭示方柔母子三人的贪婪与得意",
+            "visual": "中近景；马曼妮和马天宇激动捂嘴对视，方柔微微点头，三人表情得意；横移扫过三人；浅景深；舞台光。",
+            "characters": [
+              "马曼妮",
+              "马天宇",
+              "方柔"
+            ],
+            "dialogue": "",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 3,
+            "purpose": "马国梁推进过户流程",
+            "visual": "中景；马国梁对着工作人员招手；正面镜头；焦点在马国梁；舞台光。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：（对着工作人员招手）来，宣读房产过户协议！",
+            "duration": 3.0
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "顾盼盼准备打断婚礼",
+            "visual": "特写；角落里顾盼盼眼神骤然一冷，一把抓起桌上的香槟杯；手持微推；焦点在顾盼盼凌厉的眼神和手部动作；角落暗光；道具:香槟杯。",
+            "characters": [
+              "顾盼盼"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 4,
+            "purpose": "顾盼盼砸杯子制造巨大声响打断全场",
+            "visual": "特写；顾盼盼将香槟杯重重砸在桌子上；快速下摇；浅景深突出杯子撞击瞬间；冷色调暗光；道具:香槟杯。",
+            "characters": [
+              "顾盼盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 4,
+            "purpose": "表现全场被突发状况震惊的死寂",
+            "visual": "中景；全场死寂，宾客们齐刷刷转头看向顾盼盼方向；快速横摇；全景深；宴会厅环境光。",
+            "characters": [
+              "宾客们"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 4,
+            "purpose": "顾盼盼霸气喊出反对，引爆高潮",
+            "visual": "中近景；顾盼盼身姿挺拔，目光如炬，指着舞台大声怒吼；仰拍微推建立压迫感；焦点在顾盼盼愤怒的面部；逆光勾勒轮廓。",
+            "characters": [
+              "顾盼盼"
+            ],
+            "dialogue": "顾盼盼：（身姿挺拔，目光如炬，指着舞台大声怒吼）我反对！！！",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 4,
+            "purpose": "展现台上三人被打断后的震惊与破防",
+            "visual": "中景；方柔脸上的得意僵住转为震惊愤怒，马国梁举着房产证的手悬在半空瞪大眼睛；快速推近；浅景深突出两人表情变化；舞台光；道具:房产公示证书。",
+            "characters": [
+              "方柔",
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 0,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 1.0,
+    "missing_dialogues": [],
+    "unknown_characters": [],
+    "required_props": [
+      "房产公示证书",
+      "香槟杯"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": true,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

@@ -4,7 +4,12 @@ async function request(path, options = {}) {
   const response = await fetch(`${API_PREFIX}${path}`, options)
   const data = await response.json().catch(() => ({}))
   if (!response.ok) {
-    throw new Error(data.detail || `Request failed: ${response.status}`)
+    const detail = data.detail
+    const message = typeof detail === 'string' ? detail : detail?.message || `Request failed: ${response.status}`
+    const error = new Error(message)
+    error.status = response.status
+    error.data = data
+    throw error
   }
   return data
 }
@@ -15,6 +20,34 @@ export function getHealth() {
 
 export function getInputDocuments() {
   return request('/input-documents')
+}
+
+export function getKnowledgeBase() {
+  return request('/knowledge-base')
+}
+
+export function checkKnowledgeBaseFilename(filename) {
+  return request(`/knowledge-base/check-filename?filename=${encodeURIComponent(filename)}`)
+}
+
+export function uploadKnowledgeBaseFile(file, options = {}) {
+  const formData = new FormData()
+  formData.append('file', file)
+  if (options.overwriteRecordId) {
+    formData.append('overwrite_record_id', options.overwriteRecordId)
+  }
+  return request('/knowledge-base/upload-and-extract', {
+    method: 'POST',
+    body: formData,
+  })
+}
+
+export function getKnowledgeBaseJob(jobId) {
+  return request(`/knowledge-base/jobs/${encodeURIComponent(jobId)}`)
+}
+
+export function getKnowledgeBaseItem(recordId) {
+  return request(`/knowledge-base/items/${encodeURIComponent(recordId)}`)
 }
 
 export function uploadInputDocument(file) {

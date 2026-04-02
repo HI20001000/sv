@@ -19,11 +19,18 @@ from code_components.prompt_registry import (
     EPISODE_CONTENT_PROMPT_PATH,
     EPISODE_GENERATION_PLAN_PROMPT_PATH,
     FEATURE_PROMPT_PATH,
+    KB_FEATURE_PROMPT_PATH,
+    SCHEMA_ALIGNMENT_PROMPT_PATH,
+    SCHEMA_OPTIMIZATION_PROMPT_PATH,
     STORYBOARD_PROMPT_PATH,
     UNIT_EPISODE_PLAN_PROMPT_PATH,
     UNIT_FRAMEWORK_PROMPT_PATH,
     resolve_prompt_path,
 )
+
+OPTIONAL_PROMPT_VARIABLE_DEFAULTS = {
+    "PROJECT_BIBLE": "",
+}
 
 
 def build_workflow(llm: ChatOpenAI):
@@ -118,12 +125,99 @@ def clean_script_with_prompt(
 def extract_script_features_with_prompt(
     llm: ChatOpenAI,
     script_text: str,
+    task_mode: str = "direct_extract",
+    partial_results_json: str = "",
+    current_schema_json: str = "",
+    missing_report_json: str = "",
+    source_file_name: str = "",
+    record_id: str = "",
+    chunk_index: int | str = "",
+    chunk_count: int | str = "",
     prompt_path: Path | str = FEATURE_PROMPT_PATH,
 ) -> str:
-    return _invoke_prompt_template(
+    return _invoke_prompt_template_with_variables(
         llm=llm,
-        input_text=script_text,
         prompt_path=prompt_path,
+        variables={
+            "TASK_MODE": str(task_mode),
+            "RAW_SCRIPT": script_text,
+            "PARTIAL_RESULTS_JSON": partial_results_json,
+            "CURRENT_SCHEMA_JSON": current_schema_json,
+            "MISSING_REPORT_JSON": missing_report_json,
+            "SOURCE_FILE_NAME": source_file_name,
+            "RECORD_ID": record_id,
+            "CHUNK_INDEX": str(chunk_index),
+            "CHUNK_COUNT": str(chunk_count),
+            "PROJECT_BIBLE": "",
+        },
+    ).strip()
+
+
+def score_schema_alignment_with_prompt(
+    llm: ChatOpenAI,
+    source_schema_json: str,
+    candidate_schema_json: str,
+    comparison_fields_json: str,
+    field_weights_json: str,
+    prompt_path: Path | str = SCHEMA_ALIGNMENT_PROMPT_PATH,
+) -> str:
+    return _invoke_prompt_template_with_variables(
+        llm=llm,
+        prompt_path=prompt_path,
+        variables={
+            "SOURCE_SCHEMA_JSON": source_schema_json,
+            "CANDIDATE_SCHEMA_JSON": candidate_schema_json,
+            "COMPARISON_FIELDS_JSON": comparison_fields_json,
+            "FIELD_WEIGHTS_JSON": field_weights_json,
+        },
+    ).strip()
+
+
+def optimize_schema_with_prompt(
+    llm: ChatOpenAI,
+    current_schema_json: str,
+    reference_schema_json: str,
+    low_fields_json: str,
+    scoring_table_json: str,
+    field_weights_json: str,
+    prompt_path: Path | str = SCHEMA_OPTIMIZATION_PROMPT_PATH,
+) -> str:
+    return _invoke_prompt_template_with_variables(
+        llm=llm,
+        prompt_path=prompt_path,
+        variables={
+            "CURRENT_SCHEMA_JSON": current_schema_json,
+            "REFERENCE_SCHEMA_JSON": reference_schema_json,
+            "LOW_FIELDS_JSON": low_fields_json,
+            "SCORING_TABLE_JSON": scoring_table_json,
+            "FIELD_WEIGHTS_JSON": field_weights_json,
+        },
+    ).strip()
+
+
+def extract_kb_script_features_with_prompt(
+    llm: ChatOpenAI,
+    script_text: str,
+    task_mode: str,
+    partial_results_json: str = "",
+    source_file_name: str = "",
+    record_id: str = "",
+    chunk_index: int | str = "",
+    chunk_count: int | str = "",
+    prompt_path: Path | str = KB_FEATURE_PROMPT_PATH,
+) -> str:
+    return _invoke_prompt_template_with_variables(
+        llm=llm,
+        prompt_path=prompt_path,
+        variables={
+            "TASK_MODE": str(task_mode),
+            "RAW_SCRIPT": script_text,
+            "PARTIAL_RESULTS_JSON": partial_results_json,
+            "SOURCE_FILE_NAME": source_file_name,
+            "RECORD_ID": record_id,
+            "CHUNK_INDEX": str(chunk_index),
+            "CHUNK_COUNT": str(chunk_count),
+        },
     ).strip()
 
 
@@ -221,7 +315,10 @@ def _invoke_prompt_template(
     return _invoke_prompt_template_with_variables(
         llm=llm,
         prompt_path=prompt_path,
-        variables={"RAW_SCRIPT": input_text},
+        variables={
+            "RAW_SCRIPT": input_text,
+            "PROJECT_BIBLE": "",
+        },
     )
 
 
@@ -234,7 +331,8 @@ def _invoke_prompt_template_with_variables(
 
     prompt_template = prompt_file.read_text(encoding="utf-8")
     user_prompt = prompt_template
-    for key, value in variables.items():
+    resolved_variables = {**OPTIONAL_PROMPT_VARIABLE_DEFAULTS, **variables}
+    for key, value in resolved_variables.items():
         user_prompt = user_prompt.replace(f"{{{{{key}}}}}", value)
     response = llm.invoke(user_prompt)
     return str(response.content)

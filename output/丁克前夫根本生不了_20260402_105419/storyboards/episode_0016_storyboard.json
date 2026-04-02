@@ -1,0 +1,271 @@
+{
+  "episode_no": 16,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0016.json",
+  "storyboard": {
+    "episode_no": 16,
+    "title": "功成身退",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "展现方柔被打的惨状",
+            "visual": "特写；方柔被打得头偏向一边，嘴角溢出鲜血，半边脸瞬间红肿；镜头轻微手持晃动；侧逆光凸显狼狈。",
+            "characters": [
+              "方柔"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "表现方柔的惊恐与求饶",
+            "visual": "中近景；方柔惊恐地捂着脸连连后退，跌坐在地；俯拍视角强化弱势感。",
+            "characters": [
+              "方柔"
+            ],
+            "dialogue": "方柔：国梁……你听我解释……事情不是你想的那样……我是爱你的……",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "展现马国梁的暴怒",
+            "visual": "特写；马国梁咬牙切齿，双眼猩红，死死盯着下方；镜头缓慢推近，面部肌肉紧绷。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：解释？你骗了我这么多年，让我养着你和别人的孩子，还想让我娶你，分我的财产？你把我当傻子耍吗！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "表现方柔的垂死挣扎",
+            "visual": "中景；方柔痛哭流涕，扑过去死死抱住马国梁的腿；低角度拍摄两人拉扯。",
+            "characters": [
+              "方柔",
+              "马国梁"
+            ],
+            "dialogue": "方柔：国梁，我是为了你才这么做的！我只是想给你一个孩子，让你老有所依啊……",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "展现马国梁彻底决裂的暴力动作",
+            "visual": "中近景；马国梁一脚将方柔狠狠踢开，抓起桌上的香槟杯砸向她；镜头快速跟随动作；道具:香槟杯。",
+            "characters": [
+              "马国梁",
+              "方柔"
+            ],
+            "dialogue": "马国梁：滚！！婚礼取消！你跟你生出来的贱种立马给我滚出去，这辈子别让我再看到你们！",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "引入方柔的情人，加剧混乱",
+            "visual": "中景；玻璃杯碎裂，方柔的情人突然从人群里冲出，一把抱住地上的方柔；焦点快速转移到情人身上。",
+            "characters": [
+              "方柔的情人",
+              "方柔"
+            ],
+            "dialogue": "方柔的情人：柔柔，我们走！拿着钱远走高飞！",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 1,
+            "purpose": "展现方柔阵营的彻底崩溃",
+            "visual": "全景；方柔瘫软在地撕心裂肺大哭，马曼妮和马天宇吓得脸色惨白想要逃跑，被周围宾客死死围住指指点点；环境光线杂乱。",
+            "characters": [
+              "方柔",
+              "马曼妮",
+              "马天宇",
+              "宾客们"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 1,
+            "purpose": "顾盼掌控全局的嘲讽",
+            "visual": "中近景；顾盼盼放下手里的话筒，迈着优雅的步伐走到舞台中央，居高临下地看着下方，嘴角勾起冰冷的笑意；道具:话筒。",
+            "characters": [
+              "顾盼盼"
+            ],
+            "dialogue": "顾盼盼：不是说我的到场，会让你们的婚礼意义非凡吗？怎么样，这出好戏，你们满意了吗？",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 9,
+            "scene_no": 1,
+            "purpose": "表现马国梁的无言绝望",
+            "visual": "特写；马国梁脸色煞白，胸膛剧烈起伏，死死盯着顾盼盼，张了张嘴却发不出声音；背景虚化，突出悔恨神情。",
+            "characters": [
+              "马国梁",
+              "顾盼盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 10,
+            "scene_no": 1,
+            "purpose": "顾盼功成身退",
+            "visual": "中景；顾盼盼在全场宾客的注视下转身，头也不回地潇洒离场；镜头跟随她的背影，步伐坚定。",
+            "characters": [
+              "顾盼盼",
+              "宾客们"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "交代一片狼藉的客厅与马国梁的暴怒",
+            "visual": "中景；马国梁像疯了一样将巨大的全家福相框狠狠摔在地上，玻璃四溅，方柔母子三人跌坐在满地碎片中；道具:全家福相框。",
+            "characters": [
+              "马国梁",
+              "方柔",
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "马国梁：带着你的野种滚！我早该知道，你这种心机深沉的贱人根本不配进我马家的门！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "方柔最后的哀求",
+            "visual": "中近景；方柔涕泪横流，爬到马国梁脚边死死拽住他；俯拍视角。",
+            "characters": [
+              "方柔",
+              "马国梁"
+            ],
+            "dialogue": "方柔：国梁，我知道错了，你原谅我这一次吧！孩子是无辜的，他们喊了你二十多年爸爸，你怎么忍心这么狠心……",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "马国梁的无情拒绝",
+            "visual": "特写；马国梁猛地甩开她，眼神充满厌恶与鄙夷；镜头轻微推近。",
+            "characters": [
+              "马国梁",
+              "方柔"
+            ],
+            "dialogue": "马国梁：让我白白给你养了二十多年的野种，让我成为整个城市的笑柄，现在跟我谈忍心？去找那个野男人，让他养你们三个吧！别再来烦我！",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "马国梁下达驱逐令",
+            "visual": "中景；马国梁转头冲着门外大吼，神态癫狂。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：来人！把她们给我扔出去！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "展现方柔母子被扫地出门",
+            "visual": "中景；佣人们上前架起方柔，马曼妮和马天宇试图挣扎被一把推开，三人被硬生生地拖向大门。",
+            "characters": [
+              "佣人",
+              "方柔",
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "方柔：国梁，你不能这么对我！你老了需要人养老啊……",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 2,
+            "purpose": "表现马国梁的孤独与凄凉",
+            "visual": "特写；大门重重关上，马国梁脱力般蹲下身，木然地捡起地上的全家福碎片，锋利的玻璃划破手指，鲜血滴在照片上；焦点在流血的手指和照片上；道具:全家福照片。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "交代顾盼离场并与周侦探交接",
+            "visual": "中景；顾盼盼走出酒店大门，阳光洒在身上；一辆轿车停在路边，周侦探戴着鸭舌帽从车窗探出头，递出一个U盘；道具:U盘。",
+            "characters": [
+              "顾盼盼",
+              "周侦探"
+            ],
+            "dialogue": "周侦探：顾女士，里面是方柔转移财产的所有流水，还有那两个孩子的亲子鉴定报告。需要的话，随时找我。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "顾盼接过证据",
+            "visual": "中近景；顾盼盼接过U盘，微微点头致意；过肩镜头。",
+            "characters": [
+              "顾盼盼",
+              "周侦探"
+            ],
+            "dialogue": "顾盼盼：辛苦你了，周哥。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "展现顾盼彻底释然的情绪",
+            "visual": "特写；周侦探驱车离开后，顾盼盼独自站在阳光下，将U盘紧紧握在掌心，仰起头闭上眼睛深呼吸；暖光照亮面部，表情释然；道具:U盘。",
+            "characters": [
+              "顾盼盼"
+            ],
+            "dialogue": "顾盼盼：结束了，一切都结束了。",
+            "duration": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 0,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 1.0,
+    "missing_dialogues": [],
+    "unknown_characters": [],
+    "required_props": [
+      "U盘"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": true,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

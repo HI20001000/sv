@@ -1,0 +1,70 @@
+{
+  "target_episode_count": 20,
+  "planned_episode_count": 20,
+  "allocation_strategy": "採用『快鋪墊、重高潮、全收尾』的策略。前三個單元共分配6集，快速推進離婚與反派鳩佔鵲巢的劇情，並交代女主的隱忍與底牌；核心高潮（婚禮現場）的u_0004至u_0006共分配8集，細膩刻畫暴風雨前的交鋒與連續打臉的極致爽感；高潮餘波與大結局（u_0007至u_0008）共分配6集，充分展現反派狗咬狗的慘狀與女主重獲新生的治癒感，確保情緒閉環。",
+  "unit_allocations": [
+    {
+      "unit_id": "u_0001",
+      "episode_count": 2,
+      "char_count": 1621,
+      "reason": "開局需快速切入核心衝突，2集足以交代馬國梁的背叛、女主的果斷同意以及外界的誤解，迅速建立懸念。"
+    },
+    {
+      "unit_id": "u_0002",
+      "episode_count": 2,
+      "char_count": 1881,
+      "reason": "主要展現財產分割、反派鳩佔鵲巢的囂張以及女主暗中掌握把柄，2集能保持緊湊的壓抑期節奏。"
+    },
+    {
+      "unit_id": "u_0003",
+      "episode_count": 2,
+      "char_count": 1817,
+      "reason": "交代三十年不育真相與女主的委屈，作為高潮前的『情緒蓄水池』，2集足以將女主的隱忍與反擊動機鋪墊到位。"
+    },
+    {
+      "unit_id": "u_0004",
+      "episode_count": 3,
+      "char_count": 2769,
+      "reason": "本單元字數最多且為高潮前奏，包含暗中部署、盛裝出席與虛偽挑釁，需3集細膩鋪陳暴風雨前的緊張感與暗流湧動。"
+    },
+    {
+      "unit_id": "u_0005",
+      "episode_count": 3,
+      "char_count": 2125,
+      "reason": "全劇第一波大高潮，女主當眾揭穿男主不育真相，雙方激烈對峙，情緒爆發力極強，需3集充分展現全場譁然的戲劇張力。"
+    },
+    {
+      "unit_id": "u_0006",
+      "episode_count": 2,
+      "char_count": 1718,
+      "reason": "全劇第二波大高潮，拋出綠帽與騙財鐵證，節奏極快且爽點密集，2集連續暴擊能最大化觀眾的爽感而不拖沓。"
+    },
+    {
+      "unit_id": "u_0007",
+      "episode_count": 3,
+      "char_count": 2168,
+      "reason": "高潮餘波，包含婚禮鬧劇收場、反派互撕及掃地出門，事件密集且情緒大起大落，需3集完整呈現惡人相食的痛快感。"
+    },
+    {
+      "unit_id": "u_0008",
+      "episode_count": 3,
+      "char_count": 2448,
+      "reason": "大結局內容豐富，需多線交代男主悔恨、反派淒慘下場以及女主洗清冤屈後的治癒新生，3集能確保故事圓滿且昇華收束。"
+    }
+  ],
+  "notes": "整體節奏呈現『欲揚先抑』，u_0004至u_0007是全劇精華，集數佔比達一半，確保短劇受眾最看重的『打臉爽感』得到最充分的釋放。",
+  "validation": {
+    "sum_matches_target": true,
+    "unit_count": 8,
+    "target_episode_count": 20,
+    "planned_episode_count": 20,
+    "all_units_covered": true,
+    "no_unknown_unit_ids": true,
+    "no_duplicate_unit_ids": true,
+    "missing_unit_ids": [],
+    "unknown_unit_ids": [],
+    "duplicate_unit_ids": [],
+    "errors": [],
+    "is_valid": true
+  }
+}

@@ -1,0 +1,367 @@
+{
+  "episode_no": 3,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0003.json",
+  "storyboard": {
+    "episode_no": 3,
+    "title": "鳩佔鵲巢的鬧劇",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代离婚完成与马国梁的轻松状态",
+            "visual": "特写；马国梁手持离婚证，嘴角上扬神情轻松；镜头轻微手持；焦点集中在马国梁面部与手中的证件；白天室外自然光。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现顾盼的冷漠反应",
+            "visual": "中近景；顾盼面无表情，将离婚证收进包里；镜头固定；侧光勾勒出她冷淡的轮廓。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "马国梁表达解脱与炫耀",
+            "visual": "中景；马国梁看向顾盼，长舒一口气说话；过肩镜头建立两人对话关系；背景略微虚化。",
+            "characters": [
+              "马国梁",
+              "顾盼"
+            ],
+            "dialogue": "马国梁：盼盼，字签了，以后咱们就各自安好吧。没办法，感情破裂了，好在我还有一儿一女跟着我，往后也能享享天伦之乐。",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "顾盼冷淡反击",
+            "visual": "特写；顾盼眼神冷漠，冷淡回应；镜头微推近；焦点锁定顾盼的眼睛。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：祝你“得偿所愿”。",
+            "duration": 2.5
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "两人最后的分道扬镳",
+            "visual": "中景；马国梁面露不耐烦，顾盼摇头拒绝；双人全景转中景；自然光。",
+            "characters": [
+              "马国梁",
+              "顾盼"
+            ],
+            "dialogue": "马国梁：我叫了车送你？\n顾盼：不用了。",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 1,
+            "purpose": "引入方柔的挑衅",
+            "visual": "中景；方柔在车内降下车窗探出头，冲顾盼露出得意微笑；镜头缓慢横移；车内暗光与室外亮光形成对比。",
+            "characters": [
+              "方柔",
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 1,
+            "purpose": "展现马国梁对方柔的宠溺",
+            "visual": "中景；马国梁走向路边的车，贴心地为方柔整理头发后上车；镜头跟随马国梁移动；阳光明媚。",
+            "characters": [
+              "马国梁",
+              "方柔"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 1,
+            "purpose": "揭示顾盼收到情报",
+            "visual": "特写；顾盼拿出手机看屏幕，眼神微冷；镜头俯拍手机屏幕与顾盼的脸；道具:手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 9,
+            "scene_no": 1,
+            "purpose": "交代场景结束",
+            "visual": "全景；顾盼转身打车离开，马国梁的车向反方向扬长而去；固定镜头；交代空间分离。",
+            "characters": [
+              "顾盼",
+              "马国梁"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "交代顾盼回到旧居的视觉与嗅觉冲击",
+            "visual": "中景；顾盼推开大门，微微皱眉似闻到刺鼻气味；镜头跟随顾盼入室；室内光线略显昏暗。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "展示鸠占鹊巢的核心象征",
+            "visual": "主观镜头；墙上挂着巨大的“一家四口”全家福；镜头缓慢推近照片；焦点锁定在照片上方柔得意的脸上；道具:全家福照片。",
+            "characters": [],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "建立反派一家四口的空间关系",
+            "visual": "中景；马国梁坐在沙发上翻报纸，方柔依偎着他剥橘子，马曼妮和马天宇在一旁玩手机；固定镜头交代客厅人物关系；室内暖光。",
+            "characters": [
+              "马国梁",
+              "方柔",
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "方柔虚伪迎客",
+            "visual": "中景；方柔立刻站起身，堆起虚伪的笑走上前，伸手想挽顾盼的胳膊；镜头跟随方柔移动；焦点在方柔假笑的脸上。",
+            "characters": [
+              "方柔",
+              "顾盼"
+            ],
+            "dialogue": "方柔：哎呀，顾姐怎么回来了？是落了什么东西吗？我帮你找找？",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "顾盼冷漠拒绝",
+            "visual": "中近景；顾盼微微侧身避开方柔的手，眼神冷漠；过肩镜头；两人距离拉开。",
+            "characters": [
+              "顾盼",
+              "方柔"
+            ],
+            "dialogue": "顾盼：还有最后几件私人物品，我今天拿走。",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 2,
+            "purpose": "展现方柔的绿茶姿态",
+            "visual": "特写；方柔的手僵在半空，委屈地咬了咬嘴唇，退回马国梁身边；镜头微推；捕捉方柔的表情细节。",
+            "characters": [
+              "方柔"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 2,
+            "purpose": "马曼妮嫌弃旧居",
+            "visual": "中景；马曼妮翻了个白眼，嫌弃地打量四周；镜头轻微摇摄；展现马曼妮的傲慢。",
+            "characters": [
+              "马曼妮"
+            ],
+            "dialogue": "马曼妮：妈，这屋子装修也太老气了吧？客厅这么暗，要不重新装修换个轻奢风？我同学家的别墅可比这气派多了。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 2,
+            "purpose": "马天宇贬低关键道具",
+            "visual": "中景；马天宇用力踹了一脚沙发，满脸不屑地指着茶几；镜头跟随马天宇的动作下摇；道具:黄花梨茶几。",
+            "characters": [
+              "马天宇"
+            ],
+            "dialogue": "马天宇：就是！这布艺沙发坐着硬邦邦的，还有这破黄花梨茶几，老气横秋的，爸是怎么在这种地方住下去的？赶紧都扔了换新的！",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 9,
+            "scene_no": 2,
+            "purpose": "顾盼对过去婚姻被践踏的复杂情绪",
+            "visual": "特写；顾盼低头看着那套黄花梨茶几，眼神复杂；主观视角的微俯拍；道具:黄花梨茶几。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 10,
+            "scene_no": 2,
+            "purpose": "方柔顺势煽风点火",
+            "visual": "中景；方柔娇滴滴地靠在马国梁肩上说话；固定镜头；展现两人的亲昵。",
+            "characters": [
+              "方柔",
+              "马国梁"
+            ],
+            "dialogue": "方柔：国梁，你看孩子们多有主见。这房子确实得重新收拾收拾，咱们可不能亏待了自己，更不能委屈了曼妮和天宇呀。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 11,
+            "scene_no": 2,
+            "purpose": "马国梁下达逐客令",
+            "visual": "中近景；马国梁拍了拍方柔的手，抬头看向顾盼，眼神满是疏离与不耐；过肩镜头建立压迫感。",
+            "characters": [
+              "马国梁",
+              "顾盼"
+            ],
+            "dialogue": "马国梁：盼盼，东西收拾好了吧？一次性拿完，以后就不用总回来拿这拿那的了，免得大家撞见了都尴尬。",
+            "duration": 5.5
+          },
+          {
+            "shot_no": 12,
+            "scene_no": 2,
+            "purpose": "顾盼质问",
+            "visual": "特写；顾盼动作一顿，抬眼直视马国梁；镜头快速推近；焦点锁定顾盼锐利的眼神。",
+            "characters": [
+              "顾盼",
+              "马国梁"
+            ],
+            "dialogue": "顾盼：你在赶我走？",
+            "duration": 2.5
+          },
+          {
+            "shot_no": 13,
+            "scene_no": 2,
+            "purpose": "马国梁的无情宣告",
+            "visual": "中近景；马国梁皱眉，理直气壮地回应；仰拍视角强化马国梁的无情。",
+            "characters": [
+              "马国梁"
+            ],
+            "dialogue": "马国梁：这房子现在是我和柔柔，还有孩子们的家。你一个外人总往这跑，算怎么回事？",
+            "duration": 4.5
+          },
+          {
+            "shot_no": 14,
+            "scene_no": 2,
+            "purpose": "顾盼接收关键证据",
+            "visual": "特写；顾盼拿出震动的手机，点开语音贴近耳边；镜头微距特写手部动作；道具:手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 15,
+            "scene_no": 2,
+            "purpose": "揭示方柔的阴谋与顾盼的冷笑",
+            "visual": "特写；顾盼听着手机里的声音，嘴角勾起一抹嘲讽的冷笑；镜头轻微手持浮动；背景音虚化突出画外音；道具:方柔的通话录音。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "画外音：放心，等马国梁把房子过户到孩子名下，我就卷走他的存款，咱们带着孩子远走高飞……",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 16,
+            "scene_no": 2,
+            "purpose": "顾盼从容反击",
+            "visual": "中景；顾盼将手机收回口袋，平静地拉起收拾好的行李箱；镜头拉开；展现顾盼的从容。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：放心，这地方，求我我都不会再来。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 17,
+            "scene_no": 2,
+            "purpose": "顾盼准备离去",
+            "visual": "中景；顾盼拎起行李箱走到门口，停下脚步最后回头看了一眼；背影跟拍。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 18,
+            "scene_no": 2,
+            "purpose": "展示虚假的温馨画面",
+            "visual": "主观镜头；方柔正把一瓣橘子喂进马国梁嘴里，一家四口其乐融融；镜头略带失焦感后重新对焦；画面温馨得刺眼。",
+            "characters": [
+              "方柔",
+              "马国梁",
+              "马曼妮",
+              "马天宇"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          },
+          {
+            "shot_no": 19,
+            "scene_no": 2,
+            "purpose": "顾盼彻底决裂离去",
+            "visual": "中近景；顾盼冷笑一声，头也不回地走出大门并重重摔上；镜头固定在门内；门关上后画面变暗。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.5
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 6,
+    "dialogue_covered": 1,
+    "dialogue_coverage_rate": 0.1667,
+    "missing_dialogues": [
+      "马国梁：（长舒一口气，语气轻快）盼盼，字签了，以后咱们就各自安好吧。没办法，感情破裂了，好在我还有一儿一女跟着我，往后也能享享天伦之乐。",
+      "顾盼：（冷淡）祝你“得偿所愿”。",
+      "马国梁：（不耐烦）我叫了车送你？",
+      "方柔：（立刻站起身，堆起虚伪的笑，走上前想挽顾盼的胳膊）哎呀，顾姐怎么回来了？是落了什么东西吗？我帮你找找？",
+      "顾盼：（微微侧身避开，眼神冷漠）还有最后几件私人物品，我今天拿走。"
+    ],
+    "unknown_characters": [],
+    "required_props": [
+      "黄花梨茶几"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": false,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

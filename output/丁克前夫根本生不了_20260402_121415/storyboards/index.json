@@ -1,0 +1,186 @@
+{
+  "target_episode_count": 20,
+  "generated_storyboard_count": 20,
+  "episodes": [
+    {
+      "episode_no": 1,
+      "file": "episode_0001_storyboard.json",
+      "source_episode_file": "episode_0001.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.1538,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 2,
+      "file": "episode_0002_storyboard.json",
+      "source_episode_file": "episode_0002.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.0,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 3,
+      "file": "episode_0003_storyboard.json",
+      "source_episode_file": "episode_0003.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.0833,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 4,
+      "file": "episode_0004_storyboard.json",
+      "source_episode_file": "episode_0004.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.0,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 5,
+      "file": "episode_0005_storyboard.json",
+      "source_episode_file": "episode_0005.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.2353,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 6,
+      "file": "episode_0006_storyboard.json",
+      "source_episode_file": "episode_0006.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.8462,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 7,
+      "file": "episode_0007_storyboard.json",
+      "source_episode_file": "episode_0007.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.8182,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 8,
+      "file": "episode_0008_storyboard.json",
+      "source_episode_file": "episode_0008.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.8,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 9,
+      "file": "episode_0009_storyboard.json",
+      "source_episode_file": "episode_0009.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.625,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 10,
+      "file": "episode_0010_storyboard.json",
+      "source_episode_file": "episode_0010.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 1.0,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 11,
+      "file": "episode_0011_storyboard.json",
+      "source_episode_file": "episode_0011.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.0769,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 12,
+      "file": "episode_0012_storyboard.json",
+      "source_episode_file": "episode_0012.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 1.0,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 13,
+      "file": "episode_0013_storyboard.json",
+      "source_episode_file": "episode_0013.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.0,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 14,
+      "file": "episode_0014_storyboard.json",
+      "source_episode_file": "episode_0014.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.0,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 15,
+      "file": "episode_0015_storyboard.json",
+      "source_episode_file": "episode_0015.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.2,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 16,
+      "file": "episode_0016_storyboard.json",
+      "source_episode_file": "episode_0016.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 1.0,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 17,
+      "file": "episode_0017_storyboard.json",
+      "source_episode_file": "episode_0017.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.125,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 18,
+      "file": "episode_0018_storyboard.json",
+      "source_episode_file": "episode_0018.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.0,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 19,
+      "file": "episode_0019_storyboard.json",
+      "source_episode_file": "episode_0019.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.0,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    },
+    {
+      "episode_no": 20,
+      "file": "episode_0020_storyboard.json",
+      "source_episode_file": "episode_0020.json",
+      "generation_status": "llm",
+      "dialogue_coverage_rate": 0.25,
+      "unknown_character_count": 0,
+      "unknown_prop_count": 0
+    }
+  ]
+}

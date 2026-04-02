@@ -1,0 +1,235 @@
+{
+  "任务元数据": {
+    "record_id": "1_1_20260424_153956_37d8b3a9",
+    "source_file_name": "安萌(1) (1).docx",
+    "task_mode": "merge_chunks",
+    "language": "zh-TW",
+    "description": "合并长剧本分段的局部提取结果，去重并保留最稳定且有证据的表述",
+    "source_chars": 40172,
+    "prompt_file": "prompt/kb_script_feature_extraction_prompt.md",
+    "extracted_at": "2026-04-24T15:48:09"
+  },
+  "源文本摘要": {
+    "题材": "现代言情、虐恋、绝症、追妻火葬场、心理惊悚",
+    "故事基调": "悲情、压抑、虐心、悔恨、疯狂",
+    "主线摘要": "女主Grace因家族遗传绝症为了不拖累男主Ethan而假装嫌贫爱富离开。Ethan发迹后强娶Grace并用出轨（情妇Vivian）疯狂报复。Grace隐忍病痛，最终在闺蜜Chloe的陪伴下决绝赴死并捐献遗体。Ethan得知真相后陷入极度悔恨与疯狂，篡改记忆，最终导致怀孕的情妇坠楼，自己被送入精神病院孤独终老。",
+    "人物关系摘要": "Grace（绝症妻子）与Ethan（悔恨/疯狂的丈夫）是互相折磨的爱人；Vivian（情妇/小三）是Ethan报复的工具及破坏者；Chloe（闺蜜）是Grace的守护者和医疗代理人。",
+    "结局或已知走向": "悲剧/恶有恶报结局。女主病逝并捐献遗体；情妇坠楼流产/重伤；男主精神失常被关进精神病院，抱着残缺的雕像孤独终老。"
+  },
+  "内容特征": {
+    "主角": {
+      "name": "Grace",
+      "identity": "Ethan的妻子，身患绝症的女性",
+      "relationship": "Ethan的妻子/前女友，Chloe的闺蜜",
+      "situation": "身患绝症命不久矣，为了不拖累男主而谎称拜金分手，承受男主的误解、报复与小三的挑衅，最终决绝赴死。",
+      "evidence": "I'm sick. And I'm dying. / I never loved money more than him. He was good enough to deserve a wife who was healthy..."
+    },
+    "反派": {
+      "name": "Ethan / Vivian",
+      "identity": "Ethan: 寻求报复的丈夫/对冲基金创始人；Vivian: Ethan的情人兼秘书",
+      "means": "Ethan: 利用金钱和权力羞辱、肢体暴力、利用闺蜜安危勒索；Vivian: 言语挑衅、绿茶伪装、利用怀孕逼宫。",
+      "conflict_relationship": "Ethan因误会疯狂报复女主，导致女主病情恶化；Vivian试图取代女主地位，不断对女主进行精神打击。",
+      "evidence": "Ethan: 'What do you think happens if he finds out about that part of her life?' / Vivian: 'I'm pregnant with Ethan's baby.'"
+    },
+    "核心冲突": {
+      "main_conflict": "女主隐瞒绝症的自我牺牲与男主因误会而展开的疯狂报复之间的信息差与情感错位。",
+      "external_resistance": "小三Vivian的挑衅与介入；高昂的医疗费用；公众舆论的网暴。",
+      "internal_pain": "女主深爱男主却觉得自己不配且会拖累对方，独自承受病痛与背叛；男主深爱女主却用伤害来掩饰被抛弃的自卑与怨恨。",
+      "escalation": "从言语羞辱、金钱逼迫，升级到肢体暴力、勒索逼婚，直到女主当面大出血昏迷打破男主的自欺欺人，最终以女主决绝赴死和男主精神崩溃收场。"
+    },
+    "主角目标": "隐瞒病情不拖累男主，保护闺蜜不受牵连，最终不留痕迹地离开世界。",
+    "主角痛点": "身患绝症即将死去，被深爱的人深深误解并折磨，还要忍受小三的羞辱与公众的网暴。",
+    "关系张力点": [
+      {
+        "name": "信息差与误会",
+        "description": "女主隐瞒绝症，男主误会女主拜金，形成巨大的虐心信息差。",
+        "evidence": "While he called it revenge, I was counting down how many days I had left."
+      },
+      {
+        "name": "权力与阶层翻转",
+        "description": "昔日女主抛弃男主，如今男主是华尔街新贵，以高高在上的姿态施舍婚姻并剥夺爱意。",
+        "evidence": "Ethan: 'Grace, maybe I really should marry you. Just don't expect love.'"
+      },
+      {
+        "name": "极致的女性友谊",
+        "description": "闺蜜Chloe持有公证文件强硬对抗男主，保护女主；女主临死前强忍病痛为闺蜜买下婚纱。",
+        "evidence": "A long time ago, I had everything notarized and left the decisions to her. / I smiled, left her in the fitting room, and paid for it in secret."
+      },
+      {
+        "name": "死后的惩罚与疯狂",
+        "description": "女主捐献遗体让男主连骨灰都得不到；男主因极度悔恨而精神失常，对情妇施暴。",
+        "evidence": "He didn't even get ashes. / Two weeks later, Ethan was committed."
+      }
+    ],
+    "主要情节点": [
+      {
+        "name": "交代背景与报复",
+        "description": "女主过去抛弃男主，男主发迹后强娶并用出轨Vivian报复女主。"
+      },
+      {
+        "name": "绝症确诊与隐忍",
+        "description": "女主确诊绝症，急需用钱却被男主用金钱羞辱，独自忍受病痛。"
+      },
+      {
+        "name": "舆论风暴与坦白",
+        "description": "女主被记者围堵，当众流鼻血并坦白绝症，却遭全网网暴。"
+      },
+      {
+        "name": "遗物被毁与病发",
+        "description": "母亲的遗物被男主送给Vivian并被摔碎，女主随后在男主面前大出血昏迷。"
+      },
+      {
+        "name": "闺蜜夺权与真相",
+        "description": "闺蜜Chloe用公证文件剥夺男主的医疗决定权，男主得知女主因缺钱停止治疗的真相。"
+      },
+      {
+        "name": "逼宫与赴死",
+        "description": "Vivian以怀孕逼宫，女主彻底心死，陪闺蜜试完婚纱后独自赴死并捐献遗体。"
+      },
+      {
+        "name": "结局与疯狂",
+        "description": "男主得知Vivian怀孕的真相（非男主骨肉），陷入极度悔恨与疯狂，导致Vivian坠楼，自己被送入精神病院。"
+      }
+    ],
+    "反转点": [
+      {
+        "name": "真相揭露",
+        "description": "揭示女主当年分手的真相并非嫌贫爱富，而是因为身患遗传性重病。",
+        "evidence": "I wanted to tell him all those cruel words from the breakup were a lie."
+      },
+      {
+        "name": "权力反转",
+        "description": "闺蜜Chloe用公证文件合法剥夺了男主作为丈夫的医疗决定权。",
+        "evidence": "A long time ago, I had everything notarized and left the decisions to her."
+      },
+      {
+        "name": "怀孕真相反转",
+        "description": "Vivian的孩子并非Ethan的，而是她在酒吧被侵犯所致。",
+        "evidence": "Vivian really had gotten pregnant. The baby just wasn't his."
+      },
+      {
+        "name": "心理与行为反转",
+        "description": "男主从施暴者变为试图篡改记忆的道德卫道士，最终亲手将怀孕的情妇推下楼。",
+        "evidence": "He drove her back one step at a time, his hand around her throat. Then she missed the stair. She fell."
+      }
+    ],
+    "情感曲线": [
+      {
+        "stage": "压抑与屈辱",
+        "description": "面对丈夫的报复、小三的挑衅和公众的误解，隐忍退让。"
+      },
+      {
+        "stage": "绝望与心死",
+        "description": "病情恶化，目睹遗物被毁，误以为丈夫让小三怀孕，彻底放弃希望。"
+      },
+      {
+        "stage": "极致悔恨与崩溃（男主视角）",
+        "description": "得知真相后陷入疯狂的自责，女主死后连骨灰都得不到，最终精神失常。"
+      }
+    ],
+    "钩子点": [
+      {
+        "name": "开场钩子",
+        "description": "女主在男主一无所有时离开，男主发迹后强娶并报复，悬念是当年为何离开。"
+      },
+      {
+        "name": "情绪钩子",
+        "description": "绝症女主与疯狂报复的男主之间的极致拉扯，女主死前为闺蜜买婚纱的催泪情节。"
+      },
+      {
+        "name": "爽点钩子",
+        "description": "闺蜜掌掴渣男夺权；女主捐献遗体对渣男进行终极惩罚；反派小三坠楼的恶有恶报。"
+      }
+    ]
+  },
+  "文化特征": {
+    "文化绑定元素": [
+      {
+        "name": "Wall Street (华尔街) / Upper East Side (上东区)",
+        "description": "象征顶级金融圈财富、地位和老钱阶层。"
+      },
+      {
+        "name": "Medical proxy (医疗委托公证)",
+        "description": "经过公证的医疗代理人权限可高于配偶，是闺蜜合法制止男主的关键。"
+      },
+      {
+        "name": "Body donation (遗体捐献)",
+        "description": "代表彻底的决绝和切断一切尘世联系。"
+      },
+      {
+        "name": "Hedge fund founder (对冲基金创始人)",
+        "description": "男主的霸总职业设定。"
+      }
+    ],
+    "关系称谓": [
+      {
+        "name": "Husband and wife (夫妻)",
+        "description": "强调名存实亡的婚姻状态。"
+      },
+      {
+        "name": "Mistress (情妇/小三) / Homewrecker (破坏家庭者)",
+        "description": "道德批判标签。"
+      },
+      {
+        "name": "Best friend (最好的朋友/闺蜜)",
+        "description": "强调超越配偶的深厚情谊。"
+      }
+    ],
+    "价值表达术语": [
+      {
+        "name": "Gold digger / Dumped for money (拜金女/嫌贫爱富)",
+        "description": "男主对女主过去行为的误解标签。"
+      },
+      {
+        "name": "Cruel all the way to the end (残忍到底)",
+        "description": "形容女主的决绝，对男主迟来深情的终极惩罚。"
+      },
+      {
+        "name": "Karma (因果报应)",
+        "description": "结局恶有恶报的体现。"
+      }
+    ],
+    "世界观术语": [
+      {
+        "name": "Black card (黑卡)",
+        "description": "代表无限额财富。"
+      }
+    ],
+    "可替换载体": [
+      {
+        "name": "$80,000 targeted drug (8万美元的靶向药) / $50,000",
+        "description": "可根据本地医疗和消费水平调整。"
+      },
+      {
+        "name": "Strawberry cake (草莓蛋糕) / Hot dog (热狗)",
+        "description": "可替换为符合当地语境的安慰性食物或街头小吃。"
+      },
+      {
+        "name": "Guardian angel figurines (守护天使雕像)",
+        "description": "可替换为目标文化中具有祈福意义的信物。"
+      },
+      {
+        "name": "Bottle service at a bar (酒吧开瓶服务员)",
+        "description": "可替换为“陪酒”等符合当地夜场文化的职业。"
+      }
+    ],
+    "高风险本地化项": [
+      {
+        "name": "医疗决定权顺位",
+        "description": "在部分亚洲国家，配偶权利优先于朋友，需强化公证文件的绝对法律效力。"
+      },
+      {
+        "name": "肢体暴力与对孕妇的极端暴力",
+        "description": "男主对女主施暴、掐住怀孕情妇脖子导致坠楼，可能触发暴力审查红线。"
+      },
+      {
+        "name": "性侵暗示 (Sexual Assault)",
+        "description": "Vivian在酒吧被侵犯导致怀孕，可能属于违规或受限内容。"
+      },
+      {
+        "name": "网络暴力与人肉搜索",
+        "description": "网民的极端评论情节在注重网络霸凌审查的地区需注意尺度。"
+      }
+    ]
+  }
+}

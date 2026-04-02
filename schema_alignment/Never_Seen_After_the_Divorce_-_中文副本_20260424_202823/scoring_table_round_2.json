@@ -1,0 +1,286 @@
+{
+  "round": 2,
+  "threshold": 0.65,
+  "topk_aggregate": 0.35165,
+  "passed": false,
+  "candidate_scores": [
+    {
+      "rank": 1,
+      "record_id": "1_1_20260424_153956_37d8b3a9",
+      "original_filename": "安萌(1) (1).docx",
+      "recall_score": 0.116582,
+      "score": 0.455,
+      "fields": {
+        "核心冲突": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "Candidate 的核心冲突字段内容为空，无法与 Source 匹配。",
+          "weight": 0.18,
+          "weighted_score": 0.036
+        },
+        "主角目标": {
+          "grade": "中",
+          "numeric": 0.5,
+          "reason": "均包含隐瞒秘密并离开男主的目标，但 Source 是追求新生，Candidate 是决绝赴死，终极导向不同。",
+          "weight": 0.1,
+          "weighted_score": 0.05
+        },
+        "主角痛点": {
+          "grade": "中",
+          "numeric": 0.5,
+          "reason": "均包含深爱男主却遭受虐待与小三羞辱，但核心痛点来源不同（怀孕流产 vs 绝症将死）。",
+          "weight": 0.08,
+          "weighted_score": 0.04
+        },
+        "关系张力点": {
+          "grade": "中",
+          "numeric": 0.5,
+          "reason": "均具备强烈的虐心信息差与追妻火葬场张力，但底层机制（带球跑设局 vs 绝症误会）存在明显差异。",
+          "weight": 0.14,
+          "weighted_score": 0.07
+        },
+        "主要情节点": {
+          "grade": "中",
+          "numeric": 0.5,
+          "reason": "整体叙事结构相似（受虐-离开-男主得知真相发疯），但核心事件（带球逃跑 vs 绝症捐献遗体）完全不同。",
+          "weight": 0.1,
+          "weighted_score": 0.05
+        },
+        "反转点": {
+          "grade": "中",
+          "numeric": 0.5,
+          "reason": "均包含男主得知真相后的认知与情感反转，但反转的核心事实（怀孕险流产 vs 绝症及小三假孕）不同。",
+          "weight": 0.12,
+          "weighted_score": 0.06
+        },
+        "情感曲线": {
+          "grade": "高",
+          "numeric": 0.8,
+          "reason": "情感发展阶段高度一致，均经历了女主的隐忍、绝望心死，以及男主最终的极致悔恨与疯狂。",
+          "weight": 0.08,
+          "weighted_score": 0.064
+        },
+        "钩子点": {
+          "grade": "中",
+          "numeric": 0.5,
+          "reason": "均利用了虐心错位与恶有恶报/追妻火葬场作为钩子，但具体的悬念设置与爽点机制不同。",
+          "weight": 0.1,
+          "weighted_score": 0.05
+        },
+        "文化绑定元素": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "本地化文化元素完全不重合（黑手党/海外研究所 vs 华尔街/医疗公证/遗体捐献）。",
+          "weight": 0.05,
+          "weighted_score": 0.01
+        },
+        "高风险本地化项": {
+          "grade": "中",
+          "numeric": 0.5,
+          "reason": "均涉及暴力与道德争议（出轨/小三），但 Candidate 额外包含性侵暗示与网络暴力，风险点部分重合。",
+          "weight": 0.05,
+          "weighted_score": 0.025
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "record_id": "-_en_20260424_161155_657f631e",
+      "original_filename": "玉佩炸了我逃了-狼改 EN.docx",
+      "recall_score": 0.097192,
+      "score": 0.269,
+      "fields": {
+        "核心冲突": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "一个是现代言情的情感与控制冲突，另一个是奇幻惊悚的超自然诅咒逃生冲突，基本不相似。",
+          "weight": 0.18,
+          "weighted_score": 0.036
+        },
+        "主角目标": {
+          "grade": "中",
+          "numeric": 0.5,
+          "reason": "均包含切断与渣男联系及逃离的动机，但具体目标（追求科研事业 vs 躲避超自然诅咒求生）差异显著。",
+          "weight": 0.1,
+          "weighted_score": 0.05
+        },
+        "主角痛点": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "虽然都有被背叛的元素，但核心痛点（孕期出轨的心理重创 vs 预言绑架与对无辜者的愧疚）截然不同。",
+          "weight": 0.08,
+          "weighted_score": 0.016
+        },
+        "关系张力点": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "Source侧重追妻火葬场的情感拉扯与错位，Candidate侧重背叛者成为替死鬼及灵异反噬的惊悚反转。",
+          "weight": 0.14,
+          "weighted_score": 0.028
+        },
+        "主要情节点": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "除开局遭遇背叛并逃离外，后续情节走向（带球跑与追妻火葬场 vs 灵异诅咒大屠杀）完全不一致。",
+          "weight": 0.1,
+          "weighted_score": 0.02
+        },
+        "反转点": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "反转机制完全不同，Source基于信息差与情感追悔，Candidate基于超自然惊悚规则与因果报应。",
+          "weight": 0.12,
+          "weighted_score": 0.024
+        },
+        "情感曲线": {
+          "grade": "中",
+          "numeric": 0.5,
+          "reason": "首尾情绪（开局决绝切割，结局释然重生）有相似之处，但中段情绪（绝望心死 vs 极度恐惧）差异明显。",
+          "weight": 0.08,
+          "weighted_score": 0.04
+        },
+        "钩子点": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "吸引观众的机制完全不同，Source依赖情感虐心与追妻悬念，Candidate依赖惊悚悬念与恶有恶报的爽感。",
+          "weight": 0.1,
+          "weighted_score": 0.02
+        },
+        "文化绑定元素": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "文化背景毫无交集，Source为现代黑帮与学术圈，Candidate为欧美狼人与东方民俗恐怖混搭。",
+          "weight": 0.05,
+          "weighted_score": 0.01
+        },
+        "高风险本地化项": {
+          "grade": "中",
+          "numeric": 0.5,
+          "reason": "均存在暴力与道德层面的审查风险，但具体表现形式（黑帮枪支/出轨 vs 灵异血腥自杀/私刑）不同。",
+          "weight": 0.05,
+          "weighted_score": 0.025
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "record_id": "1_1_20260424_164723_b8fb62ab",
+      "original_filename": "安萌(1) (1).docx",
+      "recall_score": 0.000988,
+      "score": 0.2,
+      "fields": {
+        "核心冲突": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "候选字段为空，完全缺失核心冲突信息。",
+          "weight": 0.18,
+          "weighted_score": 0.036
+        },
+        "主角目标": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "候选字段为空，完全缺失主角目标信息。",
+          "weight": 0.1,
+          "weighted_score": 0.02
+        },
+        "主角痛点": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "候选字段为空，完全缺失主角痛点信息。",
+          "weight": 0.08,
+          "weighted_score": 0.016
+        },
+        "关系张力点": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "候选字段为空，完全缺失关系张力点信息。",
+          "weight": 0.14,
+          "weighted_score": 0.028
+        },
+        "主要情节点": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "候选字段为空，完全缺失主要情节点信息。",
+          "weight": 0.1,
+          "weighted_score": 0.02
+        },
+        "反转点": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "候选字段为空，完全缺失反转点信息。",
+          "weight": 0.12,
+          "weighted_score": 0.024
+        },
+        "情感曲线": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "候选字段为空，完全缺失情感曲线信息。",
+          "weight": 0.08,
+          "weighted_score": 0.016
+        },
+        "钩子点": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "候选字段为空，完全缺失钩子点信息。",
+          "weight": 0.1,
+          "weighted_score": 0.02
+        },
+        "文化绑定元素": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "候选字段为空，完全缺失文化绑定元素信息。",
+          "weight": 0.05,
+          "weighted_score": 0.01
+        },
+        "高风险本地化项": {
+          "grade": "低",
+          "numeric": 0.2,
+          "reason": "候选字段为空，完全缺失高风险本地化项信息。",
+          "weight": 0.05,
+          "weighted_score": 0.01
+        }
+      }
+    }
+  ],
+  "field_aggregates": {
+    "核心冲突": 0.2,
+    "主角目标": 0.455,
+    "主角痛点": 0.35,
+    "关系张力点": 0.35,
+    "主要情节点": 0.35,
+    "反转点": 0.35,
+    "情感曲线": 0.605,
+    "钩子点": 0.35,
+    "文化绑定元素": 0.2,
+    "高风险本地化项": 0.455
+  },
+  "low_fields": [
+    "核心冲突",
+    "主角目标",
+    "主角痛点",
+    "关系张力点",
+    "主要情节点",
+    "反转点",
+    "钩子点",
+    "文化绑定元素",
+    "高风险本地化项"
+  ],
+  "field_weights": {
+    "核心冲突": 0.18,
+    "主角目标": 0.1,
+    "主角痛点": 0.08,
+    "关系张力点": 0.14,
+    "主要情节点": 0.1,
+    "反转点": 0.12,
+    "情感曲线": 0.08,
+    "钩子点": 0.1,
+    "文化绑定元素": 0.05,
+    "高风险本地化项": 0.05
+  },
+  "grade_values": {
+    "高": 0.8,
+    "中": 0.5,
+    "低": 0.2
+  },
+  "aggregate_formula": "0.5 * score_1 + 0.35 * score_2 + 0.15 * score_3"
+}

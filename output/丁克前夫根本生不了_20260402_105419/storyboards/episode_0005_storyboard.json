@@ -1,0 +1,265 @@
+{
+  "episode_no": 5,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0005.json",
+  "storyboard": {
+    "episode_no": 5,
+    "title": "背負三十年的罵名",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代场景与起因",
+            "visual": "中景；顾盼坐在温馨的沙发上喝茶，阳光洒在地毯上；桌上的手机疯狂震动，屏幕亮起多个通话邀请；道具:手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "展现亲友的道德绑架",
+            "visual": "特写；顾盼低头看着手机屏幕，按下接听键开启免提；镜头微推，表现压迫感；道具:手机。",
+            "characters": [
+              "顾盼",
+              "顾盼的亲友"
+            ],
+            "dialogue": "画外音（远房表姐）：盼盼啊，你年轻时再怎么潇洒能干，晚年还不是输了？连个家都守不住！女人的价值就是相夫教子，你倒好，把老公拱手让人了！",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "推进冲突",
+            "visual": "中近景；顾盼靠在沙发背上，面无表情地听着，眼神逐渐冰冷。",
+            "characters": [
+              "顾盼",
+              "顾盼的亲友"
+            ],
+            "dialogue": "画外音（朋友）：就是啊顾盼！男人嘛，总归是要有个孩子传宗接代的。马国梁愿意陪你演戏这么多年，已经算仁至义尽了。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "强化荒谬感与情绪转折",
+            "visual": "特写；顾盼嘴角勾起一抹冷笑，眼神中透着极度的嘲讽。",
+            "characters": [
+              "顾盼",
+              "顾盼的亲友"
+            ],
+            "dialogue": "画外音（朋友）：要我说，反正你们也都老了，那方柔来了也得叫你一声姐。不如你搬回去，大家一起凑合着过下去吧，好歹有个伴，也能沾沾那两个孩子的光！",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "展现顾盼的反击态度",
+            "visual": "近景；顾盼坐直身体，眼神凌厉，果断伸手按向屏幕挂断；道具:手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：沾她的光？和她共侍一夫？你们的脑子要是没用，可以捐给有需要的人。",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 2,
+            "purpose": "引入父母的来电",
+            "visual": "特写；刚被扔在沙发上的手机再次亮起，顾盼神色一柔，拿起接听；道具:手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 2,
+            "purpose": "展现父母的担忧与不解",
+            "visual": "中近景；顾盼将手机贴在耳边，微微低头，神情黯然。",
+            "characters": [
+              "顾盼",
+              "顾盼的父母"
+            ],
+            "dialogue": "画外音（顾盼的母亲）：盼盼，你现在一个人住，万一哪天生病了，连个端茶倒水的人都没有可怎么办啊？以前你说丁克就丁克，非要坚持，现在呢？有个孩子多好，至少不会落到被赶出家门的步田地！",
+            "duration": 7.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 2,
+            "purpose": "加重顾盼的委屈情绪",
+            "visual": "特写；顾盼眼眶微红，强忍着泪水，手指紧紧捏着手机边缘；道具:手机。",
+            "characters": [
+              "顾盼",
+              "顾盼的父母"
+            ],
+            "dialogue": "画外音（顾盼的父亲）：当初我们真不该由着你！要是再好好劝劝你，你现在也不会过成这样。你坚持丁克，才失了男人的心啊！",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 2,
+            "purpose": "表现顾盼的隐忍",
+            "visual": "近景；顾盼深吸一口气，努力平复情绪，声音微颤。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：爸，妈，你们别担心，我一个人过得很好。事情不是你们想的那样……",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 2,
+            "purpose": "展现父母的固执",
+            "visual": "特写；顾盼紧咬下唇，听着电话那头的指责，眼神闪过一丝无奈。",
+            "characters": [
+              "顾盼",
+              "顾盼的父母"
+            ],
+            "dialogue": "画外音（顾盼的母亲）：还嘴硬！你这孩子就是太倔了！",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 6,
+            "scene_no": 2,
+            "purpose": "情绪收束与切断联系",
+            "visual": "中近景；顾盼眼角的泪水滑落，她迅速擦去眼泪，眼神变得无比坚定，挂断了电话；道具:手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：妈，我还有工作要处理，先挂了，改天回去看你们。",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 3,
+            "purpose": "引出关键线索",
+            "visual": "中景；顾盼站起身，走到房间角落的保险柜前，低头输入密码；镜头缓慢推近。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 3,
+            "purpose": "展示核心道具",
+            "visual": "特写；保险柜门打开，里面放着厚厚一叠文件；顾盼的手略过表层，从最底层抽出一份泛黄的报告；道具:调查证据，道具:不育报告。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 3,
+            "purpose": "揭示惊天秘密",
+            "visual": "主观镜头（POV）；视线落在泛黄的医疗诊断报告上，手指轻轻抚摸着字迹；道具:不育报告。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：马国梁……先天性弱精症，精子活力极低，基本无自然生育可能。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 3,
+            "purpose": "闪回马国梁的哀求",
+            "visual": "特写；顾盼闭上眼睛，眉头微皱，面部被窗外的阳光侧切，显得有些压抑。",
+            "characters": [
+              "顾盼",
+              "马国梁"
+            ],
+            "dialogue": "画外音（马国梁）：盼盼，求求你，不要告诉别人！我爸妈会打死我的，我的事业也会全毁了！求你和我一起假装丁克好不好？",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 3,
+            "purpose": "展现顾盼的悲凉与觉醒",
+            "visual": "近景；顾盼睁开眼，自嘲地笑了笑，眼神中透着悲凉与不甘。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：马国梁，当年为了保全你的面子，保全你作为男人的尊严，我顶着父母的不解，顶着亲友的非议，背了三十年“自私、不孝、不会生孩子”的骂名。",
+            "duration": 7.0
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 4,
+            "purpose": "整合复仇底牌",
+            "visual": "特写；顾盼将泛黄的报告与另外几份单据和流水单叠放在一起；道具:不育报告，道具:方柔的产检单与转账流水。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 4,
+            "purpose": "情绪推向高潮",
+            "visual": "中近景；顾盼捏紧手中的报告，眼神中再无一丝温度，只剩下凌厉的寒芒；镜头轻微手持推近。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：我替你撑起了一个幸福的丁克家庭，你却用三十年的欺骗来回报我。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 4,
+            "purpose": "宣告反击开始",
+            "visual": "特写；顾盼直视前方，目光如炬，咬字冰冷而决绝。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：马国梁，你欠我的，是时候连本带利还回来了！",
+            "duration": 4.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 0,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 1.0,
+    "missing_dialogues": [],
+    "unknown_characters": [],
+    "required_props": [
+      "不育报告"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": true,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

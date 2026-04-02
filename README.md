@@ -6,7 +6,9 @@
 2. 基于文档的一键短剧生产流程（`/docs` 命令）
 
 `/docs` 会从 `input_documents/` 读取 `.txt` 或 `.docx`，自动完成：
-剧本清洗 -> 特征提取 -> Unit 拆分 -> Unit 框架提炼 -> 拆集计划 -> 逐集规划 -> 逐集剧本 -> 逐集分镜。
+剧本清洗 -> canonical schema 特征提取 -> 缺失校验与最多 3 次修复 -> 知识库 TopK=3 语义对齐 -> 低分字段优化。
+
+当前版本会在 schema 对齐达标后停在 Unit 拆分之前，并生成兼容的空占位文件，避免前端预览断裂。
 
 ---
 
@@ -47,7 +49,13 @@ LLM_API_KEY=your-api-key
 
 ```env
 CLEANING_CHUNK_SIZE=4000
+CLEANING_MAX_WORKERS=1
 FEATURE_CHUNK_SIZE=4000
+KB_FEATURE_MAX_WORKERS=10
+SCHEMA_ALIGNMENT_TOP_K=3
+SCHEMA_ALIGNMENT_THRESHOLD=0.65
+SCHEMA_EXTRACTION_MAX_ATTEMPTS=3
+SCHEMA_ALIGNMENT_MAX_ROUNDS=3
 UNIT_WINDOW_MIN=1500
 UNIT_WINDOW_MAX=2200
 DEFAULT_EPISODE_COUNT=60
@@ -59,6 +67,12 @@ STORYBOARD_MAX_WORKERS=4
 说明：
 
 - `UNIT_WINDOW_MIN` 必须小于 `UNIT_WINDOW_MAX`
+- `CLEANING_MAX_WORKERS` 控制第 1 步分块清洗的并发数；默认 `1` 表示串行，建议从 `2` 小幅尝试
+- `KB_FEATURE_MAX_WORKERS` 控制知识库爆剧特征提取的分块并发数；默认 `10`
+- `SCHEMA_ALIGNMENT_TOP_K` 控制 `/docs` 前置知识库召回数量；当前固定使用 `3`
+- `SCHEMA_ALIGNMENT_THRESHOLD` 控制 schema 对齐通过阈值；默认 `0.65`
+- `SCHEMA_EXTRACTION_MAX_ATTEMPTS` 控制特征提取缺失修复最大尝试次数；默认 `3`
+- `SCHEMA_ALIGNMENT_MAX_ROUNDS` 控制 schema 对齐优化最大循环次数；默认 `3`
 - `DEFAULT_EPISODE_COUNT` 为 `/docs` 默认目标集数
 - `EPISODE_SPLIT_REPAIR_ROUNDS` 是拆集计划修复轮次
 - `EPISODE_CONTENT_MAX_WORKERS` 控制第 7 步逐集内容生成的并发数
@@ -115,7 +129,7 @@ python chat_cli.py
 2. 运行 `python chat_cli.py`
 3. 输入 `/docs`
 4. 按编号选择文件
-5. 等待 8 阶段处理完成
+5. 等待 schema 前置流程完成
 6. 在 `output/<源文件名_时间戳>/` 查看全部产物
 
 ---
@@ -152,6 +166,21 @@ output/
     project_meta.json
 ```
 
+`story_bible.json` 是 English canonical schema。schema 校验、TopK 召回、LLM 评分、低分字段优化与最终报告会写入：
+
+```text
+schema_alignment/
+  field_weights.json
+  <source_name>_<YYYYMMDD_HHMMSS>/
+    missing_report_attempt_*.json
+    topk_recall_round_*.json
+    scoring_table_round_*.json
+    optimized_schema_round_*.json
+    changed_fields_round_*.json
+    final_schema.json
+    alignment_summary.json
+```
+
 同时会在根目录同步覆盖：
 
 - `episode_split_plan.json`
@@ -162,11 +191,14 @@ output/
 ## Prompt 文件说明
 
 `prompt/` 目录下每个模板都对应 `/docs` 流程中的固定阶段，调用入口在 `code_components/script_processing.py`（底层由 `code_components/langChain/model_runtime.py` 读模板并注入变量）。
+当前 schema gate 版本只会实际运行清洗、特征提取、schema 语义对齐与优化；Unit 拆分及后续 prompt 保留为下一阶段流程使用。
 
 | Prompt 文件 | 对应流程阶段 | 在流程中做什么 | 主要用意 |
 |---|---|---|---|
 | `prompt/script_cleaning_prompt.md` | 1. 剧本清洗 | 清洗原始文本，输出 `script_cleaned.txt` | 去噪、规范格式、保留原剧情表达，为后续结构化处理提供稳定输入 |
 | `prompt/script_feature_extraction_prompt.md` | 2. 特征提取 | 从清洗文本抽取结构化特征，输出 `story_bible.json` | 提取角色、道具、背景等核心信息，作为后续规划与生成的基础 |
+| `prompt/schema_semantic_alignment_prompt.md` | 2b. Schema 语义对齐评分 | 对输入 schema 与 TopK 知识库 schema 的 10 个权重字段打高/中/低 | 生成评分表与聚合分，判断是否达到 `SCHEMA_ALIGNMENT_THRESHOLD` |
+| `prompt/schema_optimization_prompt.md` | 2c. Schema 优化 | 参考 TopK 中最适合的 schema 优化低分字段 | 输出完整优化后 schema 与修改字段列表 |
 | `prompt/unit_split_prompt.md` | 3. Unit 拆分 | 读取拆分规则与参数，输出 `story_units.json` | 控制 unit 切分窗口、句子边界与尾段合并策略，使该阶段也可通过 prompt 调整 |
 | `prompt/unit_framework_extraction_prompt.md` | 4. Unit 框架提炼 | 对每个 unit 提炼摘要与冲突信息，输出 `unit_frameworks.json` | 把长文本 unit 转成可用于拆集决策的“剧情框架” |
 | `prompt/unit_episode_split_planning_prompt.md` | 5. 拆集规划 | 按 unit 分配 `episode_count`，输出 `episode_split_plan.json` | 在满足总集数约束下完成 unit->集数分配，并保证可校验 |

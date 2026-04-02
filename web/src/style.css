@@ -340,6 +340,254 @@ h1 {
   line-height: 1.6;
 }
 
+.knowledge-panel {
+  grid-area: prompts;
+  min-width: 0;
+}
+
+.knowledge-section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.knowledge-section-head h3 {
+  font-size: 20px;
+  line-height: 1.35;
+  font-weight: 650;
+}
+
+.knowledge-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(280px, 340px) minmax(0, 1fr);
+  gap: var(--space-4);
+  min-height: 0;
+  margin-top: var(--space-4);
+  overflow: hidden;
+}
+
+.knowledge-upload-zone,
+.knowledge-records,
+.knowledge-preview {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+}
+
+.knowledge-upload-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.knowledge-file-meta {
+  padding: 13px 14px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--bg-soft);
+}
+
+.knowledge-file-meta span,
+.kb-meta-item span,
+.kb-feature-block span,
+.kb-list-section > span {
+  display: block;
+  color: var(--text-tertiary);
+  font-size: 11px;
+  line-height: 1.55;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+.knowledge-file-meta strong {
+  display: block;
+  margin-top: 5px;
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+
+.knowledge-record-list,
+.kb-schema-preview {
+  display: grid;
+  gap: var(--space-3);
+  min-height: 0;
+  overflow: auto;
+  padding-right: var(--space-1);
+}
+
+.knowledge-record-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 13px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--bg-soft);
+}
+
+.knowledge-record-item.active {
+  border-color: var(--border-accent);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+    var(--bg-card);
+}
+
+.compact-button {
+  min-height: 34px;
+  padding: 7px 11px;
+  font-size: 12px;
+}
+
+.kb-preview-band {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--bg-soft);
+}
+
+.kb-preview-band h4 {
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 650;
+}
+
+.kb-meta-grid,
+.kb-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.kb-meta-item,
+.kb-feature-block,
+.kb-list-section {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.024);
+}
+
+.kb-feature-wide {
+  grid-column: 1 / -1;
+}
+
+.kb-meta-item strong,
+.kb-feature-block p,
+.kb-summary-list span,
+.kb-list-section li {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.7;
+  word-break: break-word;
+}
+
+.kb-meta-item strong,
+.kb-feature-block p {
+  display: block;
+  margin-top: var(--space-2);
+  font-weight: 500;
+}
+
+.kb-summary-list {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.kb-summary-list p {
+  display: grid;
+  grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
+  gap: var(--space-3);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.kb-summary-list p:last-child {
+  border-bottom: none;
+}
+
+.kb-summary-list strong {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.kb-list-sections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.kb-list-section ul {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 0;
+  padding-left: 18px;
+}
+
+.kb-list-wide {
+  grid-column: 1 / -1;
+}
+
+.kb-field-list,
+.kb-record-list {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.kb-field-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.36fr) minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.kb-field-row:last-child {
+  border-bottom: none;
+}
+
+.kb-field-row span {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.kb-field-row strong {
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.65;
+  word-break: break-word;
+}
+
+.kb-record-row {
+  display: grid;
+  gap: var(--space-1);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.kb-record-row:last-child {
+  border-bottom: none;
+}
+
 .workspace-grid {
   display: grid;
   grid-template-columns: 300px minmax(720px, 1fr) 340px;
@@ -652,7 +900,8 @@ h1 {
 
 .panel-chat,
 .panel-output,
-.panel-prompts {
+.panel-prompts,
+.knowledge-panel {
   min-width: 0;
 }
 
@@ -1289,6 +1538,7 @@ h1 {
 .ghost-button:hover,
 .command-chip:hover,
 .document-item:hover,
+.knowledge-record-item:hover,
 .preview-list-item:hover,
 .prompt-step-card:hover,
 .project-select:hover,
@@ -1304,6 +1554,7 @@ h1 {
 .ghost-button:hover,
 .command-chip:hover,
 .document-item:hover,
+.knowledge-record-item:hover,
 .preview-list-item:hover,
 .prompt-step-card:hover,
 .project-select:hover,
@@ -1312,6 +1563,7 @@ h1 {
 }
 
 .document-item:active,
+.knowledge-record-item:active,
 .preview-list-item:active,
 .prompt-step-card:active,
 .ghost-button:active,
@@ -1387,6 +1639,14 @@ textarea:disabled {
     overflow-y: hidden;
   }
 
+  .knowledge-panel {
+    overflow-x: auto;
+  }
+
+  .knowledge-grid {
+    min-width: 1040px;
+  }
+
   .workspace-grid-prompts {
     min-width: 1140px;
   }
@@ -1422,6 +1682,18 @@ textarea:disabled {
   }
 
   .prompt-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .knowledge-section-head {
+    flex-direction: column;
+  }
+
+  .knowledge-upload-actions,
+  .kb-meta-grid,
+  .kb-feature-grid,
+  .kb-list-sections,
+  .kb-summary-list p {
     grid-template-columns: 1fr;
   }
 

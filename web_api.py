@@ -9,13 +9,21 @@ from pathlib import Path
 from typing import Any
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 from pydantic import BaseModel
 
 from code_components.document_browser import SUPPORTED_EXTENSIONS, list_input_documents
+from code_components.knowledge_base import (
+    create_knowledge_record,
+    find_knowledge_records_by_filename,
+    get_knowledge_item,
+    list_knowledge_records,
+    mark_knowledge_record_failed,
+    process_knowledge_record_features,
+)
 from code_components.langChain import (
     build_workflow,
     invoke_response,
@@ -54,6 +62,8 @@ class ApiState:
         self.lock = threading.Lock()
         self.workflow_lock = threading.Lock()
         self.workflow_jobs: dict[str, dict[str, Any]] = {}
+        self.knowledge_lock = threading.Lock()
+        self.knowledge_jobs: dict[str, dict[str, Any]] = {}
         self.llm = None
         self.chain = None
 
@@ -113,6 +123,49 @@ class ApiState:
             job.update(updates)
             job["updated_at"] = datetime.now().isoformat(timespec="seconds")
 
+    def create_knowledge_job(self, record: dict[str, Any]) -> dict[str, Any]:
+        job_id = uuid.uuid4().hex
+        filename = str(record.get("original_filename") or "")
+        job = {
+            "job_id": job_id,
+            "record_id": record.get("id"),
+            "filename": filename,
+            "status": "queued",
+            "logs": [f"Queued knowledge extraction: {filename}"],
+            "result": None,
+            "error": None,
+            "created_at": datetime.now().isoformat(timespec="seconds"),
+            "updated_at": datetime.now().isoformat(timespec="seconds"),
+        }
+        with self.knowledge_lock:
+            self.knowledge_jobs[job_id] = job
+        return dict(job)
+
+    def get_knowledge_job(self, job_id: str) -> dict[str, Any]:
+        with self.knowledge_lock:
+            job = self.knowledge_jobs.get(job_id)
+            if job is None:
+                raise HTTPException(status_code=404, detail="Knowledge job not found.")
+            return dict(job)
+
+    def append_knowledge_log(self, job_id: str, message: str) -> None:
+        with self.knowledge_lock:
+            job = self.knowledge_jobs.get(job_id)
+            if job is None:
+                return
+            logs = job.setdefault("logs", [])
+            if not logs or logs[-1] != message:
+                logs.append(message)
+            job["updated_at"] = datetime.now().isoformat(timespec="seconds")
+
+    def update_knowledge_job(self, job_id: str, **updates: Any) -> None:
+        with self.knowledge_lock:
+            job = self.knowledge_jobs.get(job_id)
+            if job is None:
+                return
+            job.update(updates)
+            job["updated_at"] = datetime.now().isoformat(timespec="seconds")
+
 
 state = ApiState()
 
@@ -139,6 +192,7 @@ def get_health() -> dict[str, Any]:
         "has_llm_env": has_llm_env,
         "input_document_count": len(list_input_documents()),
         "output_project_count": len(_list_output_projects()),
+        "knowledge_record_count": len(list_knowledge_records()),
     }
 
 
@@ -190,6 +244,84 @@ def delete_input_document(filename: str) -> dict[str, Any]:
 
     target_path.unlink()
     return {"message": f"Deleted {safe_name}"}
+
+
+@app.get("/api/knowledge-base")
+def get_knowledge_base() -> dict[str, Any]:
+    return {"items": list_knowledge_records()}
+
+
+@app.get("/api/knowledge-base/check-filename")
+def check_knowledge_base_filename(filename: str) -> dict[str, Any]:
+    safe_name = Path(filename or "").name
+    if not safe_name:
+        raise HTTPException(status_code=400, detail="Filename is required.")
+    return {
+        "filename": safe_name,
+        "matches": find_knowledge_records_by_filename(safe_name),
+    }
+
+
+@app.post("/api/knowledge-base/upload-and-extract")
+async def upload_knowledge_base_document(
+    file: UploadFile = File(...),
+    overwrite_record_id: str = Form(""),
+) -> dict[str, Any]:
+    filename = Path(file.filename or "").name
+    if not filename:
+        raise HTTPException(status_code=400, detail="Filename is required.")
+    if Path(filename).suffix.lower() not in SUPPORTED_EXTENSIONS:
+        raise HTTPException(status_code=400, detail="Only .txt and .docx files are supported.")
+
+    state.ensure_llm_env()
+    content = await file.read()
+
+    try:
+        record = create_knowledge_record(
+            filename,
+            content,
+            overwrite_record_id=overwrite_record_id or None,
+        )
+    except FileExistsError as exc:
+        raise HTTPException(
+            status_code=409,
+            detail={
+                "message": str(exc),
+                "matches": find_knowledge_records_by_filename(filename),
+            },
+        ) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    job = state.create_knowledge_job(record)
+    worker = threading.Thread(
+        target=_run_knowledge_base_job,
+        args=(job["job_id"], record["id"]),
+        daemon=True,
+    )
+    worker.start()
+    return {
+        "type": "knowledge_base_job_started",
+        "message": f"Started knowledge extraction for {record['original_filename']}",
+        "overwritten": bool(overwrite_record_id),
+        "record": record,
+        "job": job,
+    }
+
+
+@app.get("/api/knowledge-base/jobs/{job_id}")
+def get_knowledge_base_job(job_id: str) -> dict[str, Any]:
+    return state.get_knowledge_job(job_id)
+
+
+@app.get("/api/knowledge-base/items/{record_id}")
+def get_knowledge_base_item(record_id: str) -> dict[str, Any]:
+    try:
+        return get_knowledge_item(record_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
 @app.get("/api/output/projects")
@@ -513,6 +645,8 @@ def _run_docs_workflow_job(job_id: str, source_path: Path) -> None:
             "project_dir": result.project_dir.name,
             "source_file": source_path.name,
             "story_bible_path": str(result.story_bible_path),
+            "schema_alignment_dir": str(ROOT_DIR / "schema_alignment" / result.project_dir.name),
+            "workflow_stop_reason": "schema_alignment_completed_before_unit_split",
             "episodes_dir": str(result.episodes_dir),
             "storyboards_dir": str(result.storyboards_dir),
             "target_episode_count": result.target_episode_count,
@@ -527,6 +661,39 @@ def _run_docs_workflow_job(job_id: str, source_path: Path) -> None:
         error_message = str(exc)
         state.append_workflow_log(job_id, f"/docs 處理失敗：{error_message}")
         state.update_workflow_job(job_id, status="failed", error=error_message)
+
+
+def _run_knowledge_base_job(job_id: str, record_id: str) -> None:
+    state.update_knowledge_job(job_id, status="running")
+    state.append_knowledge_log(job_id, f"Starting knowledge extraction for record: {record_id}")
+
+    def on_progress(stage: str, progress_payload: dict[str, object]) -> None:
+        message = str(progress_payload.get("message", stage))
+        state.append_knowledge_log(job_id, message)
+
+    try:
+        llm = make_llm()
+        result = process_knowledge_record_features(
+            llm=llm,
+            record_id=record_id,
+            progress_callback=on_progress,
+        )
+        result_payload = {
+            "record_id": result["record"]["id"],
+            "source_file": result["record"]["original_filename"],
+            "structured_path": result["record"]["structured_path"],
+            "source_chars": result["record"]["source_chars"],
+        }
+        state.append_knowledge_log(job_id, f"Knowledge extraction completed: {result_payload['source_file']}")
+        state.update_knowledge_job(job_id, status="completed", result=result_payload)
+    except Exception as exc:
+        error_message = str(exc)
+        try:
+            mark_knowledge_record_failed(record_id, error_message)
+        except Exception:
+            pass
+        state.append_knowledge_log(job_id, f"Knowledge extraction failed: {error_message}")
+        state.update_knowledge_job(job_id, status="failed", error=error_message)
 
 
 def _list_output_projects() -> list[dict[str, Any]]:
@@ -549,6 +716,8 @@ def _build_project_summary(project_dir: Path) -> dict[str, Any]:
         "target_episode_count": episodes_index.get("target_episode_count"),
         "generated_episode_count": episodes_index.get("generated_episode_count"),
         "generated_storyboard_count": storyboards_index.get("generated_storyboard_count"),
+        "workflow_stop_reason": project_meta.get("workflow_stop_reason"),
+        "schema_alignment_summary": project_meta.get("schema_alignment_summary"),
         "has_story_bible": (project_dir / "story_bible.json").exists(),
     }
 

@@ -1,11 +1,15 @@
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 import {
+  checkKnowledgeBaseFilename,
   deleteInputDocument,
   getEpisode,
   getHealth,
   getInputDocuments,
+  getKnowledgeBase,
+  getKnowledgeBaseItem,
+  getKnowledgeBaseJob,
   getOutputProject,
   getOutputProjects,
   getPrompt,
@@ -15,17 +19,21 @@ import {
   runWorkflow,
   sendChatMessage,
   updatePrompt,
+  uploadKnowledgeBaseFile,
   uploadInputDocument,
 } from './api'
 
 const health = ref(null)
 const documents = ref([])
+const knowledgeItems = ref([])
 const projects = ref([])
 const projectBundle = ref(null)
 const episodeDetail = ref(null)
 const storyboardDetail = ref(null)
+const knowledgePreview = ref(null)
 
 const selectedDocument = ref('')
+const selectedKnowledgeRecordId = ref('')
 const selectedProject = ref('')
 const selectedEpisodeNo = ref(null)
 const selectedStoryboardNo = ref(null)
@@ -40,13 +48,22 @@ const promptOriginal = ref('')
 const promptStatus = ref('')
 
 const chatInput = ref('')
+const chatStream = ref(null)
 const fileInput = ref(null)
+const knowledgeFileInput = ref(null)
+const knowledgeUploadFile = ref(null)
+const knowledgeJobStatus = ref('idle')
 const notice = ref('')
 const workflowPollers = new Map()
+const knowledgePollers = new Map()
 const busy = ref({
   chat: false,
   upload: false,
   workflow: false,
+  knowledgeUpload: false,
+  knowledgeJob: false,
+  knowledgeList: false,
+  knowledgePreview: false,
   project: false,
   episode: false,
   storyboard: false,
@@ -65,18 +82,40 @@ const chatMessages = ref([
 const projectSummary = computed(() => {
   return projects.value.find((item) => item.name === selectedProject.value) || null
 })
+const selectedKnowledgeRecord = computed(() => {
+  return knowledgeItems.value.find((item) => item.id === selectedKnowledgeRecordId.value) || null
+})
+const knowledgeFeatures = computed(() => knowledgePreview.value?.features || null)
+const knowledgeMetadataRows = computed(() => objectRows(knowledgeFeatures.value?.task_metadata || knowledgeFeatures.value?.['任务元数据']))
+const knowledgeSourceRows = computed(() => objectRows(knowledgeFeatures.value?.source_summary || knowledgeFeatures.value?.['源文本摘要']))
+const knowledgeStoryCore = computed(() => knowledgeFeatures.value?.story_core || legacyContentToStoryCore(knowledgeFeatures.value?.['内容特征']))
+const knowledgePlotStructure = computed(() => knowledgeFeatures.value?.plot_structure || legacyContentToPlot(knowledgeFeatures.value?.['内容特征']))
+const knowledgeLocalization = computed(() => knowledgeFeatures.value?.localization_features || legacyCultureToLocalization(knowledgeFeatures.value?.['文化特征']))
+const knowledgeCharacters = computed(() => knowledgeFeatures.value?.characters || [])
+const knowledgeProps = computed(() => knowledgeFeatures.value?.props || [])
+const knowledgeBackground = computed(() => knowledgeFeatures.value?.background || {})
+const knowledgeGuidanceRows = computed(() => objectRows(knowledgeFeatures.value?.adaptation_guidance))
+const knowledgeQualityRows = computed(() => objectRows(knowledgeFeatures.value?.quality_control))
 const storyBible = computed(() => projectBundle.value?.story_bible || null)
 const storyCharacters = computed(() => storyBible.value?.characters || [])
 const storyProps = computed(() => storyBible.value?.props || [])
 const storyBackground = computed(() => storyBible.value?.background || {})
+const storyCore = computed(() => storyBible.value?.story_core || legacyContentToStoryCore(storyBible.value?.['内容特征']))
+const storySourceRows = computed(() => objectRows(storyBible.value?.source_summary || storyBible.value?.['源文本摘要']))
+const storyPlotStructure = computed(() => storyBible.value?.plot_structure || legacyContentToPlot(storyBible.value?.['内容特征']))
+const storyLocalization = computed(() => storyBible.value?.localization_features || legacyCultureToLocalization(storyBible.value?.['文化特征']))
 const storyBackgroundRows = computed(() => {
   const background = storyBackground.value || {}
 
   return [
     { label: 'Era', value: formatInlineValue(background.era) },
+    { label: 'Time Period', value: formatInlineValue(background.time_period) },
     { label: 'Locations', value: formatInlineValue(background.locations) },
     { label: 'Social Context', value: formatInlineValue(background.social_context) },
     { label: 'World Rules', value: formatInlineValue(background.world_rules) },
+    { label: 'Power Structure', value: formatInlineValue(background.power_structure) },
+    { label: 'Economic Context', value: formatInlineValue(background.economic_context) },
+    { label: 'Cultural Context', value: formatInlineValue(background.cultural_context) },
   ].filter((item) => item.value !== '--')
 })
 const episodeItems = computed(() => projectBundle.value?.episodes_index?.episodes || [])
@@ -84,9 +123,10 @@ const storyboardItems = computed(() => projectBundle.value?.storyboards_index?.e
 const selectedPromptStep = computed(() => {
   return promptWorkflow.value.find((item) => item.key === selectedPromptKey.value) || null
 })
+const promptWorkflowTotal = computed(() => promptWorkflow.value.length || 0)
 const hasPromptChanges = computed(() => promptDraft.value !== promptOriginal.value)
 const workspaceGridClass = computed(() => {
-  return activeWorkspaceView.value === 'prompts' ? 'workspace-grid-prompts' : ''
+  return activeWorkspaceView.value === 'workspace' ? '' : 'workspace-grid-prompts'
 })
 const apiStatusClass = computed(() => {
   if (!health.value) return 'status-connecting'
@@ -133,17 +173,154 @@ function formatDuration(value) {
 
 function joinList(value) {
   if (!Array.isArray(value) || !value.length) return '--'
-  return value.join(' / ')
+  return value.map((item) => formatKnowledgeValue(item)).join(' / ')
 }
 
 function formatInlineValue(value) {
   if (Array.isArray(value)) {
-    return value.length ? value.join(' / ') : '--'
+    return value.length ? value.map((item) => formatKnowledgeValue(item)).join(' / ') : '--'
   }
   if (value && typeof value === 'object') {
-    return JSON.stringify(value)
+    return formatKnowledgeValue(value)
   }
   return value || '--'
+}
+
+function formatPromptMeta(step, detail) {
+  if (!step) return ''
+  const workflowLabel = step.workflow === 'knowledge_base' ? 'Knowledge Base' : 'Docs'
+  return `${workflowLabel} ${step.order}/${promptWorkflowTotal.value || step.order} · ${detail?.file_name || ''}`
+}
+
+function formatKnowledgeStatus(status) {
+  if (!status) return 'unknown'
+  return String(status).replace(/_/g, ' ')
+}
+
+function objectRows(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return []
+  return Object.entries(value)
+    .map(([label, rawValue]) => ({
+      label,
+      value: formatKnowledgeValue(rawValue),
+    }))
+    .filter((item) => item.value !== '--')
+}
+
+function formatKnowledgeValue(value) {
+  if (Array.isArray(value)) {
+    if (!value.length) return '--'
+    return value.map((item) => formatKnowledgeValue(item)).join(' / ')
+  }
+  if (value && typeof value === 'object') {
+    const rows = Object.entries(value)
+      .map(([key, rawValue]) => {
+        const formatted = formatKnowledgeValue(rawValue)
+        return formatted === '--' ? '' : `${key}: ${formatted}`
+      })
+      .filter(Boolean)
+    return rows.length ? rows.join(' · ') : '--'
+  }
+  if (value === null || value === undefined || value === '') return '--'
+  return String(value)
+}
+
+function listItems(value) {
+  if (Array.isArray(value)) return value
+  if (value === null || value === undefined || value === '') return []
+  return [value]
+}
+
+function compactList(value, limit = 5) {
+  const items = listItems(value)
+  return items.slice(0, limit)
+}
+
+function formatFieldLabel(label) {
+  return String(label || '')
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase())
+}
+
+function storyCoreEntityRows(entity) {
+  if (!entity || typeof entity !== 'object' || Array.isArray(entity)) {
+    const value = formatKnowledgeValue(entity)
+    return value === '--' ? [] : [{ label: 'value', value }]
+  }
+  return objectRows(entity).filter((row) => row.label !== 'evidence')
+}
+
+function storyCoreRecordRows(record) {
+  const rows = objectRows(record)
+  if (rows.length) return rows
+  const value = formatKnowledgeValue(record)
+  return value === '--' ? [] : [{ label: 'value', value }]
+}
+
+function storyCoreSignalRows(core) {
+  return [
+    { label: 'protagonist_objective', value: formatKnowledgeValue(core?.protagonist_objective) },
+    { label: 'protagonist_pain_point', value: formatKnowledgeValue(core?.protagonist_pain_point) },
+  ].filter((row) => row.value !== '--')
+}
+
+function knowledgeFilenameConflict(filename, matches = knowledgeItems.value) {
+  const target = String(filename || '').toLowerCase()
+  if (!target) return null
+  return matches.find((item) => String(item.original_filename || '').toLowerCase() === target) || null
+}
+
+function confirmKnowledgeOverwrite(record, filename) {
+  if (!record) return ''
+  if (String(record.status || '').toLowerCase() === 'processing') {
+    notice.value = `Knowledge record "${filename}" is still processing. Wait for it to finish before overwriting.`
+    return ''
+  }
+  const updated = record.updated_at ? `\nLast updated: ${formatDate(record.updated_at)}` : ''
+  const ok = window.confirm(
+    `A knowledge record named "${filename}" already exists.${updated}\n\nOverwrite it and regenerate features?`
+  )
+  return ok ? record.id : ''
+}
+
+function legacyContentToStoryCore(content) {
+  const legacy = content || {}
+  return {
+    protagonist: legacy['主角'] || {},
+    antagonist: legacy['反派'] || {},
+    core_conflict: legacy['核心冲突'] || {},
+    protagonist_objective: legacy['主角目标'] || '',
+    protagonist_pain_point: legacy['主角痛点'] || '',
+    relationship_tensions: legacy['关系张力点'] || [],
+  }
+}
+
+function legacyContentToPlot(content) {
+  const legacy = content || {}
+  return {
+    major_plot_points: legacy['主要情节点'] || [],
+    turning_points: [],
+    reversal_points: legacy['反转点'] || [],
+    emotional_curve: legacy['情感曲线'] || [],
+    hook_points: legacy['钩子点'] || [],
+  }
+}
+
+function legacyCultureToLocalization(culture) {
+  const legacy = culture || {}
+  return {
+    cultural_binding_elements: legacy['文化绑定元素'] || [],
+    relationship_terms: legacy['关系称谓'] || [],
+    value_expression_terms: legacy['价值表达术语'] || [],
+    worldview_terms: legacy['世界观术语'] || [],
+    replaceable_carriers: legacy['可替换载体'] || [],
+    high_risk_localization_items: legacy['高风险本地化项'] || [],
+  }
+}
+
+function recordTitle(record) {
+  if (!record) return 'No record selected'
+  return record.original_filename || record.id
 }
 
 function formatWorkflowMessage(payload) {
@@ -159,6 +336,12 @@ function formatWorkflowMessage(payload) {
 
 function pushMessage(role, content, type = role) {
   chatMessages.value.push({ role, content, type })
+}
+
+async function scrollChatToBottom() {
+  await nextTick()
+  if (!chatStream.value) return
+  chatStream.value.scrollTop = chatStream.value.scrollHeight
 }
 
 function clearPromptEditor() {
@@ -185,6 +368,24 @@ async function refreshDocuments() {
     !documents.value.some((item) => item.name === selectedDocument.value)
   ) {
     selectedDocument.value = documents.value[0]?.name || ''
+  }
+}
+
+async function refreshKnowledgeBase() {
+  busy.value.knowledgeList = true
+  try {
+    const data = await getKnowledgeBase()
+    knowledgeItems.value = data.items || []
+
+    if (
+      selectedKnowledgeRecordId.value &&
+      !knowledgeItems.value.some((item) => item.id === selectedKnowledgeRecordId.value)
+    ) {
+      selectedKnowledgeRecordId.value = ''
+      knowledgePreview.value = null
+    }
+  } finally {
+    busy.value.knowledgeList = false
   }
 }
 
@@ -218,6 +419,14 @@ function stopWorkflowPolling(jobId) {
   if (timer) {
     window.clearInterval(timer)
     workflowPollers.delete(jobId)
+  }
+}
+
+function stopKnowledgePolling(jobId) {
+  const timer = knowledgePollers.get(jobId)
+  if (timer) {
+    window.clearInterval(timer)
+    knowledgePollers.delete(jobId)
   }
 }
 
@@ -270,6 +479,73 @@ async function trackWorkflowJob(jobId) {
   if (!workflowPollers.has(jobId)) {
     const timer = window.setInterval(poll, 1200)
     workflowPollers.set(jobId, timer)
+  }
+}
+
+async function trackKnowledgeJob(jobId) {
+  let seenLogCount = 0
+
+  const poll = async () => {
+    try {
+      const job = await getKnowledgeBaseJob(jobId)
+      const logs = Array.isArray(job.logs) ? job.logs : []
+      const newLogs = logs.slice(seenLogCount)
+
+      newLogs.forEach((log) => {
+        pushMessage('assistant', log, 'workflow')
+      })
+      seenLogCount = logs.length
+      knowledgeJobStatus.value = job.status || 'running'
+
+      if (job.status === 'completed') {
+        stopKnowledgePolling(jobId)
+        busy.value.knowledgeJob = false
+        busy.value.knowledgeUpload = false
+        await Promise.all([refreshKnowledgeBase(), refreshHealth()])
+        pushMessage('assistant', `Knowledge extraction completed: ${job.filename || job.result?.source_file || '--'}`, 'workflow')
+        if (job.result?.record_id) {
+          await openKnowledgeItem(job.result.record_id)
+        }
+      }
+
+      if (job.status === 'failed') {
+        stopKnowledgePolling(jobId)
+        busy.value.knowledgeJob = false
+        busy.value.knowledgeUpload = false
+        notice.value = job.error || 'Knowledge extraction failed.'
+        pushMessage('assistant', `Knowledge extraction failed: ${job.error || 'Unknown error'}`, 'error')
+        await refreshKnowledgeBase()
+      }
+    } catch (error) {
+      stopKnowledgePolling(jobId)
+      busy.value.knowledgeJob = false
+      busy.value.knowledgeUpload = false
+      knowledgeJobStatus.value = 'failed'
+      notice.value = error.message
+      pushMessage('assistant', `Knowledge polling failed: ${error.message}`, 'error')
+    }
+  }
+
+  await poll()
+  if (!knowledgePollers.has(jobId)) {
+    const timer = window.setInterval(poll, 1200)
+    knowledgePollers.set(jobId, timer)
+  }
+}
+
+async function openKnowledgeItem(recordId) {
+  if (!recordId) return
+  busy.value.knowledgePreview = true
+  notice.value = ''
+  try {
+    const data = await getKnowledgeBaseItem(recordId)
+    selectedKnowledgeRecordId.value = recordId
+    knowledgePreview.value = data
+    activeWorkspaceView.value = 'knowledge'
+  } catch (error) {
+    notice.value = error.message
+  } finally {
+    busy.value.knowledgePreview = false
   }
 }
 
@@ -473,7 +749,7 @@ async function toggleWorkspaceView(nextView) {
 async function bootstrap() {
   notice.value = ''
   try {
-    await Promise.all([refreshHealth(), refreshDocuments(), refreshProjects()])
+    await Promise.all([refreshHealth(), refreshDocuments(), refreshKnowledgeBase(), refreshProjects()])
   } catch (error) {
     notice.value = error.message
   }
@@ -495,6 +771,68 @@ async function handleUpload(event) {
   } finally {
     busy.value.upload = false
     event.target.value = ''
+  }
+}
+
+function handleKnowledgeFileChange(event) {
+  const [file] = event.target.files || []
+  knowledgeUploadFile.value = file || null
+  if (event.target) {
+    event.target.value = ''
+  }
+}
+
+async function handleKnowledgeUpload() {
+  if (!knowledgeUploadFile.value) {
+    notice.value = 'Select a .txt or .docx file before starting knowledge extraction.'
+    return
+  }
+
+  const uploadFile = knowledgeUploadFile.value
+  let overwriteRecordId = ''
+  notice.value = ''
+
+  try {
+    const check = await checkKnowledgeBaseFilename(uploadFile.name)
+    const conflict = knowledgeFilenameConflict(uploadFile.name, check.matches || [])
+    if (conflict) {
+      overwriteRecordId = confirmKnowledgeOverwrite(conflict, uploadFile.name)
+      if (!overwriteRecordId) return
+    }
+  } catch (error) {
+    const conflict = knowledgeFilenameConflict(uploadFile.name)
+    if (conflict) {
+      overwriteRecordId = confirmKnowledgeOverwrite(conflict, uploadFile.name)
+      if (!overwriteRecordId) return
+    }
+  }
+
+  busy.value.knowledgeUpload = true
+  busy.value.knowledgeJob = true
+  knowledgeJobStatus.value = 'uploading'
+  activeWorkspaceView.value = 'knowledge'
+  pushMessage('user', `Knowledge upload: ${uploadFile.name}`)
+  pushMessage('assistant', overwriteRecordId ? 'Overwriting existing record and uploading source file' : 'Uploading source file', 'workflow')
+
+  try {
+    const response = await uploadKnowledgeBaseFile(uploadFile, { overwriteRecordId })
+    pushMessage('assistant', response.message || 'Knowledge extraction started', 'workflow')
+    if (response.record?.id) {
+      selectedKnowledgeRecordId.value = response.record.id
+    }
+    await refreshKnowledgeBase()
+    if (response.job?.job_id) {
+      await trackKnowledgeJob(response.job.job_id)
+    } else {
+      busy.value.knowledgeUpload = false
+      busy.value.knowledgeJob = false
+    }
+  } catch (error) {
+    notice.value = error.message
+    pushMessage('assistant', `Knowledge upload failed: ${error.message}`, 'error')
+    knowledgeJobStatus.value = 'failed'
+    busy.value.knowledgeUpload = false
+    busy.value.knowledgeJob = false
   }
 }
 
@@ -569,6 +907,7 @@ async function handleChatSubmit() {
 
 onMounted(() => {
   bootstrap()
+  scrollChatToBottom()
 })
 
 onBeforeUnmount(() => {
@@ -576,7 +915,27 @@ onBeforeUnmount(() => {
     window.clearInterval(timer)
   })
   workflowPollers.clear()
+  knowledgePollers.forEach((timer) => {
+    window.clearInterval(timer)
+  })
+  knowledgePollers.clear()
 })
+
+watch(
+  () => chatMessages.value.length,
+  () => {
+    scrollChatToBottom()
+  },
+)
+
+watch(
+  () => busy.value.chat || busy.value.workflow || busy.value.knowledgeJob,
+  (isBusy, wasBusy) => {
+    if (isBusy !== wasBusy) {
+      scrollChatToBottom()
+    }
+  },
+)
 </script>
 
 <template>
@@ -606,6 +965,16 @@ onBeforeUnmount(() => {
           >
             Prompt Lab
           </button>
+          <button
+            class="ghost-button"
+            :class="{ 'toggle-active': activeWorkspaceView === 'knowledge' }"
+            type="button"
+            title="Knowledge Upload"
+            aria-label="Knowledge Upload"
+            @click="toggleWorkspaceView('knowledge')"
+          >
+            Knowledge Upload
+          </button>
         </div>
       </div>
 
@@ -626,13 +995,17 @@ onBeforeUnmount(() => {
           <span class="status-label">Outputs</span>
           <strong class="status-value">{{ projects.length }}</strong>
         </div>
+        <div class="status-card">
+          <span class="status-label">KB</span>
+          <strong class="status-value">{{ knowledgeItems.length }}</strong>
+        </div>
       </div>
     </header>
 
     <p v-if="notice" class="notice">{{ notice }}</p>
 
     <section class="workspace-grid" :class="workspaceGridClass">
-      <template v-if="activeWorkspaceView !== 'prompts'">
+      <template v-if="activeWorkspaceView === 'workspace'">
         <article class="panel panel-input">
           <div class="panel-head">
             <div>
@@ -700,7 +1073,7 @@ onBeforeUnmount(() => {
         </article>
       </template>
 
-      <article v-else class="panel panel-prompts">
+      <article v-else-if="activeWorkspaceView === 'prompts'" class="panel panel-prompts">
         <div class="panel-head">
           <div>
             <p class="panel-kicker">Prompt Workflow</p>
@@ -756,6 +1129,7 @@ onBeforeUnmount(() => {
               <span class="prompt-step-order">{{ String(step.order).padStart(2, '0') }}</span>
               <div class="prompt-step-main">
                 <strong>{{ step.title }}</strong>
+                <span>{{ step.workflow === 'knowledge_base' ? 'Knowledge Base' : 'Docs Workflow' }}</span>
                 <code>{{ step.file_name || 'No prompt file' }}</code>
               </div>
             </button>
@@ -775,7 +1149,7 @@ onBeforeUnmount(() => {
                   <h3>{{ selectedPromptStep.title }}</h3>
                   <div class="detail-meta-row">
                     <span class="muted">
-                      Stage {{ selectedPromptStep.order }}/8 · {{ promptDetail.file_name }}
+                      {{ formatPromptMeta(selectedPromptStep, promptDetail) }}
                     </span>
                     <span class="muted">
                       {{ hasPromptChanges ? 'Unsaved changes' : `Updated ${formatDate(selectedPromptStep.updated_at)}` }}
@@ -794,6 +1168,299 @@ onBeforeUnmount(() => {
         </div>
       </article>
 
+      <article v-else-if="activeWorkspaceView === 'knowledge'" class="panel knowledge-panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Knowledge Base</p>
+            <h2>Script Feature Extraction</h2>
+          </div>
+          <div class="panel-actions">
+            <button
+              class="ghost-button"
+              type="button"
+              title="Refresh Knowledge Base"
+              aria-label="Refresh Knowledge Base"
+              @click="refreshKnowledgeBase"
+            >
+              Refresh
+            </button>
+          </div>
+        </div>
+
+        <div class="knowledge-grid">
+          <section class="knowledge-upload-zone">
+            <div class="knowledge-upload-actions">
+              <input
+                ref="knowledgeFileInput"
+                class="hidden-input"
+                type="file"
+                accept=".txt,.docx"
+                @change="handleKnowledgeFileChange"
+              />
+              <button
+                class="ghost-button"
+                type="button"
+                :disabled="busy.knowledgeUpload"
+                title="Choose File"
+                aria-label="Choose File"
+                @click="knowledgeFileInput?.click()"
+              >
+                Choose File
+              </button>
+              <button
+                class="primary-button"
+                type="button"
+                :disabled="busy.knowledgeUpload || !knowledgeUploadFile"
+                title="Upload and Extract"
+                aria-label="Upload and Extract"
+                @click="handleKnowledgeUpload"
+              >
+                {{ busy.knowledgeUpload ? 'Processing...' : 'Upload & Extract' }}
+              </button>
+            </div>
+            <div class="knowledge-file-meta">
+              <span>Selected</span>
+              <strong>{{ knowledgeUploadFile?.name || 'No file selected' }}</strong>
+            </div>
+            <div class="knowledge-file-meta">
+              <span>Status</span>
+              <strong>{{ formatKnowledgeStatus(knowledgeJobStatus) }}</strong>
+            </div>
+          </section>
+
+          <section class="knowledge-records">
+            <div class="knowledge-section-head">
+              <h3>Recent Records</h3>
+            </div>
+
+            <div v-if="busy.knowledgeList" class="empty-state empty-state-compact">
+              <div class="loading-stack">
+                <span class="spinner-ring" aria-hidden="true"></span>
+                <span>Loading records...</span>
+              </div>
+            </div>
+            <div v-else-if="knowledgeItems.length" class="knowledge-record-list">
+              <article
+                v-for="item in knowledgeItems"
+                :key="item.id"
+                class="knowledge-record-item"
+                :class="{ active: selectedKnowledgeRecordId === item.id }"
+              >
+                <button
+                  class="document-item-select"
+                  type="button"
+                  :disabled="item.status !== 'completed'"
+                  @click="openKnowledgeItem(item.id)"
+                >
+                  <div class="document-main">
+                    <strong>{{ item.original_filename }}</strong>
+                    <span>{{ formatKnowledgeStatus(item.status) }} · {{ formatFileSize(item.size) }}</span>
+                  </div>
+                </button>
+                <button
+                  class="ghost-button compact-button"
+                  type="button"
+                  :disabled="item.status !== 'completed'"
+                  title="Preview"
+                  aria-label="Preview"
+                  @click.stop="openKnowledgeItem(item.id)"
+                >
+                  Preview
+                </button>
+              </article>
+            </div>
+            <div v-else class="empty-state empty-state-compact">
+              No knowledge records yet.
+            </div>
+          </section>
+
+          <section class="knowledge-preview">
+            <div class="knowledge-section-head">
+              <div>
+                <h3>{{ recordTitle(selectedKnowledgeRecord) }}</h3>
+                <span class="muted">{{ selectedKnowledgeRecord?.id || 'Select a completed record to preview.' }}</span>
+              </div>
+            </div>
+
+            <div v-if="busy.knowledgePreview" class="empty-state empty-state-compact">
+              <div class="loading-stack">
+                <span class="spinner-ring" aria-hidden="true"></span>
+                <span>Loading schema preview...</span>
+              </div>
+            </div>
+            <div v-else-if="knowledgeFeatures" class="kb-schema-preview">
+              <section class="kb-preview-band">
+                <h4>Task Metadata</h4>
+                <div class="kb-meta-grid">
+                  <div v-for="row in knowledgeMetadataRows" :key="row.label" class="kb-meta-item">
+                    <span>{{ row.label }}</span>
+                    <strong>{{ row.value }}</strong>
+                  </div>
+                </div>
+              </section>
+
+              <section class="kb-preview-band">
+                <h4>Source Summary</h4>
+                <div class="kb-summary-list">
+                  <p v-for="row in knowledgeSourceRows" :key="row.label">
+                    <strong>{{ row.label }}</strong>
+                    <span>{{ row.value }}</span>
+                  </p>
+                </div>
+              </section>
+
+              <section class="kb-preview-band">
+                <h4>Story Core</h4>
+                <div class="kb-feature-grid">
+                  <div class="kb-feature-block">
+                    <span>Protagonist</span>
+                    <div class="kb-field-list">
+                      <div v-for="row in storyCoreEntityRows(knowledgeStoryCore.protagonist)" :key="`kb-protagonist-${row.label}`" class="kb-field-row">
+                        <span>{{ formatFieldLabel(row.label) }}</span>
+                        <strong>{{ row.value }}</strong>
+                      </div>
+                      <p v-if="!storyCoreEntityRows(knowledgeStoryCore.protagonist).length" class="muted">--</p>
+                    </div>
+                  </div>
+                  <div class="kb-feature-block">
+                    <span>Antagonist</span>
+                    <div class="kb-field-list">
+                      <div v-for="row in storyCoreEntityRows(knowledgeStoryCore.antagonist)" :key="`kb-antagonist-${row.label}`" class="kb-field-row">
+                        <span>{{ formatFieldLabel(row.label) }}</span>
+                        <strong>{{ row.value }}</strong>
+                      </div>
+                      <p v-if="!storyCoreEntityRows(knowledgeStoryCore.antagonist).length" class="muted">--</p>
+                    </div>
+                  </div>
+                  <div class="kb-feature-block kb-feature-wide">
+                    <span>Core Conflict</span>
+                    <div class="kb-field-list">
+                      <div v-for="row in storyCoreEntityRows(knowledgeStoryCore.core_conflict)" :key="`kb-conflict-${row.label}`" class="kb-field-row">
+                        <span>{{ formatFieldLabel(row.label) }}</span>
+                        <strong>{{ row.value }}</strong>
+                      </div>
+                      <p v-if="!storyCoreEntityRows(knowledgeStoryCore.core_conflict).length" class="muted">--</p>
+                    </div>
+                  </div>
+                  <div class="kb-feature-block kb-feature-wide">
+                    <span>Core Signals</span>
+                    <div class="kb-field-list">
+                      <div v-for="row in storyCoreSignalRows(knowledgeStoryCore)" :key="`kb-signal-${row.label}`" class="kb-field-row">
+                        <span>{{ formatFieldLabel(row.label) }}</span>
+                        <strong>{{ row.value }}</strong>
+                      </div>
+                      <p v-if="!storyCoreSignalRows(knowledgeStoryCore).length" class="muted">--</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="kb-list-sections">
+                  <div
+                    v-for="field in ['relationship_tensions']"
+                    :key="field"
+                    class="kb-list-section kb-list-wide"
+                  >
+                    <span>{{ formatFieldLabel(field) }}</span>
+                    <div class="kb-record-list">
+                      <article v-for="(item, index) in listItems(knowledgeStoryCore[field])" :key="`${field}-${index}`" class="kb-record-row">
+                        <div v-for="row in storyCoreRecordRows(item)" :key="`${field}-${index}-${row.label}`" class="kb-field-row">
+                          <span>{{ formatFieldLabel(row.label) }}</span>
+                          <strong>{{ row.value }}</strong>
+                        </div>
+                      </article>
+                      <p v-if="!listItems(knowledgeStoryCore[field]).length" class="muted">--</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="kb-preview-band">
+                <h4>Plot Structure</h4>
+                <div class="kb-list-sections">
+                  <div
+                    v-for="field in ['major_plot_points', 'turning_points', 'reversal_points', 'emotional_curve', 'hook_points']"
+                    :key="field"
+                    class="kb-list-section"
+                  >
+                    <span>{{ field }}</span>
+                    <ul>
+                      <li v-for="(item, index) in compactList(knowledgePlotStructure[field], 8)" :key="`${field}-${index}`">
+                        {{ formatKnowledgeValue(item) }}
+                      </li>
+                      <li v-if="!listItems(knowledgePlotStructure[field]).length" class="muted">--</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section class="kb-preview-band">
+                <h4>Characters, Props & Background</h4>
+                <div class="kb-list-sections">
+                  <div class="kb-list-section">
+                    <span>characters</span>
+                    <ul>
+                      <li v-for="(item, index) in compactList(knowledgeCharacters, 8)" :key="`kb-character-${index}`">
+                        {{ formatKnowledgeValue(item) }}
+                      </li>
+                      <li v-if="!knowledgeCharacters.length" class="muted">--</li>
+                    </ul>
+                  </div>
+                  <div class="kb-list-section">
+                    <span>props</span>
+                    <ul>
+                      <li v-for="(item, index) in compactList(knowledgeProps, 8)" :key="`kb-prop-${index}`">
+                        {{ formatKnowledgeValue(item) }}
+                      </li>
+                      <li v-if="!knowledgeProps.length" class="muted">--</li>
+                    </ul>
+                  </div>
+                  <div class="kb-list-section">
+                    <span>background</span>
+                    <ul>
+                      <li v-for="row in objectRows(knowledgeBackground)" :key="row.label">
+                        {{ row.label }}: {{ row.value }}
+                      </li>
+                      <li v-if="!objectRows(knowledgeBackground).length" class="muted">--</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section class="kb-preview-band">
+                <h4>Localization & Adaptation</h4>
+                <div class="kb-list-sections">
+                  <div
+                    v-for="field in ['cultural_binding_elements', 'relationship_terms', 'value_expression_terms', 'worldview_terms', 'replaceable_carriers', 'high_risk_localization_items']"
+                    :key="field"
+                    class="kb-list-section"
+                  >
+                    <span>{{ field }}</span>
+                    <ul>
+                      <li v-for="(item, index) in compactList(knowledgeLocalization[field], 8)" :key="`${field}-${index}`">
+                        {{ formatKnowledgeValue(item) }}
+                      </li>
+                      <li v-if="!listItems(knowledgeLocalization[field]).length" class="muted">--</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="kb-summary-list">
+                  <p v-for="row in knowledgeGuidanceRows" :key="`guidance-${row.label}`">
+                    <strong>{{ row.label }}</strong>
+                    <span>{{ row.value }}</span>
+                  </p>
+                  <p v-for="row in knowledgeQualityRows" :key="`quality-${row.label}`">
+                    <strong>{{ row.label }}</strong>
+                    <span>{{ row.value }}</span>
+                  </p>
+                </div>
+              </section>
+            </div>
+            <div v-else class="empty-state empty-state-compact">
+              No structured preview is loaded.
+            </div>
+          </section>
+        </div>
+      </article>
+
       <article class="panel panel-chat">
         <div class="panel-head">
           <div>
@@ -801,7 +1468,7 @@ onBeforeUnmount(() => {
           </div>
         </div>
 
-        <div class="chat-stream">
+        <div ref="chatStream" class="chat-stream">
           <article
             v-for="(message, index) in chatMessages"
             :key="`${message.role}-${index}`"
@@ -812,7 +1479,7 @@ onBeforeUnmount(() => {
             <pre class="message-content">{{ message.content }}</pre>
           </article>
 
-          <article v-if="busy.chat || busy.workflow" class="message-card message-loading">
+          <article v-if="busy.chat || busy.workflow || busy.knowledgeJob" class="message-card message-loading">
             <p class="message-role">system</p>
             <div class="loading-inline">
               <span class="spinner-dots" aria-hidden="true">
@@ -820,7 +1487,7 @@ onBeforeUnmount(() => {
                 <span></span>
                 <span></span>
               </span>
-              <span>{{ busy.workflow ? 'Workflow running...' : 'Generating reply...' }}</span>
+              <span>{{ busy.workflow ? 'Workflow running...' : busy.knowledgeJob ? 'Knowledge extraction running...' : 'Generating reply...' }}</span>
             </div>
           </article>
         </div>
@@ -837,7 +1504,7 @@ onBeforeUnmount(() => {
         </form>
       </article>
 
-      <template v-if="activeWorkspaceView !== 'prompts'">
+      <template v-if="activeWorkspaceView === 'workspace'">
         <article class="panel panel-output">
           <div class="panel-head">
             <div>
@@ -934,6 +1601,58 @@ onBeforeUnmount(() => {
               </div>
             </section>
 
+            <section class="kb-preview-band">
+              <h4>Source & Story Core</h4>
+              <div class="kb-summary-list">
+                <p v-for="row in storySourceRows" :key="`story-source-${row.label}`">
+                  <strong>{{ row.label }}</strong>
+                  <span>{{ row.value }}</span>
+                </p>
+              </div>
+              <div class="kb-feature-grid">
+                <div class="kb-feature-block">
+                  <span>Protagonist</span>
+                  <div class="kb-field-list">
+                    <div v-for="row in storyCoreEntityRows(storyCore.protagonist)" :key="`story-protagonist-${row.label}`" class="kb-field-row">
+                      <span>{{ formatFieldLabel(row.label) }}</span>
+                      <strong>{{ row.value }}</strong>
+                    </div>
+                    <p v-if="!storyCoreEntityRows(storyCore.protagonist).length" class="muted">--</p>
+                  </div>
+                </div>
+                <div class="kb-feature-block">
+                  <span>Antagonist</span>
+                  <div class="kb-field-list">
+                    <div v-for="row in storyCoreEntityRows(storyCore.antagonist)" :key="`story-antagonist-${row.label}`" class="kb-field-row">
+                      <span>{{ formatFieldLabel(row.label) }}</span>
+                      <strong>{{ row.value }}</strong>
+                    </div>
+                    <p v-if="!storyCoreEntityRows(storyCore.antagonist).length" class="muted">--</p>
+                  </div>
+                </div>
+                <div class="kb-feature-block kb-feature-wide">
+                  <span>Core Conflict</span>
+                  <div class="kb-field-list">
+                    <div v-for="row in storyCoreEntityRows(storyCore.core_conflict)" :key="`story-conflict-${row.label}`" class="kb-field-row">
+                      <span>{{ formatFieldLabel(row.label) }}</span>
+                      <strong>{{ row.value }}</strong>
+                    </div>
+                    <p v-if="!storyCoreEntityRows(storyCore.core_conflict).length" class="muted">--</p>
+                  </div>
+                </div>
+                <div class="kb-feature-block kb-feature-wide">
+                  <span>Core Signals</span>
+                  <div class="kb-field-list">
+                    <div v-for="row in storyCoreSignalRows(storyCore)" :key="`story-signal-${row.label}`" class="kb-field-row">
+                      <span>{{ formatFieldLabel(row.label) }}</span>
+                      <strong>{{ row.value }}</strong>
+                    </div>
+                    <p v-if="!storyCoreSignalRows(storyCore).length" class="muted">--</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
             <details class="entity-block collapsible-block">
               <summary class="collapsible-summary">
                 <div>
@@ -1007,6 +1726,46 @@ onBeforeUnmount(() => {
                       </tr>
                     </tbody>
                   </table>
+                </div>
+              </div>
+            </details>
+
+            <details class="entity-block collapsible-block">
+              <summary class="collapsible-summary">
+                <div>
+                  <h3>Plot & Localization</h3>
+                  <p class="collapsible-meta">
+                    {{ storyPlotStructure.major_plot_points?.length || 0 }} plot points,
+                    {{ storyLocalization.high_risk_localization_items?.length || 0 }} localization risks
+                  </p>
+                </div>
+              </summary>
+              <div class="kb-list-sections">
+                <div
+                  v-for="field in ['major_plot_points', 'turning_points', 'reversal_points', 'emotional_curve', 'hook_points']"
+                  :key="`story-plot-${field}`"
+                  class="kb-list-section"
+                >
+                  <span>{{ field }}</span>
+                  <ul>
+                    <li v-for="(item, index) in compactList(storyPlotStructure[field], 8)" :key="`${field}-${index}`">
+                      {{ formatKnowledgeValue(item) }}
+                    </li>
+                    <li v-if="!listItems(storyPlotStructure[field]).length" class="muted">--</li>
+                  </ul>
+                </div>
+                <div
+                  v-for="field in ['cultural_binding_elements', 'relationship_terms', 'value_expression_terms', 'worldview_terms', 'replaceable_carriers', 'high_risk_localization_items']"
+                  :key="`story-localization-${field}`"
+                  class="kb-list-section"
+                >
+                  <span>{{ field }}</span>
+                  <ul>
+                    <li v-for="(item, index) in compactList(storyLocalization[field], 8)" :key="`${field}-${index}`">
+                      {{ formatKnowledgeValue(item) }}
+                    </li>
+                    <li v-if="!listItems(storyLocalization[field]).length" class="muted">--</li>
+                  </ul>
                 </div>
               </div>
             </details>

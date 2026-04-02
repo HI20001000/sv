@@ -1,0 +1,213 @@
+{
+  "episode_no": 19,
+  "generation_status": "llm",
+  "source_episode_file": "episode_0019.json",
+  "storyboard": {
+    "episode_no": 19,
+    "title": "斷絕最後的念想",
+    "scenes": [
+      {
+        "scene_no": 1,
+        "shots": [
+          {
+            "shot_no": 1,
+            "scene_no": 1,
+            "purpose": "交代场景与核心事件",
+            "visual": "中景；顾盼坐在办公桌前，神情平静且坚定，桌上放着关于 道具:冷冻的卵子 的捐赠同意书；过肩镜头带出对面的医生；光线明亮。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 2,
+            "scene_no": 1,
+            "purpose": "推进剧情，确认捐赠意愿",
+            "visual": "中近景；医生身体前倾，看着顾盼，表情严肃地进行最后确认；焦点集中在医生脸上。",
+            "characters": [],
+            "dialogue": "医生：顾女士，您确定要把当年冷冻的卵子全部无偿捐赠吗？这份协议一签，可就不能反悔了。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 3,
+            "scene_no": 1,
+            "purpose": "展现角色决断力",
+            "visual": "特写；顾盼微微一笑，手握钢笔在协议上毫不犹豫地签下名字；镜头轻微推近。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：我确定。",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 4,
+            "scene_no": 1,
+            "purpose": "侧面烘托角色的释怀与大爱",
+            "visual": "中近景；医生伸手接过签好字的协议，面带敬意地看着顾盼。",
+            "characters": [],
+            "dialogue": "医生：您这份大爱，会帮助到很多真正需要孩子的家庭。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 5,
+            "scene_no": 1,
+            "purpose": "点明报复的最终闭环",
+            "visual": "中景；顾盼站起身，眼神释然，看向窗外明亮的阳光；镜头缓慢平移，展现她彻底放下的姿态。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：这世间会有我的血脉延续，但绝不是为了某个自私的男人。马国梁这辈子，注定要落得个后继无人的下场。这是我给他最后的交代。",
+            "duration": 6.0
+          }
+        ]
+      },
+      {
+        "scene_no": 2,
+        "shots": [
+          {
+            "shot_no": 6,
+            "scene_no": 2,
+            "purpose": "交代地点转换与新行动",
+            "visual": "中景；顾盼拖着轻便的行李箱走到服务台前，递上身份证和 道具:云南机票；镜头跟随她的动作停稳。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：你好，麻烦帮我把这张飞往云南的机票办理升舱。另外，把同行人马国梁的票退了。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 7,
+            "scene_no": 2,
+            "purpose": "交代升舱结果",
+            "visual": "中近景；地勤人员面带职业微笑，双手递回新的登机牌；过肩镜头建立互动关系。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "地勤人员：好的，顾女士。已经为您办理好头等舱，祝您旅途愉快。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 8,
+            "scene_no": 2,
+            "purpose": "表现角色对新生活的期待",
+            "visual": "特写；顾盼接过新的 道具:云南机票，低头看着上面自己的名字，嘴角上扬露出自信的微笑；焦点集中在机票和她的表情上。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：谢谢。这场迟到的环游之旅，我一个人去，会更精彩。",
+            "duration": 4.0
+          }
+        ]
+      },
+      {
+        "scene_no": 3,
+        "shots": [
+          {
+            "shot_no": 9,
+            "scene_no": 3,
+            "purpose": "建立新场景，烘托自由氛围",
+            "visual": "全景；阳光洒在波光粼粼的洱海面上，画面明亮开阔；顾盼换上了一身飘逸舒适的长裙，站在阳台迎着微风；缓慢推近。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 10,
+            "scene_no": 3,
+            "purpose": "展现角色内心的平静与找回自我的感慨",
+            "visual": "中近景；顾盼闭上眼深呼吸，随后在阳台的藤椅上坐下，悠闲地为自己倒了一杯普洱茶；侧逆光勾勒出她放松的轮廓。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：三十年了，终于找回了自己。",
+            "duration": 5.0
+          }
+        ]
+      },
+      {
+        "scene_no": 4,
+        "shots": [
+          {
+            "shot_no": 11,
+            "scene_no": 4,
+            "purpose": "引入外部信息",
+            "visual": "特写；桌上的 道具:手机 屏幕亮起，发出一声清脆的提示音；顾盼的手伸入画面拿起手机。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 3.0
+          },
+          {
+            "shot_no": 12,
+            "scene_no": 4,
+            "purpose": "交代反派下场",
+            "visual": "中近景；顾盼看着手机屏幕，眼神平静；主观视角的微弱屏幕光打在脸上；镜头轻微手持。",
+            "characters": [
+              "顾盼",
+              "周侦探"
+            ],
+            "dialogue": "画外音：顾姐，最后跟您汇报一下。方柔母子被赶出门后无家可归，她那个情人也因为赌债跑路了，两个孩子现在跟方柔反目，离家出走。至于马国梁……",
+            "duration": 6.0
+          },
+          {
+            "shot_no": 13,
+            "scene_no": 4,
+            "purpose": "强化马国梁的悲惨结局",
+            "visual": "特写；顾盼的眼神依然没有一丝波澜，手指轻轻滑动屏幕阅读；镜头缓慢微移，保持情绪的克制。",
+            "characters": [
+              "顾盼",
+              "周侦探"
+            ],
+            "dialogue": "画外音：他得知真相后情绪崩溃，突发高血压住进了医院。现在孤家寡人一个，躺在病床上连个倒水的人都没有。",
+            "duration": 5.0
+          },
+          {
+            "shot_no": 14,
+            "scene_no": 4,
+            "purpose": "彻底斩断过去",
+            "visual": "特写；顾盼平静地敲击 道具:手机 键盘，打出回复文字；焦点在手指和屏幕上。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "顾盼：知道了，后续不用再跟进了，辛苦你了，周哥。",
+            "duration": 4.0
+          },
+          {
+            "shot_no": 15,
+            "scene_no": 4,
+            "purpose": "定格新生与释怀",
+            "visual": "中景；顾盼按下发送键，将 道具:手机 屏幕朝下扣在桌面上，端起茶杯轻抿一口；目光望向广阔无垠的苍山洱海，脸上绽放出无比灿烂、彻底释怀的笑容；阳光洒满全身。",
+            "characters": [
+              "顾盼"
+            ],
+            "dialogue": "",
+            "duration": 5.0
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "dialogue_total": 0,
+    "dialogue_covered": 0,
+    "dialogue_coverage_rate": 1.0,
+    "missing_dialogues": [],
+    "unknown_characters": [],
+    "required_props": [
+      "冷冻的卵子",
+      "云南机票"
+    ],
+    "missing_required_props": [],
+    "unknown_props": [],
+    "checks": {
+      "all_dialogue_covered": true,
+      "characters_in_story_bible": true,
+      "required_props_covered": true,
+      "props_in_story_bible": true
+    }
+  }
+}

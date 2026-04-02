@@ -1,0 +1,70 @@
+{
+  "target_episode_count": 20,
+  "planned_episode_count": 20,
+  "allocation_strategy": "整體節奏呈現『隱忍鋪墊-蓄勢待發-高潮爆發-爽快收尾』的結構。前三個unit（u_0001~u_0003）為鋪墊與蓄勢期，分配較少集數（各2集）以保持節奏緊湊；中間四個unit（u_0004~u_0007）涵蓋了婚禮鴻門宴的準備、兩波極致打臉反轉以及渣男小三狗咬狗的重頭戲，是全劇的情緒最高潮與字數最密集區，因此各分配3集以充分展現戲劇張力；最後一個unit（u_0008）作為大結局，交代各人下場與女主新生，分配2集平穩收尾。",
+  "unit_allocations": [
+    {
+      "unit_id": "u_0001",
+      "episode_count": 2,
+      "char_count": 1621,
+      "reason": "開局交代離婚背景與女主的暗中籌謀，建立初步懸念，節奏需明快，2集適宜。"
+    },
+    {
+      "unit_id": "u_0002",
+      "episode_count": 2,
+      "char_count": 1883,
+      "reason": "處理離婚手續與財產分割，展現小三鳩佔鵲巢的囂張與女主的冷靜，屬過渡與積累仇恨值的階段，2集足夠。"
+    },
+    {
+      "unit_id": "u_0003",
+      "episode_count": 2,
+      "char_count": 1812,
+      "reason": "揭示女主替前夫背鍋不育的真相及五年收集證據的回憶，為後續反擊提供合理性與情感支撐，2集可完成背景交代。"
+    },
+    {
+      "unit_id": "u_0004",
+      "episode_count": 3,
+      "char_count": 2251,
+      "reason": "婚禮前夕的精心部署與高調赴宴，包含大量情緒拉扯與反派挑釁，需充分鋪墊高潮前的壓抑感，分配3集。"
+    },
+    {
+      "unit_id": "u_0005",
+      "episode_count": 3,
+      "char_count": 2313,
+      "reason": "婚禮高潮第一波，圍繞房產爭奪並當眾揭穿男主不育，衝突極度激烈，分配3集以展現打臉爽感。"
+    },
+    {
+      "unit_id": "u_0006",
+      "episode_count": 3,
+      "char_count": 2063,
+      "reason": "婚禮高潮第二波，播放鐵證揭穿小三出軌與男主接盤俠身份，全劇最大爆點，需3集細緻刻畫各方崩潰反應。"
+    },
+    {
+      "unit_id": "u_0007",
+      "episode_count": 3,
+      "char_count": 2985,
+      "reason": "高潮餘波與狗咬狗環節，字數最多，包含男主暴打小三、掃地出門及陷入極度悔恨，戲劇張力強，分配3集。"
+    },
+    {
+      "unit_id": "u_0008",
+      "episode_count": 2,
+      "char_count": 1656,
+      "reason": "大結局，交代反派淒慘下場與女主開啟新生活，情緒轉為平靜釋懷，2集收尾恰到好處。"
+    }
+  ],
+  "notes": "高潮段落（u_0004~u_0007）連續佔據12集，確保了短劇中後段的爽感密集度，符合短劇受眾的觀影期待。",
+  "validation": {
+    "sum_matches_target": true,
+    "unit_count": 8,
+    "target_episode_count": 20,
+    "planned_episode_count": 20,
+    "all_units_covered": true,
+    "no_unknown_unit_ids": true,
+    "no_duplicate_unit_ids": true,
+    "missing_unit_ids": [],
+    "unknown_unit_ids": [],
+    "duplicate_unit_ids": [],
+    "errors": [],
+    "is_valid": true
+  }
+}

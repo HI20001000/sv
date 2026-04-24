@@ -36,6 +36,13 @@
 
 ---
 
+## Naming Rules
+- `character_focus` 必须使用 `story_bible_json.characters[].name` 中的标准名称。
+- `props_used` 必须使用 `story_bible_json.props[].name` 中的标准名称。
+- 如果 story bible 中的角色名或道具名带 `@` 前缀，输出时必须完整保留这个 `@`，不得改成无 `@` 名称。
+
+---
+
 ## Output JSON Schema
 ```json
 {

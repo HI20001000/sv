@@ -195,7 +195,9 @@ def process_script_to_output(
         run_dir=alignment_dir,
         progress_callback=progress_callback,
     )
-    story_bible = alignment_result["schema"]
+    story_bible = _tag_story_bible_asset_names(alignment_result["schema"])
+    alignment_result["schema"] = story_bible
+    write_json_artifact(alignment_dir / "final_schema.json", story_bible)
     alignment_elapsed = time.perf_counter() - alignment_started_at
     step_elapsed_seconds["schema_alignment"] = alignment_elapsed
     _emit_progress(
@@ -215,15 +217,135 @@ def process_script_to_output(
         json.dumps(story_bible, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+    runtime_story_context = story_schema_to_runtime_context(story_bible)
+
     target_episode_count = _read_episode_count_config()
-    placeholders = _write_pre_unit_placeholders(
+    _emit_progress(
+        progress_callback,
+        stage="schema_unit_split",
+        message="4/6 从结构化 Schema 生成 Unit 中",
+        unit_source="schema_plot_structure",
+    )
+    unit_split_started_at = time.perf_counter()
+    story_units = _schema_to_story_units(runtime_story_context)
+    unit_split_elapsed = time.perf_counter() - unit_split_started_at
+    step_elapsed_seconds["schema_unit_split"] = unit_split_elapsed
+    story_units_path = project_dir / "story_units.json"
+    story_units_path.write_text(
+        json.dumps(story_units, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    _emit_progress(
+        progress_callback,
+        stage="schema_unit_split_done",
+        message=f"4/6 Schema Unit 生成完成（Unit 数量: {len(story_units)}，耗时: {unit_split_elapsed:.2f}s）",
+        unit_count=len(story_units),
+        elapsed_seconds=unit_split_elapsed,
+    )
+
+    _emit_progress(
+        progress_callback,
+        stage="schema_unit_framework",
+        message="5/6 从 Schema Unit 生成 Unit 框架中",
+    )
+    unit_framework_started_at = time.perf_counter()
+    unit_frameworks = _schema_units_to_unit_frameworks(story_units)
+    unit_framework_elapsed = time.perf_counter() - unit_framework_started_at
+    step_elapsed_seconds["schema_unit_framework"] = unit_framework_elapsed
+    unit_frameworks_path = project_dir / "unit_frameworks.json"
+    unit_frameworks_path.write_text(
+        json.dumps(unit_frameworks, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    _emit_progress(
+        progress_callback,
+        stage="schema_unit_framework_done",
+        message=f"5/6 Unit 框架生成完成（框架数量: {len(unit_frameworks)}，耗时: {unit_framework_elapsed:.2f}s）",
+        unit_framework_count=len(unit_frameworks),
+        elapsed_seconds=unit_framework_elapsed,
+    )
+
+    _emit_progress(
+        progress_callback,
+        stage="episode_plan",
+        message=f"6/6 生成拆集计划中（目标集数: {target_episode_count}）",
+        target_episode_count=target_episode_count,
+    )
+    episode_plan_started_at = time.perf_counter()
+    episode_plan = _generate_episode_split_plan(
+        llm=llm,
+        unit_frameworks=unit_frameworks,
+        story_units=story_units,
+        target_episode_count=target_episode_count,
+    )
+    episode_plan_elapsed = time.perf_counter() - episode_plan_started_at
+    step_elapsed_seconds["episode_split_plan"] = episode_plan_elapsed
+    project_episode_plan_path = project_dir / "episode_split_plan.json"
+    project_episode_plan_path.write_text(
+        json.dumps(episode_plan, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    EPISODE_PLAN_ROOT_PATH.write_text(
+        json.dumps(episode_plan, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    planned_episode_count = int(episode_plan.get("planned_episode_count", 0))
+    _emit_progress(
+        progress_callback,
+        stage="episode_plan_done",
+        message=(
+            "6/6 拆集计划完成（"
+            f"计划集数: {planned_episode_count}，目标集数: {target_episode_count}，"
+            f"耗时: {episode_plan_elapsed:.2f}s）"
+        ),
+        planned_episode_count=planned_episode_count,
+        target_episode_count=target_episode_count,
+        elapsed_seconds=episode_plan_elapsed,
+    )
+
+    _emit_progress(
+        progress_callback,
+        stage="episode_generation_plan",
+        message="生成逐集内容规划中",
+    )
+    episode_generation_plan_started_at = time.perf_counter()
+    episode_generation_plan = _generate_episode_generation_plan(
+        llm=llm,
+        story_bible=runtime_story_context,
+        story_units=story_units,
+        unit_frameworks=unit_frameworks,
+        episode_split_plan=episode_plan,
+        target_episode_count=target_episode_count,
+    )
+    episode_generation_plan_elapsed = time.perf_counter() - episode_generation_plan_started_at
+    step_elapsed_seconds["episode_generation_plan"] = episode_generation_plan_elapsed
+    project_episode_generation_plan_path = project_dir / "episode_generation_plan.json"
+    project_episode_generation_plan_path.write_text(
+        json.dumps(episode_generation_plan, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    EPISODE_GENERATION_PLAN_ROOT_PATH.write_text(
+        json.dumps(episode_generation_plan, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    planned_episode_outline_count = int(episode_generation_plan.get("planned_episode_count", 0))
+    _emit_progress(
+        progress_callback,
+        stage="episode_generation_plan_done",
+        message=(
+            "逐集内容规划完成（"
+            f"规划集数: {planned_episode_outline_count}，目标集数: {target_episode_count}，"
+            f"耗时: {episode_generation_plan_elapsed:.2f}s）"
+        ),
+        planned_episode_outline_count=planned_episode_outline_count,
+        target_episode_count=target_episode_count,
+        elapsed_seconds=episode_generation_plan_elapsed,
+    )
+
+    placeholders = _write_post_planning_placeholders(
         project_dir=project_dir,
         target_episode_count=target_episode_count,
     )
-    story_units_path = placeholders["story_units_path"]
-    unit_frameworks_path = placeholders["unit_frameworks_path"]
-    project_episode_plan_path = placeholders["project_episode_plan_path"]
-    project_episode_generation_plan_path = placeholders["project_episode_generation_plan_path"]
     episodes_dir = placeholders["episodes_dir"]
     storyboards_dir = placeholders["storyboards_dir"]
 
@@ -243,7 +365,8 @@ def process_script_to_output(
         "feature_chunk_size": _read_feature_chunk_size_config(),
         "schema_alignment_dir": str(alignment_dir),
         "schema_alignment_summary": alignment_result["summary"],
-        "workflow_stop_reason": "Stopped before unit split after schema alignment gate.",
+        "workflow_stop_reason": "Stopped after schema-derived episode generation planning.",
+        "unit_source": "schema_plot_structure",
         "unit_split_prompt_file": str(UNIT_SPLIT_PROMPT_PATH),
         "unit_framework_prompt_file": str(UNIT_FRAMEWORK_PROMPT_PATH),
         "unit_episode_plan_prompt_file": str(UNIT_EPISODE_PLAN_PROMPT_PATH),
@@ -265,10 +388,10 @@ def process_script_to_output(
         "storyboards_index_file": "index.json",
         "episode_content_max_workers": _read_episode_content_max_workers_config(),
         "storyboard_max_workers": _read_storyboard_max_workers_config(),
-        "unit_count": 0,
+        "unit_count": len(story_units),
         "target_episode_count": target_episode_count,
-        "planned_episode_count": 0,
-        "planned_episode_outline_count": 0,
+        "planned_episode_count": planned_episode_count,
+        "planned_episode_outline_count": planned_episode_outline_count,
         "generated_episode_count": 0,
         "generated_storyboard_count": 0,
         "step_elapsed_seconds": {
@@ -281,11 +404,12 @@ def process_script_to_output(
         progress_callback,
         stage="done",
         message=(
-            "Schema 前置流程完成，已在 Unit 拆分前停止"
-            f"（总耗时: {total_elapsed_seconds:.2f}s）"
+            "Schema-derived units and episode generation planning completed; "
+            f"stopped before content generation (elapsed: {total_elapsed_seconds:.2f}s)"
         ),
         total_elapsed_seconds=total_elapsed_seconds,
         schema_alignment_dir=str(alignment_dir),
+        unit_source="schema_plot_structure",
     )
 
     return ScriptOutputResult(
@@ -300,10 +424,10 @@ def process_script_to_output(
         root_episode_generation_plan_path=EPISODE_GENERATION_PLAN_ROOT_PATH,
         episodes_dir=episodes_dir,
         storyboards_dir=storyboards_dir,
-        unit_count=0,
+        unit_count=len(story_units),
         target_episode_count=target_episode_count,
-        planned_episode_count=0,
-        planned_episode_outline_count=0,
+        planned_episode_count=planned_episode_count,
+        planned_episode_outline_count=planned_episode_outline_count,
         generated_episode_count=0,
         generated_storyboard_count=0,
         source_snapshot_path=source_snapshot_path,
@@ -739,14 +863,14 @@ def _write_pre_unit_placeholders(project_dir: Path, target_episode_count: int) -
 
     episode_plan_placeholder = {
         "status": "not_run",
-        "reason": "Stopped before unit split after schema alignment gate.",
+        "reason": "Episode split planning was not run.",
         "target_episode_count": target_episode_count,
         "planned_episode_count": 0,
         "episodes": [],
     }
     episode_generation_plan_placeholder = {
         "status": "not_run",
-        "reason": "Stopped before unit split after schema alignment gate.",
+        "reason": "Episode generation planning was not run.",
         "target_episode_count": target_episode_count,
         "planned_episode_count": 0,
         "episodes": [],
@@ -796,6 +920,47 @@ def _write_pre_unit_placeholders(project_dir: Path, target_episode_count: int) -
         "unit_frameworks_path": unit_frameworks_path,
         "project_episode_plan_path": project_episode_plan_path,
         "project_episode_generation_plan_path": project_episode_generation_plan_path,
+        "episodes_dir": episodes_dir,
+        "storyboards_dir": storyboards_dir,
+    }
+
+
+def _write_post_planning_placeholders(project_dir: Path, target_episode_count: int) -> dict[str, Path]:
+    episodes_dir = project_dir / "episodes"
+    storyboards_dir = project_dir / "storyboards"
+    episodes_dir.mkdir(parents=True, exist_ok=True)
+    storyboards_dir.mkdir(parents=True, exist_ok=True)
+
+    reason = "Stopped after schema-derived episode generation planning."
+    episodes_index = {
+        "status": "not_run",
+        "reason": reason,
+        "target_episode_count": target_episode_count,
+        "generated_episode_count": 0,
+        "episodes": [],
+    }
+    storyboards_index = {
+        "status": "not_run",
+        "reason": reason,
+        "target_episode_count": target_episode_count,
+        "generated_storyboard_count": 0,
+        "episodes": [],
+    }
+
+    (episodes_dir / "index.json").write_text(
+        json.dumps(episodes_index, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    (project_dir / "episodes_overview.json").write_text(
+        json.dumps(episodes_index, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    (storyboards_dir / "index.json").write_text(
+        json.dumps(storyboards_index, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+    return {
         "episodes_dir": episodes_dir,
         "storyboards_dir": storyboards_dir,
     }
@@ -971,6 +1136,388 @@ def _build_entity_key(primary_name: Any, aliases: Any) -> str:
 
 def _normalize_key(value: str) -> str:
     return re.sub(r"\s+", "", value).lower()
+
+
+def _schema_to_story_units(story_bible: dict[str, Any]) -> list[dict[str, Any]]:
+    if not isinstance(story_bible, dict):
+        story_bible = {}
+
+    plot_structure = story_bible.get("plot_structure", {})
+    if not isinstance(plot_structure, dict):
+        plot_structure = {}
+
+    units: list[dict[str, Any]] = []
+    for record in _sorted_schema_records(plot_structure.get("major_plot_points")):
+        title = _first_schema_text(record, ("plot_point", "description", "name"))
+        if not title:
+            continue
+        order = _schema_record_order(record, default=len(units) + 1)
+        unit = _new_schema_unit(
+            order=order,
+            source_path="plot_structure.major_plot_points",
+            summary=title,
+            lines=_schema_lines(
+                [
+                    ("Plot point", title),
+                    ("Function", record.get("function")),
+                    ("Characters", record.get("characters_involved")),
+                    ("Location", record.get("location")),
+                    ("Emotional effect", record.get("emotional_effect")),
+                ]
+            ),
+            key_event=title,
+            schema_ref_title=title,
+        )
+        units.append(unit)
+
+    _merge_schema_supplements_into_units(
+        units=units,
+        records=_sorted_schema_records(plot_structure.get("turning_points")),
+        source_path="plot_structure.turning_points",
+        summary_keys=("description", "name"),
+        label="Turning point",
+        extra_fields=(("Before", "before_state"), ("After", "after_state"), ("Impact", "impact")),
+        ending_state_keys=("after_state", "impact"),
+    )
+    _merge_schema_supplements_into_units(
+        units=units,
+        records=_sorted_schema_records(plot_structure.get("reversal_points")),
+        source_path="plot_structure.reversal_points",
+        summary_keys=("description", "name"),
+        label="Reversal point",
+        extra_fields=(("Type", "reversal_type"), ("Impact", "impact_on_story")),
+        core_conflict_keys=("reversal_type",),
+        ending_state_keys=("impact_on_story",),
+    )
+    _merge_schema_supplements_into_units(
+        units=units,
+        records=_schema_record_list(plot_structure.get("hook_points")),
+        source_path="plot_structure.hook_points",
+        summary_keys=("description", "name", "type"),
+        label="Hook point",
+        extra_fields=(("Type", "type"), ("Placement", "placement"), ("Effect", "intended_effect")),
+        hook_keys=("description", "intended_effect"),
+        attach_by_order=False,
+    )
+
+    if not units:
+        units = _fallback_schema_story_units(story_bible)
+
+    return _finalize_schema_units(units)
+
+
+def _schema_units_to_unit_frameworks(story_units: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    frameworks: list[dict[str, Any]] = []
+    for index, item in enumerate(story_units, start=1):
+        if not isinstance(item, dict):
+            continue
+        unit_id = _coerce_text(item.get("unit_id")) or f"su_{index:04d}"
+        source_span = item.get("source_span", {})
+        if not isinstance(source_span, dict):
+            source_span = {}
+        summary = _coerce_text(item.get("summary")) or _first_nonempty_line(item.get("text"))
+        key_events = _coerce_text_sequence(item.get("key_events"))
+        if not key_events and summary:
+            key_events = [summary]
+
+        frameworks.append(
+            {
+                "unit_id": unit_id,
+                "unit_order": index,
+                "char_count": _coerce_int(item.get("char_count"), default=0, minimum=0),
+                "source_span": {
+                    "start_para": _coerce_int(source_span.get("start_para"), default=index, minimum=0),
+                    "end_para": _coerce_int(source_span.get("end_para"), default=index, minimum=0),
+                },
+                "summary": summary,
+                "key_events": key_events,
+                "core_conflict": _coerce_text(item.get("core_conflict")),
+                "hook": _coerce_text(item.get("hook")),
+                "ending_state": _coerce_text(item.get("ending_state")),
+                "source_type": "schema",
+            }
+        )
+    return frameworks
+
+
+def _merge_schema_supplements_into_units(
+    units: list[dict[str, Any]],
+    records: list[dict[str, Any]],
+    source_path: str,
+    summary_keys: tuple[str, ...],
+    label: str,
+    extra_fields: tuple[tuple[str, str], ...],
+    core_conflict_keys: tuple[str, ...] = (),
+    hook_keys: tuple[str, ...] = (),
+    ending_state_keys: tuple[str, ...] = (),
+    attach_by_order: bool = True,
+) -> None:
+    for record in records:
+        summary = _first_schema_text(record, summary_keys)
+        if not summary:
+            continue
+        order = _schema_record_order(record, default=0)
+        lines = _schema_lines(
+            [(label, summary)] + [(line_label, record.get(key)) for line_label, key in extra_fields]
+        )
+        target = _nearest_schema_unit(units, order) if attach_by_order and order else None
+        if target is None:
+            target = _new_schema_unit(
+                order=order or len(units) + 1,
+                source_path=source_path,
+                summary=summary,
+                lines=lines,
+                key_event=summary,
+                core_conflict=_first_schema_text(record, core_conflict_keys),
+                hook=_first_schema_text(record, hook_keys),
+                ending_state=_first_schema_text(record, ending_state_keys),
+                schema_ref_title=summary,
+            )
+            units.append(target)
+            continue
+
+        _append_schema_unit_fragment(
+            unit=target,
+            source_path=source_path,
+            order=order,
+            summary=summary,
+            lines=lines,
+            key_event=summary,
+            core_conflict=_first_schema_text(record, core_conflict_keys),
+            hook=_first_schema_text(record, hook_keys),
+            ending_state=_first_schema_text(record, ending_state_keys),
+        )
+
+
+def _fallback_schema_story_units(story_bible: dict[str, Any]) -> list[dict[str, Any]]:
+    story_core = story_bible.get("story_core", {})
+    if not isinstance(story_core, dict):
+        story_core = {}
+    source_summary = story_bible.get("source_summary", {})
+    if not isinstance(source_summary, dict):
+        source_summary = {}
+
+    protagonist = story_core.get("protagonist", {})
+    if not isinstance(protagonist, dict):
+        protagonist = {}
+    antagonist = story_core.get("antagonist", {})
+    if not isinstance(antagonist, dict):
+        antagonist = {}
+    core_conflict = story_core.get("core_conflict", {})
+    if not isinstance(core_conflict, dict):
+        core_conflict = {}
+
+    conflict_text = _first_schema_text(
+        core_conflict,
+        ("conflict_description", "stakes", "central_question", "conflict_type"),
+    )
+    protagonist_goal = _first_schema_text(protagonist, ("goal", "motivation", "summary", "name"))
+    antagonist_goal = _first_schema_text(antagonist, ("goal", "summary", "name"))
+    relationship_events = [
+        _first_schema_text(item, ("tension_point", "relationship_type", "emotional_state"))
+        for item in _schema_record_list(story_core.get("relationship_tensions"))
+    ]
+    relationship_events = [item for item in relationship_events if item]
+
+    summary = (
+        _coerce_text(source_summary.get("short_summary"))
+        or conflict_text
+        or protagonist_goal
+        or "Schema story unit"
+    )
+    lines = _schema_lines(
+        [
+            ("Summary", summary),
+            ("Core conflict", conflict_text),
+            ("Protagonist objective", _coerce_text(story_core.get("protagonist_objective")) or protagonist_goal),
+            ("Protagonist pain point", story_core.get("protagonist_pain_point")),
+            ("Antagonist pressure", antagonist_goal),
+            ("Relationship tensions", relationship_events),
+        ]
+    )
+    return [
+        _new_schema_unit(
+            order=1,
+            source_path="story_core",
+            summary=summary,
+            lines=lines,
+            key_event=summary,
+            core_conflict=conflict_text,
+            ending_state=protagonist_goal,
+            schema_ref_title=summary,
+        )
+    ]
+
+
+def _new_schema_unit(
+    order: int,
+    source_path: str,
+    summary: str,
+    lines: list[str],
+    key_event: str,
+    schema_ref_title: str,
+    core_conflict: str = "",
+    hook: str = "",
+    ending_state: str = "",
+) -> dict[str, Any]:
+    return {
+        "_schema_order": order,
+        "_schema_fragments": [line for line in lines if line],
+        "summary": summary,
+        "key_events": [key_event] if key_event else [],
+        "core_conflict": core_conflict,
+        "hook": hook,
+        "ending_state": ending_state,
+        "schema_refs": [_schema_ref(source_path, order, schema_ref_title)],
+    }
+
+
+def _append_schema_unit_fragment(
+    unit: dict[str, Any],
+    source_path: str,
+    order: int,
+    summary: str,
+    lines: list[str],
+    key_event: str,
+    core_conflict: str = "",
+    hook: str = "",
+    ending_state: str = "",
+) -> None:
+    fragments = unit.setdefault("_schema_fragments", [])
+    if isinstance(fragments, list):
+        fragments.extend(line for line in lines if line)
+
+    key_events = unit.setdefault("key_events", [])
+    if isinstance(key_events, list) and key_event:
+        key_events.append(key_event)
+        unit["key_events"] = _unique_texts(key_events)
+
+    if core_conflict and not _coerce_text(unit.get("core_conflict")):
+        unit["core_conflict"] = core_conflict
+    if hook and not _coerce_text(unit.get("hook")):
+        unit["hook"] = hook
+    if ending_state and not _coerce_text(unit.get("ending_state")):
+        unit["ending_state"] = ending_state
+
+    schema_refs = unit.setdefault("schema_refs", [])
+    if isinstance(schema_refs, list):
+        schema_refs.append(_schema_ref(source_path, order, summary))
+
+
+def _finalize_schema_units(units: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    output: list[dict[str, Any]] = []
+    for index, unit in enumerate(units, start=1):
+        fragments = unit.get("_schema_fragments")
+        if not isinstance(fragments, list):
+            fragments = []
+        text = "\n".join(_coerce_text(line) for line in fragments if _coerce_text(line)).strip()
+        summary = _coerce_text(unit.get("summary")) or _first_nonempty_line(text)
+        if not text:
+            text = summary
+
+        output.append(
+            {
+                "unit_id": f"su_{index:04d}",
+                "char_count": len(text),
+                "source_span": {
+                    "start_para": index,
+                    "end_para": index,
+                },
+                "text": text,
+                "source_type": "schema",
+                "schema_refs": unit.get("schema_refs", []),
+                "summary": summary,
+                "key_events": _coerce_text_sequence(unit.get("key_events")),
+                "core_conflict": _coerce_text(unit.get("core_conflict")),
+                "hook": _coerce_text(unit.get("hook")),
+                "ending_state": _coerce_text(unit.get("ending_state")),
+            }
+        )
+    return output
+
+
+def _schema_record_list(value: Any) -> list[dict[str, Any]]:
+    if not isinstance(value, list):
+        return []
+    return [item for item in value if isinstance(item, dict)]
+
+
+def _sorted_schema_records(value: Any) -> list[dict[str, Any]]:
+    records = _schema_record_list(value)
+    return [
+        item
+        for _, _, item in sorted(
+            (
+                (
+                    _schema_record_order(item, default=index),
+                    index,
+                    item,
+                )
+                for index, item in enumerate(records, start=1)
+            ),
+            key=lambda part: (part[0], part[1]),
+        )
+    ]
+
+
+def _schema_record_order(record: dict[str, Any], default: int = 0) -> int:
+    return _coerce_int(record.get("order"), default=default, minimum=0)
+
+
+def _nearest_schema_unit(units: list[dict[str, Any]], order: int) -> dict[str, Any] | None:
+    ordered_units = [unit for unit in units if _coerce_int(unit.get("_schema_order"), default=0, minimum=0) > 0]
+    if not ordered_units:
+        return None
+    return min(
+        ordered_units,
+        key=lambda unit: abs(_coerce_int(unit.get("_schema_order"), default=0, minimum=0) - order),
+    )
+
+
+def _first_schema_text(record: dict[str, Any], keys: tuple[str, ...]) -> str:
+    if not isinstance(record, dict):
+        return ""
+    for key in keys:
+        value = record.get(key)
+        if isinstance(value, list):
+            text = "; ".join(_coerce_text_sequence(value))
+        else:
+            text = _coerce_text(value)
+        if text:
+            return text
+    return ""
+
+
+def _schema_lines(items: list[tuple[str, Any]]) -> list[str]:
+    lines: list[str] = []
+    for label, value in items:
+        if isinstance(value, list):
+            text = "; ".join(_coerce_text_sequence(value))
+        else:
+            text = _coerce_text(value)
+        if text:
+            lines.append(f"{label}: {text}")
+    return lines
+
+
+def _schema_ref(source_path: str, order: int, title: str) -> dict[str, Any]:
+    return {
+        "path": source_path,
+        "order": order,
+        "title": title,
+    }
+
+
+def _first_nonempty_line(value: Any) -> str:
+    text = _coerce_text(value)
+    for line in text.splitlines():
+        line = _coerce_text(line)
+        if not line:
+            continue
+        if ":" in line:
+            return _coerce_text(line.split(":", 1)[1]) or line
+        return line
+    return ""
 
 
 def _extract_unit_frameworks(
@@ -2329,6 +2876,7 @@ def _coerce_name_list(value: Any) -> list[str]:
 
 def _strip_name_annotations(name: str) -> str:
     text = _coerce_text(name)
+    text = re.sub(r"^@+", "", text)
     text = re.sub(r"[（(].*?[）)]", "", text)
     return _coerce_text(text)
 
@@ -2613,6 +3161,38 @@ def _parse_json_response(raw_response: str, source_name: str = "LLM") -> Any:
 
 def _normalize_story_bible(data: Any) -> dict[str, Any]:
     return normalize_story_schema(data)
+
+
+def _tag_story_bible_asset_names(story_bible: dict[str, Any]) -> dict[str, Any]:
+    if not isinstance(story_bible, dict):
+        return story_bible
+
+    _tag_named_records(story_bible.get("characters"))
+    _tag_named_records(story_bible.get("props"))
+    return story_bible
+
+
+def _tag_named_records(records: Any) -> None:
+    if not isinstance(records, list):
+        return
+
+    for index, item in enumerate(records):
+        if isinstance(item, dict):
+            name = _coerce_text(item.get("name"))
+            if name:
+                item["name"] = _ensure_asset_tag(name)
+            continue
+
+        name = _coerce_text(item)
+        if name:
+            records[index] = _ensure_asset_tag(name)
+
+
+def _ensure_asset_tag(name: str) -> str:
+    text = _coerce_text(name)
+    if not text or text.startswith("@"):
+        return text
+    return f"@{text}"
 
 
 def _normalize_character_item(item: Any) -> dict[str, Any] | None:

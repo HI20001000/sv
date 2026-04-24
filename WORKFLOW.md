@@ -98,7 +98,7 @@ input_documents/<source>.txt|docx
 
 ### 1.3 這條流程的設計特徵
 
-- 流程整體是固定順序執行，其中第 7、8 步採用有界並發
+- 流程整體是固定順序執行，目前在第 6 步逐集生成規劃後停止
 - 多數階段都允許局部失敗後 fallback，而不是立即中止
 - 真正的硬性校驗主要集中在「拆集規劃」
 - 每次執行都會產生獨立輸出目錄，便於回溯
@@ -108,7 +108,7 @@ input_documents/<source>.txt|docx
 
 ## 2. 階段化工作流與資料變化
 
-`process_script_to_output()` 固定執行以下 8 步。
+`process_script_to_output()` 目前固定執行到逐集生成規劃；逐集內容與分鏡輸出保留占位，留待下一階段啟用。
 
 ### 2.1 劇本清洗
 
@@ -139,25 +139,22 @@ input_documents/<source>.txt|docx
 - 資料變化：
   - 劇本文本 -> 全局故事知識庫
 
-### 2.3 Unit 拆分
+### 2.3 Schema Unit 生成
 
 - Prompt：`prompt/unit_split_prompt.md`
-- 輸入：清洗後文本
+- 輸入：優化後的 `story_bible`
 - 輸出：`story_units.json`
-- 關鍵參數：
-  - `UNIT_WINDOW_MIN`，默認 `1500`
-  - `UNIT_WINDOW_MAX`，默認 `2200`
 - 主要字段：
   - `unit_id`
   - `char_count`
   - `source_span`
   - `text`
 - 工作內容：
-  - 讀取 `unit_split_prompt.md` 內的拆分規則與配置
-  - 按段落與句子進行規則切分
-  - 控制每個 unit 的字數窗口與尾段合併策略
+  - 優先按 `plot_structure.major_plot_points` 的 `order` 生成 `su_0001...`
+  - 將 `turning_points`、`reversal_points`、`hook_points` 補入相近 unit 或追加為獨立 unit
+  - 若情節結構不足，使用 `story_core` 的核心衝突、人物目標與關係張力生成 fallback unit
 - 資料變化：
-  - 長文本 -> 可分配、可規劃、可引用的故事單元
+  - 結構化 schema -> 可分配、可規劃、可引用的故事單元
 
 ### 2.4 Unit 框架提煉
 
@@ -171,10 +168,10 @@ input_documents/<source>.txt|docx
   - `hook`
   - `ending_state`
 - 工作內容：
-  - 逐 unit 提煉劇情摘要與衝突信息
-  - 若單個 unit 提煉失敗，使用文本截斷與句子提取生成 fallback 框架
+  - 直接從 schema-derived unit 生成摘要、事件、衝突、hook 與 ending state
+  - 不再對 schema unit 走 LLM framework extraction，避免二次自由改寫
 - 資料變化：
-  - 原始 unit 文本 -> 更適合用於拆集與逐集規劃的摘要結構
+  - schema-derived unit -> 更適合用於拆集與逐集規劃的摘要結構
 
 ### 2.5 拆集規劃
 

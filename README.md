@@ -8,7 +8,7 @@
 `/docs` 会从 `input_documents/` 读取 `.txt` 或 `.docx`，自动完成：
 剧本清洗 -> canonical schema 特征提取 -> 缺失校验与最多 3 次修复 -> 知识库 TopK=3 语义对齐 -> 低分字段优化。
 
-当前版本会在 schema 对齐达标后停在 Unit 拆分之前，并生成兼容的空占位文件，避免前端预览断裂。
+当前版本会在 schema 对齐达标后，基于结构化 schema 生成 `story_units.json`、`unit_frameworks.json`、`episode_split_plan.json` 与 `episode_generation_plan.json`，并在逐集内容生成前停止。
 
 ---
 
@@ -191,7 +191,7 @@ schema_alignment/
 ## Prompt 文件说明
 
 `prompt/` 目录下每个模板都对应 `/docs` 流程中的固定阶段，调用入口在 `code_components/script_processing.py`（底层由 `code_components/langChain/model_runtime.py` 读模板并注入变量）。
-当前 schema gate 版本只会实际运行清洗、特征提取、schema 语义对齐与优化；Unit 拆分及后续 prompt 保留为下一阶段流程使用。
+当前 schema-driven 版本会实际运行清洗、特征提取、schema 语义对齐与优化，并用优化后的结构化 schema 驱动 Unit、拆集与逐集生成规划；逐集内容与分镜仍保留为下一阶段流程使用。
 
 | Prompt 文件 | 对应流程阶段 | 在流程中做什么 | 主要用意 |
 |---|---|---|---|
@@ -199,7 +199,7 @@ schema_alignment/
 | `prompt/script_feature_extraction_prompt.md` | 2. 特征提取 | 从清洗文本抽取结构化特征，输出 `story_bible.json` | 提取角色、道具、背景等核心信息，作为后续规划与生成的基础 |
 | `prompt/schema_semantic_alignment_prompt.md` | 2b. Schema 语义对齐评分 | 对输入 schema 与 TopK 知识库 schema 的 10 个权重字段打高/中/低 | 生成评分表与聚合分，判断是否达到 `SCHEMA_ALIGNMENT_THRESHOLD` |
 | `prompt/schema_optimization_prompt.md` | 2c. Schema 优化 | 参考 TopK 中最适合的 schema 优化低分字段 | 输出完整优化后 schema 与修改字段列表 |
-| `prompt/unit_split_prompt.md` | 3. Unit 拆分 | 读取拆分规则与参数，输出 `story_units.json` | 控制 unit 切分窗口、句子边界与尾段合并策略，使该阶段也可通过 prompt 调整 |
+| `prompt/unit_split_prompt.md` | 3. Schema Unit 生成 | 基于 `story_bible.plot_structure` 输出 `story_units.json` | 不再读取原剧本文本窗口，而是按 major plot points、turning/reversal/hook points 生成可规划的 schema-derived units |
 | `prompt/unit_framework_extraction_prompt.md` | 4. Unit 框架提炼 | 对每个 unit 提炼摘要与冲突信息，输出 `unit_frameworks.json` | 把长文本 unit 转成可用于拆集决策的“剧情框架” |
 | `prompt/unit_episode_split_planning_prompt.md` | 5. 拆集规划 | 按 unit 分配 `episode_count`，输出 `episode_split_plan.json` | 在满足总集数约束下完成 unit->集数分配，并保证可校验 |
 | `prompt/episode_generation_planning_prompt.md` | 6. 逐集生成规划 | 产出每集的标题、目标、beats、角色焦点等，输出 `episode_generation_plan.json` | 把“拆集结果”变成“逐集可执行的生成蓝图” |
@@ -208,7 +208,7 @@ schema_alignment/
 
 补充说明：
 
-- 第 3 步 `Unit 拆分` 是程序规则拆分（非 prompt 驱动）。
+- 第 3 步 `Schema Unit 生成` 是程序规则转换（非 prompt 驱动），输入来自优化后的结构化 schema。
 - 第 5 步有强校验（总集数必须严格等于目标值），必要时会触发自动修复轮次（`EPISODE_SPLIT_REPAIR_ROUNDS`）。
 
 ---

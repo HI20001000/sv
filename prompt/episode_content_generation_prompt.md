@@ -119,6 +119,13 @@
 {{EPISODE_PLAN_JSON}}
 ```
 
+## Naming Rules
+
+* 出场角色、对白 speaker 与正文中的角色指代，必须优先使用 `story_bible_json.characters[].name` 的标准名称。
+* 剧情中出现关键道具时，必须使用 `story_bible_json.props[].name` 或 `episode_plan_json.props_used` 中的标准名称。
+* 如果输入名称带 `@` 前缀，输出必须完整保留 `@`，例如 `出场角色：@角色A`、`@角色A：台词`、`@道具名`。
+* aliases 只能用于识别归一，最终输出不要用 aliases 替代标准名称。
+
 * `source_units_json`:
 
 ```json

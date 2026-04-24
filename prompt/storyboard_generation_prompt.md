@@ -105,6 +105,15 @@
 
 ---
 
+## Naming Tag Rules
+
+- `characters` 数组中的名称必须逐字使用 `story_bible_json.characters[].name` 的标准名称。
+- `dialogue` 中的 speaker 也必须使用同一个标准名称；如果标准名称带 `@`，对白格式应写成 `@角色名：原句`。
+- `visual` 中的关键道具标注必须写成 `道具:标准道具名`；如果标准道具名带 `@`，必须写成 `道具:@道具名`。
+- aliases 只能用于识别归一，最终输出不要用 aliases 替代标准名称。
+
+---
+
 ## Scene Splitting Rules
 
 1. `scene` 应按以下任一显著变化拆分：

@@ -195,7 +195,9 @@ def process_script_to_output(
         run_dir=alignment_dir,
         progress_callback=progress_callback,
     )
-    story_bible = alignment_result["schema"]
+    story_bible = _tag_story_bible_asset_names(alignment_result["schema"])
+    alignment_result["schema"] = story_bible
+    write_json_artifact(alignment_dir / "final_schema.json", story_bible)
     alignment_elapsed = time.perf_counter() - alignment_started_at
     step_elapsed_seconds["schema_alignment"] = alignment_elapsed
     _emit_progress(
@@ -2329,6 +2331,7 @@ def _coerce_name_list(value: Any) -> list[str]:
 
 def _strip_name_annotations(name: str) -> str:
     text = _coerce_text(name)
+    text = re.sub(r"^@+", "", text)
     text = re.sub(r"[（(].*?[）)]", "", text)
     return _coerce_text(text)
 
@@ -2613,6 +2616,38 @@ def _parse_json_response(raw_response: str, source_name: str = "LLM") -> Any:
 
 def _normalize_story_bible(data: Any) -> dict[str, Any]:
     return normalize_story_schema(data)
+
+
+def _tag_story_bible_asset_names(story_bible: dict[str, Any]) -> dict[str, Any]:
+    if not isinstance(story_bible, dict):
+        return story_bible
+
+    _tag_named_records(story_bible.get("characters"))
+    _tag_named_records(story_bible.get("props"))
+    return story_bible
+
+
+def _tag_named_records(records: Any) -> None:
+    if not isinstance(records, list):
+        return
+
+    for index, item in enumerate(records):
+        if isinstance(item, dict):
+            name = _coerce_text(item.get("name"))
+            if name:
+                item["name"] = _ensure_asset_tag(name)
+            continue
+
+        name = _coerce_text(item)
+        if name:
+            records[index] = _ensure_asset_tag(name)
+
+
+def _ensure_asset_tag(name: str) -> str:
+    text = _coerce_text(name)
+    if not text or text.startswith("@"):
+        return text
+    return f"@{text}"
 
 
 def _normalize_character_item(item: Any) -> dict[str, Any] | None:
